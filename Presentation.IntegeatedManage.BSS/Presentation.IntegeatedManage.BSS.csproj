@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C43BD28-8F7A-49D1-A71C-8113D3D262FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS</RootNamespace>
+    <AssemblyName>FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\IntegratedManageClient\Plugins\BSS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DlySet\DlyInputLevelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlySet\DlyInputLevelForm.Designer.cs">
+      <DependentUpon>DlyInputLevelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlySet\DlyTypeSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlySet\DlyTypeSelectForm.Designer.cs">
+      <DependentUpon>DlyTypeSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlySet\DlyTypeSelectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DlySet\DlyTypeSelectUserControl.Designer.cs">
+      <DependentUpon>DlyTypeSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlySet\InputLevelSelectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DlySet\InputLevelSelectUserControl.Designer.cs">
+      <DependentUpon>InputLevelSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlySet\InputLevelSelectPopupContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Basic\ProductEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Basic\ProductEditForm.Designer.cs">
+      <DependentUpon>ProductEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\ProductManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Basic\ProductManageForm.Designer.cs">
+      <DependentUpon>ProductManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\StockSelectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Basic\StockSelectUserControl.Designer.cs">
+      <DependentUpon>StockSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\StockSelectPopupContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="单据\DlySPRKForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="单据\DlySPRKForm.Designer.cs">
+      <DependentUpon>DlySPRKForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\RawMateEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Basic\RawMateEditForm.Designer.cs">
+      <DependentUpon>RawMateEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\RawMateManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Basic\RawMateManageForm.Designer.cs">
+      <DependentUpon>RawMateManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\RegisterEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Basic\RegisterEditForm.Designer.cs">
+      <DependentUpon>RegisterEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\RegisterHistoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Basic\RegisterHistoryUserControl.Designer.cs">
+      <DependentUpon>RegisterHistoryUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\RegisterManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Basic\RegisterManageForm.Designer.cs">
+      <DependentUpon>RegisterManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\RegisterSelectPopupContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Basic\RegisterSelectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Basic\RegisterSelectUserControl.Designer.cs">
+      <DependentUpon>RegisterSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\StockEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Basic\StockEditForm.Designer.cs">
+      <DependentUpon>StockEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\StockManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Basic\StockManageForm.Designer.cs">
+      <DependentUpon>StockManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XtraForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XtraForm1.Designer.cs">
+      <DependentUpon>XtraForm1.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FengSharp\FengSharp.Tool\FengSharp.Tool.csproj">
+      <Project>{f9a88bfb-c15b-43a0-bd3f-64399ecd6d98}</Project>
+      <Name>FengSharp.Tool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FengSharp\FengSharp.WinForm.Dev\FengSharp.WinForm.Dev.csproj">
+      <Project>{8e8a8f0c-3bb5-46d9-abab-d50c34f80599}</Project>
+      <Name>FengSharp.WinForm.Dev</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application.IntegeatedManage.Config\Application.IntegeatedManage.Config.csproj">
+      <Project>{74d35004-066b-4848-bcd3-b30a9e99c00f}</Project>
+      <Name>Application.IntegeatedManage.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.BSSModule.Entity\Domain.BSSModule.Entity.csproj">
+      <Project>{a50ef991-4e13-40ac-8943-4c86360eb18a}</Project>
+      <Name>Domain.BSSModule.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.BSSModule.Service.Interface\Domain.BSSModule.Service.Interface.csproj">
+      <Project>{76d6a2b7-c84b-42c4-88cc-64f64902bb27}</Project>
+      <Name>Domain.BSSModule.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.RBACModule.Entity\Domain.RBACModule.Entity.csproj">
+      <Project>{9cbb2a11-65a9-4b7e-8f44-0ebaba673a8f}</Project>
+      <Name>Domain.RBACModule.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.RBACModule.Service.Interface\Domain.RBACModule.Service.Interface.csproj">
+      <Project>{b1aa02f5-0845-4992-9df8-e6b782aebdb0}</Project>
+      <Name>Domain.RBACModule.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Services.Interface\Infrastructure.Services.Interface.csproj">
+      <Project>{ed0807cf-cd05-41e5-9d4b-836029ddc510}</Project>
+      <Name>Infrastructure.Services.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.WinForm\Infrastructure.WinForm.csproj">
+      <Project>{4ca8096b-1815-4476-a836-1e8b5d210970}</Project>
+      <Name>Infrastructure.WinForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{12b77e2b-2105-4fec-b05a-c9d56b9c4161}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentation.IntegeatedManage.BSS.Interface\Presentation.IntegeatedManage.BSS.Interface.csproj">
+      <Project>{ebf559ae-0661-4e35-b303-95993abdbf74}</Project>
+      <Name>Presentation.IntegeatedManage.BSS.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentation.IntegeatedManage.HR.Interface\Presentation.IntegeatedManage.HR.Interface.csproj">
+      <Project>{b2a6c55d-f693-4713-b6b6-312b31281af2}</Project>
+      <Name>Presentation.IntegeatedManage.HR.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentation.IntegeatedManage.SystemSet.Interface\Presentation.IntegeatedManage.SystemSet.Interface.csproj">
+      <Project>{34e26fba-5759-4256-9d34-eeb152fce0dc}</Project>
+      <Name>Presentation.IntegeatedManage.SystemSet.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DlySet\DlyInputLevelForm.resx">
+      <DependentUpon>DlyInputLevelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlySet\DlyTypeSelectForm.resx">
+      <DependentUpon>DlyTypeSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlySet\DlyTypeSelectUserControl.resx">
+      <DependentUpon>DlyTypeSelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlySet\InputLevelSelectUserControl.resx">
+      <DependentUpon>InputLevelSelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlySet\InputLevelSelectPopupContainerControl.resx">
+      <DependentUpon>InputLevelSelectPopupContainerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\ProductEditForm.resx">
+      <DependentUpon>ProductEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\ProductManageForm.resx">
+      <DependentUpon>ProductManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\StockSelectUserControl.resx">
+      <DependentUpon>StockSelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="单据\DlySPRKForm.resx">
+      <DependentUpon>DlySPRKForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\RawMateEditForm.resx">
+      <DependentUpon>RawMateEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\RawMateManageForm.resx">
+      <DependentUpon>RawMateManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\RegisterEditForm.resx">
+      <DependentUpon>RegisterEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\RegisterManageForm.resx">
+      <DependentUpon>RegisterManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\RegisterSelectUserControl.resx">
+      <DependentUpon>RegisterSelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\StockEditForm.resx">
+      <DependentUpon>StockEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\StockManageForm.resx">
+      <DependentUpon>StockManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraForm1.resx">
+      <DependentUpon>XtraForm1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

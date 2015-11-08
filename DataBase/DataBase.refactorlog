@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="692c1542-22ef-4802-9a9a-a3d1314eed92" ChangeDateTime="11/04/2015 05:25:07">
+    <Property Name="ElementName" Value="[dbo].[T_DlyNdx].[draft]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_DlyNdx]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Draft" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="81a3b552-b8b8-4264-8792-478852b703c0" ChangeDateTime="11/04/2015 05:42:58">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyBak].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PDlyBakId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="df13179c-d990-4f16-b79b-4fe2839e31b6" ChangeDateTime="11/04/2015 05:49:40">
+    <Property Name="ElementName" Value="[dbo].[T_AType].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_AType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ATypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f70f72af-5135-40d2-80c5-4a32c7f2e6fd" ChangeDateTime="11/04/2015 10:59:42">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyBak].[Tax]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TaxRate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="77568663-45bb-4a2f-a54b-ec716d5711d7" ChangeDateTime="11/04/2015 10:59:48">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyBak].[TaxTotal]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Tax" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b35a9668-a967-46a1-bf7a-56c87e2f91b0" ChangeDateTime="11/04/2015 10:59:51">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyBak].[Tax_Total]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TaxTotal" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d07d0a57-1ba1-4b73-b526-300a6056ff29" ChangeDateTime="11/05/2015 00:17:23">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlySNBak].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlySNBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PDlySNBakId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cb3a7873-9c9f-4359-8b62-aa195f1fc36d" ChangeDateTime="11/05/2015 00:28:35">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyFBNBak].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyFBNBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PDlyFBNBakId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4208ebc8-aec0-44f1-9ab2-3d659e276f53" ChangeDateTime="11/05/2015 00:30:23">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyFBNBak].[StockId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyFBNBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StockId1" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fa97ac32-322d-4787-b482-5e5f0f289d83" ChangeDateTime="11/05/2015 00:30:26">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlySNBak].[StockId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlySNBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StockId1" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d563cd1b-3851-4005-8a7c-f1d0f8b816f4" ChangeDateTime="11/05/2015 00:34:51">
+    <Property Name="ElementName" Value="[dbo].[T_ProductSaleDly].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductSaleDly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PSaleDlyId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="064ccbc6-9c80-424c-a11d-e638895ed595" ChangeDateTime="11/05/2015 00:38:26">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyFBNBak].[AtypeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyFBNBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ATypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f3bf1c6c-efba-451c-821c-3f9d0c519006" ChangeDateTime="11/05/2015 00:38:29">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyBak].[AtypeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ATypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a3e87bff-3831-4004-956e-a4342de279a1" ChangeDateTime="11/05/2015 00:56:09">
+    <Property Name="ElementName" Value="[dbo].[T_ProductInOutDetails].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductInOutDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PIODetailId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2c7ced6d-86d3-4dc2-98c5-316ddd724f53" ChangeDateTime="11/05/2015 00:58:09">
+    <Property Name="ElementName" Value="[dbo].[T_ProductInOutDetails].[CompanyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductInOutDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StockId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="36d2fe87-f036-4105-ba35-d71279eb9abf" ChangeDateTime="11/05/2015 00:58:46">
+    <Property Name="ElementName" Value="[dbo].[T_ProductInOutDetails].[PIODetailId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductInOutDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PInOutDetailId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dd65e778-f182-4840-a970-39cc4cee0f59" ChangeDateTime="11/05/2015 01:04:01">
+    <Property Name="ElementName" Value="[dbo].[T_ProductInOutDetails].[PSaleDlyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductInOutDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PDlyId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1c0260ae-4a36-40e9-bcf1-81e5b303dca1" ChangeDateTime="11/05/2015 01:04:22">
+    <Property Name="ElementName" Value="[dbo].[T_ProductInOutDetails].[PDlyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductInOutDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DlyId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1aab38b7-326c-4db5-bc80-de0e76d0dd02" ChangeDateTime="11/05/2015 01:05:19">
+    <Property Name="ElementName" Value="[dbo].[T_DlyNdx].[DlyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_DlyNdx]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DlyNdxId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f3c34cdf-99e7-4777-b3b6-0ebd6d319db1" ChangeDateTime="11/05/2015 01:05:45">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyBak].[DlyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DlyNdxId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c0614947-9bb1-44d5-bdf3-632d9d0ab12e" ChangeDateTime="11/05/2015 01:05:59">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlyFBNBak].[DlyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlyFBNBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DlyNdxId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7df0f8ea-840f-466f-ace8-f7884cc15651" ChangeDateTime="11/05/2015 01:06:03">
+    <Property Name="ElementName" Value="[dbo].[T_ProductDlySNBak].[DlyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductDlySNBak]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DlyNdxId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="370a97e8-efba-428e-9f41-3b70e59d7985" ChangeDateTime="11/05/2015 01:06:11">
+    <Property Name="ElementName" Value="[dbo].[T_ProductInOutDetails].[DlyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductInOutDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DlyNdxId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="16ff7d31-4885-4c99-804e-dbc074744430" ChangeDateTime="11/05/2015 01:06:21">
+    <Property Name="ElementName" Value="[dbo].[T_ProductSaleDly].[DlyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductSaleDly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DlyNdxId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e793ffbb-f4d1-47fa-8cb8-133291c3363e" ChangeDateTime="11/05/2015 01:08:37">
+    <Property Name="ElementName" Value="[dbo].[T_ProductFBNInOutDetails].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductFBNInOutDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PFBNInOutDetailId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d34a2a34-d6e9-4c77-8c8e-037ab7262ba9" ChangeDateTime="11/05/2015 01:22:40">
+    <Property Name="ElementName" Value="[dbo].[T_ProductSNInOutDetails].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductSNInOutDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PSNInOutDetailId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="58454e8f-3b6e-4827-8f23-003ab76d7af9" ChangeDateTime="11/05/2015 01:24:40">
+    <Property Name="ElementName" Value="[dbo].[T_ProductSNInOutDetails].[Qty]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductSNInOutDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SN" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3729a8fb-3fe6-497d-a9d5-5d513178c6b3" ChangeDateTime="11/05/2015 01:45:56">
+    <Property Name="ElementName" Value="[dbo].[T_ProductInvent].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductInvent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PInventId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="22208914-c306-43d7-9c91-f445fad56fbb" ChangeDateTime="11/05/2015 01:59:21">
+    <Property Name="ElementName" Value="[dbo].[T_ProductBNInvent].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductBNInvent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PBNInventId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b6748f10-625d-48bf-837a-da642e6ee6c1" ChangeDateTime="11/05/2015 02:03:08">
+    <Property Name="ElementName" Value="[dbo].[T_ProductBNInvent].[StockId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductBNInvent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1a697b94-df90-482a-9be0-cc45f47f6f04" ChangeDateTime="11/05/2015 02:09:19">
+    <Property Name="ElementName" Value="[dbo].[T_ProductFBNInvent].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductFBNInvent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PFBNInventId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f69ebe34-6436-4c56-8c29-10e5d19ae2d6" ChangeDateTime="11/05/2015 02:13:38">
+    <Property Name="ElementName" Value="[dbo].[T_ProductSNInvent].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[T_ProductSNInvent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PSNInventId" />
+  </Operation>
+</Operations>

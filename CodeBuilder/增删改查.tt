@@ -1,0 +1,92 @@
+﻿<#@ template hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#@ include file="$(ProjectDir)\DbTemplate.ttinclude"  #>
+<#DBHost dbhost=new DBHost(TableName);#>
+<#if(IsBuilder) {#>
+
+//-------------------------------------------------------------------AddEntity
+this.DAL.AddEntity(out EntityId<# foreach(DbColumn column in dbhost.DbColumns){#>,entity.<#=column.ColumnName#><#}#> );
+public int AddEntity(out string EntityId<# foreach(DbColumn column in dbhost.DbColumns){#>,<#= column.CSharpType#> <#=column.ColumnName#><#}#> )
+{
+		DbCommand cmd = base.Database.GetStoredProcCommand("P_Create<#=TableName.Replace("T_",string.Empty)#>");
+		<# foreach(DbColumn column in dbhost.DbColumns){#>
+        database.AddInParameter(cmd, "<#=column.ColumnName#>", DbType.<#= column.CommonType.ToString().Replace("System.","")#>, entity.<#=column.ColumnName#>);
+		<#}#>
+        database.ExecuteNonQuery(cmd);
+        EntityId = base.Database.GetParameterValue(cmd, "EntityId").ToString();
+		return code;
+}
+
+//-------------------------------------------------------------------UpdateEntity
+this.DAL.UpdateEntity(EntityId<# foreach(DbColumn column in dbhost.DbColumns){#>,entity.<#=column.ColumnName#><#}#> );
+
+CREATE PROCEDURE P_Create<#=TableName.Replace("T_",string.Empty)#>
+(
+	@EntityId VARCHAR(36) output
+	<# foreach(DbColumn column in dbhost.DbColumns){#>,
+	@<#=column.ColumnName#> <#=column.ColumnType#><#=column.ByteLength>0?string.Format("({0})",column.ByteLength):string.Empty#><#}#>
+
+)
+
+
+//-------------------------------------------------------------------DataRowToEntity
+private <#=TableName.Replace("T_",string.Empty)#> <#=TableName.Replace("T_",string.Empty)#>_DataRowToEntity(DataRow row)
+{
+	if(row==null)
+		return null;
+    var result = new <#=TableName.Replace("T_",string.Empty)#>()
+    {
+	<# foreach(DbColumn column in dbhost.DbColumns){#>
+		<#=column.ColumnName#> = (<#= column.CSharpType#>)(row["<#=column.ColumnName#>"]),
+	<#}#> 
+    };
+    return result;
+}
+
+
+//-------------------------------------------------------------------插入
+insert into <#=TableName#> (
+<# for (int i = 0; i < dbhost.DbColumns.Count; i++)
+   {
+	var column = dbhost.DbColumns[i];
+   #>
+   <#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1)?"":","#>--<#=column.Remark#>
+<#}#>
+)
+values(
+<# for (int i = 0; i < dbhost.DbColumns.Count; i++)
+   {
+	var column = dbhost.DbColumns[i];
+   #>
+   @<#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1)?"":","#>--<#=column.Remark#>
+<#}#>
+);
+//-------------------------------------------------------------------查询
+select
+<# for (int i = 0; i < dbhost.DbColumns.Count; i++)
+   {
+	var column = dbhost.DbColumns[i];
+   #>
+   <#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1)?"":","#>--<#=column.Remark#>
+<#}#>
+from <#=TableName#>
+//-------------------------------------------------------------------更改
+update <#=TableName#> set 
+<# for (int i = 0; i < dbhost.DbColumns.Count; i++)
+{
+	DbColumn column = dbhost.DbColumns[i];
+	if(column.IsPrimaryKey)
+		continue;#>
+<#=column.ColumnName#>=@<#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1?string.Empty:",")#>
+<#}#>
+
+
+<#}#>
+<#+
+public static readonly string TableName="T_RawMate";
+public static readonly bool IsBuilder= false;
+#>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Name="" xmlns="http://www.tangiblearchitect.com/dsltools/Classes">
+  <ArrayOfStereoType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <StereoType>
+      <StereoTypeName>UseCaseModel</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.UseCaseModel</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Actor</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Actor</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Association</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Association</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Comment</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Comment</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Extend</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Extend</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Generalization</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Generalization</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Include</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Include</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>UseCase</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.UseCase</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+  </ArrayOfStereoType>
+  <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+  <UseCaseElements>
+    <useCase Name="将商品放入购物车">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <actor Name="顾客">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <SuperTypes>
+        <generalization Id="9264c367-6269-4972-929d-83f7b9048d26">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <actorMoniker Name="//往来单位" />
+        </generalization>
+      </SuperTypes>
+      <AssociationTo>
+        <association>
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <useCaseMoniker Name="//提交订单" />
+        </association>
+        <association>
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <useCaseMoniker Name="//将商品放入购物车" />
+        </association>
+      </AssociationTo>
+    </actor>
+    <actor Name="操作员">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </actor>
+    <actor Name="往来单位">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </actor>
+    <actor Name="仓管员">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <SuperTypes>
+        <generalization Id="6c410293-4724-4751-8a26-7d25a61e27b1">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <actorMoniker Name="//操作员" />
+        </generalization>
+      </SuperTypes>
+      <AssociationTo>
+        <association>
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <useCaseMoniker Name="//一般销售单" />
+        </association>
+        <association>
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <useCaseMoniker Name="//将订单生成销售单" />
+        </association>
+      </AssociationTo>
+    </actor>
+    <useCase Name="提交订单">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="将订单生成销售单">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <actor Name="财务">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <SuperTypes>
+        <generalization Id="720466ca-d75f-4206-a06d-3f30f3c8be86">
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <actorMoniker Name="//操作员" />
+        </generalization>
+      </SuperTypes>
+      <AssociationTo>
+        <association>
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <useCaseMoniker Name="//一般收款单" />
+        </association>
+      </AssociationTo>
+    </actor>
+    <useCase Name="根据销售单生成收款单">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <AssociationTo>
+        <association>
+          <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <actorMoniker Name="//财务" />
+        </association>
+      </AssociationTo>
+    </useCase>
+    <useCase Name="一般销售单">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="一般收款单">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+  </UseCaseElements>
+</useCaseModel>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DataBase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{eb1903b5-3da2-4fdc-bd72-4e460d40a715}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql90DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>FengSharp.OneCardAccess.DataBase</RootNamespace>
+    <AssemblyName>FengSharp.OneCardAccess.DataBase</AssemblyName>
+    <ModelCollation>2052,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Chinese_PRC_CI_AS</DefaultCollation>
+    <Trustworthy>False</Trustworthy>
+    <AutoUpdateStatisticsAsynchronously>False</AutoUpdateStatisticsAsynchronously>
+    <PageVerify>NONE</PageVerify>
+    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+    <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
+    <Parameterization>SIMPLE</Parameterization>
+    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
+    <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
+    <VardecimalStorageFormatOn>False</VardecimalStorageFormatOn>
+    <SupplementalLoggingOn>False</SupplementalLoggingOn>
+    <CompatibilityMode>90</CompatibilityMode>
+    <AnsiNullDefault>True</AnsiNullDefault>
+    <AnsiNulls>True</AnsiNulls>
+    <AnsiPadding>True</AnsiPadding>
+    <AnsiWarnings>True</AnsiWarnings>
+    <ArithAbort>True</ArithAbort>
+    <ConcatNullYieldsNull>True</ConcatNullYieldsNull>
+    <QuotedIdentifier>True</QuotedIdentifier>
+    <NumericRoundAbort>False</NumericRoundAbort>
+    <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
+    <DatabaseChaining>False</DatabaseChaining>
+    <DatabaseState>ONLINE</DatabaseState>
+    <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
+    <DefaultCursor>LOCAL</DefaultCursor>
+    <AutoClose>False</AutoClose>
+    <AutoCreateStatistics>True</AutoCreateStatistics>
+    <AutoShrink>False</AutoShrink>
+    <AutoUpdateStatistics>True</AutoUpdateStatistics>
+    <TornPageDetection>False</TornPageDetection>
+    <DatabaseAccess>MULTI_USER</DatabaseAccess>
+    <Recovery>FULL</Recovery>
+    <EnableFullTextSearch>True</EnableFullTextSearch>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <GenerateCreateScript>True</GenerateCreateScript>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\T_Action.sql" />
+    <Build Include="dbo\Tables\T_DicData.sql" />
+    <Build Include="dbo\Tables\T_EmployeeAttachment.sql" />
+    <Build Include="dbo\Tables\T_Stock.sql" />
+    <Build Include="dbo\Tables\T_UserLog.sql" />
+    <Build Include="dbo\Tables\T_StockRight.sql" />
+    <Build Include="dbo\Tables\T_StockRightTemp.sql" />
+    <Build Include="dbo\Tables\T_RawMateRight.sql" />
+    <Build Include="dbo\Tables\T_Product_Drawings.sql" />
+    <Build Include="dbo\Tables\T_RawMateRightTemp.sql" />
+    <Build Include="dbo\Tables\T_ProductRightTemp.sql" />
+    <Build Include="dbo\Tables\T_ProductRight.sql" />
+    <Build Include="dbo\Tables\T_NecessaryRightTemp.sql" />
+    <Build Include="dbo\Tables\T_NecessaryRight.sql" />
+    <Build Include="dbo\Tables\T_Product_TechStep.sql" />
+    <Build Include="dbo\Tables\T_CompanyRightTemp.sql" />
+    <Build Include="dbo\Tables\T_CompanyRight.sql" />
+    <Build Include="dbo\Tables\T_User.sql" />
+    <Build Include="dbo\Tables\T_Dept.sql" />
+    <Build Include="dbo\Tables\T_Product.sql" />
+    <Build Include="dbo\Tables\T_DlyNdx.sql" />
+    <Build Include="dbo\Tables\T_RoleMenu.sql" />
+    <Build Include="dbo\Tables\T_UserInRole.sql" />
+    <Build Include="dbo\Tables\T_Product_Register.sql" />
+    <Build Include="dbo\Tables\T_RoleAction.sql" />
+    <Build Include="dbo\Tables\T_Role.sql" />
+    <Build Include="dbo\Tables\T_UserAction.sql" />
+    <Build Include="dbo\Tables\T_UserMenu.sql" />
+    <Build Include="dbo\Tables\T_Employee.sql" />
+    <Build Include="dbo\Tables\T_Register.sql" />
+    <Build Include="dbo\Tables\T_RegisterAttachment.sql" />
+    <Build Include="dbo\Tables\T_UserEmployee.sql" />
+    <Build Include="dbo\Tables\T_Company.sql" />
+    <Build Include="dbo\Tables\T_RawMate.sql" />
+    <Build Include="dbo\Tables\T_Menu.sql" />
+    <Build Include="dbo\Functions\F_GetError.sql" />
+    <Build Include="dbo\Functions\F_PadLeft.sql" />
+    <Build Include="dbo\Stored Procedures\P_Glo_GetChildList.sql" />
+    <Build Include="dbo\Stored Procedures\P_IsSuper.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateRawMate.sql" />
+    <Build Include="dbo\Stored Procedures\P_GetDicDataByDicTypes.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateRawMate.sql" />
+    <Build Include="dbo\Stored Procedures\P_Glo_DeleteRelationData.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateEmployeeAttachment.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateStock.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateProduct.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateProduct.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateStock.sql" />
+    <Build Include="dbo\Stored Procedures\P_BaseRightFlow.sql" />
+    <Build Include="dbo\Stored Procedures\P_RoleUserFlow.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateRegisterAttachment.sql" />
+    <Build Include="dbo\Stored Procedures\P_Glo_FindByNo.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateRegister.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateRegister.sql" />
+    <Build Include="dbo\Stored Procedures\P_Glo_FindById.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateDept.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateEmployee.sql" />
+    <Build Include="dbo\Stored Procedures\P_AddRoleAction.sql" />
+    <Build Include="dbo\Stored Procedures\P_AddRoleMenu.sql" />
+    <Build Include="dbo\Stored Procedures\P_AuthenticateUser.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateAction.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateMenu.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateUser.sql" />
+    <Build Include="dbo\Stored Procedures\P_GetRelationData.sql" />
+    <Build Include="dbo\Stored Procedures\P_Glo_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateRole.sql" />
+    <Build Include="dbo\Stored Procedures\P_Glo_GetList.sql" />
+    <Build Include="dbo\Stored Procedures\P_Glo_GetTree.sql" />
+    <Build Include="dbo\Stored Procedures\P_CreateCompany.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateCompany.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateAction.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateDept.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateEmployee.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateMenu.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateRole.sql" />
+    <Build Include="dbo\Stored Procedures\P_UpdateUser.sql" />
+    <Build Include="dbo\Stored Procedures\P_UserAuth.sql" />
+    <Build Include="dbo\Stored Procedures\P_Glo_FindById_2.sql" />
+    <Build Include="dbo\Stored Procedures\P_Glo_Delete_2.sql" />
+    <Build Include="dbo\Tables\T_ProductDlyBak.sql" />
+    <Build Include="dbo\Tables\T_AType.sql" />
+    <Build Include="dbo\Tables\T_ProductDlySNBak.sql" />
+    <Build Include="dbo\Tables\T_ProductDlyFBNBak.sql" />
+    <Build Include="dbo\Tables\T_ProductSaleDly.sql" />
+    <Build Include="dbo\Tables\T_ProductInOutDetails.sql" />
+    <Build Include="dbo\Tables\T_ProductFBNInOutDetails.sql" />
+    <Build Include="dbo\Tables\T_ProductSNInOutDetails.sql" />
+    <Build Include="dbo\Tables\T_ProductInvent.sql" />
+    <Build Include="dbo\Tables\T_ProductBNInvent.sql" />
+    <Build Include="dbo\Tables\T_ProductFBNInvent.sql" />
+    <Build Include="dbo\Tables\T_ProductSNInvent.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DataBase.refactorlog" />
+  </ItemGroup>
+</Project>

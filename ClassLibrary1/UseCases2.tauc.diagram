@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UseCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9" name="UseCases2">
+  <useCaseModelMoniker Name="/" />
+  <nestedChildShapes>
+    <useCaseShape Id="0c9df93b-b45e-4e55-b1ef-e246336c4544" absoluteBounds="1.75, 0.875, 2.125, 0.5">
+      <useCaseMoniker Name="//商品单据草稿序列号备份" />
+    </useCaseShape>
+    <useCaseShape Id="bde44845-78ff-4eef-aaa2-350344589af1" absoluteBounds="4.375, 0.875, 2.5, 0.5">
+      <useCaseMoniker Name="//商品单据草稿批号备份" />
+    </useCaseShape>
+    <useCaseShape Id="c568d9af-c58d-4a66-aff1-181c855598df" absoluteBounds="1.5, 5, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase2" />
+    </useCaseShape>
+    <useCaseShape Id="8f058f90-8386-44f3-8383-425608b82985" absoluteBounds="3.75, 5.75, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase3" />
+    </useCaseShape>
+    <useCaseShape Id="7bd59d08-339f-4f95-9d57-ca6265997315" absoluteBounds="2.625, 7.25, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase4" />
+    </useCaseShape>
+    <useCaseShape Id="b4571e8e-c44d-4ade-869c-e86db6aa2693" absoluteBounds="1.125, 7.625, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase5" />
+    </useCaseShape>
+    <useCaseShape Id="987ca4bd-bd28-462d-8bb5-f5f51979eec3" absoluteBounds="4.75, 8, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase6" />
+    </useCaseShape>
+    <useCaseShape Id="0e978105-a56a-4e15-8b13-17d59b43aedd" absoluteBounds="6.125, 2.5, 2, 0.5">
+      <useCaseMoniker Name="//单据收付款明细表" />
+    </useCaseShape>
+    <useCaseShape Id="02f3c85c-a385-493e-8665-ead1964f3523" absoluteBounds="1.75, 6, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase8" />
+    </useCaseShape>
+    <useCaseShape Id="8ecec615-abbe-46cf-bca1-cbcf2a09b691" absoluteBounds="0.75, 2.5, 2, 0.5">
+      <useCaseMoniker Name="//单据资产明细表" />
+    </useCaseShape>
+    <useCaseShape Id="81d0f08e-1f7b-4b02-bc29-113c58bc51c4" absoluteBounds="3.375, 1.625, 1.875, 0.375">
+      <useCaseMoniker Name="//商品单据草稿" />
+    </useCaseShape>
+    <useCaseShape Id="892b20dc-d50b-4afd-aa19-b90f452ebcd7" absoluteBounds="1.25, 7, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase11" />
+    </useCaseShape>
+    <useCaseShape Id="36e695a8-94c2-4caa-adfd-ede442bb8664" absoluteBounds="1.375, 6.25, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase12" />
+    </useCaseShape>
+    <useCaseShape Id="49efb8d0-d7b2-426d-9fcd-5b00325a21ac" absoluteBounds="1.375, 5.375, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase13" />
+    </useCaseShape>
+    <useCaseShape Id="687372a7-33b6-4394-a0a5-58a3384cb0b5" absoluteBounds="3.625, 6.875, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase14" />
+    </useCaseShape>
+    <useCaseShape Id="9e653f54-8f33-4a7b-8177-44241b79497d" absoluteBounds="3.375, 5.5, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase15" />
+    </useCaseShape>
+    <useCaseShape Id="d9c7d0c9-e668-4219-8ba5-feccfae594a4" absoluteBounds="0.75, 6.375, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase16" />
+    </useCaseShape>
+    <useCaseShape Id="344ca8c1-9555-418f-8fb3-d9a3da7b43cb" absoluteBounds="0.875, 5.5, 1.375, 0.75">
+      <useCaseMoniker Name="//UseCase17" />
+    </useCaseShape>
+    <useCaseShape Id="09d4761e-e241-46e7-ae95-42140ccf8f37" absoluteBounds="3.5, 2.5, 1.875, 0.5">
+      <useCaseMoniker Name="//单据索引表" />
+    </useCaseShape>
+  </nestedChildShapes>
+</UseCaseDiagram>

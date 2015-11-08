@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Name="" xmlns="http://www.tangiblearchitect.com/dsltools/Classes">
+  <ArrayOfStereoType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <StereoType>
+      <StereoTypeName>UseCaseModel</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.UseCaseModel</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Actor</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Actor</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Association</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Association</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Comment</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Comment</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Extend</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Extend</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Generalization</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Generalization</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Include</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Include</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>UseCase</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.UseCase</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+  </ArrayOfStereoType>
+  <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+  <UseCaseElements>
+    <useCase Name="商品单据草稿序列号备份">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="商品单据草稿批号备份">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase2">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase3">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase4">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase5">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase6">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="单据收付款明细表">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase8">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="单据资产明细表">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="商品单据草稿">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase11">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase12">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase13">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase14">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase15">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase16">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="UseCase17">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="单据索引表">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+  </UseCaseElements>
+</useCaseModel>
