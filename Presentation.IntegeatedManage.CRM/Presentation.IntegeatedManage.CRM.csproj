@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{243CBB62-A283-4537-BBA4-17C15E2C937D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FengSharp.OneCardAccess.Presentation.IntegeatedManage.CRM</RootNamespace>
+    <AssemblyName>FengSharp.OneCardAccess.Presentation.IntegeatedManage.CRM</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\IntegratedManageClient\Plugins\CRM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CompanyEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyEditForm.Designer.cs">
+      <DependentUpon>CompanyEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyManageForm.Designer.cs">
+      <DependentUpon>CompanyManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CompanyEditForm.resx">
+      <DependentUpon>CompanyEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompanyManageForm.resx">
+      <DependentUpon>CompanyManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FengSharp\FengSharp.Tool\FengSharp.Tool.csproj">
+      <Project>{f9a88bfb-c15b-43a0-bd3f-64399ecd6d98}</Project>
+      <Name>FengSharp.Tool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FengSharp\FengSharp.WinForm.Dev\FengSharp.WinForm.Dev.csproj">
+      <Project>{8e8a8f0c-3bb5-46d9-abab-d50c34f80599}</Project>
+      <Name>FengSharp.WinForm.Dev</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application.IntegeatedManage.Config\Application.IntegeatedManage.Config.csproj">
+      <Project>{74d35004-066b-4848-bcd3-b30a9e99c00f}</Project>
+      <Name>Application.IntegeatedManage.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.CRMModule.Entity\Domain.CRMModule.Entity.csproj">
+      <Project>{513f7972-6fbb-4975-8c9a-7f514e04e157}</Project>
+      <Name>Domain.CRMModule.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.CRMModule.Service.Interface\Domain.CRMModule.Service.Interface.csproj">
+      <Project>{19976231-c5e3-4db2-ba6f-9b138d1b366b}</Project>
+      <Name>Domain.CRMModule.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.RBACModule.Entity\Domain.RBACModule.Entity.csproj">
+      <Project>{9cbb2a11-65a9-4b7e-8f44-0ebaba673a8f}</Project>
+      <Name>Domain.RBACModule.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.RBACModule.Service.Interface\Domain.RBACModule.Service.Interface.csproj">
+      <Project>{b1aa02f5-0845-4992-9df8-e6b782aebdb0}</Project>
+      <Name>Domain.RBACModule.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Services.Interface\Infrastructure.Services.Interface.csproj">
+      <Project>{ed0807cf-cd05-41e5-9d4b-836029ddc510}</Project>
+      <Name>Infrastructure.Services.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.WinForm\Infrastructure.WinForm.csproj">
+      <Project>{4ca8096b-1815-4476-a836-1e8b5d210970}</Project>
+      <Name>Infrastructure.WinForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{12b77e2b-2105-4fec-b05a-c9d56b9c4161}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentation.IntegeatedManage.CRM.Interface\Presentation.IntegeatedManage.CRM.Interface.csproj">
+      <Project>{912a12e4-45e2-47c2-b953-b0e6a4cc9d93}</Project>
+      <Name>Presentation.IntegeatedManage.CRM.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

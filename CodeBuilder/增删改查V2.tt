@@ -1,0 +1,560 @@
+﻿<#@ template hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#@ include file="$(ProjectDir)\DbTemplate.ttinclude"  #>
+<#DBHost dbhost=new DBHost(TableName);#>
+<#if(IsBuilder) {#>
+
+
+//-------------------------------------------------------------------GetCreateEntityCommand
+public static DbCommand GetCreate<#=TableName.Replace("T_",string.Empty)#>Command(Database database, <#=TableName.Replace("T_",string.Empty)#>Entity entity)
+{
+    DbCommand cmd = database.GetStoredProcCommand("P_Create<#=TableName.Replace("T_",string.Empty)#>");
+    database.AddOutParameter(cmd, "<#=dbhost.DbTable.PrimaryColumn.ColumnName#>",DbType.<#= dbhost.DbTable.PrimaryColumn.CommonType.ToString().Replace("System.","")#>, <#=dbhost.DbTable.PrimaryColumn.ByteLength>0?string.Format("{0}",dbhost.DbTable.PrimaryColumn.ByteLength):string.Empty#>);
+    #region 参数赋值
+<#{
+	var outColumnNames = new string[]{"createdate","lastmodifydate","deleted","level_path","level_num","level_total","level_deep","lastmodifyid"};
+	foreach(DbColumn column in dbhost.DbColumns)
+	{ 
+		if((column.ColumnName.ToLower()!=dbhost.DbTable.PrimaryColumn.ColumnName.ToLower())&&(!outColumnNames.Contains(column.ColumnName.ToLower())))
+		{#>
+	database.AddInParameter(cmd, "<#=column.ColumnName#>", DbType.<#= column.CommonType.ToString().Replace("System.","")#>, entity.<#=column.ColumnName#>);
+<#		}
+	}
+}#>
+    #endregion
+    return cmd;
+}
+//-------------------------------------------------------------------GetCreateEntityCommand
+
+
+//-------------------------------------------------------------------GetUpdateEntityCommand
+public static DbCommand GetUpdateEntityCommand(Database database, <#=TableName.Replace("T_",string.Empty)#>Entity entity)
+{
+    DbCommand cmd = database.GetStoredProcCommand("P_Update<#=TableName.Replace("T_",string.Empty)#>");
+    #region 参数赋值
+<#{	
+	var outUpdateColumnNames = new string[]{"createdate","lastmodifydate","deleted","level_path","level_num","level_total","level_deep","createid","pid"};
+	foreach(DbColumn column in dbhost.DbColumns)
+	{ 
+		if(!outUpdateColumnNames.Contains(column.ColumnName.ToLower()))
+		{#>
+	database.AddInParameter(cmd, "<#=column.ColumnName#>", DbType.<#= column.CommonType.ToString().Replace("System.","")#>, entity.<#=column.ColumnName#>);
+<#		}
+	}
+}#>
+    #endregion
+    return cmd;
+}
+//-------------------------------------------------------------------GetUpdateEntityCommand
+
+//-------------------------------------------------------------------DataRowToEntity
+public static <#=TableName.Replace("T_",string.Empty)#>Entity DataRowToEntity(DataRow row)
+{
+    if (row == null)
+        return null;
+    var result = new <#=TableName.Replace("T_",string.Empty)#>Entity()
+    {
+<#{
+	foreach(DbColumn column in dbhost.DbColumns)
+	{
+		if(column.ColumnName.ToLower()!="deleted")
+		{#>
+		<#=column.ColumnName#> = (<#= column.CSharpType#>)(row["<#=column.ColumnName#>"]),
+<#		}
+	}
+}#> 
+    };
+    return result;
+}
+//-------------------------------------------------------------------DataRowToEntity
+
+//-------------------------------------------------------------------DataTableToEntitys
+public static <#=TableName.Replace("T_",string.Empty)#>Entity[] DataTableToEntitys(DataTable dt)
+{
+    if (dt == null)
+        return null;
+    var results = new <#=TableName.Replace("T_",string.Empty)#>Entity[dt.Rows.Count];
+    for (int i = 0; i < dt.Rows.Count; i++)
+    {
+        results[i] = DataRowToEntity(dt.Rows[i]);
+    }
+    return results;
+}
+//-------------------------------------------------------------------DataTableToEntitys
+
+
+//-------------------------------------------------------------------DataRowToCMEntity
+<#{
+	bool isContainsCreateName=false;
+	foreach(DbColumn column in dbhost.DbColumns)
+	{
+		if(column.ColumnName.ToLower()=="createid")
+        {
+			isContainsCreateName=true;
+			break;
+        }
+    }
+	if(isContainsCreateName)
+	{#>
+public static <#=TableName.Replace("T_",string.Empty)#>CMEntity DataRowToCMEntity(DataRow dataRow)
+{
+    if (dataRow == null)
+        return null;
+    var result = new <#=TableName.Replace("T_",string.Empty)#>CMEntity();
+    var entity = DataRowToEntity(dataRow);
+    FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, entity);
+    result.CreateName = dataRow["CreateName"].ToString();
+    result.LastModifyName = dataRow["LastModifyName"].ToString();
+    return result;
+}
+<#	}
+}#>
+//-------------------------------------------------------------------DataRowToCMEntity
+
+//-------------------------------------------------------------------DataTableToCMEntity
+<#{
+	if(this.ContainsColumn(dbhost,"createid"))
+	{#>
+public static <#=TableName.Replace("T_",string.Empty)#>CMEntity[] DataTableToCMEntity(DataTable dt)
+{
+    if (dt == null)
+        return null;
+    var results = new <#=TableName.Replace("T_",string.Empty)#>CMEntity[dt.Rows.Count];
+    for (int i = 0; i < dt.Rows.Count; i++)
+    {
+        results[i] = DataRowToCMEntity(dt.Rows[i]);
+    }
+    return results;
+}
+<#	}
+}#>
+//-------------------------------------------------------------------DataTableToCMEntity
+
+
+//-------------------------------------------------------------------DataRowToCMCateEntity
+<#{
+	if(this.ContainsColumn(dbhost,"pid"))
+	{#>
+public static <<#=TableName.Replace("T_",string.Empty)#>CMCateEntity DataRowToCMCateEntity(DataRow dataRow)
+{
+    if (dataRow == null)
+        return null;
+    var result = new <#=TableName.Replace("T_",string.Empty)#>CMCateEntity();
+    var entity = DataRowToCMEntity(dataRow);
+    FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, entity);
+    result.HasCate = result.Level_Num > 0;
+    return result;
+}
+<#	}
+}#>
+//-------------------------------------------------------------------DataRowToCMCateEntity
+
+
+//-------------------------------------------------------------------DataTableToCMCateEntity
+<#{
+	if(this.ContainsColumn(dbhost,"pid"))
+	{#>
+public static <#=TableName.Replace("T_",string.Empty)#>CMCateEntity[] DataTableToCMEntity(DataTable dt)
+{
+    if (dt == null)
+        return null;
+    var results = new <#=TableName.Replace("T_",string.Empty)#>CMCateEntity[dt.Rows.Count];
+    for (int i = 0; i < dt.Rows.Count; i++)
+    {
+        results[i] = DataRowToCMCateEntity(dt.Rows[i]);
+    }
+    return results;
+}
+<#	}
+}#>
+//-------------------------------------------------------------------DataTableToCMCateEntity
+
+//-------------------------------------------------------------------P_CreateEntity
+<#{
+	if(this.ContainsColumn(dbhost,"pid"))//树形结构数据创建实体
+	{#>
+
+CREATE PROCEDURE P_Create<#=TableName.Replace("T_",string.Empty)#>
+--ALTER PROCEDURE P_Create<#=TableName.Replace("T_",string.Empty)#>
+(
+<#
+	var outColumnNames = new string[]{"createdate","lastmodifydate","deleted","level_path","level_num","level_total","level_deep","lastmodifyid"};
+	var coltoGens = dbhost.DbColumns.Cast<DbColumn>().ToList().Where(t=>!outColumnNames.Contains(t.ColumnName.ToLower())).ToList();
+    for (int i = 0; i < coltoGens.Count; i++)
+    {
+		var column = coltoGens[i];
+		if(column.ColumnName.ToLower()==dbhost.DbTable.PrimaryColumn.ColumnName.ToLower())
+        {#>
+@<#=column.ColumnName#> <#=column.ColumnType#><#=outsziecolumntypes.Contains(column.ColumnType.ToLower())?string.Format("({0})",column.ByteLength):string.Empty#> output<#=((i==coltoGens.Count-1)?string.Empty:",")#>--<#=column.Remark#>
+<#		}
+		else
+        {#>
+@<#=column.ColumnName#> <#=column.ColumnType#><#=outsziecolumntypes.Contains(column.ColumnType.ToLower())?string.Format("({0})",column.ByteLength):string.Empty#><#=((i==coltoGens.Count-1)?string.Empty:",")#>--<#=column.Remark#>
+<#		}
+    }
+#>
+)
+AS
+declare @errmsg varchar(max)
+select @<#=dbhost.DbTable.PrimaryColumn.ColumnName#>=0
+select 1 from <#=TableName#> where <#=TableName.Replace("T_",string.Empty)#>No=@<#=TableName.Replace("T_",string.Empty)#>No and Deleted=0
+if(@@ROWCOUNT>0) begin select @errmsg=dbo.F_GetError('',1) RAISERROR(@errmsg,11,1) end--存在相同的编号
+
+declare @Level_Path varchar(1000),@Level_Deep int;
+set @Level_Deep = 0;
+select @Level_Path=Level_Path,@Level_Deep=Level_Deep from <#=TableName#> where <#=dbhost.DbTable.PrimaryColumn.ColumnName#>=@PId
+set @Level_Deep = @Level_Deep+1;
+
+--获取树路径
+if(@Level_Path is null)	set @Level_Path='';
+else set @Level_Path=@Level_Path;
+
+insert into <#=TableName#> (
+<# 
+	for (int i = 0; i < dbhost.DbColumns.Count; i++)
+	{
+		var column = dbhost.DbColumns[i];
+		if((column.ColumnType.ToLower()=="int")&&(column.ColumnName.ToLower()==dbhost.DbTable.PrimaryColumn.ColumnName.ToLower()))
+		{}
+		else
+        {
+		#>
+   <#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1)?"":","#>--<#=column.Remark#>
+<#		}
+	}
+#>
+) values (
+<# 
+	for (int i = 0; i < dbhost.DbColumns.Count; i++)
+	{
+		var column = dbhost.DbColumns[i];
+		if((column.ColumnType.ToLower()=="int")&&(column.ColumnName.ToLower()==dbhost.DbTable.PrimaryColumn.ColumnName.ToLower()))
+		{}
+		else
+        {
+		#><#
+			var colvalue = GetCreateEntityColumnDefaultString(column.ColumnName);
+			if(colvalue==null)
+            {
+				colvalue=string.Format("@{0}",column.ColumnName);
+            }
+		#>
+   <#=colvalue#><#=(i==dbhost.DbColumns.Count-1)?"":","#>--<#=column.Remark#>
+<#		}
+	}
+#>
+)
+set @<#=dbhost.DbTable.PrimaryColumn.ColumnName#> = @@IDENTITY;--获取插入的实体id
+if(@Level_Deep>1)
+begin
+	--更新父级节点的儿子数量
+	declare @sql varchar(max);
+	set @sql = 'update <#=TableName#> set Level_Total=Level_Total+1 where <#=dbhost.DbTable.PrimaryColumn.ColumnName#> in ('+@Level_Path+');'
+	exec(@sql);
+	--更新父级节点的儿子数量
+	--更新父级节点的子孙数量
+	update <#=TableName#> set Level_Num=Level_Num+1 where <#=dbhost.DbTable.PrimaryColumn.ColumnName#>=@PId
+	--更新父级节点的子孙数量
+end
+if(@Level_Path='') set @Level_Path=cast(@<#=dbhost.DbTable.PrimaryColumn.ColumnName#> as varchar(20))
+else set @Level_Path=@Level_Path+','+cast(@<#=dbhost.DbTable.PrimaryColumn.ColumnName#> as varchar(20))
+update <#=TableName#> set Level_Path=@Level_Path where <#=dbhost.DbTable.PrimaryColumn.ColumnName#>=@<#=dbhost.DbTable.PrimaryColumn.ColumnName#>
+if(@@ROWCOUNT<=0) begin select @errmsg=dbo.F_GetError('',2) RAISERROR(@errmsg,11,1) end--插入失败
+<#	}
+	else
+    {#>
+CREATE PROCEDURE P_Create<#=TableName.Replace("T_",string.Empty)#>
+--ALTER PROCEDURE P_Create<#=TableName.Replace("T_",string.Empty)#>
+(
+<#
+	var outColumnNames = new string[]{"createdate","lastmodifydate","deleted","level_path","level_num","level_total","level_deep","lastmodifyid"};
+	var coltoGens = dbhost.DbColumns.Cast<DbColumn>().ToList().Where(t=>!outColumnNames.Contains(t.ColumnName.ToLower())).ToList();
+	for (int i = 0; i < coltoGens.Count; i++)
+	{
+		var column = coltoGens[i];
+		if(column.ColumnName.ToLower()==dbhost.DbTable.PrimaryColumn.ColumnName.ToLower())
+        {#>
+@<#=column.ColumnName#> <#=column.ColumnType#><#=outsziecolumntypes.Contains(column.ColumnType.ToLower())?string.Format("({0})",column.ByteLength):string.Empty#> output<#=((i==coltoGens.Count-1)?string.Empty:",")#>--<#=column.Remark#>
+<#		}
+		else
+        {#>
+@<#=column.ColumnName#> <#=column.ColumnType#><#=outsziecolumntypes.Contains(column.ColumnType.ToLower())?string.Format("({0})",column.ByteLength):string.Empty#><#=((i==coltoGens.Count-1)?string.Empty:",")#>--<#=column.Remark#>
+<#		}
+    }
+#>
+)
+AS
+
+declare @errmsg varchar(max)
+select @<#=dbhost.DbTable.PrimaryColumn.ColumnName#>=0
+select 1 from <#=TableName#> where <#=TableName.Replace("T_",string.Empty)#>No=@<#=TableName.Replace("T_",string.Empty)#>No and Deleted=0
+if(@@ROWCOUNT>0) begin select @errmsg=dbo.F_GetError('',1) RAISERROR(@errmsg,11,1) end--存在相同的编号
+select @<#=dbhost.DbTable.PrimaryColumn.ColumnName#> = newid();
+
+
+insert into <#=TableName#> (
+<# 
+	for (int i = 0; i < dbhost.DbColumns.Count; i++)
+	{
+		var column = dbhost.DbColumns[i];
+		if((column.ColumnType.ToLower()=="int")&&(column.ColumnName.ToLower()==dbhost.DbTable.PrimaryColumn.ColumnName.ToLower()))
+		{}
+		else
+        {
+		#>
+   <#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1)?"":","#>--<#=column.Remark#>
+<#		}
+	}
+#>
+) values (
+<# 
+	for (int i = 0; i < dbhost.DbColumns.Count; i++)
+	{
+		var column = dbhost.DbColumns[i];
+		if((column.ColumnType.ToLower()=="int")&&(column.ColumnName.ToLower()==dbhost.DbTable.PrimaryColumn.ColumnName.ToLower()))
+		{}
+		else
+        {
+		#><#
+			var colvalue = GetCreateEntityColumnDefaultString(column.ColumnName);
+			if(colvalue==null)
+            {
+				colvalue=string.Format("@{0}",column.ColumnName);
+            }
+		#>
+   <#=colvalue#><#=(i==dbhost.DbColumns.Count-1)?"":","#>--<#=column.Remark#>
+<#		}	
+    }
+#>
+)
+if(@@ROWCOUNT<=0) begin select @errmsg=dbo.F_GetError('',2) RAISERROR(@errmsg,11,1) end--插入失败
+
+<#  }
+}#>
+//-------------------------------------------------------------------P_CreateEntity
+
+
+//-------------------------------------------------------------------P_UpdateEntity
+
+<#{#>
+Create PROCEDURE P_Update<#=TableName.Replace("T_",string.Empty)#>
+--ALTER PROCEDURE P_Update<#=TableName.Replace("T_",string.Empty)#>
+(
+<#
+	var outColumnNames = new string[]{"createdate","pid","lastmodifydate","deleted","level_path","level_num","level_total","level_deep","createid"};
+	var coltoGens = dbhost.DbColumns.Cast<DbColumn>().ToList().Where(t=>!outColumnNames.Contains(t.ColumnName.ToLower())).ToList();
+	for (int i = 0; i < coltoGens.Count; i++)
+	{
+		var column = coltoGens[i];
+        #>
+@<#=column.ColumnName#> <#=column.ColumnType#><#=outsziecolumntypes.Contains(column.ColumnType.ToLower())?string.Format("({0})",column.ByteLength):string.Empty#><#=((i==coltoGens.Count-1)?string.Empty:",")#>--<#=column.Remark#>
+<#  }
+#>
+)
+AS
+declare @errmsg varchar(max)
+select 1 from <#=TableName#> where <#=TableName.Replace("T_",string.Empty)#>No=@<#=TableName.Replace("T_",string.Empty)#>No and <#=dbhost.DbTable.PrimaryColumn.ColumnName#><>@<#=dbhost.DbTable.PrimaryColumn.ColumnName#> and Deleted=0
+if(@@ROWCOUNT>0) begin select @errmsg=dbo.F_GetError('',1) RAISERROR(@errmsg,11,1) end--编号重复
+update <#=TableName#> set 
+<# 
+	
+	var outSetColumnNames = new string[]{"createdate","pid","deleted","level_path","level_num","level_total","level_deep","createid"};
+	for (int i = 0; i < dbhost.DbColumns.Count; i++)
+	{
+		var column = dbhost.DbColumns[i];
+		if((column.ColumnName.ToLower() == dbhost.DbTable.PrimaryColumn.ColumnName.ToLower())&&(column.ColumnType.ToLower()=="int"))
+        {
+        }
+		else if(!outSetColumnNames.Contains(column.ColumnName.ToLower()))
+        {
+			var colvalue = GetUpdateEntityColumnDefaultString(column.ColumnName);
+			if(colvalue==null)
+			{
+				colvalue=string.Format("@{0}",column.ColumnName);
+			}#>
+<#=column.ColumnName#>=<#=colvalue#><#=(i==dbhost.DbColumns.Count-1)?"":","#>--<#=column.Remark#>
+<#		}
+	}	
+#>
+where <#=dbhost.DbTable.PrimaryColumn.ColumnName#>=@<#=dbhost.DbTable.PrimaryColumn.ColumnName#>
+if(@@ROWCOUNT<=0) begin select @errmsg=dbo.F_GetError('',3) RAISERROR(@errmsg,11,1) end--更新失败
+<#}#>
+
+//-------------------------------------------------------------------P_UpdateEntity
+//-------------------------------------------------------------------P_Glo_Delete
+<#
+{
+	if(this.ContainsColumn(dbhost,"pid"))//树形结构数据创建实体
+	{#>
+else if @cMode = '<#=TableName.Replace("T_",string.Empty).ToLower()#>' --往来单位
+begin
+	select @Level_Path=Level_Path,@Level_Total=Level_Total from <#=TableName#> where <#=dbhost.DbTable.PrimaryColumn.ColumnName#>=@EntityId
+	if(@Level_Total>0) begin select @errmsg=dbo.F_GetError('',4) RAISERROR(@errmsg,11,1) end --正在使用，检查是否有子节点
+	if(charindex(',',@Level_Path)>0)--检查是否有父节点，更新父节点的子孙数量
+	begin
+		exec('update <#=TableName#> set Level_Total=Level_Total-1,Level_Num=Level_Num-1 where <#=dbhost.DbTable.PrimaryColumn.ColumnName#> in ('+@Level_Path+')')
+	end
+	--begin检查引用：
+	--end检查引用：
+	update <#=TableName#> set Deleted=1 where <#=dbhost.DbTable.PrimaryColumn.ColumnName#>=@EntityId
+	if(@@ROWCOUNT<=0) begin select @errmsg=dbo.F_GetError('',6) RAISERROR(@errmsg,11,1) end--删除失败
+end
+<#	}
+	else
+    {#>
+else if @cMode = '<#=TableName.Replace("T_",string.Empty).ToLower()#>'
+begin
+	update <#=TableName#> set Deleted=1 where <#=dbhost.DbTable.PrimaryColumn.ColumnName#>=@EntityId
+	--begin检查引用：
+	--end检查引用：
+	if(@@ROWCOUNT<=0)  begin select @errmsg=dbo.F_GetError('',6) RAISERROR(@errmsg,11,1) end--删除失败
+end
+<#	}
+}
+#>
+//-------------------------------------------------------------------P_Glo_Delete
+
+
+//-------------------------------------------------------------------P_Glo_GetTree CM
+<#
+{
+	if(ContainsColumn(dbhost,"pid"))
+    {
+#>
+else if @cMode = '<#=TableName.Replace("T_",string.Empty).ToLower()#>cm' --<#=dbhost.DbTable.Remark#>
+select
+<#
+	var tfirstchar = GetTableFirstChar(dbhost);
+ 	for (int i = 0; i < dbhost.DbColumns.Count; i++)
+	{
+		var column = dbhost.DbColumns[i];
+#>
+   <#=tfirstchar#>.<#=column.ColumnName#>,--<#=column.Remark#>
+<#
+	}
+#>
+   u1.UserName CreateName,--创建人
+   u2.UserName LastModifyName--最后更改人
+from <#=TableName#> <#=tfirstchar#> 
+left join T_User u1 on  <#=tfirstchar#>.CreateId=u1.UserId 
+left join T_User u2 on <#=tfirstchar#>.CreateId=u2.UserId 
+where <#=tfirstchar#>.PId = @PId and <#=tfirstchar#>.Deleted = 0
+order by <#=TableName.Replace("T_",string.Empty)#>No
+<#
+    }
+}
+#>
+//-------------------------------------------------------------------P_Glo_GetTree CM
+
+
+//-------------------------------------------------------------------P_Glo_FindById 
+
+<#
+{
+#>
+else if @cMode = '<#=TableName.Replace("T_",string.Empty).ToLower()#>cm' --<#=dbhost.DbTable.Remark#>
+select
+<#
+ 	for (int i = 0; i < dbhost.DbColumns.Count; i++)
+	{
+		var column = dbhost.DbColumns[i];
+#>
+   <#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1)?string.Empty:","#>--<#=column.Remark#>
+<#
+	}
+#>
+from <#=TableName#> 
+where <#=dbhost.DbTable.PrimaryColumn.ColumnName#>=@EntityId
+<#
+}
+#>
+
+//-------------------------------------------------------------------P_Glo_FindById 
+
+//-------------------------------------------------------------------P_Glo_GetList 
+
+<#
+{
+	if(!ContainsColumn(dbhost,"pid"))
+    {
+#>
+else if @cMode = '<#=TableName.Replace("T_",string.Empty).ToLower()#>cm' --<#=dbhost.DbTable.Remark#>
+select
+<#
+	var tfirstchar = GetTableFirstChar(dbhost);
+ 	for (int i = 0; i < dbhost.DbColumns.Count; i++)
+	{
+		var column = dbhost.DbColumns[i];
+#>
+   <#=tfirstchar#>.<#=column.ColumnName#>,--<#=column.Remark#>
+<#
+	}
+#>
+   u1.UserName CreateName,--创建人
+   u2.UserName LastModifyName--最后更改人
+from <#=TableName#> <#=tfirstchar#> 
+left join T_User u1 on  <#=tfirstchar#>.CreateId=u1.UserId 
+left join T_User u2 on <#=tfirstchar#>.CreateId=u2.UserId 
+where <#=tfirstchar#>.Deleted = 0
+<#
+    }
+}
+#>
+//-------------------------------------------------------------------P_Glo_GetList 
+
+<#}#>
+<#+
+string[] outsziecolumntypes = new string[]{"varchar","numeric"};
+private string GetCreateEntityColumnDefaultString(string columnname)
+{
+    switch (columnname.ToLower())
+    {
+		case "level_num":
+		case "level_total":
+		case "deleted":
+			return "0";
+		case "createdate":
+		case "lastmodifydate":
+			return "getdate()";
+		case "lastmodifyid":
+			return "@CreateId";
+        default:
+			break;
+    }
+	return null;
+}
+private string GetUpdateEntityColumnDefaultString(string columnname)
+{
+    switch (columnname.ToLower())
+    {
+		case "lastmodifydate":
+			return "getdate()";
+        default:
+			break;
+    }
+	return null;
+}
+private bool ContainsColumn(DBHost dbhost,string columnname)
+{
+	bool isContainsColumnName=false;
+	foreach(DbColumn column in dbhost.DbColumns)
+	{
+		if(column.ColumnName.ToLower()==columnname.ToLower())
+        {
+			isContainsColumnName=true;
+			break;
+        }
+    }
+	return isContainsColumnName;
+}
+private string GetTableFirstChar(DBHost dbhost)
+{
+	return dbhost.DbTable.TableName.Replace("T_",string.Empty).Substring(0,1).ToLower();
+}
+public static readonly string TableName="T_DlyType";
+public static readonly bool IsBuilder= false;
+#>

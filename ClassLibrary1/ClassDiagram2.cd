@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="往来单位">
+    <Position X="3.01" Y="1.854" Height="0.284" Width="0.929" />
+  </Comment>
+  <Comment CommentText="客户订单索引表">
+    <Position X="1.479" Y="3.646" Height="0.284" Width="1.085" />
+  </Comment>
+  <Comment CommentText="客户商品订单表">
+    <Position X="1.313" Y="4.896" Height="0.284" Width="1.179" />
+  </Comment>
+  <Comment CommentText="客户商品购物车">
+    <Position X="4.094" Y="3.875" Height="0.284" Width="1.085" />
+  </Comment>
+  <Class Name="ClassLibrary1.T_Company">
+    <Position X="2.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>T_Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassLibrary1.T_C_OrderNdx">
+    <Position X="1.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>T_C_OrderNdx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassLibrary1.T_C_ProductOrder">
+    <Position X="1" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>T_C_ProductOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassLibrary1.T_C_ProductCart">
+    <Position X="3.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>T_C_ProductCart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

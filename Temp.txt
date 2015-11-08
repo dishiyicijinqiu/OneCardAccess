@@ -1,0 +1,8 @@
+FengSharp.OneCardAccess.Presentation
+FengSharp.OneCardAccess.Domain.RBACModule.Entity
+
+
+FengSharp.OneCardAccess.DataBase
+
+
+FengSharp.OneCardAccess.Server.IntegeatedManageServer

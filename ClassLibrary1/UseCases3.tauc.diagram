@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UseCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.75, 8.5" name="UseCases3">
+  <useCaseModelMoniker Name="/" />
+  <nestedChildShapes>
+    <useCaseShape Id="9a24df29-7006-462f-82d1-a79e91454e72" absoluteBounds="0.5, 1.625, 1.5, 0.5">
+      <useCaseMoniker Name="//库存商品" />
+    </useCaseShape>
+    <useCaseShape Id="a9561649-4955-4ff9-bea0-af245c1ec6fe" absoluteBounds="0.5, 2.875, 1.375, 0.375">
+      <useCaseMoniker Name="//现金" />
+    </useCaseShape>
+    <commentBoxShape Id="b0f00f5b-4433-4446-bd62-4a52ee0e9321" absoluteBounds="2.375, 1.75, 0.375, 0.25">
+      <commentMoniker Name="//Comment1" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(2.375 : 1.88541666666667); (2 : 1.875)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="b0f00f5b-4433-4446-bd62-4a52ee0e9321" />
+        <useCaseShapeMoniker Id="9a24df29-7006-462f-82d1-a79e91454e72" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="19177eaa-0cee-4fe7-9805-7dfb711a3b8b" absoluteBounds="2.375, 3, 0.375, 0.25">
+      <commentMoniker Name="//Comment2" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(2.375 : 3.09802867463146); (1.86254481799776 : 3.09802867463146)]" fixedFrom="Algorithm" fixedTo="Caller" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="19177eaa-0cee-4fe7-9805-7dfb711a3b8b" />
+        <useCaseShapeMoniker Id="a9561649-4955-4ff9-bea0-af245c1ec6fe" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="5970ee92-f5b3-4795-9435-add8e3d21832" absoluteBounds="3.75, 1.75, 0.375, 0.25">
+      <commentMoniker Name="//Comment3" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(3.9375 : 1.75); (3.9375 : 1.41666666666667); (1.3530639290113 : 1.41666666666667); (1.3530639290113 : 1.62737173322885)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Caller" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="5970ee92-f5b3-4795-9435-add8e3d21832" />
+        <useCaseShapeMoniker Id="9a24df29-7006-462f-82d1-a79e91454e72" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="b8729ca4-64f2-400a-ab10-41ae6dd0e173" absoluteBounds="3.125, 0.5, 1.5, 0.375">
+      <useCaseMoniker Name="//购买20个单价为2的产品" />
+    </useCaseShape>
+    <commentBoxShape Id="8e3ffd00-8cd0-4669-9a49-868ab24dcf35" absoluteBounds="3.75, 3, 0.375, 0.25">
+      <commentMoniker Name="//Comment4" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(3.9375 : 3); (3.9375 : 2.66666666666667); (1.1875 : 2.66666666666667); (1.1875 : 2.875)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="8e3ffd00-8cd0-4669-9a49-868ab24dcf35" />
+        <useCaseShapeMoniker Id="a9561649-4955-4ff9-bea0-af245c1ec6fe" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="6f9c3746-7a4c-4635-b0b0-2db97b6892ba" absoluteBounds="2.25, 4.5, 0.375, 0.25">
+      <commentMoniker Name="//Comment5" />
+    </commentBoxShape>
+    <useCaseShape Id="362f03c5-5962-4be3-856f-c48abdf495fa" absoluteBounds="0.5, 4.375, 1.375, 0.375">
+      <useCaseMoniker Name="//此时成本价" />
+    </useCaseShape>
+    <commentConnector edgePoints="[(2.25 : 4.5625); (1.875 : 4.5625)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="6f9c3746-7a4c-4635-b0b0-2db97b6892ba" />
+        <useCaseShapeMoniker Id="362f03c5-5962-4be3-856f-c48abdf495fa" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="13d8c716-e18f-4884-bc36-6e670cd97ce6" absoluteBounds="3.625, 4.5, 0.5, 0.25">
+      <commentMoniker Name="//Comment6" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(3.875 : 4.5); (3.875 : 4.20833333333333); (1.1875 : 4.20833333333333); (1.1875 : 4.375)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="13d8c716-e18f-4884-bc36-6e670cd97ce6" />
+        <useCaseShapeMoniker Id="362f03c5-5962-4be3-856f-c48abdf495fa" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="4b680638-8c60-4394-87cb-e2140b907ecb" absoluteBounds="4.875, 0.5, 1.375, 0.375">
+      <useCaseMoniker Name="//卖出5个产品，价格为5" />
+    </useCaseShape>
+    <useCaseShape Id="c34a76ef-6542-4c86-abb3-2b5deae09446" absoluteBounds="0.5, 0.5, 1.5, 0.375">
+      <useCaseMoniker Name="//本例中产品为同一个产品" />
+    </useCaseShape>
+    <commentBoxShape Id="71d70e76-af30-4cd2-9797-ecc4665087ba" absoluteBounds="5.625, 1.75, 0.375, 0.25">
+      <commentMoniker Name="//Comment7" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(5.74728260869565 : 1.75); (5.74728260869565 : 1.30208333333333); (1.33333333333333 : 1.30208333333333 : JumpStart); (1.16666666666667 : 1.30208333333333 : JumpEnd); (1.12190995734805 : 1.30208333333333); (1.12190995734805 : 1.62867299490009)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="71d70e76-af30-4cd2-9797-ecc4665087ba" />
+        <useCaseShapeMoniker Id="9a24df29-7006-462f-82d1-a79e91454e72" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="8712e12f-075a-46c7-a8f1-f2e6c08715f3" absoluteBounds="5.5, 3, 0.375, 0.25">
+      <commentMoniker Name="//Comment8" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(5.6875 : 3); (5.6875 : 2.59375); (1.27083333333333 : 2.59375 : JumpStart); (1.10416666666667 : 2.59375 : JumpEnd); (0.995460940679285 : 2.59375); (0.995460940679285 : 2.88246338188683)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Caller" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="8712e12f-075a-46c7-a8f1-f2e6c08715f3" />
+        <useCaseShapeMoniker Id="a9561649-4955-4ff9-bea0-af245c1ec6fe" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="86c4736a-f955-43fb-a4c9-0337d3d874ba" absoluteBounds="5.375, 4.5, 0.5, 0.25">
+      <commentMoniker Name="//Comment9" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(5.625 : 4.5); (5.625 : 4.07291666666667); (1.1875 : 4.07291666666667); (1.1875 : 4.375)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="86c4736a-f955-43fb-a4c9-0337d3d874ba" />
+        <useCaseShapeMoniker Id="362f03c5-5962-4be3-856f-c48abdf495fa" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="06d0d19d-5b35-4f6d-a43b-753a231c7726" absoluteBounds="6.75, 0.5, 1.5, 0.375">
+      <useCaseMoniker Name="//购买10个单价为4的产品" />
+    </useCaseShape>
+    <commentBoxShape Id="1252b945-da46-4fa2-8e13-4640f93b7fda" absoluteBounds="7.375, 1.75, 0.5, 0.25">
+      <commentMoniker Name="//Comment10" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(7.375 : 1.875); (6.25 : 1.875); (6.25 : 1.19791666666667); (1.25 : 1.19791666666667); (1.25 : 1.625)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="1252b945-da46-4fa2-8e13-4640f93b7fda" />
+        <useCaseShapeMoniker Id="9a24df29-7006-462f-82d1-a79e91454e72" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="85420385-26b3-428f-bf1a-6f1596212731" absoluteBounds="7.375, 3, 0.5, 0.25">
+      <commentMoniker Name="//Comment11" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(7.625 : 3); (7.625 : 2.47916666666667); (1.1875 : 2.47916666666667); (1.1875 : 2.875)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="85420385-26b3-428f-bf1a-6f1596212731" />
+        <useCaseShapeMoniker Id="a9561649-4955-4ff9-bea0-af245c1ec6fe" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="60065847-f23b-49b4-ba13-d6b368da80f8" absoluteBounds="7.375, 4.5, 0.5, 0.25">
+      <commentMoniker Name="//Comment12" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(7.625 : 4.5); (7.625 : 3.89583333333333); (1.1875 : 3.89583333333333); (1.1875 : 4.375)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="60065847-f23b-49b4-ba13-d6b368da80f8" />
+        <useCaseShapeMoniker Id="362f03c5-5962-4be3-856f-c48abdf495fa" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="de7231bb-951e-4b69-bea8-c1f47bcf75fb" absoluteBounds="0.625, 5.5, 1.25, 0.375">
+      <useCaseMoniker Name="//起初资本" />
+    </useCaseShape>
+    <commentBoxShape Id="fea2c85a-7408-4961-9ed5-394afdfb781a" absoluteBounds="2.25, 5.625, 0.375, 0.25">
+      <commentMoniker Name="//Comment13" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(2.25 : 5.6875); (1.875 : 5.6875)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="fea2c85a-7408-4961-9ed5-394afdfb781a" />
+        <useCaseShapeMoniker Id="de7231bb-951e-4b69-bea8-c1f47bcf75fb" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="60ba9be6-1da4-4a6b-87db-7eb1fd07c788" absoluteBounds="2.25, 6.5, 0.375, 0.25">
+      <commentMoniker Name="//Comment14" />
+    </commentBoxShape>
+    <useCaseShape Id="382d8d8e-2a70-4cfb-afa6-d75dea842111" absoluteBounds="0.625, 6.375, 1.375, 0.5">
+      <useCaseMoniker Name="//利润" />
+    </useCaseShape>
+    <commentConnector edgePoints="[(2.25 : 6.625); (2 : 6.625)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="60ba9be6-1da4-4a6b-87db-7eb1fd07c788" />
+        <useCaseShapeMoniker Id="382d8d8e-2a70-4cfb-afa6-d75dea842111" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="7039df47-8ffc-4dc8-a64e-b8d173aa0188" absoluteBounds="3.75, 6.5, 0.5, 0.25">
+      <commentMoniker Name="//Comment15" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(3.75 : 6.625); (2.875 : 6.625); (2.875 : 7.125); (1.3125 : 7.125); (1.3125 : 6.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="7039df47-8ffc-4dc8-a64e-b8d173aa0188" />
+        <useCaseShapeMoniker Id="382d8d8e-2a70-4cfb-afa6-d75dea842111" />
+      </nodes>
+    </commentConnector>
+    <commentBoxShape Id="3925bec8-205d-49a9-9d00-25206504f61a" absoluteBounds="5.375, 6.5, 0.625, 0.25">
+      <commentMoniker Name="//Comment16" />
+    </commentBoxShape>
+    <commentBoxShape Id="00f47344-622b-48f2-a642-03b176ef5ae4" absoluteBounds="7.375, 6.5, 0.5, 0.25">
+      <commentMoniker Name="//Comment17" />
+    </commentBoxShape>
+    <commentConnector edgePoints="[(5.609375 : 6.5); (5.609375 : 6.22875); (1.22326140120305 : 6.22875); (1.22326140120305 : 6.37711500334181)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="3925bec8-205d-49a9-9d00-25206504f61a" />
+        <useCaseShapeMoniker Id="382d8d8e-2a70-4cfb-afa6-d75dea842111" />
+      </nodes>
+    </commentConnector>
+    <commentConnector edgePoints="[(7.375 : 6.625); (6.25 : 6.625); (6.25 : 7.375); (1.3125 : 7.375); (1.3125 : 6.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="046380fa-6813-4d4f-83f6-d68bb9fa93d5">
+      <nodes>
+        <commentBoxShapeMoniker Id="00f47344-622b-48f2-a642-03b176ef5ae4" />
+        <useCaseShapeMoniker Id="382d8d8e-2a70-4cfb-afa6-d75dea842111" />
+      </nodes>
+    </commentConnector>
+    <useCaseShape Id="f05389ae-6867-4b0a-93e8-9c988861253d" absoluteBounds="10.125, 5.5, 3.375, 0.75">
+      <useCaseMoniker Name="//结论，成本价为库存金额除以库存数量" />
+    </useCaseShape>
+  </nestedChildShapes>
+</UseCaseDiagram>

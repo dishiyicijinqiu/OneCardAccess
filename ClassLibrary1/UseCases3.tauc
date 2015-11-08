@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Name="" xmlns="http://www.tangiblearchitect.com/dsltools/Classes">
+  <ArrayOfStereoType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <StereoType>
+      <StereoTypeName>UseCaseModel</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.UseCaseModel</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Actor</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Actor</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Association</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Association</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Comment</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Comment</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Extend</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Extend</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Generalization</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Generalization</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>Include</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.Include</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+    <StereoType>
+      <StereoTypeName>UseCase</StereoTypeName>
+      <BaseModelElementTypeFullName>tangible.Modelling.UseCases.UseCase</BaseModelElementTypeFullName>
+      <DefinedProperties />
+    </StereoType>
+  </ArrayOfStereoType>
+  <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+  <UseCaseElements>
+    <useCase Name="库存商品">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="现金">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="购买20个单价为2的产品">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="此时成本价">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="卖出5个产品，价格为5">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="本例中产品为同一个产品">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="购买10个单价为4的产品">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="起初资本">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="利润">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+    <useCase Name="结论，成本价为库存金额除以库存数量">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </useCase>
+  </UseCaseElements>
+  <Comments>
+    <comment Name="Comment1" description="0">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//库存商品" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment2" description="0">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//现金" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment3" description="40">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//库存商品" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment4" description="-40">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//现金" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment5" description="0">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//此时成本价" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment6" description="2">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//此时成本价" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment7" description="30">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//库存商品" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment8" description="-15">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//现金" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment9" description="2">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//此时成本价" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment10" description="70">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//库存商品" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment11" description="-55">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//现金" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment12" description="2.8">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//此时成本价" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment13" description="0">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//起初资本" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment14" description="0">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//利润" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment15" description="0">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//利润" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment16" description="15">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//利润" />
+      </Subjects>
+    </comment>
+    <comment Name="Comment17" description="15">
+      <ArrayOfExtensiblePropertyInstance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      <Subjects>
+        <useCaseMoniker Name="//利润" />
+      </Subjects>
+    </comment>
+  </Comments>
+</useCaseModel>

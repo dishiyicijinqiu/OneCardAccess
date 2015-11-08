@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4CA8096B-1815-4476-A836-1E8B5D210970}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FengSharp.OneCardAccess.Infrastructure.WinForm</RootNamespace>
+    <AssemblyName>FengSharp.OneCardAccess.Infrastructure.WinForm</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferenceLib\DLL\Microsoft Enterprise Library 5.0\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseButtonEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseDateEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseEditorPopupContainerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BaseDataLayoutControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Base_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BaseGridLookUpEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseImageComboBoxEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseImageEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseLayoutControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseLookUpEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseMemoEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BasePictureEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BasePopupContainerEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseBarPopupContainerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BaseSearchLookUpEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseTreeListLookUpEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\Base_UserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\BaseCheckEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BaseSimpleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseTextEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\BaseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\BaseUserControl.Designer.cs">
+      <DependentUpon>BaseUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BaseTreeList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ButtonStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ButtonStyle.Designer.cs">
+      <DependentUpon>ButtonStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ButtonStyleSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ButtonStyleSelect.Designer.cs">
+      <DependentUpon>ButtonStyleSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ColumnWidthAttribute.cs" />
+    <Compile Include="Components\DicMenuComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\DicMenuComponent.Designer.cs">
+      <DependentUpon>DicMenuComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\FormLoadErrorExit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\FormLoadErrorExit.Designer.cs">
+      <DependentUpon>FormLoadErrorExit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\FormStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\FormStyle.Designer.cs">
+      <DependentUpon>FormStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\FormStyleSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\FormStyleSelect.Designer.cs">
+      <DependentUpon>FormStyleSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\GridViewBehaviorSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\GridViewBehaviorSelect.Designer.cs">
+      <DependentUpon>GridViewBehaviorSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\GridViewColumnMenuComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\GridViewColumnMenuComponent.Designer.cs">
+      <DependentUpon>GridViewColumnMenuComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\GridViewColumnWidthComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\GridViewColumnWidthComponent.Designer.cs">
+      <DependentUpon>GridViewColumnWidthComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\GridViewCommonStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\GridViewCommonStyle.Designer.cs">
+      <DependentUpon>GridViewCommonStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\GridView_ShowCate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\GridView_ShowCate.Designer.cs">
+      <DependentUpon>GridView_ShowCate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\LayoutControlCommonStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\LayoutControlCommonStyle.Designer.cs">
+      <DependentUpon>LayoutControlCommonStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\LayoutStyleSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\LayoutStyleSelect.Designer.cs">
+      <DependentUpon>LayoutStyleSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\MainFormMdiProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\PictureMenuComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\PictureMenuComponent.Designer.cs">
+      <DependentUpon>PictureMenuComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TreeListCommonStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TreeListCommonStyle.Designer.cs">
+      <DependentUpon>TreeListCommonStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TreeListQuickFindStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TreeListQuickFindStyle.Designer.cs">
+      <DependentUpon>TreeListQuickFindStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TreeListStyleSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TreeListStyleSelect.Designer.cs">
+      <DependentUpon>TreeListStyleSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AddDeleteDXPopupMenu.cs" />
+    <Compile Include="Controls\CreateModifiyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateModifiyControl.designer.cs">
+      <DependentUpon>CreateModifiyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExXtraTabbedMdiManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ExXtraTabbedMdiManager.Designer.cs">
+      <DependentUpon>ExXtraTabbedMdiManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ThumbnailImagePictureEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MessageBoxEx.cs" />
+    <Compile Include="Controls\MyLookUpEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MyPictureEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FilePictureEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TreeLevelUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomResourceMessages.cs" />
+    <Compile Include="DevExtended.cs" />
+    <Compile Include="Forms\PictureExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PictureExplorer.Designer.cs">
+      <DependentUpon>PictureExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TreeLevelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseWaitForm.designer.cs">
+      <DependentUpon>BaseWaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\BackgroundFileLoader.cs" />
+    <Compile Include="Helper\BackgroundImageURLUpLoader.cs" />
+    <Compile Include="Helper\BackgroundUpLoader.cs" />
+    <Compile Include="Helper\PopupContainerEditPopupListBoxHelper.cs" />
+    <Compile Include="Helper\ThumbnailHelper.cs" />
+    <Compile Include="Helper\ThumbnailHintHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ResourceHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Base\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateModifiyControl.resx">
+      <DependentUpon>CreateModifiyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FilePictureEdit.resx">
+      <DependentUpon>FilePictureEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PictureExplorer.resx">
+      <DependentUpon>PictureExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BaseWaitForm.resx">
+      <DependentUpon>BaseWaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="ResourceMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FengSharp\FengSharp.WinForm.Dev\FengSharp.WinForm.Dev.csproj">
+      <Project>{8e8a8f0c-3bb5-46d9-abab-d50c34f80599}</Project>
+      <Name>FengSharp.WinForm.Dev</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application.IntegeatedManage.Config\Application.IntegeatedManage.Config.csproj">
+      <Project>{74d35004-066b-4848-bcd3-b30a9e99c00f}</Project>
+      <Name>Application.IntegeatedManage.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.WinForm.Designer\Infrastructure.WinForm.Designer.csproj">
+      <Project>{0392d42c-e69b-4963-9787-15c757e9e114}</Project>
+      <Name>Infrastructure.WinForm.Designer</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{12b77e2b-2105-4fec-b05a-c9d56b9c4161}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentation.IntegeatedManage.MainStruct.Interface\Presentation.IntegeatedManage.MainStruct.Interface.csproj">
+      <Project>{952eeae8-ceb6-4abc-8258-b46f7bde90bb}</Project>
+      <Name>Presentation.IntegeatedManage.MainStruct.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Role.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuCopy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuCut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuLoad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuPaste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuSave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuTakePicture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuZoomBig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuZoomSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FileNotFound.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuFullSize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureMenuFitSize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pdf.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
