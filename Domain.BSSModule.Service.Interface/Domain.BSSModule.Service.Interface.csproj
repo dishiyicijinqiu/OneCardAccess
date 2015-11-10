@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDlyNdxService.cs" />
     <Compile Include="IDlyTypeService.cs" />
     <Compile Include="IInputLevelService.cs" />
     <Compile Include="IProductService.cs" />

@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Application.IntegeatedManage.Config\DlyConfig.cs">
+      <Link>DlyConfig.cs</Link>
+    </Compile>
     <Compile Include="ApplicationConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

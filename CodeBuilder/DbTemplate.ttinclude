@@ -4,14 +4,11 @@
 <#@ assembly name="System.Data.DataSetExtensions.dll" #>
 <#@ assembly name="System.Xml.dll" #>
 <#@ import namespace="System" #>
-<#@ import namespace="System.Xml" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Data" #>
 <#@ import namespace="System.Data.SqlClient" #>
 <#@ import namespace="System.Text" #>
-<#@ import namespace="System.Configuration" #>
 <#@ import namespace="System.Collections.Generic" #>
-
 <#+
     public class DbHelper
     {
@@ -46,7 +43,7 @@
                                     where type='U' {1}
                                     order by obj.name", database, tables);
             #endregion
-            DataTable dt = GetDataTable(connectionString, sql);
+            DataTable dt = GetDataTable(sql,connectionString);
             return dt.Rows.Cast<DataRow>().Select(row => new DbTable
             {
                 TableName = row.Field<string>("TableName"),
@@ -101,7 +98,7 @@
                                     order by colm.column_id", database);
             #endregion
             SqlParameter param = new SqlParameter("@tableName", SqlDbType.NVarChar, 100) { Value = string.Format("{0}.{1}.{2}", database, schema, tableName) };
-            DataTable dt = GetDataTable(connectionString, sql, param);
+            DataTable dt = GetDataTable(sql, connectionString,param);
             return dt.Rows.Cast<DataRow>().Select(row => new DbColumn()
             {
                 ColumnID = row.Field<int>("ColumnID"),
@@ -119,8 +116,10 @@
         #endregion     
 
         #region GetDataTable
-        public static DataTable GetDataTable(string connectionString, string commandText, params SqlParameter[] parms)
+        public static DataTable GetDataTable( string commandText, string connectionString=null,params SqlParameter[] parms)
         {
+			if(connectionString==null)
+				connectionString=ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = connection.CreateCommand();

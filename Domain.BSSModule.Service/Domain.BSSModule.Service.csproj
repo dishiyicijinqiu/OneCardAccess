@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DlyNdxService.cs" />
     <Compile Include="DlyTypeService.cs" />
     <Compile Include="InputLevelService.cs" />
     <Compile Include="ProductService.cs" />

@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Runtime.Serialization;
 namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
 {
@@ -34,7 +32,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
             Buyer = string.Empty;
             LXR = string.Empty;
             LXFS = string.Empty;
-
+            JSRId = string.Empty;
         }
         /// <summary>
         /// 单据索引表Id
@@ -65,7 +63,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// 经手人Id，员工Id
         /// </summary>
         [DataMember]
-        public int JSRId { get; set; }
+        public string JSRId { get; set; }
         /// <summary>
         /// 仓库Id1
         /// </summary>
@@ -130,7 +128,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// 金额
         /// </summary>
         [DataMember]
-        public decimal Total { get; set; }
+        public virtual decimal Total { get; set; }
         /// <summary>
         /// 请购单号
         /// </summary>
@@ -179,6 +177,9 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
     public class DlyNdxFullNameEntity : DlyNdxEntity
     {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public DlyNdxFullNameEntity()
             : base()
         {
@@ -215,22 +216,22 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// 仓库1编号
         /// </summary>
         [DataMember]
-        public string StockNo1 { get; set; }
+        public virtual string StockNo1 { get; set; }
         /// <summary>
         /// 仓库1名称
         /// </summary>
         [DataMember]
-        public string StockName1 { get; set; }
+        public virtual string StockName1 { get; set; }
         /// <summary>
         /// 仓库2编号
         /// </summary>
         [DataMember]
-        public string StockNo2 { get; set; }
+        public virtual string StockNo2 { get; set; }
         /// <summary>
         /// 仓库2名称
         /// </summary>
         [DataMember]
-        public string StockName2 { get; set; }
+        public virtual string StockName2 { get; set; }
         /// <summary>
         /// 制单人姓名
         /// </summary>
@@ -262,8 +263,6 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         [DataMember]
         public string SHRName5 { get; set; }
     }
-    public class SPRKDlyNdxEntity : DlyNdxFullNameEntity
-    {
 
-    }
+
 }

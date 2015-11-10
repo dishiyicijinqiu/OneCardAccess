@@ -54,7 +54,7 @@ namespace FengSharp.OneCardAccess.Infrastructure
                     (channel as ICommunicationObject).Abort();
                 }
                 string errmsg = ex.InnerException.Message;
-                if(errmsg.Contains("FengSharp.OneCardAccess.Infrastructure.Exceptions.LoginTimeOutException"))
+                if (errmsg.Contains("登录超时"))
                 {
                     var timeOutLogin = ServiceLoader.LoadService<ITimeOutLogin>();
                     if (timeOutLogin != null && timeOutLogin.TimeOutLogin())

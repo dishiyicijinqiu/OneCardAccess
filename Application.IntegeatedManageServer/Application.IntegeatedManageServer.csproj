@@ -85,6 +85,7 @@
     <Content Include="CompanyService.svc" />
     <Content Include="DicDataService.svc" />
     <Content Include="DeptService.svc" />
+    <Content Include="DlyNdxService.svc" />
     <Content Include="DlyTypeService.svc" />
     <Content Include="EmployeeService.svc" />
     <Content Include="InputLevelService.svc" />
