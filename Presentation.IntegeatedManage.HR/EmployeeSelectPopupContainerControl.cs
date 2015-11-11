@@ -43,6 +43,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
 
         void Properties_QueryPopUp(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            IsSelect = false;
             this.employeeSelectUserControl.IsMulSelect = isMulSelect;
         }
         private void InitializeComponent()

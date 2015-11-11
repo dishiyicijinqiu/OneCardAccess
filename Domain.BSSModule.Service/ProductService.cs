@@ -56,6 +56,12 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             var dt = base.GetTree(modestring + "rdcm", pid);
             return ProductService.DataTableToRegisterDrawCMCateEntity(dt);
         }
+
+        public ProductCateEntity[] GetProductCateTree(int pid)
+        {
+            var dt = base.GetTree(modestring + "cate", pid);
+            return ProductService.DataTableToCateEntity(dt);
+        }
         public static DbCommand GetCreateProductCommand(Database database, ProductEntity entity)
         {
             DbCommand cmd = database.GetStoredProcCommand("P_CreateProduct");
@@ -163,6 +169,31 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             return cmd;
         }
         #region 实体转换
+
+
+        public static ProductCateEntity[] DataTableToCateEntity(DataTable dt)
+        {
+
+            if (dt == null)
+                return null;
+            var results = new ProductCateEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = ProductService.DataRowToCateEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+
+        public static ProductCateEntity DataRowToCateEntity(DataRow dataRow)
+        {
+            if (dataRow == null)
+                return null;
+            var result = new ProductCateEntity();
+            var entity = DataRowToEntity(dataRow);
+            FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, entity);
+            result.HasCate = result.Level_Num > 0;
+            return result;
+        }
 
         public static Product_Register_Draw_CMCateEntity[] DataTableToRegisterDrawCMCateEntity(DataTable dt)
         {

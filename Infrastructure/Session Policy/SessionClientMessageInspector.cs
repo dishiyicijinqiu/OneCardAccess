@@ -30,8 +30,10 @@ namespace FengSharp.OneCardAccess.Infrastructure.Session_Policy
             if (ticketheaderindex > -1)
             {
                 var ticketstring = reply.Headers.GetHeader<string>(messageheaderinfo.TicketName, messageheaderinfo.Namespace);
-                var authPrincipal = (Thread.CurrentPrincipal as AuthPrincipal);
-                authPrincipal.Ticket = ticketstring;
+                System.Threading.Thread.CurrentPrincipal = new AuthPrincipal(Thread.CurrentPrincipal.Identity)
+                {
+                    Ticket = ticketstring
+                };
             }
         }
     }

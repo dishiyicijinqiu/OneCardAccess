@@ -1,17 +1,18 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
-using FengSharp.OneCardAccess.Domain.HRModule.Entity;
+using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Infrastructure.Events;
-using FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR.Interface;
+using FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS.Interface;
 using System.Linq;
-namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
+
+namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
-    public class DeptSelectPopupContainerControl : PopupContainerControl, IMultDeptSelect, ISingleDeptSelect
+    public class ProductSelectPopupContainerControl : PopupContainerControl, IMultProductSelect, ISingleProductSelect
     {
         private bool isMulSelect = false;
         private bool isCateCanSelect = false;
-        private DeptSelectUserControl selectUserControl1;
-        public DeptSelectPopupContainerControl(bool isMulSelect = false, bool isCateCanSelect = false)
+        private ProductSelectUserControl selectUserControl1;
+        public ProductSelectPopupContainerControl(bool isMulSelect = false, bool isCateCanSelect = false)
         {
             InitializeComponent();
             this.isMulSelect = isMulSelect;
@@ -36,7 +37,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
             }
         }
 
-        void selectUserControl1_BeforeBind(Infrastructure.Events.CEventArgs<DeptCMCateEntity[]> e)
+        void selectUserControl1_BeforeBind(Infrastructure.Events.CEventArgs<ProductCateEntity[]> e)
         {
             if (BeforeBind != null)
             {
@@ -52,7 +53,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
 
         private void InitializeComponent()
         {
-            this.selectUserControl1 = new FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR.DeptSelectUserControl();
+            this.selectUserControl1 = new ProductSelectUserControl();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +74,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
             this.ResumeLayout(false);
         }
 
-
         void selectUserControl1_CancelClick(System.EventArgs e)
         {
             IsSelect = false;
@@ -85,17 +85,17 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
             IsSelect = true;
             this.PopupContainerProperties.PopupControl.OwnerEdit.ClosePopup();
         }
-
-        public event VEventHandler<CEventArgs<DeptCMCateEntity[]>> BeforeBind;
+        public event VEventHandler<CEventArgs<ProductCateEntity[]>> BeforeBind;
 
         public bool IsSelect { get; private set; }
-        public DeptCMCateEntity GetResult()
+        public ProductCateEntity GetResult()
         {
             return this.selectUserControl1.EntityResult;
         }
-        public DeptCMCateEntity[] GetResults()
+        public ProductCateEntity[] GetResults()
         {
             return this.selectUserControl1.EntityResults;
         }
+
     }
 }

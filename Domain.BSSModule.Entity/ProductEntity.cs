@@ -350,6 +350,23 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         [DataMember]
         public bool HasCate { get; set; }
     }
+    /// <summary>
+    /// 产品信息
+    /// </summary>
+    public class ProductCateEntity : ProductEntity
+    {
+        /// <summary>
+        /// ctor
+        /// </summary>
+        public ProductCateEntity()
+            : base() { }
+        /// <summary>
+        /// 是否有分类
+        /// </summary>
+        [DataMember]
+        public bool HasCate { get; set; }
+    }
+
 
     /// <summary>
     /// 产品信息

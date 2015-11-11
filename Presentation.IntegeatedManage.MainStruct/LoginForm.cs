@@ -101,7 +101,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
                 if (newUser == null)
                     throw new BusinessException(ResourceMessages.WCFExceptionType_AuthenticationException);
                 authidentity = new AuthIdentity(newUser.UserId, newUser.UserNo, newUser.UserName, authidentity.PassWord);
-                System.Threading.Thread.CurrentPrincipal = new AuthPrincipal(authidentity) { Ticket = authprincipal.Ticket };
+                //System.Threading.Thread.CurrentPrincipal = new AuthPrincipal(authidentity) { Ticket = authprincipal.Ticket };
+                System.Threading.Thread.CurrentPrincipal = new AuthPrincipal(authidentity)
+                {
+                    Ticket = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Ticket
+                };
             }
             catch (Exception ex)
             {

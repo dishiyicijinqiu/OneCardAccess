@@ -67,21 +67,29 @@ namespace FengSharp.OneCardAccess.Infrastructure.Services.Session_Policy
 
         public void BeforeSendReply(ref Message reply, object correlationState)
         {
-            if (!string.IsNullOrWhiteSpace(_ticketstring))
+            try
             {
-                var ticket = CacheProvider.Get<FormsAuthenticationTicket>(_ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
-                CacheProvider.Remove(_ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
-                // 创建用户身份验证票,过期时间30分钟
-                ticket = new FormsAuthenticationTicket(ticket.Name, false, ApplicationConfig.SessionTimeOutMinutes);
-                // 加密用户身份验证票
-                string newticketstring = FormsAuthentication.Encrypt(ticket);
+                if (!string.IsNullOrWhiteSpace(_ticketstring))
+                {
+                    var ticket = CacheProvider.Get<FormsAuthenticationTicket>(_ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
+                    CacheProvider.Remove(_ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
 
-                CacheProvider.Add(newticketstring, ticket,
-                    System.TimeSpan.FromMinutes(ApplicationConfig.SessionTimeOutMinutes), cacheManagerName: ApplicationConfig.SessionCacheName);
+                    // 创建用户身份验证票,过期时间30分钟
+                    ticket = new FormsAuthenticationTicket(ticket.Name, false, ApplicationConfig.SessionTimeOutMinutes);
+                    // 加密用户身份验证票
+                    string newticketstring = FormsAuthentication.Encrypt(ticket);
 
-                reply.Headers.Add(MessageHeader.CreateHeader(this.messageHeaderInfo.TicketName,
-              this.messageHeaderInfo.Namespace, newticketstring));
-                _ticketstring = null;
+                    CacheProvider.Add(newticketstring, ticket,
+                        System.TimeSpan.FromMinutes(ApplicationConfig.SessionTimeOutMinutes), cacheManagerName: ApplicationConfig.SessionCacheName);
+
+                    reply.Headers.Add(MessageHeader.CreateHeader(this.messageHeaderInfo.TicketName,
+                  this.messageHeaderInfo.Namespace, newticketstring));
+                    _ticketstring = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
             }
         }
     }

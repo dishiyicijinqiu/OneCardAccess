@@ -99,6 +99,24 @@
     <Compile Include="Basic\StockSelectPopupContainerControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Basic\ProductSelectPopupContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Basic\ProductSelectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Basic\ProductSelectUserControl.Designer.cs">
+      <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\ProductPriceSelectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Basic\ProductPriceSelectUserControl.Designer.cs">
+      <DependentUpon>ProductPriceSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\ProductPriceSelectPopupContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="单据\DlySPRKForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +249,9 @@
     <None Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Basic\ProductSelectUserControl.resx">
+      <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DlySet\DlyInputLevelForm.resx">
       <DependentUpon>DlyInputLevelForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Basic\StockSelectUserControl.resx">
       <DependentUpon>StockSelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic\ProductPriceSelectUserControl.resx">
+      <DependentUpon>ProductPriceSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="单据\DlySPRKForm.resx">
       <DependentUpon>DlySPRKForm.cs</DependentUpon>

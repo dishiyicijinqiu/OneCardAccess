@@ -46,6 +46,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
         }
         void PopupContainerProperties_QueryPopUp(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            IsSelect = false;
             this.userSelectUserControl1.IsMulSelect = isMulSelect;
         }
 

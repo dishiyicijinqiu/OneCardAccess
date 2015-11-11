@@ -102,7 +102,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// 金额
         /// </summary>
         [DataMember]
-        public decimal Total { get; set; }
+        public virtual decimal Total { get; set; }
         /// <summary>
         /// 折扣(--)
         /// </summary>
@@ -164,6 +164,47 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         [DataMember]
         public string C_ProductOrderId { get; set; }
 
+
+        List<PFBNBakEntity> _PFBNBaks;
+        /// <summary>
+        /// 商品单据草稿批号备份
+        /// </summary>
+        [DataMember]
+        public List<PFBNBakEntity> PFBNBaks
+        {
+            get
+            {
+                if (_PFBNBaks == null)
+                {
+                    _PFBNBaks = new List<PFBNBakEntity>();
+                }
+                return _PFBNBaks;
+            }
+            set
+            {
+                _PFBNBaks = value;
+            }
+        }
+        List<PSNBakEntity> _PSNBaks;
+        /// <summary>
+        /// 商品单据草稿序列号备份
+        /// </summary>
+        [DataMember]
+        public List<PSNBakEntity> PSNBaks
+        {
+            get
+            {
+                if (_PSNBaks == null)
+                {
+                    _PSNBaks = new List<PSNBakEntity>();
+                }
+                return _PSNBaks;
+            }
+            set
+            {
+                _PSNBaks = value;
+            }
+        }
     }
 
     /// <summary>
@@ -178,19 +219,48 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         public PDlyBakFullNameEntity()
             : base()
         {
-            if (PFBNBaks == null)
-                PFBNBaks = new List<PFBNBakEntity>();
-            if (PSNBaks == null)
-                PSNBaks = new List<PSNBakEntity>();
         }
+        /// <summary>
+        /// 产品编号
+        /// </summary>
+        [DataMember]
+        public string ProductNo { get; set; }
+        /// <summary>
+        /// 商品名称
+        /// </summary>
+        [DataMember]
+        public string ProductName { get; set; }
+        /// <summary>
+        /// 规格型号
+        /// </summary>
+        [DataMember]
+        public string Spec { get; set; }
+        /// <summary>
+        /// 货位号
+        /// </summary>
+        [DataMember]
+        public string GoodCode { get; set; }
+        /// <summary>
+        /// 单位
+        /// </summary>
+        [DataMember]
+        public string Unit { get; set; }
 
         /// <summary>
-        /// 商品单据草稿批号备份
+        /// 金额
         /// </summary>
-        public List<PFBNBakEntity> PFBNBaks { get; set; }
-        /// <summary>
-        /// 商品单据草稿序列号备份
-        /// </summary>
-        public List<PSNBakEntity> PSNBaks { get; set; }
+        [DataMember]
+        //public virtual decimal Total { get; set; }
+        public override decimal Total
+        {
+            get
+            {
+                return this.Qty * (decimal)this.Price;
+            }
+            set
+            {
+                base.Total = value;
+            }
+        }
     }
 }

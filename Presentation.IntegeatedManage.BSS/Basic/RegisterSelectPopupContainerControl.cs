@@ -9,12 +9,12 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
     public class RegisterSelectPopupContainerControl : PopupContainerControl, ISingleRegisterSelect
     {
-        private RegisterSelectUserControl registerSelectUserControl1;
+        private RegisterSelectUserControl selectUserControl1;
         bool isMulSelect = false;
-        public RegisterSelectPopupContainerControl(bool isMulSelect)
+        public RegisterSelectPopupContainerControl()
         {
             InitializeComponent();
-            registerSelectUserControl1.BeforeBind += registerSelectUserControl1_BeforeBind;
+            selectUserControl1.BeforeBind += registerSelectUserControl1_BeforeBind;
         }
         protected override RepositoryItemPopupContainerEdit OwnerItem
         {
@@ -43,50 +43,49 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         void Properties_QueryPopUp(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.registerSelectUserControl1.IsMulSelect = isMulSelect;
+            IsSelect = false;
+            this.selectUserControl1.IsMulSelect = isMulSelect;
         }
 
         private void InitializeComponent()
         {
-            this.registerSelectUserControl1 = new RegisterSelectUserControl();
+            this.selectUserControl1 = new RegisterSelectUserControl();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // registerSelectUserControl1
+            // selectUserControl1
             // 
-            this.registerSelectUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.registerSelectUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.registerSelectUserControl1.Name = "deptSelectUserControl1";
-            this.registerSelectUserControl1.Size = new System.Drawing.Size(200, 100);
-            this.registerSelectUserControl1.TabIndex = 0;
-            this.registerSelectUserControl1.OKClick += registerSelectUserControl1_OKClick;
-            this.registerSelectUserControl1.CancelClick += registerSelectUserControl1_CancelClick;
+            this.selectUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.selectUserControl1.Name = "selectUserControl1";
+            this.selectUserControl1.Size = new System.Drawing.Size(200, 100);
+            this.selectUserControl1.TabIndex = 0;
+            this.selectUserControl1.OKClick += selectUserControl1_OKClick;
+            this.selectUserControl1.CancelClick += selectUserControl1_CancelClick;
             // 
-            // DeptSelectPopupContainerControl
+            // RegisterSelectPopupContainerControl
             // 
-            this.Controls.Add(this.registerSelectUserControl1);
+            this.Controls.Add(this.selectUserControl1);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
         }
 
-        void registerSelectUserControl1_CancelClick(System.EventArgs e)
+        void selectUserControl1_CancelClick(System.EventArgs e)
         {
             IsSelect = false;
-            var popupContainerEdit = ((RepositoryItemPopupBase)(this.PopupContainerProperties)).OwnerEdit;
-            popupContainerEdit.ClosePopup();
+            this.PopupContainerProperties.PopupControl.OwnerEdit.ClosePopup();
         }
-        void registerSelectUserControl1_OKClick(System.EventArgs e)
+        void selectUserControl1_OKClick(System.EventArgs e)
         {
             IsSelect = true;
-            var popupContainerEdit = ((RepositoryItemPopupBase)(this.PopupContainerProperties)).OwnerEdit;
-            popupContainerEdit.ClosePopup();
+            this.PopupContainerProperties.PopupControl.OwnerEdit.ClosePopup();
         }
 
         public event VEventHandler<CEventArgs<RegisterCMEntity[]>> BeforeBind;
 
         public RegisterCMEntity GetResult()
         {
-            return this.registerSelectUserControl1.EntityResult;
+            return this.selectUserControl1.EntityResult;
         }
 
 
