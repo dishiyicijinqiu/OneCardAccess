@@ -163,7 +163,11 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// </summary>
         [DataMember]
         public string C_ProductOrderId { get; set; }
-
+        /// <summary>
+        /// 顺序
+        /// </summary>
+        [DataMember]
+        public int SortNo { get; set; }
 
         List<PFBNBakEntity> _PFBNBaks;
         /// <summary>
@@ -245,7 +249,11 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// </summary>
         [DataMember]
         public string Unit { get; set; }
-
+        /// <summary>
+        /// 数量模式
+        /// </summary>
+        [DataMember]
+        public short QtyMode { get; set; }
         /// <summary>
         /// 金额
         /// </summary>

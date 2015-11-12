@@ -2,7 +2,6 @@
 using DevExpress.XtraGrid.Views.Grid;
 using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface;
-using FengSharp.OneCardAccess.Domain.HRModule.Entity;
 using FengSharp.OneCardAccess.Infrastructure;
 using FengSharp.OneCardAccess.Infrastructure.Base;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Base;
@@ -41,6 +40,13 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 productPricePopupContainerControl.Width = 300;
                 productPricePopupContainerControl.Height = 200;
                 priceRepItemPopupContainerEdit.PopupControl = productPricePopupContainerControl;
+
+                var qtyFBNPopupContainerControl = ServiceLoader.LoadService<IProductFBNInput>("ProductFBNInput") as PopupContainerControl;
+                qtyFBNPopupContainerControl.Width = 500;
+                qtyFBNPopupContainerControl.Height = 600;
+                qtyFBNRepItemPopupContainerEdit.PopupControl = qtyFBNPopupContainerControl;
+
+
             }
             this.gridControl1.DataSource = this.bindingSource1;
         }
@@ -169,25 +175,17 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                     row.GoodCode = string.Empty;
                     row.Unit = string.Empty;
                     row.ProductNo = string.Empty;
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "ProductId", 0);
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "ProductName", string.Empty);
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "Spec", string.Empty);
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "GoodCode", string.Empty);
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "Unit", string.Empty);
+                    row.QtyMode = ((short)0);
                 }
                 else
                 {
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "ProductId", result.ProductId);
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "ProductName", result.ProductName);
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "Spec", result.Spec);
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "GoodCode", result.GoodCode);
-                    //this.gridView1.SetRowCellValue(this.gridView1.FocusedRowHandle, "Unit", result.Unit);
                     row.ProductId = result.ProductId;
                     row.ProductName = result.ProductName;
                     row.Spec = result.Spec;
                     row.GoodCode = result.GoodCode;
                     row.Unit = result.Unit;
                     row.ProductNo = result.ProductNo;
+                    row.QtyMode = result.QtyMode;
                 }
                 this.gridView1.RefreshRow(this.gridView1.FocusedRowHandle);
             }
@@ -271,6 +269,86 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         private void btnClose_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void gridView1_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
+        {
+            try
+            {
+                if (e.Column == colQty)
+                {
+                    var row = this.gridView1.GetRow(e.RowHandle) as PDlyBakFullNameEntity;
+                    if (row == null)
+                        return;
+                    if (row.QtyMode == 1)
+                    {
+                        e.RepositoryItem = qtySNRepItemPopupContainerEdit;
+                    }
+                    else if (row.QtyMode == 2)
+                    {
+                        e.RepositoryItem = qtyFBNRepItemPopupContainerEdit;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
+        }
+
+        private void qtyFBNRepItemPopupContainerEdit_QueryPopUp(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                var basePopupContainerEdit = sender as PopupContainerEdit;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductFBNInput;
+                var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
+                if (row == null)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                int sortno = 0;
+                var fbns = row.PFBNBaks.Select(t => new FBNInputEntity()
+                {
+                    BN = t.BN,
+                    FullBN = t.FullBN,
+                    Qty = (int)t.Qty,
+                    SortNo = sortno++,
+                    Remark = t.Remark
+                }).ToArray();
+                singleSelect.BindData(fbns);
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
+        }
+
+        private void qtyFBNRepItemPopupContainerEdit_QueryResultValue(object sender, DevExpress.XtraEditors.Controls.QueryResultValueEventArgs e)
+        {
+            try
+            {
+
+                var basePopupContainerEdit = sender as PopupContainerEdit;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductFBNInput;
+                e.Value = singleSelect.Qty;
+                var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
+                row.PFBNBaks.Clear();
+                row.PFBNBaks.AddRange(singleSelect.EntityResults.Select(t => new PFBNBakEntity()
+                {
+                    BN = t.BN,
+                    FullBN = t.FullBN,
+                    Qty = t.Qty,
+                    SortNo = t.SortNo,
+                    Remark = t.Remark
+                }));
+                row.BN = singleSelect.BN;
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
         }
     }
     public class DlySPRKForm_Design : Base_Form<DlySPRKFormFacade>

@@ -108,5 +108,49 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         [DataMember]
         public int DlyTypeId { get; set; }
 
+        /// <summary>
+        /// 顺序
+        /// </summary>
+        [DataMember]
+        public int SortNo { get; set; }
+    }
+    /// <summary>
+    /// 批号录入
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class FBNInputEntity
+    {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public FBNInputEntity()
+        {
+            FullBN = string.Empty;
+            BN = string.Empty;
+        }
+        /// <summary>
+        /// 批号
+        /// </summary>
+        public string BN { get; set; }
+        /// <summary>
+        /// 完整批号
+        /// </summary>
+        [DataMember]
+        public string FullBN { get; set; }
+        /// <summary>
+        /// 数量
+        /// </summary>
+        [DataMember]
+        public int Qty { get; set; }
+        /// <summary>
+        /// 顺序
+        /// </summary>
+        [DataMember]
+        public int SortNo { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [DataMember]
+        public string Remark { get; set; }
     }
 }

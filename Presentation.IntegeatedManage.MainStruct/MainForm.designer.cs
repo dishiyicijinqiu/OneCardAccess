@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnCloseCurrent = new DevExpress.XtraBars.BarButtonItem();
             this.btnCloseOther = new DevExpress.XtraBars.BarButtonItem();
             this.btnCloseAll = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.xtraTabbedMdiManager = new FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.ExXtraTabbedMdiManager(this.components);
-            this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.xtraTabbedMdiManager = new FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.ExXtraTabbedMdiManager();
+            this.popupMenu = new DevExpress.XtraBars.PopupMenu();
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();

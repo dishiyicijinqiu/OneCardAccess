@@ -1,11 +1,7 @@
 ﻿using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface;
 using FengSharp.OneCardAccess.Infrastructure.Services;
-using Microsoft.Practices.EnterpriseLibrary.Data;
-using System;
 using System.Data;
-using System.Data.Common;
-using System.Linq;
 
 namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
 {

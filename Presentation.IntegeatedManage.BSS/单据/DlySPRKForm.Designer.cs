@@ -50,6 +50,8 @@
             this.priceRepItemPopupContainerEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.qtyFBNRepItemPopupContainerEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
+            this.qtySNRepItemPopupContainerEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.btnClose = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             this.JSRNamePopupContainerEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BasePopupContainerEdit();
             this.StockName1PopupContainerEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BasePopupContainerEdit();
@@ -91,6 +93,8 @@
             this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider(this.components);
             this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine(this.components);
+            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).BeginInit();
             this.baseDataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AfterPreferTotalTextEdit.Properties)).BeginInit();
@@ -101,6 +105,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productNoRepItemPopupContainerEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceRepItemPopupContainerEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qtyFBNRepItemPopupContainerEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qtySNRepItemPopupContainerEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JSRNamePopupContainerEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StockName1PopupContainerEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DlyDateTextEdit.Properties)).BeginInit();
@@ -139,6 +145,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPrefer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAfterPreferTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // baseDataLayoutControl1
@@ -246,7 +253,9 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.productNoRepItemPopupContainerEdit,
-            this.priceRepItemPopupContainerEdit});
+            this.priceRepItemPopupContainerEdit,
+            this.qtyFBNRepItemPopupContainerEdit,
+            this.qtySNRepItemPopupContainerEdit});
             this.gridControl1.Size = new System.Drawing.Size(1058, 512);
             this.gridControl1.TabIndex = 17;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -287,6 +296,8 @@
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView_ShowLine1.SetShowLineNo(this.gridView1, true);
+            this.gridView1.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gridView1_CustomRowCellEdit);
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
             // 
             // colProductNo
@@ -405,6 +416,22 @@
             this.colRemark.VisibleIndex = 9;
             this.colRemark.Width = 100;
             // 
+            // qtyFBNRepItemPopupContainerEdit
+            // 
+            this.qtyFBNRepItemPopupContainerEdit.AutoHeight = false;
+            this.qtyFBNRepItemPopupContainerEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.qtyFBNRepItemPopupContainerEdit.Name = "qtyFBNRepItemPopupContainerEdit";
+            this.qtyFBNRepItemPopupContainerEdit.QueryResultValue += new DevExpress.XtraEditors.Controls.QueryResultValueEventHandler(this.qtyFBNRepItemPopupContainerEdit_QueryResultValue);
+            this.qtyFBNRepItemPopupContainerEdit.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.qtyFBNRepItemPopupContainerEdit_QueryPopUp);
+            // 
+            // qtySNRepItemPopupContainerEdit
+            // 
+            this.qtySNRepItemPopupContainerEdit.AutoHeight = false;
+            this.qtySNRepItemPopupContainerEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.qtySNRepItemPopupContainerEdit.Name = "qtySNRepItemPopupContainerEdit";
+            // 
             // btnClose
             // 
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
@@ -475,17 +502,17 @@
             this.CommentTextEdit.Location = new System.Drawing.Point(69, 48);
             this.CommentTextEdit.Name = "CommentTextEdit";
             this.CommentTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.CommentTextEdit.Size = new System.Drawing.Size(357, 20);
+            this.CommentTextEdit.Size = new System.Drawing.Size(200, 20);
             this.CommentTextEdit.StyleController = this.baseDataLayoutControl1;
             this.CommentTextEdit.TabIndex = 8;
             // 
             // SummaryTextEdit
             // 
             this.SummaryTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "Summary", true));
-            this.SummaryTextEdit.Location = new System.Drawing.Point(493, 48);
+            this.SummaryTextEdit.Location = new System.Drawing.Point(336, 48);
             this.SummaryTextEdit.Name = "SummaryTextEdit";
             this.SummaryTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.SummaryTextEdit.Size = new System.Drawing.Size(571, 20);
+            this.SummaryTextEdit.Size = new System.Drawing.Size(200, 20);
             this.SummaryTextEdit.StyleController = this.baseDataLayoutControl1;
             this.SummaryTextEdit.TabIndex = 9;
             // 
@@ -604,7 +631,8 @@
             this.ItemForQty,
             this.ItemForTotal,
             this.ItemForPrefer,
-            this.ItemForAfterPreferTotal});
+            this.ItemForAfterPreferTotal,
+            this.emptySpaceItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
@@ -627,8 +655,11 @@
             // 
             this.ItemForComment.Control = this.CommentTextEdit;
             this.ItemForComment.Location = new System.Drawing.Point(0, 24);
+            this.ItemForComment.MaxSize = new System.Drawing.Size(267, 24);
+            this.ItemForComment.MinSize = new System.Drawing.Size(267, 24);
             this.ItemForComment.Name = "ItemForComment";
-            this.ItemForComment.Size = new System.Drawing.Size(424, 24);
+            this.ItemForComment.Size = new System.Drawing.Size(267, 24);
+            this.ItemForComment.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForComment.Text = "附加说明";
             this.ItemForComment.TextSize = new System.Drawing.Size(60, 13);
             // 
@@ -671,9 +702,12 @@
             // ItemForSummary
             // 
             this.ItemForSummary.Control = this.SummaryTextEdit;
-            this.ItemForSummary.Location = new System.Drawing.Point(424, 24);
+            this.ItemForSummary.Location = new System.Drawing.Point(267, 24);
+            this.ItemForSummary.MaxSize = new System.Drawing.Size(267, 24);
+            this.ItemForSummary.MinSize = new System.Drawing.Size(267, 24);
             this.ItemForSummary.Name = "ItemForSummary";
-            this.ItemForSummary.Size = new System.Drawing.Size(638, 24);
+            this.ItemForSummary.Size = new System.Drawing.Size(267, 24);
+            this.ItemForSummary.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForSummary.Text = "摘要";
             this.ItemForSummary.TextSize = new System.Drawing.Size(60, 13);
             // 
@@ -881,6 +915,14 @@
             this.ItemForAfterPreferTotal.Text = "优惠后金额";
             this.ItemForAfterPreferTotal.TextSize = new System.Drawing.Size(60, 13);
             // 
+            // emptySpaceItem4
+            // 
+            this.emptySpaceItem4.AllowHotTrack = false;
+            this.emptySpaceItem4.Location = new System.Drawing.Point(534, 24);
+            this.emptySpaceItem4.Name = "emptySpaceItem4";
+            this.emptySpaceItem4.Size = new System.Drawing.Size(528, 24);
+            this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // DlySPRKForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -902,6 +944,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productNoRepItemPopupContainerEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceRepItemPopupContainerEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qtyFBNRepItemPopupContainerEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qtySNRepItemPopupContainerEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JSRNamePopupContainerEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StockName1PopupContainerEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DlyDateTextEdit.Properties)).EndInit();
@@ -940,6 +984,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPrefer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAfterPreferTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1007,5 +1052,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit productNoRepItemPopupContainerEdit;
         private System.Windows.Forms.BindingSource bindingSource1;
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit priceRepItemPopupContainerEdit;
+        private WinForm.Dev.Components.GridView_ShowLine gridView_ShowLine1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit qtySNRepItemPopupContainerEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit qtyFBNRepItemPopupContainerEdit;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
     }
 }

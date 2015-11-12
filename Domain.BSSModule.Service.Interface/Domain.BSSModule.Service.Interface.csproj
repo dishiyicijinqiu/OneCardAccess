@@ -43,6 +43,7 @@
     <Compile Include="IDlyNdxService.cs" />
     <Compile Include="IDlyTypeService.cs" />
     <Compile Include="IInputLevelService.cs" />
+    <Compile Include="IPFBNSNRuleService.cs" />
     <Compile Include="IProductService.cs" />
     <Compile Include="IRawMateService.cs" />
     <Compile Include="IRegisterService.cs" />

@@ -91,6 +91,7 @@
     <Content Include="InputLevelService.svc" />
     <Content Include="logo.ico" />
     <Content Include="MenuService.svc" />
+    <Content Include="PFBNSNRuleService.svc" />
     <Content Include="ProductService.svc" />
     <Content Include="RawMateService.svc" />
     <Content Include="RegisterService.svc" />
