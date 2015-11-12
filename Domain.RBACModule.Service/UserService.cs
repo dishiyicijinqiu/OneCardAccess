@@ -62,11 +62,6 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
             return UserService.DataRowToEntity(row);
         }
 
-        public UserEntity[] FindUsersByUserNo(string UserNo)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public UserEntity[] GetAllUser()
         {
             var dt = this.GetList(modestring);

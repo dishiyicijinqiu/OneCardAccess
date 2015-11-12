@@ -50,7 +50,7 @@ namespace FengSharp.OneCardAccess.Infrastructure.Services.Session_Policy
             {
                 foreach (EndpointDispatcher endpoint in channelDispatcher.Endpoints)
                 {
-                    endpoint.DispatchRuntime.MessageInspectors.Add(new SessionCallContextInitializer(messageHeaderInfo));
+                    //endpoint.DispatchRuntime.MessageInspectors.Add(new SessionCallContextInitializer(messageHeaderInfo));
                     foreach (DispatchOperation operation in endpoint.DispatchRuntime.Operations)
                     {
                         operation.CallContextInitializers.Add(new SessionCallContextInitializer(messageHeaderInfo));

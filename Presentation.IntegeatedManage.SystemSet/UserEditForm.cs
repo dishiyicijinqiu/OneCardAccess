@@ -131,7 +131,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
 
         public string AddUser(UserEntity entity)
         {
-            AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
+            AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity;
             entity.CreateId = authidentity.UserId;
             entity.CreateDate = DateTime.Now;
             entity.LastModifyId = authidentity.UserId;
@@ -141,7 +141,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
 
         public void UpdateUser(UserEntity entity)
         {
-            AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
+            AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity;
             entity.LastModifyId = authidentity.UserId;
             entity.LastModifyDate = DateTime.Now;
             _Service.UpdateUser(entity);

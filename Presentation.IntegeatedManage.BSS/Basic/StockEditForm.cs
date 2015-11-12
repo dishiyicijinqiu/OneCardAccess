@@ -183,20 +183,14 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         internal int CreateStock(StockEntity entity)
         {
-            AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
-            entity.CreateId = authidentity.UserId;
-            entity.CreateDate = DateTime.Now;
-            entity.LastModifyId = authidentity.UserId;
-            entity.LastModifyDate = DateTime.Now;
+            EntityTool.CopyCreateAndModify(entity);
             return _StockService.CreateStock(entity);
 
         }
 
         internal void UpdateStock(StockEntity entity)
         {
-            AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
-            entity.LastModifyId = authidentity.UserId;
-            entity.LastModifyDate = DateTime.Now;
+            EntityTool.CopyModify(entity);
             _StockService.UpdateStock(entity);
         }
     }

@@ -1,39 +1,32 @@
-﻿using System;
-using System.Security.Principal;
+﻿using System.Runtime.Serialization;
 
 namespace FengSharp.OneCardAccess.Infrastructure
 {
-    public class AuthPrincipal : IPrincipal
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class AuthPrincipal
     {
-        public string Ticket = null;
-
-        public IIdentity Identity
+        public static AuthPrincipal CurrentAuthPrincipal { get; set; }
+        [DataMember]
+        public string Ticket
         {
             get;
             private set;
         }
-
-        public bool IsInRole(string role)
+        [DataMember]
+        public AuthIdentity Identity
         {
-            throw new Exception("未实现");
+            get;
+            private set;
         }
-        public AuthPrincipal(IIdentity iidentity)
+        public AuthPrincipal(AuthIdentity iidentity, string ticket)
         {
             this.Identity = iidentity;
+            this.Ticket = ticket;
         }
     }
-    public class AuthIdentity : IIdentity
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class AuthIdentity
     {
-
-        public string AuthenticationType
-        {
-            get { throw new Exception("未实现"); }
-        }
-
-        public bool IsAuthenticated
-        {
-            get { throw new Exception("未实现"); }
-        }
         public AuthIdentity(string userno, string password)
         {
             this.UserNo = userno;
@@ -46,13 +39,14 @@ namespace FengSharp.OneCardAccess.Infrastructure
             this.UserName = username;
             this.PassWord = password;
         }
+
+        [DataMember]
         public string UserId { get; private set; }
+        [DataMember]
         public string UserNo { get; private set; }
+        [DataMember]
         public string UserName { get; private set; }
+        [DataMember]
         public string PassWord { get; private set; }
-        public string Name
-        {
-            get { throw new Exception("未实现"); }
-        }
     }
 }

@@ -318,8 +318,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 
         internal static void SetUserMenu(RibbonControl ribbonControl)
         {
-            AuthPrincipal authprincipal = System.Threading.Thread.CurrentPrincipal as AuthPrincipal;
-            AuthIdentity authidentity = authprincipal.Identity as AuthIdentity;
+            AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity as AuthIdentity;
             var usermenus = ServiceProxyFactory.Create<IMenuService>().GetUserMenuNos(authidentity.UserId);
 
             for (int i = ribbonControl.Items.Count - 1; i >= 0; i--)

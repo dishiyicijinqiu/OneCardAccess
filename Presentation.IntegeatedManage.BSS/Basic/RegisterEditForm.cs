@@ -355,20 +355,14 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         internal string CreateRegister(RegisterEntity entity, List<RegisterAttachmentEntityNewLogic> attachments)
         {
-            AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
-            entity.CreateId = authidentity.UserId;
-            entity.CreateDate = DateTime.Now;
-            entity.LastModifyId = authidentity.UserId;
-            entity.LastModifyDate = DateTime.Now;
+            EntityTool.CopyCreateAndModify(entity);
             return _RegisterService.CreateRegisterWithAttachment(entity, attachments.ToArray());
 
         }
 
         internal void UpdateRegister(RegisterEntity entity, List<RegisterAttachmentEntityNewLogic> attachments)
         {
-            AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
-            entity.LastModifyId = authidentity.UserId;
-            entity.LastModifyDate = DateTime.Now;
+            EntityTool.CopyModify(entity);
             _RegisterService.UpdateRegisterWithAttachment(entity, attachments.ToArray());
         }
     }

@@ -47,6 +47,7 @@
             this.colBN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQty = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.priceRepItemPopupContainerEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnClose = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
@@ -90,8 +91,6 @@
             this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider(this.components);
             this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine(this.components);
-            this.priceRepItemPopupContainerEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).BeginInit();
             this.baseDataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AfterPreferTotalTextEdit.Properties)).BeginInit();
@@ -101,6 +100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productNoRepItemPopupContainerEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceRepItemPopupContainerEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JSRNamePopupContainerEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StockName1PopupContainerEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DlyDateTextEdit.Properties)).BeginInit();
@@ -139,7 +139,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPrefer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAfterPreferTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.priceRepItemPopupContainerEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // baseDataLayoutControl1
@@ -288,7 +287,6 @@
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView_ShowLine1.SetShowLineNo(this.gridView1, true);
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
             // 
             // colProductNo
@@ -379,6 +377,15 @@
             this.colPrice.VisibleIndex = 7;
             this.colPrice.Width = 100;
             // 
+            // priceRepItemPopupContainerEdit
+            // 
+            this.priceRepItemPopupContainerEdit.AutoHeight = false;
+            this.priceRepItemPopupContainerEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.priceRepItemPopupContainerEdit.Name = "priceRepItemPopupContainerEdit";
+            this.priceRepItemPopupContainerEdit.QueryResultValue += new DevExpress.XtraEditors.Controls.QueryResultValueEventHandler(this.priceRepItemPopupContainerEdit_QueryResultValue);
+            this.priceRepItemPopupContainerEdit.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.priceRepItemPopupContainerEdit_QueryPopUp);
+            // 
             // colTotal
             // 
             this.colTotal.Caption = "金额";
@@ -408,6 +415,7 @@
             this.btnClose.StyleController = this.baseDataLayoutControl1;
             this.btnClose.TabIndex = 60;
             this.btnClose.Text = "关闭(&C)";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // JSRNamePopupContainerEdit
             // 
@@ -873,15 +881,6 @@
             this.ItemForAfterPreferTotal.Text = "优惠后金额";
             this.ItemForAfterPreferTotal.TextSize = new System.Drawing.Size(60, 13);
             // 
-            // priceRepItemPopupContainerEdit
-            // 
-            this.priceRepItemPopupContainerEdit.AutoHeight = false;
-            this.priceRepItemPopupContainerEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.priceRepItemPopupContainerEdit.Name = "priceRepItemPopupContainerEdit";
-            this.priceRepItemPopupContainerEdit.QueryResultValue += new DevExpress.XtraEditors.Controls.QueryResultValueEventHandler(this.priceRepItemPopupContainerEdit_QueryResultValue);
-            this.priceRepItemPopupContainerEdit.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.priceRepItemPopupContainerEdit_QueryPopUp);
-            // 
             // DlySPRKForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -902,6 +901,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productNoRepItemPopupContainerEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceRepItemPopupContainerEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JSRNamePopupContainerEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StockName1PopupContainerEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DlyDateTextEdit.Properties)).EndInit();
@@ -940,7 +940,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPrefer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAfterPreferTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.priceRepItemPopupContainerEdit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1007,7 +1006,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colRemark;
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit productNoRepItemPopupContainerEdit;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private WinForm.Dev.Components.GridView_ShowLine gridView_ShowLine1;
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit priceRepItemPopupContainerEdit;
     }
 }

@@ -267,6 +267,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 MessageBoxEx.Error(ex);
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     public class DlySPRKForm_Design : Base_Form<DlySPRKFormFacade>
     {
@@ -284,8 +289,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 var entity = new SPRKDlyCGNdxEntity();
                 entity.DlyNo = _DlyNdxService.GetNewDlyNo(FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId);
                 entity.DlyDate = _DlyNdxService.GetDlyDate();
-                AuthPrincipal authprincipal = System.Threading.Thread.CurrentPrincipal as AuthPrincipal;
-                AuthIdentity authidentity = authprincipal.Identity as AuthIdentity;
+                AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity;
                 entity.ZDRId = authidentity.UserId;
                 entity.ZDRName = authidentity.UserName;
                 //var dlybak = new PDlyBakFullNameEntity();

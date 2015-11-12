@@ -471,7 +471,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
 
         internal string CreateEmployee(EmployeeEntity entity, List<EmployeeAttachmentEntityNewLogic> attachments)
         {
-            AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
+            AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity;
             entity.CreateId = authidentity.UserId;
             entity.CreateDate = DateTime.Now;
             entity.LastModifyId = authidentity.UserId;
@@ -481,7 +481,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
 
         internal void UpdateEmployee(EmployeeEntity entity, List<EmployeeAttachmentEntityNewLogic> attachments)
         {
-            AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
+            AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity;
             entity.LastModifyId = authidentity.UserId;
             entity.LastModifyDate = DateTime.Now;
             _EmployeeService.UpdateEmployeeWithAttachment(entity, attachments.ToArray());

@@ -81,38 +81,20 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.DevelopClient
         public LoginFormFacade(LoginForm_Design actual)
             : base(actual)
         { }
-
-        private void GetAuthorizationTicket()
+        public void Login(string userNo, string userPassword)
         {
             try
             {
                 IAuthService iauth = ServiceProxyFactory.Create<IAuthService>();
-                AuthPrincipal authprincipal = System.Threading.Thread.CurrentPrincipal as AuthPrincipal;
-                AuthIdentity authidentity = authprincipal.Identity as AuthIdentity;
-                authprincipal.Ticket = iauth.GetAuthorizationTicket(authidentity.UserNo, authidentity.PassWord);
-                if (string.IsNullOrWhiteSpace(authprincipal.Ticket))
-                {
+                AuthPrincipal.CurrentAuthPrincipal = iauth.GetAuthPrincipal(userNo, userPassword);
+                if (AuthPrincipal.CurrentAuthPrincipal == null || string.IsNullOrWhiteSpace(AuthPrincipal.CurrentAuthPrincipal.Ticket))
                     throw new BusinessException(ResourceMessages.WCFExceptionType_AuthenticationException);
-                }
-                IAccessService iaccessservice = ServiceProxyFactory.Create<IAccessService>();
-                UserEntity newUser = iaccessservice.FindUserByTicket((System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Ticket);
-                if (newUser == null)
-                    throw new BusinessException(ResourceMessages.WCFExceptionType_AuthenticationException);
-                authidentity = new AuthIdentity(newUser.UserId, newUser.UserNo, newUser.UserName, authidentity.PassWord);
-                System.Threading.Thread.CurrentPrincipal = new AuthPrincipal(authidentity) { Ticket = authprincipal.Ticket };
             }
             catch (Exception ex)
             {
-                System.Threading.Thread.CurrentPrincipal = null;
+                AuthPrincipal.CurrentAuthPrincipal = null;
                 throw ex;
             }
-        }
-        public void Login(string userNo, string userPassword)
-        {
-            AuthIdentity authidentity = new AuthIdentity(userNo, userPassword);
-            AuthPrincipal authprincipal = new AuthPrincipal(authidentity);
-            System.Threading.Thread.CurrentPrincipal = authprincipal;
-            GetAuthorizationTicket();
         }
     }
 }
