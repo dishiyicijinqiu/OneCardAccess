@@ -108,14 +108,27 @@ namespace FengSharp.OneCardAccess.Infrastructure.WinForm.Forms
         {
             this.OnSaveClick(null, null);
         }
-        //protected override bool ProcessDialogKey(Keys keyData)
-        //{
-        //    if (keyData == (Keys.Control | Keys.S))
-        //    {
-        //        this.OnSaveClick(null, null);
-        //    }
-        //    //return base.ProcessDialogKey(keyData);
-        //    return true;
-        //}
+        protected override void WndProc(ref Message msg)
+        {
+            try
+            {
+                switch (msg.Msg)
+                {
+                    case 0x020a://鼠标滚轮滚动
+                        if ((long)msg.WParam > 0)//向上滚动
+                            this.OnZoomInClick(null, null);//放大
+                        else
+                            this.OnZoomOutClick(null, null);//缩小
+                        break;
+                    default:
+                        base.WndProc(ref msg);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.MessageBoxEx.Error(ex);
+            }
+        }
     }
 }
