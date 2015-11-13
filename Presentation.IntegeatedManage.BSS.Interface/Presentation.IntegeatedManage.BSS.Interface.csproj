@@ -42,6 +42,7 @@
     <Compile Include="IMultProductSelect.cs" />
     <Compile Include="IPFBNSNRule.cs" />
     <Compile Include="IProductFBNInput.cs" />
+    <Compile Include="IProductSNInput.cs" />
     <Compile Include="ISingleDlyTypeSelect.cs" />
     <Compile Include="ISingleProductPriceSelect.cs" />
     <Compile Include="ISingleProductSelect.cs" />

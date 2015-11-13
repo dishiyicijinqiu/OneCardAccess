@@ -62,6 +62,10 @@
       <Project>{f9a88bfb-c15b-43a0-bd3f-64399ecd6d98}</Project>
       <Name>FengSharp.Tool</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Application.IntegeatedManageServer.Config\Application.IntegeatedManageServer.Config.csproj">
+      <Project>{a9138709-e23c-4467-a216-2109d5d67d37}</Project>
+      <Name>Application.IntegeatedManageServer.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.BSSModule.Entity\Domain.BSSModule.Entity.csproj">
       <Project>{a50ef991-4e13-40ac-8943-4c86360eb18a}</Project>
       <Name>Domain.BSSModule.Entity</Name>

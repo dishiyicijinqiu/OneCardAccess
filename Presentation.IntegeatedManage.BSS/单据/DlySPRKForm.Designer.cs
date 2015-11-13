@@ -90,11 +90,11 @@
             this.ItemForTotal = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForPrefer = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForAfterPreferTotal = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider(this.components);
             this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine(this.components);
-            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).BeginInit();
             this.baseDataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AfterPreferTotalTextEdit.Properties)).BeginInit();
@@ -144,8 +144,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPrefer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAfterPreferTotal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // baseDataLayoutControl1
@@ -431,6 +431,8 @@
             this.qtySNRepItemPopupContainerEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.qtySNRepItemPopupContainerEdit.Name = "qtySNRepItemPopupContainerEdit";
+            this.qtySNRepItemPopupContainerEdit.QueryResultValue += new DevExpress.XtraEditors.Controls.QueryResultValueEventHandler(this.qtySNRepItemPopupContainerEdit_QueryResultValue);
+            this.qtySNRepItemPopupContainerEdit.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.qtySNRepItemPopupContainerEdit_QueryPopUp);
             // 
             // btnClose
             // 
@@ -933,6 +935,7 @@
             this.mainFormMdiProvider1.SetEnableMainFormMdi(this, true);
             this.Name = "DlySPRKForm";
             this.Text = "商品入库单";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DlySPRKForm_FormClosing);
             this.Load += new System.EventHandler(this.DlySPRK_Load);
             ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).EndInit();
             this.baseDataLayoutControl1.ResumeLayout(false);
@@ -983,8 +986,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPrefer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAfterPreferTotal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -17,7 +17,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
             DlyNdxId = string.Empty;
             DlyDate = string.Empty;
             Remark = string.Empty;
-
+            JSRId = string.Empty;
         }
         /// <summary>
         /// 主键Id
@@ -43,7 +43,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// 经手人Id，员工Id
         /// </summary>
         [DataMember]
-        public int JSRId { get; set; }
+        public string JSRId { get; set; }
         /// <summary>
         /// 仓库Id
         /// </summary>

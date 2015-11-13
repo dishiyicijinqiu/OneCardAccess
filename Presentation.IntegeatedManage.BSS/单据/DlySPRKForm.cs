@@ -47,6 +47,10 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 qtyFBNRepItemPopupContainerEdit.PopupControl = qtyFBNPopupContainerControl;
 
 
+                var qtySNPopupContainerControl = ServiceLoader.LoadService<IProductSNInput>("ProductSNInput") as PopupContainerControl;
+                qtySNPopupContainerControl.Width = 500;
+                qtySNPopupContainerControl.Height = 600;
+                qtySNRepItemPopupContainerEdit.PopupControl = qtySNPopupContainerControl;
             }
             this.gridControl1.DataSource = this.bindingSource1;
         }
@@ -268,7 +272,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void gridView1_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
@@ -350,6 +354,90 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 MessageBoxEx.Error(ex);
             }
         }
+
+        private void qtySNRepItemPopupContainerEdit_QueryPopUp(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                var basePopupContainerEdit = sender as PopupContainerEdit;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductSNInput;
+                var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
+                if (row == null)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                int sortno = 0;
+                var sns = row.PSNBaks.Select(t => new SNInputEntity()
+                {
+                    BN = t.BN,
+                    SN = t.SN,
+                    SortNo = sortno++,
+                    Remark = t.Remark
+                }).ToArray();
+                singleSelect.BindData(sns);
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
+        }
+
+        private void qtySNRepItemPopupContainerEdit_QueryResultValue(object sender, DevExpress.XtraEditors.Controls.QueryResultValueEventArgs e)
+        {
+            try
+            {
+
+                var basePopupContainerEdit = sender as PopupContainerEdit;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductSNInput;
+                e.Value = singleSelect.Qty;
+                var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
+                row.PSNBaks.Clear();
+                row.PSNBaks.AddRange(singleSelect.EntityResults.Select(t => new PSNBakEntity()
+                {
+                    BN = t.BN,
+                    SN = t.SN,
+                    SortNo = t.SortNo,
+                    Remark = t.Remark
+                }));
+                row.BN = singleSelect.BN;
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
+        }
+
+        private void DlySPRKForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            try
+            {
+                DJ_Exit frm = new DJ_Exit();
+                var diaResult = frm.ShowDialogResultEx();
+                if (diaResult == DialogResultEx.存入草稿)
+                {
+                    var entity = this.bindbaseDataLayoutControl1.DataSource as SPRKDlyCGNdxEntity;
+                    this.Facade.SaveBak(entity);
+                    MessageBoxEx.Info(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.SaveSuccess);
+                }
+                else if (diaResult == DialogResultEx.保存单据)
+                {
+                    var entity = this.bindbaseDataLayoutControl1.DataSource as SPRKDlyCGNdxEntity;
+                    this.Facade.SaveDly(entity);
+                    MessageBoxEx.Info(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.SaveSuccess);
+                }
+                else if (diaResult == DialogResultEx.取消操作)
+                {
+                    e.Cancel = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                e.Cancel = true;
+                MessageBoxEx.Error(ex);
+            }
+        }
+
     }
     public class DlySPRKForm_Design : Base_Form<DlySPRKFormFacade>
     {
@@ -370,6 +458,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity;
                 entity.ZDRId = authidentity.UserId;
                 entity.ZDRName = authidentity.UserName;
+                entity.DlyTypeId = FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId;
                 //var dlybak = new PDlyBakFullNameEntity();
                 //dlybak.PFBNBaks.Add(new PFBNBakEntity());
                 //dlybak.PSNBaks.Add(new PSNBakEntity());
@@ -380,6 +469,17 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             {
 
             }
+        }
+
+        internal void SaveBak(SPRKDlyCGNdxEntity entity)
+        {
+            //验证操作
+            this._DlyNdxService.SaveSPRKBak(entity);
+        }
+
+        internal void SaveDly(SPRKDlyCGNdxEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

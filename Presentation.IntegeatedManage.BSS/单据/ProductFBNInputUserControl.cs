@@ -73,15 +73,15 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         public void BindData(FBNInputEntity[] entitys)
         {
-            ResetValue();
             this.bindingSource1.DataSource = new List<FBNInputEntity>(entitys);
             this.gridControl1.DataSource = bindingSource1;
         }
 
-        private void ResetValue()
+        internal void ResetValue()
         {
             this.txtFBN.EditValue = string.Empty;
             this.txtQty.EditValue = 1;
+            this.txtFBN.Focus();
         }
 
         private void txtQty_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -93,11 +93,19 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                     var data = this.bindingSource1.DataSource as List<FBNInputEntity>;
                     string strfbn = this.txtFBN.Text;
                     string strbn;
-                    if (!this.VerifyFBN(strfbn, out strbn))
+                    if (!this.Facade.VerifyFBN(strfbn, out strbn))
                     {
-                        MessageBoxEx.Info("录入批号有误");
+                        MessageBoxEx.Info("批号录入不符合规则");
                         this.txtFBN.Focus();
                         return;
+                    }
+                    if (data.Count > 0)
+                    {
+                        if (strbn != data[0].BN)
+                        {
+                            MessageBoxEx.Info("检测到不同的批号");
+                            return;
+                        }
                     }
                     var firstsamedata = data.FirstOrDefault(t => t.FullBN == strfbn);
                     if (firstsamedata == null)
@@ -127,7 +135,16 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 MessageBoxEx.Error(ex);
             }
         }
-        private bool VerifyFBN(string strfbn, out string strbn)
+    }
+    public class ProductFBNInputUserControl_Design : Base_UserControl<ProductFBNInputUserControlFacade>
+    {
+
+    }
+    public class ProductFBNInputUserControlFacade : ActualBase<ProductFBNInputUserControl>
+    {
+        public ProductFBNInputUserControlFacade(ProductFBNInputUserControl actual)
+            : base(actual) { }
+        internal bool VerifyFBN(string strfbn, out string strbn)
         {
             strbn = string.Empty;
             if (string.IsNullOrWhiteSpace(strfbn))
@@ -138,17 +155,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             strbn = strfbn.Substring(firstrule.BNStartPos - 1, (firstrule.BNEndPos - firstrule.BNStartPos + 1));
             return true;
         }
-
-    }
-    public class ProductFBNInputUserControl_Design : Base_UserControl<ProductFBNInputUserControlFacade>
-    {
-
-    }
-    public class ProductFBNInputUserControlFacade : ActualBase<ProductFBNInputUserControl>
-    {
-        public ProductFBNInputUserControlFacade(ProductFBNInputUserControl actual)
-            : base(actual) { }
-
     }
 
 }

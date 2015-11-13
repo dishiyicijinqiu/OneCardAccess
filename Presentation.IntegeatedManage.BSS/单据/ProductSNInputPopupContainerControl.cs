@@ -6,38 +6,13 @@ using System.Linq;
 
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
-    public class ProductFBNInputPopupContainerControl : PopupContainerControl, IProductFBNInput
+    public class ProductSNInputPopupContainerControl : PopupContainerControl, IProductSNInput
     {
-        private ProductFBNInputUserControl selectUserControl1;
-        public ProductFBNInputPopupContainerControl()
+        private ProductSNInputUserControl selectUserControl1;
+        public ProductSNInputPopupContainerControl()
         {
             InitializeComponent();
         }
-        private void InitializeComponent()
-        {
-            this.selectUserControl1 = new ProductFBNInputUserControl();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // selectUserControl1
-            // 
-            this.selectUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selectUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.selectUserControl1.Name = "selectUserControl1";
-            this.selectUserControl1.Size = new System.Drawing.Size(200, 100);
-            this.selectUserControl1.TabIndex = 0;
-            // 
-            // ProductFBNInputPopupContainerControl
-            // 
-            this.Controls.Add(this.selectUserControl1);
-            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
-            this.ResumeLayout(false);
-        }
-        public void BindData(FBNInputEntity[] entitys)
-        {
-            this.selectUserControl1.BindData(entitys);
-        }
-
         protected override RepositoryItemPopupContainerEdit OwnerItem
         {
             get
@@ -59,16 +34,40 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
             this.selectUserControl1.ResetValue();
         }
+        private void InitializeComponent()
+        {
+            this.selectUserControl1 = new ProductSNInputUserControl();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // selectUserControl1
+            // 
+            this.selectUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.selectUserControl1.Name = "selectUserControl1";
+            this.selectUserControl1.Size = new System.Drawing.Size(200, 100);
+            this.selectUserControl1.TabIndex = 0;
+            // 
+            // ProductSNInputPopupContainerControl
+            // 
+            this.Controls.Add(this.selectUserControl1);
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+        }
 
+        public void BindData(SNInputEntity[] entitys)
+        {
+            this.selectUserControl1.BindData(entitys);
+        }
 
-        public FBNInputEntity[] EntityResults
+        public SNInputEntity[] EntityResults
         {
             get { return this.selectUserControl1.EntityResults; }
         }
 
         public int Qty
         {
-            get { return this.selectUserControl1.EntityResults.Sum(t => t.Qty); }
+            get { return this.selectUserControl1.EntityResults.Length; }
         }
 
         public string BN

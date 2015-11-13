@@ -22,6 +22,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
             C_OrderNdxId = string.Empty;
             C_ProductOrderId = string.Empty;
             BN = string.Empty;
+            JSRId = string.Empty;
         }
         /// <summary>
         /// 主键Id
@@ -57,17 +58,12 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// 仓库Id1
         /// </summary>
         [DataMember]
-        public int StockId1 { get; set; }
-        /// <summary>
-        /// 仓库Id2
-        /// </summary>
-        [DataMember]
-        public int StockId2 { get; set; }
+        public int StockId { get; set; }
         /// <summary>
         /// 经手人Id，员工Id
         /// </summary>
         [DataMember]
-        public int JSRId { get; set; }
+        public string JSRId { get; set; }
         /// <summary>
         /// 批号
         /// </summary>

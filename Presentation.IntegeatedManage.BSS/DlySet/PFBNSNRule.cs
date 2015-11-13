@@ -33,7 +33,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             {
                 if (_PSNRuleEntitys == null)
                 {
-                    _PSNRuleEntitys = ServiceProxyFactory.Create<IPFBNSNRuleService>().GetPFBNSNRules().ToList().Where(t => !t.IsSNOrFBN).ToArray();
+                    _PSNRuleEntitys = ServiceProxyFactory.Create<IPFBNSNRuleService>().GetPFBNSNRules().ToList().Where(t => t.IsSNOrFBN).ToArray();
                 }
                 return _PSNRuleEntitys;
             }

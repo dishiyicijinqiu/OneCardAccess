@@ -43,7 +43,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// 经手人Id，员工Id
         /// </summary>
         [DataMember]
-        public int JSRId { get; set; }
+        public string JSRId { get; set; }
         /// <summary>
         /// 仓库Id
         /// </summary>

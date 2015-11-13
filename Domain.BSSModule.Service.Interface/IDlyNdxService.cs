@@ -9,5 +9,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
         string GetNewDlyNo(int DlyTypeId);
         [OperationContract]
         string GetDlyDate();
+        [OperationContract]
+        string SaveSPRKBak(SPRKDlyCGNdxEntity entity);
     }
 }

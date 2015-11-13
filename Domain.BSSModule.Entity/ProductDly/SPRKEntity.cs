@@ -70,39 +70,40 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// 合计数量
         /// </summary>
         [DataMember]
-        public decimal Qty
-        {
-            get
-            {
-                return PDlyBaks.Sum(t => t.Qty);
-            }
-        }
+        public decimal Qty { get; set; }
+        //{
+        //    get
+        //    {
+        //        return PDlyBaks.Sum(t => t.Qty);
+        //    }
+        //}
         /// <summary>
         /// 合计金额
         /// </summary>
         [DataMember]
-        public override decimal Total
-        {
-            get
-            {
-                return PDlyBaks.Sum(t => t.Total);
-            }
-        }
+        public override decimal Total { get; set; }
+        //{
+        //    get
+        //    {
+        //        return PDlyBaks.Sum(t => t.Total);
+        //    }
+        //}
         /// <summary>
         /// 优惠
         /// </summary>
         [DataMember]
         public decimal Prefer { get; set; }
+        //private decimal _AfterPreferTotal;
         /// <summary>
         /// 优惠后金额
         /// </summary>
         [DataMember]
-        public decimal AfterPreferTotal
-        {
-            get
-            {
-                return this.Total - this.Prefer;
-            }
-        }
+        public decimal AfterPreferTotal { get; set; }
+        //{
+        //    get
+        //    {
+        //        return this.Total - this.Prefer;
+        //    }
+        //}
     }
 }

@@ -37,6 +37,9 @@
             this.btnClear = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colBN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -77,7 +80,7 @@
             this.baseLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(576, 251, 681, 496);
             this.baseLayoutControl1.OptionsItemText.TextAlignMode = DevExpress.XtraLayout.TextAlignMode.AlignInGroups;
             this.baseLayoutControl1.Root = this.layoutControlGroup1;
-            this.baseLayoutControl1.Size = new System.Drawing.Size(597, 480);
+            this.baseLayoutControl1.Size = new System.Drawing.Size(512, 479);
             this.baseLayoutControl1.TabIndex = 0;
             this.baseLayoutControl1.Text = "baseLayoutControl1";
             // 
@@ -103,7 +106,7 @@
             // 
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnDelete.Location = new System.Drawing.Point(491, 448);
+            this.btnDelete.Location = new System.Drawing.Point(406, 447);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 26);
             this.btnDelete.StyleController = this.baseLayoutControl1;
@@ -115,7 +118,7 @@
             // 
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnClear.Location = new System.Drawing.Point(387, 448);
+            this.btnClear.Location = new System.Drawing.Point(302, 447);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 26);
             this.btnClear.StyleController = this.baseLayoutControl1;
@@ -128,7 +131,7 @@
             this.gridControl1.Location = new System.Drawing.Point(6, 30);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(585, 414);
+            this.gridControl1.Size = new System.Drawing.Size(500, 413);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -139,10 +142,13 @@
             this.gridView1.Appearance.EvenRow.Options.UseBackColor = true;
             this.gridView1.Appearance.OddRow.BackColor = System.Drawing.Color.White;
             this.gridView1.Appearance.OddRow.Options.UseBackColor = true;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colBN,
+            this.colSN,
+            this.colRemark});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.IndicatorWidth = 40;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsCustomization.AllowFilter = false;
             this.gridView1.OptionsCustomization.AllowQuickHideColumns = false;
             this.gridView1.OptionsDetail.EnableMasterViewMode = false;
@@ -159,6 +165,35 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView_ShowLine1.SetShowLineNo(this.gridView1, true);
             // 
+            // colBN
+            // 
+            this.colBN.Caption = "批号";
+            this.colBN.FieldName = "BN";
+            this.colBN.Name = "colBN";
+            this.colBN.OptionsColumn.AllowEdit = false;
+            this.colBN.Visible = true;
+            this.colBN.VisibleIndex = 0;
+            this.colBN.Width = 71;
+            // 
+            // colSN
+            // 
+            this.colSN.Caption = "序列号";
+            this.colSN.FieldName = "SN";
+            this.colSN.Name = "colSN";
+            this.colSN.OptionsColumn.AllowEdit = false;
+            this.colSN.Visible = true;
+            this.colSN.VisibleIndex = 1;
+            this.colSN.Width = 229;
+            // 
+            // colRemark
+            // 
+            this.colRemark.Caption = "备注";
+            this.colRemark.FieldName = "Remark";
+            this.colRemark.Name = "colRemark";
+            this.colRemark.Visible = true;
+            this.colRemark.VisibleIndex = 2;
+            this.colRemark.Width = 100;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -173,7 +208,7 @@
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(597, 480);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(512, 479);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -181,14 +216,14 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(589, 418);
+            this.layoutControlItem1.Size = new System.Drawing.Size(504, 417);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnClear;
-            this.layoutControlItem3.Location = new System.Drawing.Point(381, 442);
+            this.layoutControlItem3.Location = new System.Drawing.Point(296, 441);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -200,7 +235,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnDelete;
-            this.layoutControlItem2.Location = new System.Drawing.Point(485, 442);
+            this.layoutControlItem2.Location = new System.Drawing.Point(400, 441);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem2.Name = "layoutControlItem2";
@@ -212,9 +247,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 442);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 441);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(381, 30);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(296, 30);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // ItemForStart
@@ -246,7 +281,7 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(452, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(137, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(52, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // ProductSNInputUserControl
@@ -255,7 +290,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.baseLayoutControl1);
             this.Name = "ProductSNInputUserControl";
-            this.Size = new System.Drawing.Size(597, 480);
+            this.Size = new System.Drawing.Size(512, 479);
             this.Load += new System.EventHandler(this.ProductSNInputUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.baseLayoutControl1)).EndInit();
             this.baseLayoutControl1.ResumeLayout(false);
@@ -295,5 +330,8 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForEnd;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private DevExpress.XtraGrid.Columns.GridColumn colBN;
+        private DevExpress.XtraGrid.Columns.GridColumn colSN;
+        private DevExpress.XtraGrid.Columns.GridColumn colRemark;
     }
 }

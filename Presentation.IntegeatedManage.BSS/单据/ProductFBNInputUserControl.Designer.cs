@@ -162,7 +162,6 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.IndicatorWidth = 40;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsCustomization.AllowFilter = false;
             this.gridView1.OptionsCustomization.AllowQuickHideColumns = false;
             this.gridView1.OptionsDetail.EnableMasterViewMode = false;
@@ -184,6 +183,7 @@
             this.colBN.Caption = "批号";
             this.colBN.FieldName = "BN";
             this.colBN.Name = "colBN";
+            this.colBN.OptionsColumn.AllowEdit = false;
             this.colBN.Visible = true;
             this.colBN.VisibleIndex = 0;
             this.colBN.Width = 87;
@@ -193,6 +193,7 @@
             this.colFullBN.Caption = "完整批号";
             this.colFullBN.FieldName = "FullBN";
             this.colFullBN.Name = "colFullBN";
+            this.colFullBN.OptionsColumn.AllowEdit = false;
             this.colFullBN.Visible = true;
             this.colFullBN.VisibleIndex = 1;
             this.colFullBN.Width = 158;
