@@ -187,3 +187,5 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/Application.IntegeatedManageServer/Attachment/ProductImage
+/Application.IntegeatedManageServer/Attachment/ProductThumbnailImage
