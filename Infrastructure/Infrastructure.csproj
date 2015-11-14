@@ -60,6 +60,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationContext\ApplicationContext.cs" />
+    <Compile Include="ApplicationContext\ApplicationContextBehavior.cs" />
+    <Compile Include="ApplicationContext\ApplicationContextBehaviorAttribute.cs" />
+    <Compile Include="ApplicationContext\ApplicationContextBehaviorElement.cs" />
+    <Compile Include="ApplicationContext\ApplicationContextCallContextInitializer.cs" />
+    <Compile Include="ApplicationContext\ApplicationContextClientMessageInspector.cs" />
     <Compile Include="AuthPrincipal.cs" />
     <Compile Include="Base\IFacadeBase.cs" />
     <Compile Include="Base\FacadeBase.cs" />
@@ -94,15 +101,6 @@
     <Compile Include="ServiceProxy Factory\ChannelCreator.cs" />
     <Compile Include="ServiceProxy Factory\ServiceProxyFactory.cs" />
     <Compile Include="ServiceProxy Factory\ServiceRealProxy.cs" />
-    <Compile Include="Session Policy\NoSessionAttribute.cs" />
-    <Compile Include="Session Policy\SessionClientBehavior.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Session Policy\SessionClientBehaviorElement.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Session Policy\SessionClientMessageInspector.cs" />
-    <Compile Include="Session Policy\SessionMessageHeaderInfo.cs" />
     <Compile Include="TreeLevel.cs" />
   </ItemGroup>
   <ItemGroup>

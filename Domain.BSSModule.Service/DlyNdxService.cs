@@ -34,6 +34,11 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             return DateTime.Now.ToString("yyyy-MM-dd");
         }
 
+        public DlyNdxFullNameEntity[] GetCGList()
+        {
+            var dt = base.GetSQList("dlycg", string.Empty);
+            return DlyNdxService.DataTableToDlyNdxFullNameEntity(dt);
+        }
 
         public string SaveSPRKBak(SPRKDlyCGNdxEntity entity)
         {
@@ -120,6 +125,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             });
             return dlyNdxId;
         }
+
         #region 实体转DbCommand
 
         public static DbCommand GetCreatePreferBakCommand(Database database, DlyNdxEntity entity, decimal prefer)
@@ -262,6 +268,89 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             database.AddInParameter(cmd, "LXFS", DbType.String, entity.LXFS);
             #endregion
             return cmd;
+        }
+        #endregion
+
+        #region 实体转换
+        public static DlyNdxFullNameEntity[] DataTableToDlyNdxFullNameEntity(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new DlyNdxFullNameEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToDlyNdxFullNameEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+        public static DlyNdxFullNameEntity DataRowToDlyNdxFullNameEntity(DataRow dataRow)
+        {
+            if (dataRow == null)
+                return null;
+            var result = new DlyNdxFullNameEntity();
+            var entity = DataRowToEntity(dataRow);
+            FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, entity);
+            result.CompanyNo = dataRow["CompanyNo"].ToString();
+            result.CompanyName = dataRow["CompanyName"].ToString();
+            result.JSRName = dataRow["JSRName"].ToString();
+            result.StockNo1 = dataRow["StockNo1"].ToString();
+            result.StockName1 = dataRow["StockName1"].ToString();
+            result.StockNo2 = dataRow["StockNo2"].ToString();
+            result.StockName2 = dataRow["StockName2"].ToString();
+            result.ZDRName = dataRow["ZDRName"].ToString();
+            result.SHRName1 = dataRow["SHRName1"].ToString();
+            result.SHRName2 = dataRow["SHRName2"].ToString();
+            result.SHRName3 = dataRow["SHRName3"].ToString();
+            result.SHRName4 = dataRow["SHRName4"].ToString();
+            result.SHRName5 = dataRow["SHRName5"].ToString();
+            return result;
+        }
+        public static DlyNdxEntity[] DataTableToEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new DlyNdxEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DataRowToEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+        public static DlyNdxEntity DataRowToEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new DlyNdxEntity()
+            {
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                DlyNo = (string)(row["DlyNo"]),
+                DlyTypeId = (int)(row["DlyTypeId"]),
+                DlyDate = (string)(row["DlyDate"]),
+                CompanyId = (int)(row["CompanyId"]),
+                JSRId = (string)(row["JSRId"]),
+                StockId1 = (int)(row["StockId1"]),
+                StockId2 = (int)(row["StockId2"]),
+                Draft = (short)(row["Draft"]),
+                Summary = (string)(row["Summary"]),
+                Comment = (string)(row["Comment"]),
+                ZDRId = (string)(row["ZDRId"]),
+                SHRId1 = (string)(row["SHRId1"]),
+                SHRId2 = (string)(row["SHRId2"]),
+                SHRId3 = (string)(row["SHRId3"]),
+                SHRId4 = (string)(row["SHRId4"]),
+                SHRId5 = (string)(row["SHRId5"]),
+                IsInvoce = (bool)(row["IsInvoce"]),
+                Total = (decimal)(row["Total"]),
+                QGNo = (string)(row["QGNo"]),
+                QGDate = (string)(row["QGDate"]),
+                QGR = (string)(row["QGR"]),
+                YDJNo = (string)(row["YDJNo"]),
+                BuyDate = (string)(row["BuyDate"]),
+                Buyer = (string)(row["Buyer"]),
+                LXR = (string)(row["LXR"]),
+                LXFS = (string)(row["LXFS"]),
+            };
+            return result;
         }
         #endregion
     }

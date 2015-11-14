@@ -25,7 +25,7 @@ namespace FengSharp.OneCardAccess.Infrastructure.WinForm.Components
         }
 
         [Category("扩展")]
-        [Description("是否将mdi设置为MainForm。")]
+        [Description("是否将mdi设置为MainForm。"), DefaultValue(false)]
         public bool GetEnableMainFormMdi(Form form)
         {
             if (FormList.ContainsKey(form))

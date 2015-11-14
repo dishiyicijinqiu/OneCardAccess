@@ -11,5 +11,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
         string GetDlyDate();
         [OperationContract]
         string SaveSPRKBak(SPRKDlyCGNdxEntity entity);
+        [OperationContract]
+        DlyNdxFullNameEntity[] GetCGList();
     }
 }

@@ -88,6 +88,14 @@ namespace FengSharp.OneCardAccess.Infrastructure.Services
             return Database.ExecuteDataTable(cmd);
         }
 
+        public virtual DataTable GetSQList(string cMode, string UserId)
+        {
+            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetSQList");
+            Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
+            Database.AddInParameter(cmd, "UserId", DbType.String, UserId);
+            return Database.ExecuteDataTable(cmd);
+        }
+
         public virtual DataTable GetChildList(string cMode, string PId)
         {
             DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetChildList;1");

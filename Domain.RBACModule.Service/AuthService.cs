@@ -17,8 +17,34 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
 {
     public class AuthService : ServiceBase, IAuthService
     {
+        private static int _SessionTimeOutMinutes = -1;
+        static int SessionTimeOutMinutes
+        {
+            get
+            {
+                if (_SessionTimeOutMinutes == -1)
+                {
+                    _SessionTimeOutMinutes = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["SessionTimeOutMinutes"]);
+                }
+                return _SessionTimeOutMinutes;
+            }
+        }
+        private static string _SessionCacheName;
+        static string SessionCacheName
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_SessionCacheName))
+                {
+                    _SessionCacheName = System.Configuration.ConfigurationManager.AppSettings["SessionCacheName"];
+                }
+                return _SessionCacheName;
+            }
+        }
+        [ApplicationContextBehavior(false, false)]
         public AuthPrincipal GetAuthPrincipal(string UserNo, string UserPassWord)
         {
+            //ApplicationContext.Current 
             //对密码进行加密
             UserPassWord = FengSharp.OneCardAccess.Infrastructure.SecurityCryptography.SecurityProvider.MD5Encrypt(UserPassWord);
             DbCommand cmd = base.Database.GetStoredProcCommand("P_AuthPrincipal");
@@ -37,7 +63,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2, Identity.UserId, DateTime.Now, DateTime.Now.AddDays(10), true, string.Empty);
             // 加密用户身份验证票
             string encryptedTicket = FormsAuthentication.Encrypt(ticket);
-            CacheProvider.Add(encryptedTicket, ticket, TimeSpan.FromMinutes(ApplicationConfig.SessionTimeOutMinutes), cacheManagerName: ApplicationConfig.SessionCacheName);
+            CacheProvider.Add(encryptedTicket, ticket, TimeSpan.FromMinutes(SessionTimeOutMinutes), cacheManagerName: SessionCacheName);
             return new AuthPrincipal(Identity, encryptedTicket);
         }
 

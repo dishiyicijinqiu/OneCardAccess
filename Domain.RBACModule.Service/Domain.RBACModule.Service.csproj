@@ -39,6 +39,7 @@
       <HintPath>..\ReferenceLib\DLL\Microsoft Enterprise Library 5.0\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />

@@ -1,14 +1,10 @@
-﻿using FengSharp.OneCardAccess.Application.IntegeatedManageServer.Config;
-using FengSharp.OneCardAccess.Domain.RBACModule.Entity;
+﻿using FengSharp.OneCardAccess.Domain.RBACModule.Entity;
 using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
 using FengSharp.OneCardAccess.Infrastructure;
-using FengSharp.OneCardAccess.Infrastructure.Caching_Handling;
 using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using FengSharp.OneCardAccess.Infrastructure.Services;
 using System.Data;
 using System.Data.Common;
-using System.Data.SqlClient;
-using System.Web.Security;
 using System.Linq;
 
 namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
@@ -17,10 +13,9 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
     {
         public UserEntity FindUserByTicket(string ticketstring)
         {
-            FormsAuthenticationTicket ticket = CacheProvider.Get<FormsAuthenticationTicket>(ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
-            if (ticket == null)
+            if (ApplicationContext.Current == null)
                 return null;
-            return ServiceLoader.LoadService<IUserService>().FindUserById(ticket.Name);
+            return ServiceLoader.LoadService<IUserService>().FindUserById(ApplicationContext.Current.Ticket);
         }
         public void ChangePassword(string ticket, string oldPassword, string newPassword)
         {

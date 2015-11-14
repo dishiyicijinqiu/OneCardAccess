@@ -84,14 +84,6 @@
     </Compile>
     <Compile Include="ServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Session Policy\SessionServerBehavior.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Session Policy\SessionServerBehaviorElement.cs" />
-    <Compile Include="Session Policy\SessionCallContextInitializer.cs" />
-    <Compile Include="Session Policy\SessionMessageHeaderInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Unity Injection\UnityBehaviorAttribute.cs" />
     <Compile Include="Unity Injection\UnityBehaviorElement.cs" />
     <Compile Include="Unity Injection\UnityInstanceProvider.cs" />

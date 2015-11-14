@@ -121,9 +121,9 @@ namespace FengSharp.OneCardAccess.Infrastructure.WinForm.Forms
                             this.OnZoomOutClick(null, null);//缩小
                         break;
                     default:
-                        base.WndProc(ref msg);
                         break;
                 }
+                base.WndProc(ref msg);
             }
             catch (Exception ex)
             {
