@@ -41,19 +41,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
                 return _SessionCacheName;
             }
         }
-        public void Login(string UserNo, string UserPassWord)
-        {
-            try
-            {
-                ApplicationContext.Current.AuthPrincipal = GetAuthPrincipal(UserNo, UserPassWord);
-            }
-            catch (Exception ex)
-            {
-                ApplicationContext.Current.AuthPrincipal = null;
-                throw ex;
-            }
-        }
-        private AuthPrincipal GetAuthPrincipal(string UserNo, string UserPassWord)
+        public AuthPrincipal GetAuthPrincipal(string UserNo, string UserPassWord)
         {
             //ApplicationContext.Current 
             //对密码进行加密
@@ -75,7 +63,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
             // 加密用户身份验证票
             string encryptedTicket = FormsAuthentication.Encrypt(ticket);
             CacheProvider.Add(encryptedTicket, ticket, TimeSpan.FromMinutes(SessionTimeOutMinutes), cacheManagerName: SessionCacheName);
-            return new AuthPrincipal(Identity, encryptedTicket);
+            return new AuthPrincipal(Identity);
         }
 
 

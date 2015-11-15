@@ -8,6 +8,6 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface
     {
         [OperationContract]
         [ApplicationContextBehavior(true, false)]
-        void Login(string UserNo, string UserPassWord);
+        AuthPrincipal GetAuthPrincipal(string UserNo, string UserPassWord);
     }
 }

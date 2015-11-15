@@ -131,7 +131,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
             base.UseTran((tran) =>
             {
                 DbCommand cmd = base.Database.GetStoredProcCommand("P_IsSuper");
-                base.Database.AddInParameter(cmd, "UserId", DbType.String, ApplicationContext.Current.AuthPrincipal.Identity.UserId);
+                base.Database.AddInParameter(cmd, "UserId", DbType.String, AuthPrincipal.CurrentAuthPrincipal.Identity.UserId);
                 base.Database.AddOutParameter(cmd, "IsSuper", DbType.Boolean, 1);
                 base.Database.ExecuteNonQuery(cmd, tran);
                 result = (bool)base.Database.GetParameterValue(cmd, "IsSuper");

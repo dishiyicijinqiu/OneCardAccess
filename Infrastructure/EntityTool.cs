@@ -12,7 +12,7 @@ namespace FengSharp.OneCardAccess.Infrastructure
         static Dictionary<string, Func<object>> dicCreateAndModifyFields = new Dictionary<string, Func<object>>();
         private static void CreateDicCreateAndModifyFields()
         {
-            AuthIdentity authidentity = ApplicationContext.Current.AuthPrincipal.Identity as AuthIdentity;
+            AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity as AuthIdentity;
             lock (dicCreateAndModifyFields)
             {
                 if (!dicCreateAndModifyFields.ContainsKey("LastModifyId"))
@@ -49,7 +49,7 @@ namespace FengSharp.OneCardAccess.Infrastructure
         }
         private static void CreateDicModifyFields()
         {
-            AuthIdentity authidentity = ApplicationContext.Current.AuthPrincipal.Identity as AuthIdentity;
+            AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity as AuthIdentity;
             lock (dicModifyFields)
             {
                 if (!dicModifyFields.ContainsKey("LastModifyId"))

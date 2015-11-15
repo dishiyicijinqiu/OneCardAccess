@@ -53,10 +53,10 @@ namespace FengSharp.OneCardAccess.Infrastructure
             }
             if (this.SessionCheck)
             {
-                var ticket = CacheProvider.Get<FormsAuthenticationTicket>(context.AuthPrincipal.Ticket, cacheManagerName: SessionCacheName);
+                var ticket = CacheProvider.Get<FormsAuthenticationTicket>(context.Ticket, cacheManagerName: SessionCacheName);
                 if (ticket == null || ticket.Expired)
                     throw new LoginTimeOutException();
-                CacheProvider.Add(context.AuthPrincipal.Ticket, ticket, TimeSpan.FromMinutes(SessionTimeOutMinutes), cacheManagerName: SessionCacheName);
+                CacheProvider.Add(context.Ticket, ticket, TimeSpan.FromMinutes(SessionTimeOutMinutes), cacheManagerName: SessionCacheName);
             }
             ApplicationContext.Current = context;
             return ApplicationContext.Current;

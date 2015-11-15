@@ -86,7 +86,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 
         public void Login(string userNo, string userPassword)
         {
-            iauth.Login(userNo, userPassword);
+            iauth.GetAuthPrincipal(userNo, userPassword);
         }
     }
 }
