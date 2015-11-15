@@ -11,13 +11,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
 {
     public class AccessService : ServiceBase, IAccessService
     {
-        public UserEntity FindUserByTicket(string ticketstring)
-        {
-            if (ApplicationContext.Current == null)
-                return null;
-            return ServiceLoader.LoadService<IUserService>().FindUserById(ApplicationContext.Current.Ticket);
-        }
-        public void ChangePassword(string ticket, string oldPassword, string newPassword)
+        public void ChangePassword(string oldPassword, string newPassword)
         {
             throw new System.NotImplementedException();
         }
@@ -131,16 +125,13 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
                 });
             });
         }
-        public bool IsSuper(string ticket)
+        public bool IsSuper()
         {
-            var entity = this.FindUserByTicket(ticket);
-            if (entity == null)
-                return false;
             bool result = false;
             base.UseTran((tran) =>
             {
                 DbCommand cmd = base.Database.GetStoredProcCommand("P_IsSuper");
-                base.Database.AddInParameter(cmd, "UserId", DbType.String, entity.UserId);
+                base.Database.AddInParameter(cmd, "UserId", DbType.String, ApplicationContext.Current.AuthPrincipal.Identity.UserId);
                 base.Database.AddOutParameter(cmd, "IsSuper", DbType.Boolean, 1);
                 base.Database.ExecuteNonQuery(cmd, tran);
                 result = (bool)base.Database.GetParameterValue(cmd, "IsSuper");

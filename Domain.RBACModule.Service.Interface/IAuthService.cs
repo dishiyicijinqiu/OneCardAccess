@@ -7,6 +7,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface
     public interface IAuthService
     {
         [OperationContract]
-        AuthPrincipal GetAuthPrincipal(string UserNo, string UserPassWord);
+        [ApplicationContextBehavior(true, false)]
+        void Login(string UserNo, string UserPassWord);
     }
 }

@@ -78,23 +78,13 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.DevelopClient
 
     public class LoginFormFacade : ActualBase<LoginForm_Design>
     {
+        IAuthService iauth = ServiceProxyFactory.Create<IAuthService>();
         public LoginFormFacade(LoginForm_Design actual)
             : base(actual)
         { }
         public void Login(string userNo, string userPassword)
         {
-            try
-            {
-                IAuthService iauth = ServiceProxyFactory.Create<IAuthService>();
-                AuthPrincipal.CurrentAuthPrincipal = iauth.GetAuthPrincipal(userNo, userPassword);
-                if (AuthPrincipal.CurrentAuthPrincipal == null || string.IsNullOrWhiteSpace(AuthPrincipal.CurrentAuthPrincipal.Ticket))
-                    throw new BusinessException(ResourceMessages.WCFExceptionType_AuthenticationException);
-            }
-            catch (Exception ex)
-            {
-                AuthPrincipal.CurrentAuthPrincipal = null;
-                throw ex;
-            }
+            iauth.Login(userNo, userPassword);
         }
     }
 }

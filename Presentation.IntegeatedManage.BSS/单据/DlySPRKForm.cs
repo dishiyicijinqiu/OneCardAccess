@@ -455,7 +455,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 var entity = new SPRKDlyCGNdxEntity();
                 entity.DlyNo = _DlyNdxService.GetNewDlyNo(FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId);
                 entity.DlyDate = _DlyNdxService.GetDlyDate();
-                AuthIdentity authidentity = AuthPrincipal.CurrentAuthPrincipal.Identity;
+                AuthIdentity authidentity = FengSharp.OneCardAccess.Infrastructure.ApplicationContext.Current.AuthPrincipal.Identity;
                 entity.ZDRId = authidentity.UserId;
                 entity.ZDRName = authidentity.UserName;
                 entity.DlyTypeId = FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId;

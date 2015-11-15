@@ -41,8 +41,19 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
                 return _SessionCacheName;
             }
         }
-        [ApplicationContextBehavior(false, false)]
-        public AuthPrincipal GetAuthPrincipal(string UserNo, string UserPassWord)
+        public void Login(string UserNo, string UserPassWord)
+        {
+            try
+            {
+                ApplicationContext.Current.AuthPrincipal = GetAuthPrincipal(UserNo, UserPassWord);
+            }
+            catch (Exception ex)
+            {
+                ApplicationContext.Current.AuthPrincipal = null;
+                throw ex;
+            }
+        }
+        private AuthPrincipal GetAuthPrincipal(string UserNo, string UserPassWord)
         {
             //ApplicationContext.Current 
             //对密码进行加密

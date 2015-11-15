@@ -23,7 +23,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
         {
             try
             {
-                if (!ServiceProxyFactory.Create<IAccessService>().IsSuper(AuthPrincipal.CurrentAuthPrincipal.Ticket))
+                if (!ServiceProxyFactory.Create<IAccessService>().IsSuper())
                     throw new BusinessException("只要超级管理员才可操作");
                 this.Facade = new RoleManageFormFacade(this);
                 this.Facade.BindData();

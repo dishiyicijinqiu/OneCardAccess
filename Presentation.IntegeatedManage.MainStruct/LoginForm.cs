@@ -1,8 +1,6 @@
-﻿using FengSharp.OneCardAccess.Domain.RBACModule.Entity;
-using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
+﻿using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
 using FengSharp.OneCardAccess.Infrastructure;
 using FengSharp.OneCardAccess.Infrastructure.Base;
-using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Base;
 using FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct.Interface;
 using System;
@@ -19,6 +17,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 
         private void Login_Load(object sender, EventArgs e)
         {
+            //ServiceProxyFactory.Create<IMenuService>().GetAllEntity();
             this.Facade = new LoginFormFacade(this);
         }
 
@@ -80,24 +79,14 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 
     public class LoginFormFacade : ActualBase<LoginForm>
     {
+        IAuthService iauth = ServiceProxyFactory.Create<IAuthService>();
         public LoginFormFacade(LoginForm actual)
             : base(actual)
         { }
 
         public void Login(string userNo, string userPassword)
         {
-            try
-            {
-                IAuthService iauth = ServiceProxyFactory.Create<IAuthService>();
-                AuthPrincipal.CurrentAuthPrincipal = iauth.GetAuthPrincipal(userNo, userPassword);
-                if (AuthPrincipal.CurrentAuthPrincipal == null || string.IsNullOrWhiteSpace(AuthPrincipal.CurrentAuthPrincipal.Ticket))
-                    throw new BusinessException(ResourceMessages.WCFExceptionType_AuthenticationException);
-            }
-            catch (Exception ex)
-            {
-                AuthPrincipal.CurrentAuthPrincipal = null;
-                throw ex;
-            }
+            iauth.Login(userNo, userPassword);
         }
     }
 }

@@ -51,13 +51,12 @@ namespace FengSharp.OneCardAccess.Infrastructure
                     throw new BusinessException("服务设置为会话检测，但当前上下文不可用");
                 return null;
             }
-            //context.Ticket
             if (this.SessionCheck)
             {
-                //var ticket = CacheProvider.Get<FormsAuthenticationTicket>(context.Ticket, cacheManagerName: SessionCacheName);
-                //if (ticket == null || ticket.Expired)
-                //    throw new LoginTimeOutException();
-                //CacheProvider.Add(context.Ticket, ticket, TimeSpan.FromMinutes(SessionTimeOutMinutes), cacheManagerName: SessionCacheName);
+                var ticket = CacheProvider.Get<FormsAuthenticationTicket>(context.AuthPrincipal.Ticket, cacheManagerName: SessionCacheName);
+                if (ticket == null || ticket.Expired)
+                    throw new LoginTimeOutException();
+                CacheProvider.Add(context.AuthPrincipal.Ticket, ticket, TimeSpan.FromMinutes(SessionTimeOutMinutes), cacheManagerName: SessionCacheName);
             }
             ApplicationContext.Current = context;
             return ApplicationContext.Current;

@@ -69,7 +69,6 @@ namespace FengSharp.OneCardAccess.Infrastructure
                     methodReturn = new ReturnMessage(ex, methodCall);
                 }
             }
-
             return methodReturn;
         }
     }

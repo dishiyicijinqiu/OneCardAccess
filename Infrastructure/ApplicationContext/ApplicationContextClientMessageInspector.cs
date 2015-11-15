@@ -6,17 +6,30 @@ namespace FengSharp.OneCardAccess.Infrastructure
 {
     public class ApplicationContextClientMessageInspector : IClientMessageInspector
     {
-        public bool IsBidirectional
-        { get; set; }
+        //public bool IsBidirectional
+        //{ get; set; }
 
-      
+        public bool _IsBidirectional;
+        public bool IsBidirectional
+        {
+            get
+            {
+                return _IsBidirectional;
+            }
+            set
+            {
+                _IsBidirectional = value;
+            }
+        }
+
+
         public ApplicationContextClientMessageInspector()
             : this(false)
         { }
 
         public ApplicationContextClientMessageInspector(bool isBidirectional)
         {
-            this.IsBidirectional = IsBidirectional;
+            this.IsBidirectional = isBidirectional;
         }
 
         public void AfterReceiveReply(ref System.ServiceModel.Channels.Message reply, object correlationState)

@@ -74,7 +74,7 @@
     <Compile Include="ApplicationContext\ApplicationContextBehaviorElement.cs" />
     <Compile Include="ApplicationContext\ApplicationContextCallContextInitializer.cs" />
     <Compile Include="ApplicationContext\ApplicationContextClientMessageInspector.cs" />
-    <Compile Include="AuthPrincipal.cs" />
+    <Compile Include="ApplicationContext\AuthPrincipal.cs" />
     <Compile Include="Base\IFacadeBase.cs" />
     <Compile Include="Base\FacadeBase.cs" />
     <Compile Include="Base\ViewType.cs" />

@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
+using System.Runtime.Serialization;
 
 namespace FengSharp.OneCardAccess.Infrastructure
 {
+    //[KnownType(typeof(AuthPrincipal))]
+    //[KnownType(typeof(AuthIdentity))]
+    //[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
     [Serializable]
     public class ApplicationContext : Dictionary<string, object>
     {
@@ -21,7 +25,7 @@ namespace FengSharp.OneCardAccess.Infrastructure
                 throw new ArgumentException(string.Format("The argument of the type \"{0}\" is not serializable!", value.GetType().FullName));
             }
         }
-
+        //[DataMember]
         public new object this[string key]
         {
             get
@@ -34,15 +38,17 @@ namespace FengSharp.OneCardAccess.Infrastructure
                 base[key] = value;
             }
         }
-        public string Ticket
+        //[DataMember] 
+        //[Serializable]
+        public AuthPrincipal AuthPrincipal
         {
             get
             {
-                return (string)this["__Ticket"];
+                return (AuthPrincipal)this["__AuthPrincipal"];
             }
             set
             {
-                this["__Ticket"] = value;
+                this["__AuthPrincipal"] = value;
             }
         }
         public static ApplicationContext Current
@@ -60,6 +66,6 @@ namespace FengSharp.OneCardAccess.Infrastructure
             {
                 CallContext.SetData(CallContextKey, value);
             }
-        }     
+        }
     }
 }

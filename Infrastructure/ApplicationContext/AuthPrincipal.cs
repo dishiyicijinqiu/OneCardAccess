@@ -1,19 +1,20 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace FengSharp.OneCardAccess.Infrastructure
 {
-    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    [Serializable]
+    //[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
     public class AuthPrincipal
     {
-        public static AuthPrincipal CurrentAuthPrincipal { get; set; }
-        [DataMember]
-        public string Ticket
+        //[DataMember]
+        public AuthIdentity Identity
         {
             get;
             private set;
         }
-        [DataMember]
-        public AuthIdentity Identity
+        //[DataMember]
+        public string Ticket
         {
             get;
             private set;
@@ -24,7 +25,8 @@ namespace FengSharp.OneCardAccess.Infrastructure
             this.Ticket = ticket;
         }
     }
-    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    [Serializable]
+    //[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
     public class AuthIdentity
     {
         public AuthIdentity(string userno, string password)
@@ -40,13 +42,13 @@ namespace FengSharp.OneCardAccess.Infrastructure
             this.PassWord = password;
         }
 
-        [DataMember]
+        //[DataMember]
         public string UserId { get; private set; }
-        [DataMember]
+        //[DataMember]
         public string UserNo { get; private set; }
-        [DataMember]
+        //[DataMember]
         public string UserName { get; private set; }
-        [DataMember]
+        //[DataMember]
         public string PassWord { get; private set; }
     }
 }

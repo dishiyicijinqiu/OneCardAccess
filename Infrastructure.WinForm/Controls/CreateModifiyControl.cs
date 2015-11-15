@@ -59,7 +59,8 @@ namespace FengSharp.OneCardAccess.Infrastructure.WinForm.Controls
         {
             get
             {
-                return AuthPrincipal.CurrentAuthPrincipal.Identity.UserId;
+                //return AuthPrincipal.CurrentAuthPrincipal.Identity.UserId;
+                return ApplicationContext.Current.AuthPrincipal.Identity.UserId;
             }
         }
         public DateTime CurrentDateTime

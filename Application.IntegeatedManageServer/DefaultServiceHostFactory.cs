@@ -8,7 +8,18 @@ namespace FengSharp.OneCardAccess.Application.IntegeatedManageServer
     {
         protected override ServiceHost CreateServiceHost(Type serviceType, Uri[] baseAddresses)
         {
-            return new ServiceHost(serviceType, baseAddresses);
+            var host = new ServiceHost(serviceType, baseAddresses);
+            host.Closed += host_Closed;
+            host.Faulted += host_Faulted;
+            return host;
+        }
+
+        void host_Faulted(object sender, EventArgs e)
+        {
+        }
+
+        void host_Closed(object sender, EventArgs e)
+        {
         }
     }
 }

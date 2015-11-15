@@ -29,11 +29,14 @@ namespace FengSharp.OneCardAccess.Infrastructure
 
         public void ApplyClientBehavior(OperationDescription operationDescription, ClientOperation clientOperation)
         {
+            clientOperation.Parent.MessageInspectors.Add(new ApplicationContextClientMessageInspector(this.IsBidirectional));
+            //clientOperation.ParameterInspectors.Add(null);
         }
 
         public void ApplyDispatchBehavior(OperationDescription operationDescription, DispatchOperation dispatchOperation)
         {
             dispatchOperation.CallContextInitializers.Add(new ApplicationContextCallContextInitializer(this.IsBidirectional, this.SessionCheck));
+            //dispatchOperation.ParameterInspectors.Add(null);
         }
 
         public void Validate(OperationDescription operationDescription)
