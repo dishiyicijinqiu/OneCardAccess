@@ -41,10 +41,8 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
                 return _SessionCacheName;
             }
         }
-        public AuthPrincipal GetAuthPrincipal(string UserNo, string UserPassWord)
+        public AuthPrincipal Login(string UserNo, string UserPassWord)
         {
-            //ApplicationContext.Current 
-            //对密码进行加密
             UserPassWord = FengSharp.OneCardAccess.Infrastructure.SecurityCryptography.SecurityProvider.MD5Encrypt(UserPassWord);
             DbCommand cmd = base.Database.GetStoredProcCommand("P_AuthPrincipal");
             base.Database.AddInParameter(cmd, "UserNo", DbType.String, UserNo);
@@ -52,18 +50,15 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
             base.Database.AddOutParameter(cmd, "UserId", DbType.String, 36);
             base.Database.AddOutParameter(cmd, "UserName", DbType.String, 50);
             base.Database.ExecuteNonQuery(cmd);
-            AuthIdentity Identity = new AuthIdentity(
-                base.Database.GetParameterValue(cmd, "UserId").ToString(),
-                UserNo,
-                base.Database.GetParameterValue(cmd, "UserName").ToString(),
-                UserPassWord
-                );
-            // 创建用户身份验证票,过期时间30分钟
-            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2, Identity.UserId, DateTime.Now, DateTime.Now.AddDays(10), true, string.Empty);
+            string userid = base.Database.GetParameterValue(cmd, "UserId").ToString();
+            string username = base.Database.GetParameterValue(cmd, "UserName").ToString();
+            // 创建用户身份验证票
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2, userid, DateTime.Now, DateTime.Now.AddDays(10), true, string.Empty);
             // 加密用户身份验证票
             string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+            ApplicationContext.Current.Ticket = encryptedTicket;
             CacheProvider.Add(encryptedTicket, ticket, TimeSpan.FromMinutes(SessionTimeOutMinutes), cacheManagerName: SessionCacheName);
-            return new AuthPrincipal(Identity);
+            return new AuthPrincipal(new AuthIdentity(userid, UserNo, username));
         }
 
 

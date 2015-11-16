@@ -30,13 +30,13 @@ namespace FengSharp.OneCardAccess.Infrastructure
         public void ApplyClientBehavior(OperationDescription operationDescription, ClientOperation clientOperation)
         {
             clientOperation.Parent.MessageInspectors.Add(new ApplicationContextClientMessageInspector(this.IsBidirectional));
-            //clientOperation.ParameterInspectors.Add(null);
+            //clientOperation.ParameterInspectors.Add(new MyParameterInspector());
         }
 
         public void ApplyDispatchBehavior(OperationDescription operationDescription, DispatchOperation dispatchOperation)
         {
             dispatchOperation.CallContextInitializers.Add(new ApplicationContextCallContextInitializer(this.IsBidirectional, this.SessionCheck));
-            //dispatchOperation.ParameterInspectors.Add(null);
+            //dispatchOperation.ParameterInspectors.Add(new MyParameterInspector());
         }
 
         public void Validate(OperationDescription operationDescription)
@@ -44,5 +44,17 @@ namespace FengSharp.OneCardAccess.Infrastructure
         }
 
         #endregion
+    }
+    public class MyParameterInspector : IParameterInspector
+    {
+
+        public void AfterCall(string operationName, object[] outputs, object returnValue, object correlationState)
+        {
+        }
+
+        public object BeforeCall(string operationName, object[] inputs)
+        {
+            return null;
+        }
     }
 }

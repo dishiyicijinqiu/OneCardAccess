@@ -7,31 +7,25 @@ namespace FengSharp.OneCardAccess.Infrastructure
     public class AuthPrincipal
     {
         [DataMember]
-        public AuthIdentity Identity
+        public AuthIdentity AuthIdentity
         {
             get;
             private set;
         }
-        public AuthPrincipal(AuthIdentity iidentity)
+        public AuthPrincipal(AuthIdentity authIdentity)
         {
-            this.Identity = iidentity;
+            this.AuthIdentity = authIdentity;
         }
-        public static AuthPrincipal CurrentAuthPrincipal;
+        public static AuthPrincipal CurrentAuthPrincipal { get; set; }
     }
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
     public class AuthIdentity
     {
-        public AuthIdentity(string userno, string password)
-        {
-            this.UserNo = userno;
-            this.PassWord = password;
-        }
-        public AuthIdentity(string userid, string userno, string username, string password)
+        public AuthIdentity(string userid, string userno, string username)
         {
             this.UserId = userid;
             this.UserNo = userno;
             this.UserName = username;
-            this.PassWord = password;
         }
 
         [DataMember]
@@ -40,7 +34,5 @@ namespace FengSharp.OneCardAccess.Infrastructure
         public string UserNo { get; private set; }
         [DataMember]
         public string UserName { get; private set; }
-        [DataMember]
-        public string PassWord { get; private set; }
     }
 }
