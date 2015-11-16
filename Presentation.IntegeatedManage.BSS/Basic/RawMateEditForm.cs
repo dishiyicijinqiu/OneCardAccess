@@ -156,11 +156,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 case ViewType.CopyAdd:
                     if (entity == null)
                         return null;
-                    AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
-                    entity.CreateId = authidentity.UserId;
-                    entity.CreateDate = DateTime.Now;
-                    entity.LastModifyDate = DateTime.Now;
-                    entity.LastModifyId = authidentity.UserId;
+                    EntityTool.CopyCreateAndModify(entity);
                     break;
                 case ViewType.Edit:
                 case ViewType.ReadOnly:

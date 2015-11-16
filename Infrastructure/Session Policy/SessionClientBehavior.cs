@@ -5,7 +5,7 @@ using System.ServiceModel.Dispatcher;
 
 namespace FengSharp.OneCardAccess.Infrastructure.Session_Policy
 {
-    public class SessionClientBehavior : IEndpointBehavior//, IOperationBehavior,IServiceBehavior,IContractBehavior,
+    public class SessionClientBehavior : IEndpointBehavior
     {
         private SessionMessageHeaderInfo messageHeaderInfo;
         public const string DefaultNamespace = "http://www.fengsharp.com/session";

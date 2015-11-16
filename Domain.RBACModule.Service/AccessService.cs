@@ -1,5 +1,4 @@
-﻿using FengSharp.OneCardAccess.Application.IntegeatedManageServer.Config;
-using FengSharp.OneCardAccess.Domain.RBACModule.Entity;
+﻿using FengSharp.OneCardAccess.Domain.RBACModule.Entity;
 using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
 using FengSharp.OneCardAccess.Infrastructure;
 using FengSharp.OneCardAccess.Infrastructure.Caching_Handling;
@@ -7,22 +6,14 @@ using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using FengSharp.OneCardAccess.Infrastructure.Services;
 using System.Data;
 using System.Data.Common;
-using System.Data.SqlClient;
-using System.Web.Security;
 using System.Linq;
+using System.Web.Security;
 
 namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
 {
     public class AccessService : ServiceBase, IAccessService
     {
-        public UserEntity FindUserByTicket(string ticketstring)
-        {
-            FormsAuthenticationTicket ticket = CacheProvider.Get<FormsAuthenticationTicket>(ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
-            if (ticket == null)
-                return null;
-            return ServiceLoader.LoadService<IUserService>().FindUserById(ticket.Name);
-        }
-        public void ChangePassword(string ticket, string oldPassword, string newPassword)
+        public void ChangePassword(string oldPassword, string newPassword)
         {
             throw new System.NotImplementedException();
         }
@@ -136,16 +127,15 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
                 });
             });
         }
-        public bool IsSuper(string ticket)
+        public bool IsSuper()
         {
-            var entity = this.FindUserByTicket(ticket);
-            if (entity == null)
-                return false;
+            FormsAuthenticationTicket ticket = CacheProvider.Get<FormsAuthenticationTicket>(ApplicationContext.Current.Ticket, cacheManagerName: SessionCacheName);
+            if (ticket == null) throw new BusinessException("非法登录");
             bool result = false;
             base.UseTran((tran) =>
             {
                 DbCommand cmd = base.Database.GetStoredProcCommand("P_IsSuper");
-                base.Database.AddInParameter(cmd, "UserId", DbType.String, entity.UserId);
+                base.Database.AddInParameter(cmd, "UserId", DbType.String, ticket.Name);
                 base.Database.AddOutParameter(cmd, "IsSuper", DbType.Boolean, 1);
                 base.Database.ExecuteNonQuery(cmd, tran);
                 result = (bool)base.Database.GetParameterValue(cmd, "IsSuper");
@@ -481,5 +471,18 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
             });
         }
         #endregion
+
+        private static string _SessionCacheName;
+        static string SessionCacheName
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_SessionCacheName))
+                {
+                    _SessionCacheName = System.Configuration.ConfigurationManager.AppSettings["SessionCacheName"];
+                }
+                return _SessionCacheName;
+            }
+        }
     }
 }

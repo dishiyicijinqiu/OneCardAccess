@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace FengSharp.OneCardAccess.Infrastructure.Services.Session_Policy
 {
-    internal class SessionCallContextInitializer : ICallContextInitializer, IDispatchMessageInspector
+    internal class SessionCallContextInitializer : ICallContextInitializer//, IDispatchMessageInspector
     {
         internal static IDictionary<string, bool> NoSessions = new Dictionary<string, bool>();
         private SessionMessageHeaderInfo messageHeaderInfo;
@@ -27,17 +27,25 @@ namespace FengSharp.OneCardAccess.Infrastructure.Services.Session_Policy
         {
             if (message.Headers.Action == null)
                 return null;
+            string actionname = message.Headers.Action.ToLower();
             int ticketheaderindex = message.Headers.FindHeader(messageHeaderInfo.TicketName, messageHeaderInfo.Namespace);
             if (ticketheaderindex > -1)
             {
                 var ticketstring = message.Headers.GetHeader<string>(messageHeaderInfo.TicketName, messageHeaderInfo.Namespace);
                 var ticket = CacheProvider.Get<FormsAuthenticationTicket>(ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
-                if (ticket == null || ticket.Expired)
+                if (ticket == null)
+                {
+                    if (NoSessions.ContainsKey(actionname) && NoSessions[actionname])
+                        return null;
                     throw new LoginTimeOutException();
+                }
+                if (ticket.Expired)
+                    throw new LoginTimeOutException();
+                //刷新过期时间
+                CacheProvider.Add(ticketstring, ticket, TimeSpan.FromMinutes(ApplicationConfig.SessionTimeOutMinutes), cacheManagerName: ApplicationConfig.SessionCacheName);
             }
             else
             {
-                string actionname = message.Headers.Action.ToLower();
                 if (!NoSessions.ContainsKey(actionname))
                 {
                     throw new BusinessException(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.InvalidTicket);
@@ -50,39 +58,47 @@ namespace FengSharp.OneCardAccess.Infrastructure.Services.Session_Policy
             return null;
         }
 
-        private string _ticketstring = null;
-        public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)
-        {
-            int ticketheaderindex = request.Headers.FindHeader(messageHeaderInfo.TicketName, messageHeaderInfo.Namespace);
-            if (ticketheaderindex > -1)
-            {
-                _ticketstring = request.Headers.GetHeader<string>(messageHeaderInfo.TicketName, messageHeaderInfo.Namespace);
-            }
-            else
-            {
-                _ticketstring = null;
-            }
-            return null;
-        }
+        //private string _ticketstring = null;
+        //public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)
+        //{
+        //    int ticketheaderindex = request.Headers.FindHeader(messageHeaderInfo.TicketName, messageHeaderInfo.Namespace);
+        //    if (ticketheaderindex > -1)
+        //    {
+        //        _ticketstring = request.Headers.GetHeader<string>(messageHeaderInfo.TicketName, messageHeaderInfo.Namespace);
+        //    }
+        //    else
+        //    {
+        //        _ticketstring = null;
+        //    }
+        //    return null;
+        //}
 
-        public void BeforeSendReply(ref Message reply, object correlationState)
-        {
-            if (!string.IsNullOrWhiteSpace(_ticketstring))
-            {
-                var ticket = CacheProvider.Get<FormsAuthenticationTicket>(_ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
-                CacheProvider.Remove(_ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
-                // 创建用户身份验证票,过期时间30分钟
-                ticket = new FormsAuthenticationTicket(ticket.Name, false, ApplicationConfig.SessionTimeOutMinutes);
-                // 加密用户身份验证票
-                string newticketstring = FormsAuthentication.Encrypt(ticket);
+        //public void BeforeSendReply(ref Message reply, object correlationState)
+        //{
+        //    try
+        //    {
+        //        if (!string.IsNullOrWhiteSpace(_ticketstring))
+        //        {
+        //            var ticket = CacheProvider.Get<FormsAuthenticationTicket>(_ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
+        //            CacheProvider.Remove(_ticketstring, cacheManagerName: ApplicationConfig.SessionCacheName);
 
-                CacheProvider.Add(newticketstring, ticket,
-                    System.TimeSpan.FromMinutes(ApplicationConfig.SessionTimeOutMinutes), cacheManagerName: ApplicationConfig.SessionCacheName);
+        //            // 创建用户身份验证票,过期时间30分钟
+        //            ticket = new FormsAuthenticationTicket(ticket.Name, false, ApplicationConfig.SessionTimeOutMinutes);
+        //            // 加密用户身份验证票
+        //            string newticketstring = FormsAuthentication.Encrypt(ticket);
 
-                reply.Headers.Add(MessageHeader.CreateHeader(this.messageHeaderInfo.TicketName,
-              this.messageHeaderInfo.Namespace, newticketstring));
-                _ticketstring = null;
-            }
-        }
+        //            CacheProvider.Add(newticketstring, ticket,
+        //                System.TimeSpan.FromMinutes(ApplicationConfig.SessionTimeOutMinutes), cacheManagerName: ApplicationConfig.SessionCacheName);
+
+        //            reply.Headers.Add(MessageHeader.CreateHeader(this.messageHeaderInfo.TicketName,
+        //          this.messageHeaderInfo.Namespace, newticketstring));
+        //            _ticketstring = null;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.ToString();
+        //    }
+        //}
     }
 }

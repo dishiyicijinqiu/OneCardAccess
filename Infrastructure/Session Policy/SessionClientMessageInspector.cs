@@ -15,24 +15,25 @@ namespace FengSharp.OneCardAccess.Infrastructure.Session_Policy
 
         public object BeforeSendRequest(ref Message request, IClientChannel channel)
         {
-            var tickid = (Thread.CurrentPrincipal as AuthPrincipal).Ticket;
-            if (tickid != null)
+            if (AuthPrincipal.CurrentAuthPrincipal != null && !string.IsNullOrWhiteSpace(AuthPrincipal.CurrentAuthPrincipal.Ticket))
             {
                 request.Headers.Add(MessageHeader.CreateHeader(this.messageheaderinfo.TicketName,
-                    this.messageheaderinfo.Namespace, tickid));
+                    this.messageheaderinfo.Namespace, AuthPrincipal.CurrentAuthPrincipal.Ticket));
             }
             return null;
         }
 
         public void AfterReceiveReply(ref Message reply, object correlationState)
         {
-            int ticketheaderindex = reply.Headers.FindHeader(messageheaderinfo.TicketName, messageheaderinfo.Namespace);
-            if (ticketheaderindex > -1)
-            {
-                var ticketstring = reply.Headers.GetHeader<string>(messageheaderinfo.TicketName, messageheaderinfo.Namespace);
-                var authPrincipal = (Thread.CurrentPrincipal as AuthPrincipal);
-                authPrincipal.Ticket = ticketstring;
-            }
+            //int ticketheaderindex = reply.Headers.FindHeader(messageheaderinfo.TicketName, messageheaderinfo.Namespace);
+            //if (ticketheaderindex > -1)
+            //{
+            //    var ticketstring = reply.Headers.GetHeader<string>(messageheaderinfo.TicketName, messageheaderinfo.Namespace);
+            //    System.Threading.Thread.CurrentPrincipal = new AuthPrincipal(Thread.CurrentPrincipal.Identity)
+            //    {
+            //        Ticket = ticketstring
+            //    };
+            //}
         }
     }
 }

@@ -25,8 +25,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
         {
             try
             {
-                AuthPrincipal authprincipal = System.Threading.Thread.CurrentPrincipal as AuthPrincipal;
-                if (!ServiceProxyFactory.Create<IAccessService>().IsSuper(authprincipal.Ticket))
+                if (!ServiceProxyFactory.Create<IAccessService>().IsSuper())
                     throw new BusinessException("只要超级管理员才可操作");
                 this.Facade = new UserManageFormFacade(this);
                 this.Facade.BindData();

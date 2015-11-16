@@ -43,6 +43,7 @@
             this.btnCancel = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             this.btnOK = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             this.btnPrint = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
+            this.btnClear = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.RegisterNoPopupContainerEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,6 +129,7 @@
             // 
             // btnUnAll
             // 
+            this.btnUnAll.Image = ((System.Drawing.Image)(resources.GetObject("btnUnAll.Image")));
             this.btnUnAll.Location = new System.Drawing.Point(182, 67);
             this.btnUnAll.Name = "btnUnAll";
             this.btnUnAll.Size = new System.Drawing.Size(100, 26);
@@ -136,6 +138,7 @@
             // 
             // btnAll
             // 
+            this.btnAll.Image = ((System.Drawing.Image)(resources.GetObject("btnAll.Image")));
             this.btnAll.Location = new System.Drawing.Point(78, 67);
             this.btnAll.Name = "btnAll";
             this.btnAll.Size = new System.Drawing.Size(100, 26);
@@ -179,17 +182,28 @@
             // 
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
             this.btnPrint.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnPrint.Location = new System.Drawing.Point(659, 175);
+            this.btnPrint.Location = new System.Drawing.Point(279, 144);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(100, 26);
             this.btnPrint.TabIndex = 59;
             this.btnPrint.Text = "打印(&P)";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
+            this.btnClear.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnClear.Location = new System.Drawing.Point(55, 144);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(100, 26);
+            this.btnClear.TabIndex = 60;
+            this.btnClear.Text = "清空";
             // 
             // XtraForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1188, 637);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -227,5 +241,6 @@
         private Infrastructure.WinForm.Base.BaseSimpleButton btnCancel;
         private Infrastructure.WinForm.Base.BaseSimpleButton btnOK;
         private Infrastructure.WinForm.Base.BaseSimpleButton btnPrint;
+        private Infrastructure.WinForm.Base.BaseSimpleButton btnClear;
     }
 }

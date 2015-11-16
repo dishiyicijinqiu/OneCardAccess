@@ -1,8 +1,6 @@
-﻿using FengSharp.OneCardAccess.Domain.RBACModule.Entity;
-using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
+﻿using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
 using FengSharp.OneCardAccess.Infrastructure;
 using FengSharp.OneCardAccess.Infrastructure.Base;
-using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Base;
 using FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct.Interface;
 using System;
@@ -19,6 +17,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 
         private void Login_Load(object sender, EventArgs e)
         {
+            //ServiceProxyFactory.Create<IMenuService>().GetAllEntity();
             this.Facade = new LoginFormFacade(this);
         }
 
@@ -80,41 +79,22 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 
     public class LoginFormFacade : ActualBase<LoginForm>
     {
+        IAuthService iauth = ServiceProxyFactory.Create<IAuthService>();
         public LoginFormFacade(LoginForm actual)
             : base(actual)
         { }
 
-        private void GetAuthorizationTicket()
+        public void Login(string userNo, string userPassword)
         {
             try
             {
-                IAuthService iauth = ServiceProxyFactory.Create<IAuthService>();
-                AuthPrincipal authprincipal = System.Threading.Thread.CurrentPrincipal as AuthPrincipal;
-                AuthIdentity authidentity = authprincipal.Identity as AuthIdentity;
-                authprincipal.Ticket = iauth.GetAuthorizationTicket(authidentity.UserNo, authidentity.PassWord);
-                if (string.IsNullOrWhiteSpace(authprincipal.Ticket))
-                {
-                    throw new BusinessException(ResourceMessages.WCFExceptionType_AuthenticationException);
-                }
-                IAccessService iaccessservice = ServiceProxyFactory.Create<IAccessService>();
-                UserEntity newUser = iaccessservice.FindUserByTicket((System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Ticket);
-                if (newUser == null)
-                    throw new BusinessException(ResourceMessages.WCFExceptionType_AuthenticationException);
-                authidentity = new AuthIdentity(newUser.UserId, newUser.UserNo, newUser.UserName, authidentity.PassWord);
-                System.Threading.Thread.CurrentPrincipal = new AuthPrincipal(authidentity) { Ticket = authprincipal.Ticket };
+                AuthPrincipal.CurrentAuthPrincipal = iauth.Login(userNo, userPassword);
             }
             catch (Exception ex)
             {
-                System.Threading.Thread.CurrentPrincipal = null;
+                AuthPrincipal.CurrentAuthPrincipal = null;
                 throw ex;
             }
-        }
-        public void Login(string userNo, string userPassword)
-        {
-            AuthIdentity authidentity = new AuthIdentity(userNo, userPassword);
-            AuthPrincipal authprincipal = new AuthPrincipal(authidentity);
-            System.Threading.Thread.CurrentPrincipal = authprincipal;
-            GetAuthorizationTicket();
         }
     }
 }

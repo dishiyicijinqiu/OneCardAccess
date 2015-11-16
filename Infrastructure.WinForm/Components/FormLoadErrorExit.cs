@@ -28,7 +28,7 @@ namespace FengSharp.OneCardAccess.Infrastructure.WinForm.Components
             FormList = new Dictionary<Form, FormLoadErrorExitPara>();
         }
         [Category("扩展")]
-        [Description("是否将mdi设置为MainForm。")]
+        [Description("是否设置窗体载入错误后退出。")]
         public bool GetEnableLoadError(Form form)
         {
             if (FormList.ContainsKey(form))

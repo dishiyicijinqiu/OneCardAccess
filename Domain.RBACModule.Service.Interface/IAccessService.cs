@@ -7,9 +7,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface
     public interface IAccessService
     {
         [OperationContract]
-        UserEntity FindUserByTicket(string ticket);
-        [OperationContract]
-        void ChangePassword(string ticket, string oldPassword, string newPassword);
+        void ChangePassword(string oldPassword, string newPassword);
         [OperationContract]
         void RemoveUsersFromRole(string[] userids, string RoleId);
         [OperationContract]
@@ -27,7 +25,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface
         [OperationContract]
         void SaveRoleActions(string roleid, string[] actionno);
         [OperationContract]
-        bool IsSuper(string ticket);
+        bool IsSuper();
         #region Stock
         [OperationContract]
         StockInfoRightTempStatusEntity[] GetStockBaseRight(string roleid, string newflag, string oldflag);

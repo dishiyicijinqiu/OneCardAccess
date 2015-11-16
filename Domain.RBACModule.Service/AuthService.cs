@@ -1,5 +1,7 @@
 ﻿using FengSharp.OneCardAccess.Application.IntegeatedManageServer.Config;
+using FengSharp.OneCardAccess.Domain.RBACModule.Entity;
 using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
+using FengSharp.OneCardAccess.Infrastructure;
 using FengSharp.OneCardAccess.Infrastructure.Caching_Handling;
 using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using FengSharp.OneCardAccess.Infrastructure.Services;
@@ -15,30 +17,48 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
 {
     public class AuthService : ServiceBase, IAuthService
     {
-        public string GetAuthorizationTicket(string UserNo, string UserPassWord)
+        private static int _SessionTimeOutMinutes = -1;
+        static int SessionTimeOutMinutes
         {
-            //对密码进行加密
+            get
+            {
+                if (_SessionTimeOutMinutes == -1)
+                {
+                    _SessionTimeOutMinutes = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["SessionTimeOutMinutes"]);
+                }
+                return _SessionTimeOutMinutes;
+            }
+        }
+        private static string _SessionCacheName;
+        static string SessionCacheName
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_SessionCacheName))
+                {
+                    _SessionCacheName = System.Configuration.ConfigurationManager.AppSettings["SessionCacheName"];
+                }
+                return _SessionCacheName;
+            }
+        }
+        public AuthPrincipal Login(string UserNo, string UserPassWord)
+        {
             UserPassWord = FengSharp.OneCardAccess.Infrastructure.SecurityCryptography.SecurityProvider.MD5Encrypt(UserPassWord);
-            DbCommand cmd = base.Database.GetStoredProcCommand("P_AuthenticateUser");
+            DbCommand cmd = base.Database.GetStoredProcCommand("P_AuthPrincipal");
             base.Database.AddInParameter(cmd, "UserNo", DbType.String, UserNo);
             base.Database.AddInParameter(cmd, "UserPassWord", DbType.String, UserPassWord);
-            object userid = base.Database.ExecuteScalar(cmd);
-            if (userid == null)
-                return null;
-            string struserId = userid.ToString();
-            if (!string.IsNullOrWhiteSpace(struserId))
-            {
-                // 创建用户身份验证票,过期时间30分钟
-                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(struserId, false, ApplicationConfig.SessionTimeOutMinutes);
-                // 加密用户身份验证票
-                string encryptedTicket = FormsAuthentication.Encrypt(ticket);
-                CacheProvider.Add(encryptedTicket, ticket, TimeSpan.FromMinutes(ApplicationConfig.SessionTimeOutMinutes), cacheManagerName: ApplicationConfig.SessionCacheName);
-                return encryptedTicket;
-            }
-            else
-            {
-                throw new BusinessException(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.WCFExceptionType_AuthenticationException);
-            }
+            base.Database.AddOutParameter(cmd, "UserId", DbType.String, 36);
+            base.Database.AddOutParameter(cmd, "UserName", DbType.String, 50);
+            base.Database.ExecuteNonQuery(cmd);
+            string userid = base.Database.GetParameterValue(cmd, "UserId").ToString();
+            string username = base.Database.GetParameterValue(cmd, "UserName").ToString();
+            // 创建用户身份验证票
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2, userid, DateTime.Now, DateTime.Now.AddDays(10), true, string.Empty);
+            // 加密用户身份验证票
+            string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+            ApplicationContext.Current.Ticket = encryptedTicket;
+            CacheProvider.Add(encryptedTicket, ticket, TimeSpan.FromMinutes(SessionTimeOutMinutes), cacheManagerName: SessionCacheName);
+            return new AuthPrincipal(new AuthIdentity(userid, UserNo, username));
         }
 
 

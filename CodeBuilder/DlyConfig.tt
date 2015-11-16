@@ -1,0 +1,44 @@
+﻿<#@ template hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="$(ProjectDir)\DbTemplate.ttinclude"  #>
+<#@ output extension=".cs" #>
+<#if(IsBuilder) {#>
+#region 单据类型Id
+<#
+var dtDlyType = DbHelper.GetDataTable("select * from T_DlyType where DlyHeader is not null and DlyHeader<>''");
+for (int i = 0; i < dtDlyType.Rows.Count; i++)
+{
+	string strHeader = dtDlyType.Rows[i]["DlyHeader"].ToString();
+	string strDlyName = dtDlyType.Rows[i]["DlyName"].ToString();
+	int dlyTypeId = Convert.ToInt32(dtDlyType.Rows[i]["DlyTypeId"]);
+#>
+/// <summary>
+/// <#=strDlyName#>DlyTypeId
+/// </summary>
+public static readonly int <#=strHeader#>DlyTypeId = <#=dlyTypeId#>;
+<#
+}#>
+#endregion
+#region 资产类型Id
+<#
+var dtAType = DbHelper.GetDataTable("select * from T_AType where Level_Num=0");
+for (int i = 0; i < dtAType.Rows.Count; i++)
+{
+	string strRemark = dtAType.Rows[i]["Remark"].ToString();
+	string strHeader = dtAType.Rows[i]["Header"].ToString();
+	int aTypeId = Convert.ToInt32(dtAType.Rows[i]["ATypeId"]);
+#>
+/// <summary>
+/// <#=strRemark#>AtypeId
+/// </summary>
+public static readonly int <#=strHeader#>ATypeId = <#=aTypeId#>;
+<#
+}#>
+#endregion
+<#}#>
+<#+
+public static readonly bool IsBuilder= false;
+#>

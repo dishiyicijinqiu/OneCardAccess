@@ -1,1 +1,2 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="FengSharp.OneCardAccess.Infrastructure.Services.DicDataService" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="FengSharp.OneCardAccess.Infrastructure.Services.DicDataService" 
+    Factory="FengSharp.OneCardAccess.Application.IntegeatedManageServer.DefaultServiceHostFactory,FengSharp.OneCardAccess.Application.IntegeatedManageServer" %>

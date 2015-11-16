@@ -43,6 +43,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         void Properties_QueryPopUp(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            IsSelect = false;
             this.stockSelectUserControl.IsMulSelect = isMulSelect;
         }
         private void InitializeComponent()

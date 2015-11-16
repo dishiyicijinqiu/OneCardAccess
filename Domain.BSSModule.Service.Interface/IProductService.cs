@@ -16,5 +16,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
         void DeleteProducts(int[] entityids);
         [OperationContract]
         Product_Register_Draw_CMCateEntity[] GetProduct_Register_Draw_CMCateTree(int pid);
+        [OperationContract]
+        ProductCateEntity[] GetProductCateTree(int pid);
     }
 }
