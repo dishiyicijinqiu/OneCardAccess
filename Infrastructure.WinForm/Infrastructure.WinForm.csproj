@@ -242,12 +242,6 @@
       <DependentUpon>TreeListStyleSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\AddDeleteDXPopupMenu.cs" />
-    <Compile Include="Controls\CreateModifiyControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\CreateModifiyControl.designer.cs">
-      <DependentUpon>CreateModifiyControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ExXtraTabbedMdiManager.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -304,9 +298,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Base\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\CreateModifiyControl.resx">
-      <DependentUpon>CreateModifiyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FilePictureEdit.resx">
       <DependentUpon>FilePictureEdit.cs</DependentUpon>

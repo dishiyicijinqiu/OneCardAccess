@@ -8,25 +8,14 @@ using FengSharp.OneCardAccess.Infrastructure.WinForm;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Base;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Controls;
 using System;
+using FengSharp.OneCardAccess.Infrastructure.WinForm;
+using System.Windows.Forms;
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
 {
     public partial class RoleEditForm : RoleEditForm_Design
     {
         #region ctor
-        public RoleEditForm()
-            : this(ViewType.ReadOnly, string.Empty)
-        {
-        }
-        public RoleEditForm(ViewType viewtype)
-            : this(viewtype, string.Empty)
-        {
-        }
-        public RoleEditForm(string id)
-            : this(ViewType.ReadOnly, id)
-        {
-        }
-
-        public RoleEditForm(ViewType viewtype, string id)
+        public RoleEditForm(ViewType viewtype = ViewType.Add, string id = null)
         {
             InitializeComponent();
             this.EntityId = id;
@@ -34,6 +23,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
         }
         #endregion
         #region fileds
+        public event VEventHandler<CEventArgs<ViewType, string>> AfterEdit;
         public string EntityId { get; set; }
         ViewType viewtype = ViewType.ReadOnly;
         public ViewType ViewType
@@ -45,9 +35,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
             set
             {
                 bool isreadonly = value == ViewType.ReadOnly;
-                this.layoutControl1.SetReadOnly(isreadonly);
                 this.btnSave.Enabled = !isreadonly;
-                this.chkIsAdmin.ReadOnly = true;
+                this.baseDataLayoutControl1.SetReadOnly(isreadonly, new Control[] {
+                    this.CreateNameTextEdit,this.CreateDateTextEdit,this.LastModifyNameTextEdit,this.LastModifyDateTextEdit,
+                      this.IsSuperCheckEdit
+                });
                 viewtype = value;
             }
         }
@@ -75,16 +67,10 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
                 }
                 else
                 {
+                    this.bindbaseDataLayoutControl1.EndEdit();
+                    var bindEntity = this.bindbaseDataLayoutControl1.DataSource as RoleWithCreateAndModify;
                     var entity = new RoleEntity();
-                    entity.RoleId = EntityId;
-                    entity.IsLock = !this.chkIsLock.Checked;
-                    entity.Remark = this.txtRemark.Text;
-                    entity.RoleName = this.txtRoleName.Text;
-                    entity.RoleNo = this.txtRoleNo.Text;
-                    entity.CreateId = this.cmControl.CreateUserId;
-                    entity.CreateDate = this.cmControl.CreateDate;
-                    entity.LastModifyId = this.cmControl.CurrentUserId;
-                    entity.LastModifyDate = this.cmControl.CurrentDateTime;
+                    FengSharp.Tool.Reflect.ClassValueCopier.Copy(entity, bindEntity);
                     Infrastructure.EntityTool.CopyModify(entity);
                     switch (this.ViewType)
                     {
@@ -113,32 +99,23 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
         }
         public void SetData(RoleWithCreateAndModify bindentity)
         {
-            this.txtRoleNo.Text = bindentity.RoleNo;
-            this.txtRoleName.Text = bindentity.RoleName;
-            this.txtRemark.Text = bindentity.Remark;
-            this.cmControl.SetData(bindentity.CreateId,
-                bindentity.CreateName,
-                bindentity.CreateDate,
-                bindentity.LastModifyId,
-                bindentity.LastModifyName,
-                bindentity.LastModifyDate);
-            this.chkIsAdmin.Checked = bindentity.IsSuper;
-            this.chkIsLock.Checked = !bindentity.IsLock;
+            this.Invoke(new Action(() =>
+            {
+                this.bindbaseDataLayoutControl1.DataSource = bindentity;
+            }));
         }
         private void OnAfterEdit()
         {
             if (AfterEdit != null) this.AfterEdit(new CEventArgs<ViewType, string>(this.viewtype, this.EntityId));
         }
-        public event VEventHandler<CEventArgs<ViewType, string>> AfterEdit;
-        private void chkIsLock_CheckedChanged(object sender, EventArgs e)
-        {
-            this.chkIsLock.Text = this.chkIsLock.Checked ? "启用" : "禁用";
-        }
-        private void chkIsAdmin_CheckedChanged(object sender, EventArgs e)
-        {
-            this.chkIsAdmin.Text = this.chkIsAdmin.Checked ? "是" : "否";
-        }
-
+        //private void chkIsLock_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    this.chkIsLock.Text = this.chkIsLock.Checked ? "启用" : "禁用";
+        //}
+        //private void chkIsAdmin_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    this.chkIsAdmin.Text = this.chkIsAdmin.Checked ? "是" : "否";
+        //}
     }
 
     public partial class RoleEditForm_Design : Base_Form<RoleEditFormFacade>
@@ -151,29 +128,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
         private IRoleService _Service = ServiceProxyFactory.Create<IRoleService>();
         public void SetData()
         {
-            //RoleEntity entity = null;
-            //if (this.Actual.ViewType == ViewType.Add)
-            //    entity = new RoleEntity();
-            //else
-            //    entity = this._Service.FindRoleById(this.Actual.EntityId);
-            //switch (this.Actual.ViewType)
-            //{
-            //    case ViewType.Add:
-            //    case ViewType.CopyAdd:
-            //        AuthIdentity authidentity = (System.Threading.Thread.CurrentPrincipal as AuthPrincipal).Identity as AuthIdentity;
-            //        entity.CreateId = authidentity.UserId;
-            //        entity.CreateDate = DateTime.Now;
-            //        entity.LastModifyDate = DateTime.Now;
-            //        entity.LastModifyId = authidentity.UserId;
-            //        break;
-            //}
-            //RoleWithCreateAndModify bindentity = new RoleWithCreateAndModify();
-            //FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-            //bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-            //bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
-            //this.Actual.SetData(bindentity);
-
-
             switch (this.Actual.ViewType)
             {
                 case ViewType.Add:

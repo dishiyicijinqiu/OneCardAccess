@@ -30,96 +30,59 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoleEditForm));
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.chkIsAdmin = new DevExpress.XtraEditors.CheckEdit();
-            this.chkIsLock = new DevExpress.XtraEditors.CheckEdit();
-            this.txtRoleName = new DevExpress.XtraEditors.TextEdit();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
+            this.baseDataLayoutControl1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseDataLayoutControl();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.txtRoleNo = new DevExpress.XtraEditors.TextEdit();
-            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
-            this.cmControl = new FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.CreateModifiyControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.RoleNoTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
+            this.bindbaseDataLayoutControl1 = new System.Windows.Forms.BindingSource(this.components);
+            this.RoleNameTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
+            this.IsLockCheckEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseCheckEdit();
+            this.IsSuperCheckEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseCheckEdit();
+            this.RemarkMemoEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseMemoEdit();
+            this.CreateNameTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
+            this.CreateDateTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
+            this.LastModifyNameTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
+            this.LastModifyDateTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.ItemForRoleNo = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForIsLock = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForRemark = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForCreateName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForLastModifyName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForRoleName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForIsSuper = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.ItemForCreateDate = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForLastModifyDate = new DevExpress.XtraLayout.LayoutControlItem();
             this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-            this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIsAdmin.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIsLock.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRoleName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRoleNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).BeginInit();
+            this.baseDataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RoleNoTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindbaseDataLayoutControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoleNameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IsLockCheckEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IsSuperCheckEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RemarkMemoEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CreateNameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CreateDateTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LastModifyNameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LastModifyDateTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForRoleNo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIsLock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForRemark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCreateName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLastModifyName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForRoleName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIsSuper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCreateDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLastModifyDate)).BeginInit();
             this.SuspendLayout();
-            // 
-            // layoutControl1
-            // 
-            this.layoutControl1.Controls.Add(this.chkIsAdmin);
-            this.layoutControl1.Controls.Add(this.chkIsLock);
-            this.layoutControl1.Controls.Add(this.txtRoleName);
-            this.layoutControl1.Controls.Add(this.btnClose);
-            this.layoutControl1.Controls.Add(this.btnSave);
-            this.layoutControl1.Controls.Add(this.txtRoleNo);
-            this.layoutControl1.Controls.Add(this.txtRemark);
-            this.layoutControl1.Controls.Add(this.cmControl);
-            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(125, 547, 831, 742);
-            this.layoutControl1.OptionsItemText.TextAlignMode = DevExpress.XtraLayout.TextAlignMode.AlignInGroups;
-            this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(484, 277);
-            this.layoutControl1.TabIndex = 0;
-            this.layoutControl1.Text = "layoutControl1";
-            // 
-            // chkIsAdmin
-            // 
-            this.chkIsAdmin.Location = new System.Drawing.Point(355, 48);
-            this.chkIsAdmin.Name = "chkIsAdmin";
-            this.chkIsAdmin.Properties.Caption = "否";
-            this.chkIsAdmin.Size = new System.Drawing.Size(123, 19);
-            this.chkIsAdmin.StyleController = this.layoutControl1;
-            this.chkIsAdmin.TabIndex = 12;
-            this.chkIsAdmin.CheckedChanged += new System.EventHandler(this.chkIsAdmin_CheckedChanged);
-            // 
-            // chkIsLock
-            // 
-            this.chkIsLock.Location = new System.Drawing.Point(117, 48);
-            this.chkIsLock.Name = "chkIsLock";
-            this.chkIsLock.Properties.Caption = "禁用";
-            this.chkIsLock.Size = new System.Drawing.Size(123, 19);
-            this.chkIsLock.StyleController = this.layoutControl1;
-            this.chkIsLock.TabIndex = 11;
-            this.chkIsLock.CheckedChanged += new System.EventHandler(this.chkIsLock_CheckedChanged);
-            // 
-            // txtRoleName
-            // 
-            this.txtRoleName.Location = new System.Drawing.Point(355, 24);
-            this.txtRoleName.Name = "txtRoleName";
-            this.txtRoleName.Size = new System.Drawing.Size(123, 20);
-            this.txtRoleName.StyleController = this.layoutControl1;
-            this.txtRoleName.TabIndex = 1;
             // 
             // btnClose
             // 
@@ -128,10 +91,34 @@
             this.btnClose.Location = new System.Drawing.Point(378, 245);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 26);
-            this.btnClose.StyleController = this.layoutControl1;
+            this.btnClose.StyleController = this.baseDataLayoutControl1;
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "关闭(&C)";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // baseDataLayoutControl1
+            // 
+            this.baseDataLayoutControl1.Controls.Add(this.btnClose);
+            this.baseDataLayoutControl1.Controls.Add(this.btnSave);
+            this.baseDataLayoutControl1.Controls.Add(this.RoleNoTextEdit);
+            this.baseDataLayoutControl1.Controls.Add(this.RoleNameTextEdit);
+            this.baseDataLayoutControl1.Controls.Add(this.IsLockCheckEdit);
+            this.baseDataLayoutControl1.Controls.Add(this.IsSuperCheckEdit);
+            this.baseDataLayoutControl1.Controls.Add(this.RemarkMemoEdit);
+            this.baseDataLayoutControl1.Controls.Add(this.CreateNameTextEdit);
+            this.baseDataLayoutControl1.Controls.Add(this.CreateDateTextEdit);
+            this.baseDataLayoutControl1.Controls.Add(this.LastModifyNameTextEdit);
+            this.baseDataLayoutControl1.Controls.Add(this.LastModifyDateTextEdit);
+            this.baseDataLayoutControl1.DataSource = this.bindbaseDataLayoutControl1;
+            this.baseDataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.baseDataLayoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.baseDataLayoutControl1.Name = "baseDataLayoutControl1";
+            this.baseDataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(378, 160, 371, 436);
+            this.baseDataLayoutControl1.OptionsItemText.TextAlignMode = DevExpress.XtraLayout.TextAlignMode.AlignInGroups;
+            this.baseDataLayoutControl1.Root = this.layoutControlGroup1;
+            this.baseDataLayoutControl1.Size = new System.Drawing.Size(484, 277);
+            this.baseDataLayoutControl1.TabIndex = 8;
+            this.baseDataLayoutControl1.Text = "baseDataLayoutControl1";
             // 
             // btnSave
             // 
@@ -140,183 +127,262 @@
             this.btnSave.Location = new System.Drawing.Point(274, 245);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 26);
-            this.btnSave.StyleController = this.layoutControl1;
+            this.btnSave.StyleController = this.baseDataLayoutControl1;
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "保存(&S)";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtRoleNo
+            // RoleNoTextEdit
             // 
-            this.txtRoleNo.Location = new System.Drawing.Point(117, 24);
-            this.txtRoleNo.Name = "txtRoleNo";
-            this.txtRoleNo.Size = new System.Drawing.Size(123, 20);
-            this.txtRoleNo.StyleController = this.layoutControl1;
-            this.txtRoleNo.TabIndex = 1;
+            this.RoleNoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "RoleNo", true));
+            this.RoleNoTextEdit.Location = new System.Drawing.Point(81, 6);
+            this.RoleNoTextEdit.Name = "RoleNoTextEdit";
+            this.RoleNoTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.RoleNoTextEdit.Size = new System.Drawing.Size(158, 20);
+            this.RoleNoTextEdit.StyleController = this.baseDataLayoutControl1;
+            this.RoleNoTextEdit.TabIndex = 4;
             // 
-            // txtRemark
+            // bindbaseDataLayoutControl1
             // 
-            this.txtRemark.Location = new System.Drawing.Point(39, 77);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(433, 89);
-            this.txtRemark.StyleController = this.layoutControl1;
-            this.txtRemark.TabIndex = 5;
+            this.bindbaseDataLayoutControl1.DataSource = typeof(FengSharp.OneCardAccess.Domain.RBACModule.Entity.RoleWithCreateAndModify);
             // 
-            // cmControl
+            // RoleNameTextEdit
             // 
-            this.cmControl.CreateDate = new System.DateTime(((long)(0)));
-            this.cmControl.CreateUserId = null;
-            this.cmControl.CreateUserName = "";
-            this.cmControl.LastModifyDate = new System.DateTime(((long)(0)));
-            this.cmControl.LastModifyUserId = null;
-            this.cmControl.LastModUserName = "";
-            this.cmControl.Location = new System.Drawing.Point(12, 182);
-            this.cmControl.Name = "cmControl";
-            this.cmControl.Size = new System.Drawing.Size(460, 53);
-            this.cmControl.TabIndex = 4;
+            this.RoleNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "RoleName", true));
+            this.RoleNameTextEdit.Location = new System.Drawing.Point(318, 6);
+            this.RoleNameTextEdit.Name = "RoleNameTextEdit";
+            this.RoleNameTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.RoleNameTextEdit.Size = new System.Drawing.Size(160, 20);
+            this.RoleNameTextEdit.StyleController = this.baseDataLayoutControl1;
+            this.RoleNameTextEdit.TabIndex = 5;
             // 
-            // Root
+            // IsLockCheckEdit
             // 
-            this.Root.CustomizationFormText = "角色信息";
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup2,
-            this.layoutControlGroup3,
-            this.layoutControlItem3,
-            this.layoutControlItem4,
-            this.emptySpaceItem2,
-            this.layoutControlItem5,
-            this.layoutControlItem6,
-            this.layoutControlItem7,
-            this.layoutControlItem8});
-            this.Root.Location = new System.Drawing.Point(0, 0);
-            this.Root.Name = "Root";
-            this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
-            this.Root.Size = new System.Drawing.Size(484, 277);
-            this.Root.Text = "角色信息";
+            this.IsLockCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "IsLock", true));
+            this.IsLockCheckEdit.Location = new System.Drawing.Point(81, 30);
+            this.IsLockCheckEdit.Name = "IsLockCheckEdit";
+            this.IsLockCheckEdit.Properties.Caption = "是否锁定";
+            this.IsLockCheckEdit.Size = new System.Drawing.Size(159, 19);
+            this.IsLockCheckEdit.StyleController = this.baseDataLayoutControl1;
+            this.IsLockCheckEdit.TabIndex = 6;
             // 
-            // layoutControlGroup2
+            // IsSuperCheckEdit
             // 
-            this.layoutControlGroup2.CustomizationFormText = "layoutControlGroup2";
-            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem2});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 47);
-            this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
-            this.layoutControlGroup2.Size = new System.Drawing.Size(476, 105);
-            this.layoutControlGroup2.TextVisible = false;
+            this.IsSuperCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "IsSuper", true));
+            this.IsSuperCheckEdit.Location = new System.Drawing.Point(319, 30);
+            this.IsSuperCheckEdit.Name = "IsSuperCheckEdit";
+            this.IsSuperCheckEdit.Properties.Caption = "是否是超级管理员角色";
+            this.IsSuperCheckEdit.Properties.ReadOnly = true;
+            this.IsSuperCheckEdit.Size = new System.Drawing.Size(159, 19);
+            this.IsSuperCheckEdit.StyleController = this.baseDataLayoutControl1;
+            this.IsSuperCheckEdit.TabIndex = 7;
             // 
-            // layoutControlItem2
+            // RemarkMemoEdit
             // 
-            this.layoutControlItem2.Control = this.txtRemark;
-            this.layoutControlItem2.CustomizationFormText = "备注";
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(464, 93);
-            this.layoutControlItem2.Text = "备注";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(24, 13);
+            this.RemarkMemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "Remark", true));
+            this.RemarkMemoEdit.Location = new System.Drawing.Point(81, 53);
+            this.RemarkMemoEdit.Name = "RemarkMemoEdit";
+            this.RemarkMemoEdit.Size = new System.Drawing.Size(397, 140);
+            this.RemarkMemoEdit.StyleController = this.baseDataLayoutControl1;
+            this.RemarkMemoEdit.TabIndex = 8;
             // 
-            // layoutControlGroup3
+            // CreateNameTextEdit
             // 
-            this.layoutControlGroup3.CustomizationFormText = "layoutControlGroup3";
-            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 152);
-            this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
-            this.layoutControlGroup3.Size = new System.Drawing.Size(476, 69);
-            this.layoutControlGroup3.TextVisible = false;
+            this.CreateNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "CreateName", true));
+            this.CreateNameTextEdit.Location = new System.Drawing.Point(81, 197);
+            this.CreateNameTextEdit.Name = "CreateNameTextEdit";
+            this.CreateNameTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.CreateNameTextEdit.Properties.ReadOnly = true;
+            this.CreateNameTextEdit.Size = new System.Drawing.Size(159, 20);
+            this.CreateNameTextEdit.StyleController = this.baseDataLayoutControl1;
+            this.CreateNameTextEdit.TabIndex = 9;
+            // 
+            // CreateDateTextEdit
+            // 
+            this.CreateDateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "CreateDate", true));
+            this.CreateDateTextEdit.Location = new System.Drawing.Point(319, 197);
+            this.CreateDateTextEdit.Name = "CreateDateTextEdit";
+            this.CreateDateTextEdit.Properties.DisplayFormat.FormatString = "d";
+            this.CreateDateTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.CreateDateTextEdit.Properties.EditFormat.FormatString = "d";
+            this.CreateDateTextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.CreateDateTextEdit.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm:ss";
+            this.CreateDateTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTime;
+            this.CreateDateTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.CreateDateTextEdit.Properties.ReadOnly = true;
+            this.CreateDateTextEdit.Size = new System.Drawing.Size(159, 20);
+            this.CreateDateTextEdit.StyleController = this.baseDataLayoutControl1;
+            this.CreateDateTextEdit.TabIndex = 10;
+            // 
+            // LastModifyNameTextEdit
+            // 
+            this.LastModifyNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "LastModifyName", true));
+            this.LastModifyNameTextEdit.Location = new System.Drawing.Point(81, 221);
+            this.LastModifyNameTextEdit.Name = "LastModifyNameTextEdit";
+            this.LastModifyNameTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.LastModifyNameTextEdit.Properties.ReadOnly = true;
+            this.LastModifyNameTextEdit.Size = new System.Drawing.Size(159, 20);
+            this.LastModifyNameTextEdit.StyleController = this.baseDataLayoutControl1;
+            this.LastModifyNameTextEdit.TabIndex = 11;
+            // 
+            // LastModifyDateTextEdit
+            // 
+            this.LastModifyDateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "LastModifyDate", true));
+            this.LastModifyDateTextEdit.Location = new System.Drawing.Point(319, 221);
+            this.LastModifyDateTextEdit.Name = "LastModifyDateTextEdit";
+            this.LastModifyDateTextEdit.Properties.DisplayFormat.FormatString = "d";
+            this.LastModifyDateTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.LastModifyDateTextEdit.Properties.EditFormat.FormatString = "d";
+            this.LastModifyDateTextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.LastModifyDateTextEdit.Properties.Mask.EditMask = "yyyy-MM-dd HH:mm:ss";
+            this.LastModifyDateTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTime;
+            this.LastModifyDateTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.LastModifyDateTextEdit.Properties.ReadOnly = true;
+            this.LastModifyDateTextEdit.Size = new System.Drawing.Size(159, 20);
+            this.LastModifyDateTextEdit.StyleController = this.baseDataLayoutControl1;
+            this.LastModifyDateTextEdit.TabIndex = 12;
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.ItemForRoleNo,
+            this.ItemForIsLock,
+            this.ItemForRemark,
+            this.ItemForCreateName,
+            this.ItemForLastModifyName,
+            this.ItemForRoleName,
+            this.ItemForIsSuper,
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.emptySpaceItem1,
+            this.ItemForCreateDate,
+            this.ItemForLastModifyDate});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "Root";
+            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(484, 277);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // ItemForRoleNo
+            // 
+            this.ItemForRoleNo.Control = this.RoleNoTextEdit;
+            this.ItemForRoleNo.Location = new System.Drawing.Point(0, 0);
+            this.ItemForRoleNo.Name = "ItemForRoleNo";
+            this.ItemForRoleNo.Size = new System.Drawing.Size(237, 24);
+            this.ItemForRoleNo.Text = "角色编号";
+            this.ItemForRoleNo.TextSize = new System.Drawing.Size(72, 13);
+            // 
+            // ItemForIsLock
+            // 
+            this.ItemForIsLock.Control = this.IsLockCheckEdit;
+            this.ItemForIsLock.Location = new System.Drawing.Point(0, 24);
+            this.ItemForIsLock.Name = "ItemForIsLock";
+            this.ItemForIsLock.Size = new System.Drawing.Size(238, 23);
+            this.ItemForIsLock.Text = " ";
+            this.ItemForIsLock.TextSize = new System.Drawing.Size(72, 13);
+            // 
+            // ItemForRemark
+            // 
+            this.ItemForRemark.Control = this.RemarkMemoEdit;
+            this.ItemForRemark.Location = new System.Drawing.Point(0, 47);
+            this.ItemForRemark.Name = "ItemForRemark";
+            this.ItemForRemark.Size = new System.Drawing.Size(476, 144);
+            this.ItemForRemark.Text = "备注";
+            this.ItemForRemark.TextSize = new System.Drawing.Size(72, 13);
+            // 
+            // ItemForCreateName
+            // 
+            this.ItemForCreateName.Control = this.CreateNameTextEdit;
+            this.ItemForCreateName.Location = new System.Drawing.Point(0, 191);
+            this.ItemForCreateName.Name = "ItemForCreateName";
+            this.ItemForCreateName.Size = new System.Drawing.Size(238, 24);
+            this.ItemForCreateName.Text = "创建人";
+            this.ItemForCreateName.TextSize = new System.Drawing.Size(72, 13);
+            // 
+            // ItemForLastModifyName
+            // 
+            this.ItemForLastModifyName.Control = this.LastModifyNameTextEdit;
+            this.ItemForLastModifyName.Location = new System.Drawing.Point(0, 215);
+            this.ItemForLastModifyName.Name = "ItemForLastModifyName";
+            this.ItemForLastModifyName.Size = new System.Drawing.Size(238, 24);
+            this.ItemForLastModifyName.Text = "最后更改人";
+            this.ItemForLastModifyName.TextSize = new System.Drawing.Size(72, 13);
+            // 
+            // ItemForRoleName
+            // 
+            this.ItemForRoleName.Control = this.RoleNameTextEdit;
+            this.ItemForRoleName.Location = new System.Drawing.Point(237, 0);
+            this.ItemForRoleName.Name = "ItemForRoleName";
+            this.ItemForRoleName.Size = new System.Drawing.Size(239, 24);
+            this.ItemForRoleName.Text = "角色名称";
+            this.ItemForRoleName.TextSize = new System.Drawing.Size(72, 13);
+            // 
+            // ItemForIsSuper
+            // 
+            this.ItemForIsSuper.Control = this.IsSuperCheckEdit;
+            this.ItemForIsSuper.Location = new System.Drawing.Point(238, 24);
+            this.ItemForIsSuper.Name = "ItemForIsSuper";
+            this.ItemForIsSuper.Size = new System.Drawing.Size(238, 23);
+            this.ItemForIsSuper.Text = " ";
+            this.ItemForIsSuper.TextSize = new System.Drawing.Size(72, 13);
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.cmControl;
-            this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Control = this.btnSave;
+            this.layoutControlItem1.Location = new System.Drawing.Point(268, 239);
+            this.layoutControlItem1.MaxSize = new System.Drawing.Size(104, 30);
+            this.layoutControlItem1.MinSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(464, 57);
+            this.layoutControlItem1.Size = new System.Drawing.Size(104, 30);
+            this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // layoutControlItem3
+            // layoutControlItem2
             // 
-            this.layoutControlItem3.Control = this.txtRoleNo;
-            this.layoutControlItem3.CustomizationFormText = "角色编号";
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(238, 24);
-            this.layoutControlItem3.Text = "角色编号";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(108, 13);
+            this.layoutControlItem2.Control = this.btnClose;
+            this.layoutControlItem2.Location = new System.Drawing.Point(372, 239);
+            this.layoutControlItem2.MaxSize = new System.Drawing.Size(104, 30);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(104, 30);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(104, 30);
+            this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
             // 
-            // layoutControlItem4
+            // emptySpaceItem1
             // 
-            this.layoutControlItem4.Control = this.btnSave;
-            this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(268, 221);
-            this.layoutControlItem4.MaxSize = new System.Drawing.Size(104, 30);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(104, 30);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(104, 30);
-            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 239);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(268, 30);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // emptySpaceItem2
+            // ItemForCreateDate
             // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 221);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(268, 30);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForCreateDate.Control = this.CreateDateTextEdit;
+            this.ItemForCreateDate.Location = new System.Drawing.Point(238, 191);
+            this.ItemForCreateDate.Name = "ItemForCreateDate";
+            this.ItemForCreateDate.Size = new System.Drawing.Size(238, 24);
+            this.ItemForCreateDate.Text = "创建日期";
+            this.ItemForCreateDate.TextSize = new System.Drawing.Size(72, 13);
             // 
-            // layoutControlItem5
+            // ItemForLastModifyDate
             // 
-            this.layoutControlItem5.Control = this.btnClose;
-            this.layoutControlItem5.CustomizationFormText = "layoutControlItem5";
-            this.layoutControlItem5.Location = new System.Drawing.Point(372, 221);
-            this.layoutControlItem5.MaxSize = new System.Drawing.Size(104, 30);
-            this.layoutControlItem5.MinSize = new System.Drawing.Size(104, 30);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(104, 30);
-            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.txtRoleName;
-            this.layoutControlItem6.CustomizationFormText = "角色名称";
-            this.layoutControlItem6.Location = new System.Drawing.Point(238, 0);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(238, 24);
-            this.layoutControlItem6.Text = "角色名称";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(108, 13);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.chkIsLock;
-            this.layoutControlItem7.CustomizationFormText = "角色状态";
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(238, 23);
-            this.layoutControlItem7.Text = "角色状态";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(108, 13);
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.chkIsAdmin;
-            this.layoutControlItem8.CustomizationFormText = "是否为超级管理角色";
-            this.layoutControlItem8.Location = new System.Drawing.Point(238, 24);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(238, 23);
-            this.layoutControlItem8.Text = "是否为超级管理角色";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(108, 13);
+            this.ItemForLastModifyDate.Control = this.LastModifyDateTextEdit;
+            this.ItemForLastModifyDate.Location = new System.Drawing.Point(238, 215);
+            this.ItemForLastModifyDate.Name = "ItemForLastModifyDate";
+            this.ItemForLastModifyDate.Size = new System.Drawing.Size(238, 24);
+            this.ItemForLastModifyDate.Text = "最后更改日期";
+            this.ItemForLastModifyDate.TextSize = new System.Drawing.Size(72, 13);
             // 
             // RoleEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 277);
-            this.Controls.Add(this.layoutControl1);
+            this.Controls.Add(this.baseDataLayoutControl1);
             this.formLoadErrorExit1.SetEnableLoadError(this, true);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -325,52 +391,63 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "角色信息";
             this.Load += new System.EventHandler(this.RoleEditForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkIsAdmin.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIsLock.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRoleName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRoleNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).EndInit();
+            this.baseDataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.RoleNoTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindbaseDataLayoutControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoleNameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IsLockCheckEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IsSuperCheckEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RemarkMemoEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CreateNameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CreateDateTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LastModifyNameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LastModifyDateTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForRoleNo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIsLock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForRemark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCreateName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLastModifyName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForRoleName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIsSuper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCreateDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLastModifyDate)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
-        private FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.CreateModifiyControl cmControl;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraEditors.MemoEdit txtRemark;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraEditors.TextEdit txtRoleNo;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraEditors.TextEdit txtRoleName;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraEditors.CheckEdit chkIsLock;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraEditors.CheckEdit chkIsAdmin;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit formLoadErrorExit1;
+        private Infrastructure.WinForm.Base.BaseDataLayoutControl baseDataLayoutControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private Infrastructure.WinForm.Base.BaseTextEdit RoleNoTextEdit;
+        private System.Windows.Forms.BindingSource bindbaseDataLayoutControl1;
+        private Infrastructure.WinForm.Base.BaseTextEdit RoleNameTextEdit;
+        private Infrastructure.WinForm.Base.BaseCheckEdit IsLockCheckEdit;
+        private Infrastructure.WinForm.Base.BaseCheckEdit IsSuperCheckEdit;
+        private Infrastructure.WinForm.Base.BaseMemoEdit RemarkMemoEdit;
+        private Infrastructure.WinForm.Base.BaseTextEdit CreateNameTextEdit;
+        private Infrastructure.WinForm.Base.BaseTextEdit CreateDateTextEdit;
+        private Infrastructure.WinForm.Base.BaseTextEdit LastModifyNameTextEdit;
+        private Infrastructure.WinForm.Base.BaseTextEdit LastModifyDateTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForRoleNo;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForRoleName;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForIsLock;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForIsSuper;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForRemark;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCreateName;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCreateDate;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForLastModifyName;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForLastModifyDate;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
 }
