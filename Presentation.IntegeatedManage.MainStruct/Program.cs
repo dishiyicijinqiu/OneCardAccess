@@ -39,7 +39,9 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2010 Blue");
             #endregion
+            DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(StartSplashScreen));
             MainForm mainform = ServiceLoader.LoadService<IMainForm>() as MainForm;
+            DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
             Application.Run(mainform);
         }
 

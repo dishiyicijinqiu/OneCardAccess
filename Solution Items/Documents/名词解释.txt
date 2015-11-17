@@ -1,0 +1,7 @@
+singleton 独生子女
+transient 瞬态
+perthread 每个线程
+external 外部
+hierarchical 分层
+resolve 解析
+perresolve  每次解析

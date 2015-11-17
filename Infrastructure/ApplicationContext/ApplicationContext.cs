@@ -45,21 +45,35 @@ namespace FengSharp.OneCardAccess.Infrastructure
                 this["__Ticket"] = value;
             }
         }
+        private static ApplicationContext _Current;
         public static ApplicationContext Current
         {
             get
             {
-                if (CallContext.GetData(CallContextKey) == null)
-                {
-                    CallContext.SetData(CallContextKey, new ApplicationContext());
-                }
-
-                return CallContext.GetData(CallContextKey) as ApplicationContext;
+                if (_Current == null)
+                    _Current = new ApplicationContext();
+                return _Current;
             }
             set
             {
-                CallContext.SetData(CallContextKey, value);
+                _Current = value;
             }
         }
+        //public static ApplicationContext Current
+        //{
+        //    get
+        //    {
+        //        if (CallContext.GetData(CallContextKey) == null)
+        //        {
+        //            CallContext.SetData(CallContextKey, new ApplicationContext());
+        //        }
+
+        //        return CallContext.GetData(CallContextKey) as ApplicationContext;
+        //    }
+        //    set
+        //    {
+        //        CallContext.SetData(CallContextKey, value);
+        //    }
+        //}
     }
 }

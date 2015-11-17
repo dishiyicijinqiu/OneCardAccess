@@ -1,5 +1,7 @@
 ﻿using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface;
+using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
+using FengSharp.OneCardAccess.Infrastructure;
 using FengSharp.OneCardAccess.Infrastructure.Services;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System;
@@ -36,10 +38,14 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
 
         public DlyNdxFullNameEntity[] GetCGList()
         {
-            var dt = base.GetSQList("dlycg", string.Empty);
+            string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
+            var dt = base.GetList("dlycg", userid);
             return DlyNdxService.DataTableToDlyNdxFullNameEntity(dt);
         }
 
+        /// <summary>
+        /// 保存商品入库单草稿
+        /// </summary>
         public string SaveSPRKBak(SPRKDlyCGNdxEntity entity)
         {
             string dlyNdxId = string.Empty;
@@ -124,6 +130,50 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                 }
             });
             return dlyNdxId;
+        }
+        /// <summary>
+        /// 获取商品入库单草稿
+        /// </summary>
+        public SPRKDlyCGNdxEntity GetSPRKDlyCGNdxEntity(string dlyNdxId)
+        {
+            string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
+            #region DlyNdxFullNameEntity
+            var row = base.FindById("dlyndxfull", dlyNdxId, userid);
+            DlyNdxFullNameEntity dlyndxfullnameentity = DlyNdxService.DataRowToDlyNdxFullNameEntity(row);
+            if (dlyndxfullnameentity == null)
+                return null;
+            #endregion
+            var result = new SPRKDlyCGNdxEntity();
+            FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, dlyndxfullnameentity);
+
+            //PDlyBakFullNameEntity
+            #region PDlyBakFullNameEntitys
+            var dtPDlyBakFullNameEntitys = base.GetRelationData("pdlybakfullname", dlyNdxId, userid);
+            result.PDlyBaks.AddRange(DataTableToPDlyBakFullNameEntitys(dtPDlyBakFullNameEntitys));
+            #endregion
+            //PDlyABaks
+            #region PDlyABaks
+            //PDlyABakEntity
+            var dtPDlyABaks = base.GetRelationData("pdlyabak", dlyNdxId, userid);
+            result.PDlyABaks.AddRange(DataTableToPDlyABakEntitys(dtPDlyABaks));
+            #endregion
+
+            #region PFBNBaks,PSNBaks
+            var dtPFBNBaks = base.GetRelationData("pfbnbak", dlyNdxId, userid);
+            var listPFBNBaks = DataTableToPFBNBakEntitys(dtPFBNBaks);
+            var dtPSNBaks = base.GetRelationData("psnbak", dlyNdxId, userid);
+            var listPSNBaks = DataTableToPSNBakEntitys(dtPSNBaks);
+            foreach (var dlybak in result.PDlyBaks)
+            {
+                dlybak.PFBNBaks.AddRange(listPFBNBaks.Where(t => t.PDlyBakId == dlybak.PDlyBakId));
+                dlybak.PSNBaks.AddRange(listPSNBaks.Where(t => t.PDlyBakId == dlybak.PDlyBakId));
+            }
+            #endregion
+            result.Qty = result.PDlyBaks.Sum(t => t.Qty);
+            result.Total = result.PDlyBaks.Sum(t => t.Total);
+            result.Prefer = result.PDlyABaks.Where(t => t.ATypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.SPYHATypeId).Sum(t => t.Total);
+            result.AfterPreferTotal = result.Total - result.Prefer;
+            return result;
         }
 
         #region 实体转DbCommand
@@ -272,6 +322,221 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
         #endregion
 
         #region 实体转换
+        #region PSNBakEntity
+        public static PSNBakEntity[] DataTableToPSNBakEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PSNBakEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPSNBakEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+        public static PSNBakEntity DataRowToPSNBakEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PSNBakEntity()
+            {
+                PSNBakId = (string)(row["PSNBakId"]),
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                ATypeId = (int)(row["ATypeId"]),
+                PDlyBakId = (string)(row["PDlyBakId"]),
+                ProductId = (int)(row["ProductId"]),
+                CompanyId = (int)(row["CompanyId"]),
+                StockId = (int)(row["StockId"]),
+                JSRId = (string)(row["JSRId"]),
+                BN = (string)(row["BN"]),
+                SN = (string)(row["SN"]),
+                Remark = (string)(row["Remark"]),
+                DlyDate = (string)(row["DlyDate"]),
+                C_OrderNdxId = (string)(row["C_OrderNdxId"]),
+                C_ProductOrderId = (string)(row["C_ProductOrderId"]),
+                DlyTypeId = (int)(row["DlyTypeId"]),
+                SortNo = (int)(row["SortNo"]),
+
+            };
+            return result;
+        }
+        #endregion
+        #region PFBNBakEntity
+        public static PFBNBakEntity[] DataTableToPFBNBakEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PFBNBakEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPFBNBakEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+        public static PFBNBakEntity DataRowToPFBNBakEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PFBNBakEntity()
+            {
+                PFBNBakId = (string)(row["PFBNBakId"]),
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                ATypeId = (int)(row["ATypeId"]),
+                PDlyBakId = (string)(row["PDlyBakId"]),
+                ProductId = (int)(row["ProductId"]),
+                CompanyId = (int)(row["CompanyId"]),
+                StockId = (int)(row["StockId"]),
+                JSRId = (string)(row["JSRId"]),
+                BN = (string)(row["BN"]),
+                FullBN = (string)(row["FullBN"]),
+                Remark = (string)(row["Remark"]),
+                DlyDate = (string)(row["DlyDate"]),
+                Qty = (decimal)(row["Qty"]),
+                C_OrderNdxId = (string)(row["C_OrderNdxId"]),
+                C_ProductOrderId = (string)(row["C_ProductOrderId"]),
+                DlyTypeId = (int)(row["DlyTypeId"]),
+                SortNo = (int)(row["SortNo"]),
+
+            };
+            return result;
+        }
+        #endregion
+        #region PDlyABakEntity
+        public static PDlyABakEntity[] DataTableToPDlyABakEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PDlyABakEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPDlyABakEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+        public static PDlyABakEntity DataRowToPDlyABakEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PDlyABakEntity()
+            {
+                PDlyABakId = (string)(row["PDlyABakId"]),
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                ATypeId = (int)(row["ATypeId"]),
+                CompanyId = (int)(row["CompanyId"]),
+                JSRId = (string)(row["JSRId"]),
+                StockId = (int)(row["StockId"]),
+                Total = (decimal)(row["Total"]),
+                DlyDate = (string)(row["DlyDate"]),
+                DlyTypeId = (int)(row["DlyTypeId"]),
+                Remark = (string)(row["Remark"]),
+
+            };
+            return result;
+        }
+        #endregion
+        #region PDlyAEntity
+        public static PDlyAEntity[] DataTableToPDlyAEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PDlyAEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPDlyAEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+        public static PDlyAEntity DataRowToPDlyAEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PDlyAEntity()
+            {
+                PDlyAId = (string)(row["PDlyAId"]),
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                ATypeId = (int)(row["ATypeId"]),
+                CompanyId = (int)(row["CompanyId"]),
+                JSRId = (string)(row["JSRId"]),
+                StockId = (int)(row["StockId"]),
+                Total = (decimal)(row["Total"]),
+                DlyDate = (string)(row["DlyDate"]),
+                DlyTypeId = (int)(row["DlyTypeId"]),
+                Remark = (string)(row["Remark"]),
+
+            };
+            return result;
+        }
+        #endregion
+        #region PDlyBakFullNameEntity
+        public static PDlyBakFullNameEntity[] DataTableToPDlyBakFullNameEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PDlyBakFullNameEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPDlyBakFullNameEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+        public static PDlyBakFullNameEntity DataRowToPDlyBakFullNameEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PDlyBakFullNameEntity();
+            var entity = DataRowToPDlyBakEntity(row);
+            FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, entity);
+            result.ProductNo = row["ProductNo"].ToString();
+            result.ProductName = row["ProductName"].ToString();
+            result.Spec = row["Spec"].ToString();
+            result.GoodCode = row["GoodCode"].ToString();
+            result.Unit = row["Unit"].ToString();
+            result.QtyMode = (short)row["QtyMode"];
+            return result;
+        }
+        #endregion
+        #region PDlyBakEntity
+        public static PDlyBakEntity DataRowToPDlyBakEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PDlyBakEntity()
+            {
+                PDlyBakId = (string)(row["PDlyBakId"]),
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                ATypeId = (int)(row["ATypeId"]),
+                CompanyId = (int)(row["CompanyId"]),
+                DlyTypeId = (int)(row["DlyTypeId"]),
+                DlyDate = (string)(row["DlyDate"]),
+                JSRId = (string)(row["JSRId"]),
+                StockId1 = (int)(row["StockId1"]),
+                StockId2 = (int)(row["StockId2"]),
+                ProductId = (int)(row["ProductId"]),
+                BN = (string)(row["BN"]),
+                Qty = (decimal)(row["Qty"]),
+                CostPrice = (double)(row["CostPrice"]),
+                CostTotal = (decimal)(row["CostTotal"]),
+                Price = (double)(row["Price"]),
+                Total = (decimal)(row["Total"]),
+                DisCount = (decimal)(row["DisCount"]),
+                DisPrice = (double)(row["DisPrice"]),
+                DisTotal = (decimal)(row["DisTotal"]),
+                TaxRate = (decimal)(row["TaxRate"]),
+                Tax = (decimal)(row["Tax"]),
+                TaxPrice = (double)(row["TaxPrice"]),
+                TaxTotal = (decimal)(row["TaxTotal"]),
+                RetailPrice = (double)(row["RetailPrice"]),
+                InvoceTotal = (decimal)(row["InvoceTotal"]),
+                Remark = (string)(row["Remark"]),
+                C_OrderNdxId = (string)(row["C_OrderNdxId"]),
+                C_ProductOrderId = (string)(row["C_ProductOrderId"]),
+                SortNo = (int)(row["SortNo"]),
+
+            };
+            return result;
+        }
+        #endregion
+        #region DlyNdxFullNameEntity
         public static DlyNdxFullNameEntity[] DataTableToDlyNdxFullNameEntity(DataTable dt)
         {
             if (dt == null)
@@ -288,7 +553,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             if (dataRow == null)
                 return null;
             var result = new DlyNdxFullNameEntity();
-            var entity = DataRowToEntity(dataRow);
+            var entity = DataRowToDlyNdxEntity(dataRow);
             FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, entity);
             result.CompanyNo = dataRow["CompanyNo"].ToString();
             result.CompanyName = dataRow["CompanyName"].ToString();
@@ -305,18 +570,20 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             result.SHRName5 = dataRow["SHRName5"].ToString();
             return result;
         }
-        public static DlyNdxEntity[] DataTableToEntitys(DataTable dt)
+        #endregion
+        #region DlyNdxEntity
+        public static DlyNdxEntity[] DataTableToDlyNdxEntitys(DataTable dt)
         {
             if (dt == null)
                 return null;
             var results = new DlyNdxEntity[dt.Rows.Count];
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                results[i] = DataRowToEntity(dt.Rows[i]);
+                results[i] = DataRowToDlyNdxEntity(dt.Rows[i]);
             }
             return results;
         }
-        public static DlyNdxEntity DataRowToEntity(DataRow row)
+        public static DlyNdxEntity DataRowToDlyNdxEntity(DataRow row)
         {
             if (row == null)
                 return null;
@@ -352,6 +619,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             };
             return result;
         }
+        #endregion
         #endregion
     }
 }

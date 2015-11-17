@@ -103,7 +103,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
 
         private MenuEntity[] GetChildMenus(string PNo)
         {
-            var dt = this.GetChildList(modestring, PNo);
+            var dt = this.GetTree(modestring, PNo);
             return DataTableToBindEntitys(dt);
         }
 

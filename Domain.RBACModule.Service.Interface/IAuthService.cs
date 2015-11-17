@@ -8,6 +8,8 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface
     {
         [OperationContract]
         [ApplicationContextBehavior(true, false)]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         AuthPrincipal Login(string UserNo, string UserPassWord);
+        string GetUserIdByTicket(string ticketstring = null);
     }
 }

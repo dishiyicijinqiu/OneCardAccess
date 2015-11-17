@@ -86,7 +86,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
 
         private ActionEntity[] GetChildMenus(string PNo)
         {
-            return ActionService.DataTableToBindEntitys(this.GetChildList(modestring, PNo));
+            return ActionService.DataTableToBindEntitys(this.GetTree(modestring, PNo));
         }
 
         public void DeleteEntity(string actionno)

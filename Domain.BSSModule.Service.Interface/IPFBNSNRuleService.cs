@@ -6,6 +6,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
     public interface IPFBNSNRuleService
     {
         [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         PFBNSNRuleEntity[] GetPFBNSNRules();
     }
 }

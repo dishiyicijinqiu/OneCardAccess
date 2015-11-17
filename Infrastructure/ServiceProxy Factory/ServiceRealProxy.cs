@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FengSharp.OneCardAccess.Infrastructure.Exceptions;
+using System;
 using System.Runtime.Remoting.Messaging;
 using System.Runtime.Remoting.Proxies;
 using System.ServiceModel;
@@ -53,20 +54,26 @@ namespace FengSharp.OneCardAccess.Infrastructure
                 {
                     (channel as ICommunicationObject).Abort();
                 }
-                string errmsg = ex.InnerException.Message;
-                if (errmsg.Contains("登录超时"))
+                if (ex.InnerException is BusinessException)
                 {
                     var timeOutLogin = ServiceLoader.LoadService<ITimeOutLogin>();
                     if (timeOutLogin != null && timeOutLogin.TimeOutLogin())
                         goto LoginTimeOutDo;
                 }
-                if (ex.InnerException != null)
+                if (ex.InnerException is System.ServiceModel.EndpointNotFoundException)
                 {
-                    methodReturn = new ReturnMessage(ex.InnerException, methodCall);
+                    methodReturn = new ReturnMessage(new BusinessException("连接服务器失败"), methodCall);
                 }
                 else
                 {
-                    methodReturn = new ReturnMessage(ex, methodCall);
+                    if (ex.InnerException != null)
+                    {
+                        methodReturn = new ReturnMessage(ex.InnerException, methodCall);
+                    }
+                    else
+                    {
+                        methodReturn = new ReturnMessage(ex, methodCall);
+                    }
                 }
             }
             return methodReturn;

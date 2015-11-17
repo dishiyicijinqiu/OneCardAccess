@@ -8,7 +8,6 @@ using FengSharp.OneCardAccess.Infrastructure.WinForm;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Base;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Controls;
 using System;
-using FengSharp.OneCardAccess.Infrastructure.WinForm;
 using System.Windows.Forms;
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
 {

@@ -55,6 +55,10 @@
       <Project>{a50ef991-4e13-40ac-8943-4c86360eb18a}</Project>
       <Name>Domain.BSSModule.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{12b77e2b-2105-4fec-b05a-c9d56b9c4161}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

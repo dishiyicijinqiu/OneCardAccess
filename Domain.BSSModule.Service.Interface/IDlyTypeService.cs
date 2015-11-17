@@ -6,8 +6,10 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
     public interface IDlyTypeService
     {
         [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         DlyTypeCateEntity[] GetDlyTypeTree(int pid);
         [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         DlyTypeEntity GetDlyTypeById(int dlytypeid);
     }
 }

@@ -28,15 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnCloseCurrent = new DevExpress.XtraBars.BarButtonItem();
             this.btnCloseOther = new DevExpress.XtraBars.BarButtonItem();
             this.btnCloseAll = new DevExpress.XtraBars.BarButtonItem();
+            this.barItemUser = new DevExpress.XtraBars.BarButtonItem();
+            this.barItemEmpty = new DevExpress.XtraBars.BarStaticItem();
+            this.barTimeItem = new FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.BarTimeItem();
+            this.barTimeInfo = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.xtraTabbedMdiManager = new FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.ExXtraTabbedMdiManager();
-            this.popupMenu = new DevExpress.XtraBars.PopupMenu();
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.xtraTabbedMdiManager = new FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.ExXtraTabbedMdiManager(this.components);
+            this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
@@ -52,9 +57,13 @@
             this.ribbon.ExpandCollapseItem,
             this.btnCloseCurrent,
             this.btnCloseOther,
-            this.btnCloseAll});
+            this.btnCloseAll,
+            this.barItemUser,
+            this.barItemEmpty,
+            this.barTimeItem,
+            this.barTimeInfo});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 9;
+            this.ribbon.MaxItemId = 13;
             this.ribbon.Name = "ribbon";
             this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.True;
             this.ribbon.ShowToolbarCustomizeItem = false;
@@ -89,8 +98,40 @@
             this.btnCloseAll.Name = "btnCloseAll";
             this.btnCloseAll.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCloseAll_ItemClick);
             // 
+            // barItemUser
+            // 
+            this.barItemUser.Id = 9;
+            this.barItemUser.Name = "barItemUser";
+            // 
+            // barItemEmpty
+            // 
+            this.barItemEmpty.Caption = "    当前账号：";
+            this.barItemEmpty.Id = 10;
+            this.barItemEmpty.Name = "barItemEmpty";
+            this.barItemEmpty.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // barTimeItem
+            // 
+            this.barTimeItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barTimeItem.Caption = "2015年11月17日 14:06:28";
+            this.barTimeItem.Id = 11;
+            this.barTimeItem.Name = "barTimeItem";
+            this.barTimeItem.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // barTimeInfo
+            // 
+            this.barTimeInfo.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barTimeInfo.Caption = "服务器时间：";
+            this.barTimeInfo.Id = 12;
+            this.barTimeInfo.Name = "barTimeInfo";
+            this.barTimeInfo.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // ribbonStatusBar
             // 
+            this.ribbonStatusBar.ItemLinks.Add(this.barItemEmpty);
+            this.ribbonStatusBar.ItemLinks.Add(this.barItemUser);
+            this.ribbonStatusBar.ItemLinks.Add(this.barTimeInfo);
+            this.ribbonStatusBar.ItemLinks.Add(this.barTimeItem);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 631);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -158,5 +199,9 @@
         private DevExpress.XtraBars.BarButtonItem btnCloseOther;
         private DevExpress.XtraBars.BarButtonItem btnCloseAll;
         private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu;
+        private DevExpress.XtraBars.BarButtonItem barItemUser;
+        private DevExpress.XtraBars.BarStaticItem barItemEmpty;
+        private FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.BarTimeItem barTimeItem;
+        private DevExpress.XtraBars.BarStaticItem barTimeInfo;
     }
 }

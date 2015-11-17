@@ -87,7 +87,28 @@
     <Compile Include="EntityTool.cs" />
     <Compile Include="Events\VEventHandler.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="ExceptionHandle\ExceptionExtractionMessageInspector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExceptionHandle\ExceptionHandlingBehavior.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExceptionHandle\ExceptionHandlingBehaviorElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExceptionHandle\ExceptionWrapHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExceptionHandle\IClientFaultFormatter.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Exceptions\LoginTimeOutException.cs" />
+    <Compile Include="ExceptionHandle\ServiceExceptionDetail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExceptionHandle\ServiceInvocationException.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ServiceProxy Factory\ITimeOutLogin.cs" />
     <Compile Include="Plug-in Extension\PlugExtensionFactory.cs" />
     <Compile Include="ResourceMessages.Designer.cs">

@@ -10,6 +10,7 @@ using System.Linq;
 using FengSharp.OneCardAccess.Infrastructure.WinForm;
 using System.Collections.Generic;
 using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
+using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
@@ -56,7 +57,9 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 if (e.Clicks != 2 || this.gridView1.FocusedRowHandle < 0)
                     return;
                 var entity = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as DlyNdxEntity;
-                DlySPRKForm form = new DlySPRKForm();
+                if (entity == null)
+                    throw new BusinessException("单据不存在");
+                DlySPRKForm form = new DlySPRKForm(entity.DlyNdxId);
                 form.Show();
             }
             catch (Exception ex)

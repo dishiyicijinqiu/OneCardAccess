@@ -6,12 +6,19 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
     public interface IDlyNdxService
     {
         [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         string GetNewDlyNo(int DlyTypeId);
         [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         string GetDlyDate();
         [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         string SaveSPRKBak(SPRKDlyCGNdxEntity entity);
         [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         DlyNdxFullNameEntity[] GetCGList();
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        SPRKDlyCGNdxEntity GetSPRKDlyCGNdxEntity(string dlyNdxId);
     }
 }

@@ -245,6 +245,7 @@
             this.btnPrint.StyleController = this.baseDataLayoutControl1;
             this.btnPrint.TabIndex = 61;
             this.btnPrint.Text = "打印(&P)";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // gridControl1
             // 
@@ -372,6 +373,8 @@
             // colQty
             // 
             this.colQty.Caption = "数量";
+            this.colQty.DisplayFormat.FormatString = "N0";
+            this.colQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colQty.FieldName = "Qty";
             this.colQty.Name = "colQty";
             this.colQty.Visible = true;
@@ -421,6 +424,13 @@
             this.qtyFBNRepItemPopupContainerEdit.AutoHeight = false;
             this.qtyFBNRepItemPopupContainerEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.qtyFBNRepItemPopupContainerEdit.DisplayFormat.FormatString = "N0";
+            this.qtyFBNRepItemPopupContainerEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.qtyFBNRepItemPopupContainerEdit.EditFormat.FormatString = "N0";
+            this.qtyFBNRepItemPopupContainerEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.qtyFBNRepItemPopupContainerEdit.Mask.EditMask = "N0";
+            this.qtyFBNRepItemPopupContainerEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.qtyFBNRepItemPopupContainerEdit.Mask.UseMaskAsDisplayFormat = true;
             this.qtyFBNRepItemPopupContainerEdit.Name = "qtyFBNRepItemPopupContainerEdit";
             this.qtyFBNRepItemPopupContainerEdit.QueryResultValue += new DevExpress.XtraEditors.Controls.QueryResultValueEventHandler(this.qtyFBNRepItemPopupContainerEdit_QueryResultValue);
             this.qtyFBNRepItemPopupContainerEdit.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.qtyFBNRepItemPopupContainerEdit_QueryPopUp);
@@ -430,6 +440,13 @@
             this.qtySNRepItemPopupContainerEdit.AutoHeight = false;
             this.qtySNRepItemPopupContainerEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.qtySNRepItemPopupContainerEdit.DisplayFormat.FormatString = "N0";
+            this.qtySNRepItemPopupContainerEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.qtySNRepItemPopupContainerEdit.EditFormat.FormatString = "N0";
+            this.qtySNRepItemPopupContainerEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.qtySNRepItemPopupContainerEdit.Mask.EditMask = "N0";
+            this.qtySNRepItemPopupContainerEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.qtySNRepItemPopupContainerEdit.Mask.UseMaskAsDisplayFormat = true;
             this.qtySNRepItemPopupContainerEdit.Name = "qtySNRepItemPopupContainerEdit";
             this.qtySNRepItemPopupContainerEdit.QueryResultValue += new DevExpress.XtraEditors.Controls.QueryResultValueEventHandler(this.qtySNRepItemPopupContainerEdit_QueryResultValue);
             this.qtySNRepItemPopupContainerEdit.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.qtySNRepItemPopupContainerEdit_QueryPopUp);
@@ -555,6 +572,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
             this.SHRName1ButtonEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.SHRName1ButtonEdit.Properties.ReadOnly = true;
+            this.SHRName1ButtonEdit.Properties.Tag = ((short)(1));
+            this.SHRName1ButtonEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.SHRNameButtonEdit_Properties_ButtonClick);
             this.SHRName1ButtonEdit.Size = new System.Drawing.Size(100, 20);
             this.SHRName1ButtonEdit.StyleController = this.baseDataLayoutControl1;
             this.SHRName1ButtonEdit.TabIndex = 11;
@@ -569,6 +588,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
             this.SHRName2ButtonEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.SHRName2ButtonEdit.Properties.ReadOnly = true;
+            this.SHRName2ButtonEdit.Properties.Tag = ((short)(2));
+            this.SHRName2ButtonEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.SHRNameButtonEdit_Properties_ButtonClick);
             this.SHRName2ButtonEdit.Size = new System.Drawing.Size(100, 20);
             this.SHRName2ButtonEdit.StyleController = this.baseDataLayoutControl1;
             this.SHRName2ButtonEdit.TabIndex = 12;
@@ -583,6 +604,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
             this.SHRName3ButtonEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.SHRName3ButtonEdit.Properties.ReadOnly = true;
+            this.SHRName3ButtonEdit.Properties.Tag = ((short)(3));
+            this.SHRName3ButtonEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.SHRNameButtonEdit_Properties_ButtonClick);
             this.SHRName3ButtonEdit.Size = new System.Drawing.Size(100, 20);
             this.SHRName3ButtonEdit.StyleController = this.baseDataLayoutControl1;
             this.SHRName3ButtonEdit.TabIndex = 13;
@@ -597,6 +620,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
             this.SHRName4ButtonEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.SHRName4ButtonEdit.Properties.ReadOnly = true;
+            this.SHRName4ButtonEdit.Properties.Tag = ((short)(4));
+            this.SHRName4ButtonEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.SHRNameButtonEdit_Properties_ButtonClick);
             this.SHRName4ButtonEdit.Size = new System.Drawing.Size(100, 20);
             this.SHRName4ButtonEdit.StyleController = this.baseDataLayoutControl1;
             this.SHRName4ButtonEdit.TabIndex = 14;
@@ -611,6 +636,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
             this.SHRName5ButtonEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.SHRName5ButtonEdit.Properties.ReadOnly = true;
+            this.SHRName5ButtonEdit.Properties.Tag = ((short)(5));
+            this.SHRName5ButtonEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.SHRNameButtonEdit_Properties_ButtonClick);
             this.SHRName5ButtonEdit.Size = new System.Drawing.Size(100, 20);
             this.SHRName5ButtonEdit.StyleController = this.baseDataLayoutControl1;
             this.SHRName5ButtonEdit.TabIndex = 15;

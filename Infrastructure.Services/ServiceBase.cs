@@ -40,36 +40,33 @@ namespace FengSharp.OneCardAccess.Infrastructure.Services
             }
         }
 
-        public virtual DataTable GetTree(string cMode, int PId)
+        #region FindById
+        public virtual DataRow FindById(string cMode, string EntityId, string UserId = null)
         {
-            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetTree");
-            Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
-            Database.AddInParameter(cmd, "PId", DbType.Int32, PId);
-            return Database.ExecuteDataTable(cmd);
-        }
-
-        public virtual DataRow FindById(string cMode, string EntityId)
-        {
-            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_FindById");
+            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_FindById;1");
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "EntityId", DbType.String, EntityId);
+            Database.AddInParameter(cmd, "UserId", DbType.String, UserId);
             DataTable dt = Database.ExecuteDataTable(cmd);
             if (dt == null || dt.Rows.Count <= 0)
                 return null;
             return dt.Rows[0];
         }
 
-        public virtual DataRow FindById(string cMode, int EntityId)
+        public virtual DataRow FindById(string cMode, int EntityId, string UserId = null)
         {
             DbCommand cmd = Database.GetStoredProcCommand("P_Glo_FindById;2");
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "EntityId", DbType.Int32, EntityId);
+            Database.AddInParameter(cmd, "UserId", DbType.String, UserId);
             DataTable dt = Database.ExecuteDataTable(cmd);
             if (dt == null || dt.Rows.Count <= 0)
                 return null;
             return dt.Rows[0];
         }
+        #endregion
 
+        #region FindByNo
         public virtual DataRow FindByNo(string cMode, string entityNo)
         {
             DbCommand cmd = Database.GetStoredProcCommand("P_Glo_FindByNo");
@@ -80,54 +77,56 @@ namespace FengSharp.OneCardAccess.Infrastructure.Services
                 return null;
             return dt.Rows[0];
         }
+        #endregion
 
-        public virtual DataTable GetList(string cMode)
+        public virtual DataTable GetList(string cMode, string UserId = null)
         {
-            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetList");
-            Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
-            return Database.ExecuteDataTable(cmd);
-        }
-
-        public virtual DataTable GetSQList(string cMode, string UserId)
-        {
-            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetSQList");
+            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetList;1");
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "UserId", DbType.String, UserId);
             return Database.ExecuteDataTable(cmd);
         }
 
-        public virtual DataTable GetChildList(string cMode, string PId)
+        #region GetTree
+        public virtual DataTable GetTree(string cMode, int PId, string UserId = null)
         {
-            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetChildList;1");
-            Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
-            Database.AddInParameter(cmd, "PId", DbType.String, PId);
-            return Database.ExecuteDataTable(cmd);
-        }
-
-        public virtual DataTable GetChildList(string cMode, int PId)
-        {
-            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetChildList;2");
+            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetTree;1");
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "PId", DbType.Int32, PId);
+            Database.AddInParameter(cmd, "UserId", DbType.String, UserId);
             return Database.ExecuteDataTable(cmd);
         }
 
-        public virtual DataTable GetRelationData(string cMode, string EntityId)
+        public virtual DataTable GetTree(string cMode, string PId, string UserId = null)
+        {
+            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetTree;2");
+            Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
+            Database.AddInParameter(cmd, "PId", DbType.String, PId);
+            Database.AddInParameter(cmd, "UserId", DbType.String, UserId);
+            return Database.ExecuteDataTable(cmd);
+        }
+        #endregion
+
+        #region GetRelationData
+        public virtual DataTable GetRelationData(string cMode, string EntityId, string UserId = null)
         {
             DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetRelationData;1");
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "EntityId", DbType.String, EntityId);
+            Database.AddInParameter(cmd, "UserId", DbType.String, UserId);
             return Database.ExecuteDataTable(cmd);
         }
 
-        public virtual DataTable GetRelationData(string cMode, int EntityId)
+        public virtual DataTable GetRelationData(string cMode, int EntityId, string UserId = null)
         {
             DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetRelationData;2");
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "EntityId", DbType.Int32, EntityId);
+            Database.AddInParameter(cmd, "UserId", DbType.String, UserId);
             return Database.ExecuteDataTable(cmd);
         }
-
+        #endregion
+        #region DeleteEntity
         public virtual void DeleteEntity(string cMode, string EntityId, DbTransaction transaction = null)
         {
             DbCommand cmd = Database.GetStoredProcCommand("P_Glo_Delete");
@@ -148,6 +147,7 @@ namespace FengSharp.OneCardAccess.Infrastructure.Services
             else
                 Database.ExecuteNonQuery(cmd, transaction);
         }
+        #endregion
         public virtual void DeleteRelationData(string cMode, string EntityId, DbTransaction transaction = null)
         {
             DbCommand cmd = Database.GetStoredProcCommand("P_Glo_DeleteRelationData;1");

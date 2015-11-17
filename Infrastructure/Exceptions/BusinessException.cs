@@ -20,38 +20,5 @@ namespace FengSharp.OneCardAccess.Infrastructure.Exceptions
             : base(info, context)
         {
         }
-
-        //public static void HandlerError(int code)
-        //{
-        //    if (code == -1)
-        //    {
-        //        throw new BusinessException(ResourceMessages.InsertFailed);
-        //    }
-        //    else if (code == -2)
-        //    {
-        //        throw new BusinessException(ResourceMessages.UpdateFailed);
-        //    }
-        //    else if (code == -3)
-        //    {
-        //        throw new BusinessException(ResourceMessages.DeleteFailed);
-        //    }
-        //    else if (code == -4)
-        //    {
-        //        throw new BusinessException(ResourceMessages.ExistSameNo);
-        //    }
-        //    else if (code == -5)
-        //    {
-        //        throw new BusinessException(ResourceMessages.BeReferencedCanNotDelete);
-        //    }
-        //    else if (code == -6)
-        //    {
-        //        throw new BusinessException(ResourceMessages.HasSonCanNotDelete);
-        //    }
-        //}
-        //public static void HandlerUnKnowError(int code)
-        //{
-        //    if (code != 0)
-        //        throw new BusinessException("未处理的错误");
-        //}
     }
 }

@@ -17,30 +17,6 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
 {
     public class AuthService : ServiceBase, IAuthService
     {
-        private static int _SessionTimeOutMinutes = -1;
-        static int SessionTimeOutMinutes
-        {
-            get
-            {
-                if (_SessionTimeOutMinutes == -1)
-                {
-                    _SessionTimeOutMinutes = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["SessionTimeOutMinutes"]);
-                }
-                return _SessionTimeOutMinutes;
-            }
-        }
-        private static string _SessionCacheName;
-        static string SessionCacheName
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_SessionCacheName))
-                {
-                    _SessionCacheName = System.Configuration.ConfigurationManager.AppSettings["SessionCacheName"];
-                }
-                return _SessionCacheName;
-            }
-        }
         public AuthPrincipal Login(string UserNo, string UserPassWord)
         {
             UserPassWord = FengSharp.OneCardAccess.Infrastructure.SecurityCryptography.SecurityProvider.MD5Encrypt(UserPassWord);
@@ -57,10 +33,19 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
             // 加密用户身份验证票
             string encryptedTicket = FormsAuthentication.Encrypt(ticket);
             ApplicationContext.Current.Ticket = encryptedTicket;
-            CacheProvider.Add(encryptedTicket, ticket, TimeSpan.FromMinutes(SessionTimeOutMinutes), cacheManagerName: SessionCacheName);
+            ApplicationContext.Current["ServerTime"] = DateTime.Now;
+            CacheProvider.Add(encryptedTicket, ticket, TimeSpan.FromMinutes(ApplicationConfig.SessionTimeOutMinutes), cacheManagerName: ApplicationConfig.SessionCacheName);
             return new AuthPrincipal(new AuthIdentity(userid, UserNo, username));
         }
-
+        public string GetUserIdByTicket(string ticketstring = null)
+        {
+            if (string.IsNullOrWhiteSpace(ticketstring))
+                ticketstring = ApplicationContext.Current.Ticket;
+            FormsAuthenticationTicket ticket = CacheProvider.Get<FormsAuthenticationTicket>(ApplicationContext.Current.Ticket,
+              cacheManagerName: FengSharp.OneCardAccess.Application.IntegeatedManageServer.Config.ApplicationConfig.SessionCacheName);
+            if (ticket == null) throw new BusinessException("非法登录");
+            return ticket.Name;
+        }
 
         //public bool VerifyAuth(string userid, Auth auth)
         //{

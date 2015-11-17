@@ -67,6 +67,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// <summary>
         /// 批号
         /// </summary>
+        [DataMember]
         public string BN { get; set; }
         /// <summary>
         /// 完整批号

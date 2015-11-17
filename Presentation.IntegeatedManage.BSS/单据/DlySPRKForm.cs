@@ -4,6 +4,7 @@ using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface;
 using FengSharp.OneCardAccess.Infrastructure;
 using FengSharp.OneCardAccess.Infrastructure.Base;
+using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Base;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Controls;
 using FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS.Interface;
@@ -16,6 +17,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
     public partial class DlySPRKForm : DlySPRKForm_Design
     {
         public string NdxId { get; set; }
+        private short TotalInputLevel = 0;
         public DlySPRKForm()
         {
             InitializeComponent();
@@ -56,7 +58,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         }
 
         public DlySPRKForm(string ndxId)
-            : base()
+            : this()
         {
             NdxId = ndxId;
         }
@@ -67,6 +69,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             {
                 this.Facade = new DlySPRKFormFacade(this);
                 this.Facade.SetData();
+                this.Facade.SetTotalInputLevel();
             }
             catch (Exception ex)
             {
@@ -412,6 +415,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
             try
             {
+                if (this.formLoadErrorExit1.GetLoadError(this))
+                    return;
                 DJ_Exit frm = new DJ_Exit();
                 var diaResult = frm.ShowDialogResultEx();
                 if (diaResult == DialogResultEx.存入草稿)
@@ -438,6 +443,191 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             }
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void SHRNameButtonEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(this.NdxId))
+                {
+                    MessageBoxEx.Info("单据未保存");
+                    return;
+                }
+                ButtonEdit btn = sender as ButtonEdit;
+                short inputlevel = (short)btn.Properties.Tag;
+                if (this.TotalInputLevel < inputlevel)
+                {
+                    MessageBoxEx.Info("未启用该审核级别");
+                    return;
+                }
+                var sprkdlycgndxentity = this.bindbaseDataLayoutControl1.DataSource as SPRKDlyCGNdxEntity;
+                var property = sprkdlycgndxentity.GetType().GetProperty(string.Format("SHRId{0}", inputlevel));
+                var shrid = property.GetValue(sprkdlycgndxentity, null).ToString();
+                if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.OK)
+                {
+                    if (!CheckPreInputLevel(inputlevel))
+                    {
+                        MessageBoxEx.Info("前面的审核流程未完成");
+                        return;
+                    }
+                    if (CheckAfterInputLevel(inputlevel))
+                    {
+                        MessageBoxEx.Info("后面的审核流程已完成");
+                        return;
+                    }
+                    if (!string.IsNullOrWhiteSpace(shrid))
+                    {
+                        MessageBoxEx.Info("单据已审核");
+                        return;
+                    }
+                    this.Facade.SHDJ(inputlevel);
+                    property.SetValue(sprkdlycgndxentity, AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserId, null);
+                    btn.EditValue = AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserName;
+                }
+                else
+                {
+                    if (!CheckPreInputLevel(inputlevel))
+                    {
+                        MessageBoxEx.Info("前面的审核流程未完成");
+                        return;
+                    }
+                    if (CheckAfterInputLevel(inputlevel))
+                    {
+                        MessageBoxEx.Info("后面的审核流程已完成");
+                        return;
+                    }
+                    if (string.Compare(shrid, AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserId, true) != 0)
+                    {
+                        MessageBoxEx.Info("与审核不是同一个人，不可反审");
+                        return;
+                    }
+                    this.Facade.FSDJ(inputlevel);
+                    property.SetValue(sprkdlycgndxentity, string.Empty, null);
+                    btn.EditValue = string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
+        }
+
+        /// <summary>
+        /// 检查后面的审核流程是否有一个完成
+        /// </summary>
+        private bool CheckAfterInputLevel(short inputlevel)
+        {
+            var sprkdlycgndxentity = this.bindbaseDataLayoutControl1.DataSource as SPRKDlyCGNdxEntity;
+            switch (inputlevel)
+            {
+                default:
+                    throw new BusinessException("非法的审核级别");
+                case 5:
+                    return true;
+                case 4:
+                    {
+                        if (this.TotalInputLevel > 4 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId5))
+                            return true;
+                        return false;
+                    }
+                case 3:
+                    {
+                        if (this.TotalInputLevel > 3 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId4))
+                            return true;
+                        if (this.TotalInputLevel > 4 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId5))
+                            return true;
+                        return false;
+                    }
+                case 2:
+                    {
+                        if (this.TotalInputLevel > 2 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId3))
+                            return true;
+                        if (this.TotalInputLevel > 3 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId4))
+                            return true;
+                        if (this.TotalInputLevel > 4 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId5))
+                            return true;
+                        return false;
+                    }
+                case 1:
+                    {
+                        if (this.TotalInputLevel > 1 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId2))
+                            return true;
+                        if (this.TotalInputLevel > 2 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId3))
+                            return true;
+                        if (this.TotalInputLevel > 3 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId4))
+                            return true;
+                        if (this.TotalInputLevel > 4 && !string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId5))
+                            return true;
+                        return false;
+                    }
+            }
+        }
+        /// <summary>
+        /// 检查前面的审核流程是否全部完成
+        /// </summary>
+        private bool CheckPreInputLevel(short inputlevel)
+        {
+            var sprkdlycgndxentity = this.bindbaseDataLayoutControl1.DataSource as SPRKDlyCGNdxEntity;
+            switch (inputlevel)
+            {
+                default:
+                    throw new BusinessException("非法的审核级别");
+                case 1:
+                    return true;
+                case 2:
+                    {
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId1))
+                            return false;
+                        return true;
+                    }
+                case 3:
+                    {
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId1))
+                            return false;
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId2))
+                            return false;
+                        return true;
+                    }
+                case 4:
+                    {
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId1))
+                            return false;
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId2))
+                            return false;
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId3))
+                            return false;
+                        return true;
+                    }
+                case 5:
+                    {
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId1))
+                            return false;
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId2))
+                            return false;
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId3))
+                            return false;
+                        if (string.IsNullOrWhiteSpace(sprkdlycgndxentity.SHRId4))
+                            return false;
+                        return true;
+                    }
+            }
+        }
+
+        internal void SetTotalInputLevel(short totalInputLevel)
+        {
+            TotalInputLevel = totalInputLevel;
+            this.ItemForSHRName2.Visibility = totalInputLevel >= 2 ?
+                DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            this.ItemForSHRName3.Visibility = totalInputLevel >= 3 ?
+                DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            this.ItemForSHRName4.Visibility = totalInputLevel >= 4 ?
+                DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            this.ItemForSHRName5.Visibility = totalInputLevel >= 5 ?
+                DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+        }
     }
     public class DlySPRKForm_Design : Base_Form<DlySPRKFormFacade>
     {
@@ -445,6 +635,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
     public class DlySPRKFormFacade : ActualBase<DlySPRKForm>
     {
         private IDlyNdxService _DlyNdxService = ServiceProxyFactory.Create<IDlyNdxService>();
+        private IInputLevelService _InputLevelService = ServiceProxyFactory.Create<IInputLevelService>();
+
         public DlySPRKFormFacade(DlySPRKForm actual)
             : base(actual) { }
 
@@ -452,6 +644,10 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
             if (string.IsNullOrWhiteSpace(this.Actual.NdxId))
             {
+                if (!_InputLevelService.CheckInputLevel(FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId, ((short)1)))
+                {
+                    throw new BusinessException("您不是一级审核人");
+                }
                 var entity = new SPRKDlyCGNdxEntity();
                 entity.DlyNo = _DlyNdxService.GetNewDlyNo(FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId);
                 entity.DlyDate = _DlyNdxService.GetDlyDate();
@@ -459,6 +655,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 entity.ZDRId = authidentity.UserId;
                 entity.ZDRName = authidentity.UserName;
                 entity.DlyTypeId = FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId;
+                entity.SHRId1 = authidentity.UserId;
+                entity.SHRName1 = authidentity.UserName;
                 //var dlybak = new PDlyBakFullNameEntity();
                 //dlybak.PFBNBaks.Add(new PFBNBakEntity());
                 //dlybak.PSNBaks.Add(new PSNBakEntity());
@@ -467,8 +665,15 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             }
             else
             {
-
+                var entity = _DlyNdxService.GetSPRKDlyCGNdxEntity(this.Actual.NdxId);
+                this.Actual.SetData(entity);
             }
+        }
+
+        internal void SetTotalInputLevel()
+        {
+            short totalInputLevel = _InputLevelService.GetTotalInputLevel(FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId);
+            this.Actual.SetTotalInputLevel(totalInputLevel);
         }
 
         internal void SaveBak(SPRKDlyCGNdxEntity entity)
@@ -480,6 +685,16 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         internal void SaveDly(SPRKDlyCGNdxEntity entity)
         {
             throw new NotImplementedException();
+        }
+
+        internal void SHDJ(short inputlevel)
+        {
+            _InputLevelService.SHDJ(FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId, inputlevel, this.Actual.NdxId);
+        }
+
+        internal void FSDJ(short inputlevel)
+        {
+            _InputLevelService.FSDJ(FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId, inputlevel, this.Actual.NdxId);
         }
     }
 }

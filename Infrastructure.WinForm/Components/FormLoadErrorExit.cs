@@ -87,6 +87,14 @@ namespace FengSharp.OneCardAccess.Infrastructure.WinForm.Components
                 }
             }
         }
+        public bool GetLoadError(Form form)
+        {
+            if (FormList.ContainsKey(form))
+            {
+                return FormList[form].IsLoadError;
+            }
+            return false;
+        }
         void form_Shown(object sender, EventArgs e)
         {
             var form = sender as Form;

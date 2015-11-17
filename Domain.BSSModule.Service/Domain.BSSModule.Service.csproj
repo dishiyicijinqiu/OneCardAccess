@@ -74,6 +74,10 @@
       <Project>{76d6a2b7-c84b-42c4-88cc-64f64902bb27}</Project>
       <Name>Domain.BSSModule.Service.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain.RBACModule.Service.Interface\Domain.RBACModule.Service.Interface.csproj">
+      <Project>{b1aa02f5-0845-4992-9df8-e6b782aebdb0}</Project>
+      <Name>Domain.RBACModule.Service.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Services\Infrastructure.Services.csproj">
       <Project>{1c2f18be-49b7-479a-ac58-908260254f0e}</Project>
       <Name>Infrastructure.Services</Name>

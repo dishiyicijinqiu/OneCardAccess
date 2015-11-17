@@ -18,9 +18,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-RBACModule(权限管理模块)", "1-RBACModule(权限管理模块)", "{FD1C02A5-9B49-4C3D-B8D2-074A8A741691}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-6-Solution Items", "1-6-Solution Items", "{723E4154-5D5D-4318-BD65-DA2305F413F8}"
-	ProjectSection(SolutionItems) = preProject
-		Temp.txt = Temp.txt
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-7-ReferenceLib(引用程序集)", "1-7-ReferenceLib(引用程序集)", "{96558603-9D21-4CBD-945D-83831C96E53C}"
 EndProject
@@ -39,11 +36,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-8-DataBase(数据库)", "1-8-DataBase(数据库)", "{D0D83880-6B28-4AC6-8C56-5E53763D65E6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-9-CodeBuilder(代码生成)", "1-9-CodeBuilder(代码生成)", "{2CE7FFE9-107B-4503-8B2F-60D908C8E4C4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{D00270FB-9565-49BA-A04C-9345C1319C50}"
-	ProjectSection(SolutionItems) = preProject
-		项目命名.txt = 项目命名.txt
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDK", "SDK", "{765FEC17-A7FD-4528-ABA4-3992B1E4B8A8}"
 	ProjectSection(SolutionItems) = preProject
@@ -174,7 +166,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.IntegeatedMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.IntegeatedManage.CRM.Interface", "Presentation.IntegeatedManage.CRM.Interface\Presentation.IntegeatedManage.CRM.Interface.csproj", "{912A12E4-45E2-47C2-B953-B0E6A4CC9D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{43AA1D8B-039C-4CB7-96FF-FA40BE0B775A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{EF972531-414F-44D8-8C3C-7101D8B8B189}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Documents\Temp.txt = Solution Items\Documents\Temp.txt
+		Solution Items\Documents\名词解释.txt = Solution Items\Documents\名词解释.txt
+		Solution Items\Documents\项目命名.txt = Solution Items\Documents\项目命名.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -335,10 +332,6 @@ Global
 		{912A12E4-45E2-47C2-B953-B0E6A4CC9D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{912A12E4-45E2-47C2-B953-B0E6A4CC9D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{912A12E4-45E2-47C2-B953-B0E6A4CC9D93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43AA1D8B-039C-4CB7-96FF-FA40BE0B775A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43AA1D8B-039C-4CB7-96FF-FA40BE0B775A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43AA1D8B-039C-4CB7-96FF-FA40BE0B775A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43AA1D8B-039C-4CB7-96FF-FA40BE0B775A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -353,7 +346,6 @@ Global
 		{0667AE65-A542-41A6-BAE0-0ED57E65080E} = {49979ABA-8934-48AC-935B-E5667E0948CB}
 		{4C2E5595-2A54-4F6E-9BCD-547BAECF9FE0} = {49979ABA-8934-48AC-935B-E5667E0948CB}
 		{10618C1C-C9EA-46E3-B1CC-AB25AC00D95D} = {49979ABA-8934-48AC-935B-E5667E0948CB}
-		{D00270FB-9565-49BA-A04C-9345C1319C50} = {723E4154-5D5D-4318-BD65-DA2305F413F8}
 		{765FEC17-A7FD-4528-ABA4-3992B1E4B8A8} = {96558603-9D21-4CBD-945D-83831C96E53C}
 		{91E99E20-F12A-4720-9131-AA299DCD571D} = {96558603-9D21-4CBD-945D-83831C96E53C}
 		{7C15AE3B-8FF6-434B-8792-5B02106BA6FA} = {91E99E20-F12A-4720-9131-AA299DCD571D}
@@ -397,6 +389,6 @@ Global
 		{19976231-C5E3-4DB2-BA6F-9B138D1B366B} = {4C2E5595-2A54-4F6E-9BCD-547BAECF9FE0}
 		{243CBB62-A283-4537-BBA4-17C15E2C937D} = {9217236F-3468-4FE8-B944-FA09E94D63EC}
 		{912A12E4-45E2-47C2-B953-B0E6A4CC9D93} = {9217236F-3468-4FE8-B944-FA09E94D63EC}
-		{43AA1D8B-039C-4CB7-96FF-FA40BE0B775A} = {723E4154-5D5D-4318-BD65-DA2305F413F8}
+		{EF972531-414F-44D8-8C3C-7101D8B8B189} = {723E4154-5D5D-4318-BD65-DA2305F413F8}
 	EndGlobalSection
 EndGlobal

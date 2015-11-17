@@ -242,6 +242,9 @@
       <DependentUpon>TreeListStyleSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\AddDeleteDXPopupMenu.cs" />
+    <Compile Include="Controls\BarTimeItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ExXtraTabbedMdiManager.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -298,6 +301,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Base\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BarTimeItem.resx">
+      <DependentUpon>BarTimeItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FilePictureEdit.resx">
       <DependentUpon>FilePictureEdit.cs</DependentUpon>

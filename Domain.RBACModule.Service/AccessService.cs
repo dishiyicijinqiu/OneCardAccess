@@ -129,13 +129,12 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
         }
         public bool IsSuper()
         {
-            FormsAuthenticationTicket ticket = CacheProvider.Get<FormsAuthenticationTicket>(ApplicationContext.Current.Ticket, cacheManagerName: SessionCacheName);
-            if (ticket == null) throw new BusinessException("非法登录");
+            string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
             bool result = false;
             base.UseTran((tran) =>
             {
                 DbCommand cmd = base.Database.GetStoredProcCommand("P_IsSuper");
-                base.Database.AddInParameter(cmd, "UserId", DbType.String, ticket.Name);
+                base.Database.AddInParameter(cmd, "UserId", DbType.String, userid);
                 base.Database.AddOutParameter(cmd, "IsSuper", DbType.Boolean, 1);
                 base.Database.ExecuteNonQuery(cmd, tran);
                 result = (bool)base.Database.GetParameterValue(cmd, "IsSuper");
@@ -471,18 +470,5 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
             });
         }
         #endregion
-
-        private static string _SessionCacheName;
-        static string SessionCacheName
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_SessionCacheName))
-                {
-                    _SessionCacheName = System.Configuration.ConfigurationManager.AppSettings["SessionCacheName"];
-                }
-                return _SessionCacheName;
-            }
-        }
     }
 }
