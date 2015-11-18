@@ -1,11 +1,12 @@
-﻿using System;
+﻿using FengSharp.OneCardAccess.Infrastructure.Exceptions;
+using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
 
 namespace FengSharp.OneCardAccess.Infrastructure
 {
-   public class ExceptionWrapHandler: IErrorHandler
+    public class ExceptionWrapHandler : IErrorHandler
     {
         #region IErrorHandler Members
 
@@ -15,22 +16,42 @@ namespace FengSharp.OneCardAccess.Infrastructure
         }
 
         private void ProcessException(Exception error, MessageVersion version, ref Message fault)
-       {
-           if (error is FaultException)
-           {
-               return;
-           }
+        {
+            if (error is FaultException)
+            {
+                return;
+            }
+            if (error is System.Data.SqlClient.SqlException)
+            {
+                var sqlerror = error as System.Data.SqlClient.SqlException;
+                if (sqlerror.Class != 11 || sqlerror.State != 1)
+                {
+                    LogHelper.Write(string.Format("Class:{0},State:{1},LineNumber:{2},Procedure:{3},Message:{4}"
+                        , sqlerror.Class, sqlerror.State, sqlerror.LineNumber, sqlerror.Procedure, sqlerror.Message), "SqlException");
+                }
+            }
+            else if (error is BusinessException)
+            {
 
-           if (error.GetType().GetConstructor(new Type[] { typeof(string), typeof(Exception) }) == null)
-           {
-               error = new ServiceInvocationException(error.Message);
-           }
+            }
+            else if (error is LoginTimeOutException)
+            {
 
-           ServiceExceptionDetail exceptionDetail = new ServiceExceptionDetail(error);
-           exceptionDetail.ExceptionAssemblyQualifiedName = error.GetType().AssemblyQualifiedName;
-           FaultException<ServiceExceptionDetail> faultException = new FaultException<ServiceExceptionDetail>(exceptionDetail, new FaultReason(error.Message));
-           fault = Message.CreateMessage(version, faultException.CreateMessageFault(), GetFaultAction());
-       }
+            }
+            else
+            {
+                LogHelper.Write(error.Message, "MethodException");
+            }
+            if (error.GetType().GetConstructor(new Type[] { typeof(string), typeof(Exception) }) == null)
+            {
+                error = new ServiceInvocationException(error.Message);
+            }
+
+            ServiceExceptionDetail exceptionDetail = new ServiceExceptionDetail(error);
+            exceptionDetail.ExceptionAssemblyQualifiedName = error.GetType().AssemblyQualifiedName;
+            FaultException<ServiceExceptionDetail> faultException = new FaultException<ServiceExceptionDetail>(exceptionDetail, new FaultReason(error.Message));
+            fault = Message.CreateMessage(version, faultException.CreateMessageFault(), GetFaultAction());
+        }
 
         public void ProvideFault(Exception error, MessageVersion version, ref Message fault)
         {

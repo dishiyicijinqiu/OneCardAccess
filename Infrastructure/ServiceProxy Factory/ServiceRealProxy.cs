@@ -54,7 +54,7 @@ namespace FengSharp.OneCardAccess.Infrastructure
                 {
                     (channel as ICommunicationObject).Abort();
                 }
-                if (ex.InnerException is BusinessException)
+                if (ex.InnerException is LoginTimeOutException)
                 {
                     var timeOutLogin = ServiceLoader.LoadService<ITimeOutLogin>();
                     if (timeOutLogin != null && timeOutLogin.TimeOutLogin())
