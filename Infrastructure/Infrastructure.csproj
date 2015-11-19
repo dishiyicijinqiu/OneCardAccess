@@ -121,7 +121,10 @@
     <Compile Include="ExceptionHandle\ServiceInvocationException.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LogHelper.cs" />
+    <Compile Include="LogHandle\LogHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LogHandle\MyRollingFlatFileTraceListener.cs" />
     <Compile Include="ServiceProxy Factory\ITimeOutLogin.cs" />
     <Compile Include="Plug-in Extension\PlugExtensionFactory.cs" />
     <Compile Include="ResourceMessages.Designer.cs">

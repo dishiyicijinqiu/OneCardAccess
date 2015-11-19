@@ -1,4 +1,5 @@
 ﻿using FengSharp.OneCardAccess.Infrastructure.Exceptions;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -26,8 +27,21 @@ namespace FengSharp.OneCardAccess.Infrastructure
                 var sqlerror = error as System.Data.SqlClient.SqlException;
                 if (sqlerror.Class != 11 || sqlerror.State != 1)
                 {
-                    LogHelper.Write(string.Format("Class:{0},State:{1},LineNumber:{2},Procedure:{3},Message:{4}"
-                        , sqlerror.Class, sqlerror.State, sqlerror.LineNumber, sqlerror.Procedure, sqlerror.Message), "SqlException");
+                    error = new BusinessException("数据库操作失败");
+                    //Logger.Write(
+                    //    string.Format("Class:{0},State:{1},LineNumber:{2},Procedure:{3},Message:{4}", sqlerror.Class, sqlerror.State, sqlerror.LineNumber, sqlerror.Procedure, sqlerror.Message),
+                    //    "WCFMethodLog",
+                    //     3,
+                    //     -1,
+                    //     System.Diagnostics.TraceEventType.Error, "数据库操作失败"
+                    //    );
+                    LogHelper.Write(
+                        string.Format("Class:{0},State:{1},LineNumber:{2},Procedure:{3},Message:{4}", sqlerror.Class, sqlerror.State, sqlerror.LineNumber, sqlerror.Procedure, sqlerror.Message),
+                        "WCFMethodLog",
+                        "数据库操作失败",
+                         System.Diagnostics.TraceEventType.Error,
+                         3
+                        );
                 }
             }
             else if (error is BusinessException)
@@ -40,7 +54,7 @@ namespace FengSharp.OneCardAccess.Infrastructure
             }
             else
             {
-                LogHelper.Write(error.Message, "MethodException");
+                Logger.Write(error.Message, "MethodException");
             }
             if (error.GetType().GetConstructor(new Type[] { typeof(string), typeof(Exception) }) == null)
             {

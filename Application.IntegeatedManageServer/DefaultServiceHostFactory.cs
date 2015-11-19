@@ -18,17 +18,26 @@ namespace FengSharp.OneCardAccess.Application.IntegeatedManageServer
 
         void host_Opened(object sender, EventArgs e)
         {
-            LogHelper.Write("host_Opened", "ServiceHost");
+            var host = sender as ServiceHost;
+            if (host != null)
+                LogHelper.Write(string.Format("{0}宿主启动", host.Description.ServiceType), "ServiceHostLog", "宿主启动");
+            //Logger.Write(string.Format("{0}宿主启动", host.Description.ServiceType), "ServiceHostLog", -1, -1, System.Diagnostics.TraceEventType.Information, "宿主启动");
         }
 
         void host_Faulted(object sender, EventArgs e)
         {
-            LogHelper.Write("host_Faulted", "ServiceHost");
+            var host = sender as ServiceHost;
+            if (host != null)
+                //Logger.Write(string.Format("{0}宿主遇到错误", host.Description.ServiceType), "ServiceHostLog", 2, -1, System.Diagnostics.TraceEventType.Error, "宿主遇到错误");
+                LogHelper.Write(string.Format("{0}宿主遇到错误", host.Description.ServiceType), "ServiceHostLog", "宿主遇到错误", System.Diagnostics.TraceEventType.Error, 2);
         }
 
         void host_Closed(object sender, EventArgs e)
         {
-            LogHelper.Write("host_Closed", "ServiceHost");
+            var host = sender as ServiceHost;
+            if (host != null)
+                LogHelper.Write(string.Format("{0}宿主关闭", host.Description.ServiceType), "ServiceHostLog", "宿主关闭");
+            //Logger.Write(string.Format("{0}宿主关闭", host.Description.ServiceType), "ServiceHostLog", -1, -1, System.Diagnostics.TraceEventType.Information, "宿主关闭");
         }
     }
 }

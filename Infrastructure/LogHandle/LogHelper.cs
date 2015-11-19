@@ -36,16 +36,14 @@ namespace FengSharp.OneCardAccess.Infrastructure
                 }
             }
         }
-        public static void Write(object message, string category = null, string name = null)
+        public static void Write(object message, string category = "General", string title = null, TraceEventType severity = TraceEventType.Information, int priority = -1, string name = null)
         {
             LogWriteMethod((logwrite) =>
             {
-                if (category == null)
-                    logwrite.Write(message);
-                else
-                    logwrite.Write(message, category);
+                logwrite.Write(message, category, priority, 1, severity, title);
             }, name);
         }
+
         //public static void Write(object message, IEnumerable<string> categories, IDictionary<string, object> properties, string name = null)
         //{
         //    LogWriteMethod((logwrite) =>
