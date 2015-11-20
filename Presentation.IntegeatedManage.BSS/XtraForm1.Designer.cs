@@ -44,6 +44,7 @@
             this.btnOK = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             this.btnPrint = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             this.btnClear = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
+            this.btnRefresh = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.RegisterNoPopupContainerEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,11 +199,22 @@
             this.btnClear.TabIndex = 60;
             this.btnClear.Text = "清空";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnRefresh.Location = new System.Drawing.Point(680, 134);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(100, 26);
+            this.btnRefresh.TabIndex = 61;
+            this.btnRefresh.Text = "刷新(&R)";
+            // 
             // XtraForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1188, 637);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnCancel);
@@ -242,5 +254,6 @@
         private Infrastructure.WinForm.Base.BaseSimpleButton btnOK;
         private Infrastructure.WinForm.Base.BaseSimpleButton btnPrint;
         private Infrastructure.WinForm.Base.BaseSimpleButton btnClear;
+        private Infrastructure.WinForm.Base.BaseSimpleButton btnRefresh;
     }
 }

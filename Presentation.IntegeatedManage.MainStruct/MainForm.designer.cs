@@ -113,7 +113,7 @@
             // barTimeItem
             // 
             this.barTimeItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barTimeItem.Caption = "2015年11月17日 14:06:28";
+            this.barTimeItem.Caption = "2015年11月20日 14:33:44";
             this.barTimeItem.Id = 11;
             this.barTimeItem.Name = "barTimeItem";
             this.barTimeItem.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -121,7 +121,7 @@
             // barTimeInfo
             // 
             this.barTimeInfo.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barTimeInfo.Caption = "服务器时间：";
+            this.barTimeInfo.Caption = "当前时间：";
             this.barTimeInfo.Id = 12;
             this.barTimeInfo.Name = "barTimeInfo";
             this.barTimeInfo.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -178,7 +178,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "一卡通系统";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).EndInit();

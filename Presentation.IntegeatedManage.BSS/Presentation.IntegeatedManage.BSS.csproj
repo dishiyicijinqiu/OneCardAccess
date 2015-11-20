@@ -52,12 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DlyFormat.cs" />
-    <Compile Include="单据\DJ_Exit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="单据\DJ_Exit.designer.cs">
-      <DependentUpon>DJ_Exit.cs</DependentUpon>
-    </Compile>
+    <Compile Include="单据\DJMessageBox.cs" />
+    <Compile Include="单据\DJSHChecker.cs" />
     <Compile Include="单据\DlyNdxCGManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +268,10 @@
       <Project>{b2a6c55d-f693-4713-b6b6-312b31281af2}</Project>
       <Name>Presentation.IntegeatedManage.HR.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Presentation.IntegeatedManage.MainStruct.Interface\Presentation.IntegeatedManage.MainStruct.Interface.csproj">
+      <Project>{952eeae8-ceb6-4abc-8258-b46f7bde90bb}</Project>
+      <Name>Presentation.IntegeatedManage.MainStruct.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Presentation.IntegeatedManage.SystemSet.Interface\Presentation.IntegeatedManage.SystemSet.Interface.csproj">
       <Project>{34e26fba-5759-4256-9d34-eeb152fce0dc}</Project>
       <Name>Presentation.IntegeatedManage.SystemSet.Interface</Name>
@@ -283,9 +283,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Basic\ProductSelectUserControl.resx">
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="单据\DJ_Exit.resx">
-      <DependentUpon>DJ_Exit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="单据\DlyNdxCGManageForm.resx">
       <DependentUpon>DlyNdxCGManageForm.cs</DependentUpon>

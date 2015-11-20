@@ -177,6 +177,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 MessageBoxEx.Error(ex);
             }
         }
+
+        private void StockManageForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+
+        }
     }
 
     public class StockManageForm_Design : Base_Form<StockManageFormFacade>

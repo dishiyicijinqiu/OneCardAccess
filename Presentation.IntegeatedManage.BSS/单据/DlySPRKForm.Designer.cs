@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DlySPRKForm));
             this.baseDataLayoutControl1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseDataLayoutControl();
             this.AfterPreferTotalTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
-            this.bindbaseDataLayoutControl1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindbaseDataLayoutControl1 = new System.Windows.Forms.BindingSource();
             this.PreferTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
             this.QtyTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
             this.btnPrint = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
@@ -91,10 +90,10 @@
             this.ItemForPrefer = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForAfterPreferTotal = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider(this.components);
-            this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine(this.components);
+            this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider();
+            this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource();
+            this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine();
             ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).BeginInit();
             this.baseDataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AfterPreferTotalTextEdit.Properties)).BeginInit();
@@ -962,7 +961,6 @@
             this.mainFormMdiProvider1.SetEnableMainFormMdi(this, true);
             this.Name = "DlySPRKForm";
             this.Text = "商品入库单";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DlySPRKForm_FormClosing);
             this.Load += new System.EventHandler(this.DlySPRK_Load);
             ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).EndInit();
             this.baseDataLayoutControl1.ResumeLayout(false);
@@ -1024,7 +1022,6 @@
         private Infrastructure.WinForm.Base.BaseDataLayoutControl baseDataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private Infrastructure.WinForm.Base.BasePopupContainerEdit JSRNamePopupContainerEdit;
-        private System.Windows.Forms.BindingSource bindbaseDataLayoutControl1;
         private Infrastructure.WinForm.Base.BasePopupContainerEdit StockName1PopupContainerEdit;
         private Infrastructure.WinForm.Base.BaseTextEdit DlyDateTextEdit;
         private Infrastructure.WinForm.Base.BaseTextEdit DlyNoTextEdit;
@@ -1086,5 +1083,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit qtySNRepItemPopupContainerEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit qtyFBNRepItemPopupContainerEdit;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
+        internal System.Windows.Forms.BindingSource bindbaseDataLayoutControl1;
     }
 }

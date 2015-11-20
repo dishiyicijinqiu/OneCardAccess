@@ -11,6 +11,7 @@ using FengSharp.OneCardAccess.Infrastructure.WinForm;
 using System.Collections.Generic;
 using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
 using FengSharp.OneCardAccess.Infrastructure.Exceptions;
+using FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct.Interface;
 
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
@@ -58,7 +59,10 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                     return;
                 var entity = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as DlyNdxEntity;
                 if (entity == null)
-                    throw new BusinessException("单据不存在");
+                    throw new BusinessException(Properties.Resources.DlyNotExists);
+                //string ndxid = this.Facade.GetNdxIdByNo(entity.DlyNo);
+                //if (string.IsNullOrWhiteSpace(ndxid))
+                //    throw new BusinessException(Properties.Resources.DlyNotExists);
                 DlySPRKForm form = new DlySPRKForm(entity.DlyNdxId);
                 form.Show();
             }
@@ -82,6 +86,43 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
             bindingSource1.DataSource = new List<DlyNdxFullNameEntity>(entitys);
             this.gridControl1.DataSource = bindingSource1;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Facade.Bind();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
+        }
+        void InterRefreshRowId(string oldid, string newid)
+        {
+            var data = this.bindingSource1.DataSource as List<DlyNdxFullNameEntity>;
+            var datasourceIndex = data.FindIndex(t => string.Compare(t.DlyNdxId, oldid, false) == 0);
+            if (datasourceIndex >= 0)
+            {
+                var rowhandle = this.gridView1.GetRowHandle(datasourceIndex);
+                var row = this.gridView1.GetRow(rowhandle) as DlyNdxFullNameEntity;
+                row.DlyNdxId = newid;
+                this.gridView1.RefreshRow(rowhandle);
+            }
+        }
+        static internal void RefreshRowId(string oldid, string newid)
+        {
+
+            if (!string.IsNullOrWhiteSpace(oldid))
+            {
+                var imainform = ServiceLoader.LoadService<IMainForm>();
+                DlyNdxCGManageForm[] forms = imainform.FindForms<DlyNdxCGManageForm>();
+                foreach (var form in forms)
+                {
+                    form.InterRefreshRowId(oldid, newid);
+                }
+            }
         }
     }
     public class DlyNdxCGManageForm_Design : TreeLevelForm<DlyNdxCGManageFormFacade>

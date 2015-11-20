@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS.Properties {
+namespace FengSharp.OneCardAccess.Domain.RBACModule.Service.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FengSharp.OneCardAccess.Domain.RBACModule.Service.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,33 +57,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 单据不存在 的本地化字符串。
-        /// </summary>
-        internal static string DlyNotExists {
-            get {
-                return ResourceManager.GetString("DlyNotExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 经手人不可为空 的本地化字符串。
-        /// </summary>
-        internal static string JSRIdCanNotEmpty {
-            get {
-                return ResourceManager.GetString("JSRIdCanNotEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 收获仓库不可为空 的本地化字符串。
-        /// </summary>
-        internal static string SHStockCanNotEmpty {
-            get {
-                return ResourceManager.GetString("SHStockCanNotEmpty", resourceCulture);
             }
         }
     }

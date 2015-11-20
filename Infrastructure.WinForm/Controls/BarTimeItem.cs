@@ -34,7 +34,8 @@ namespace FengSharp.OneCardAccess.Infrastructure.WinForm.Controls
         }
         private void timer1_Tick(object sender, System.EventArgs e)
         {
-            this.Caption = serverTime.Add(DateTime.Now - baseTime).ToString("yyyy年MM月dd日 HH:mm:ss");
+            if (!this.DesignMode)
+                this.Caption = serverTime.Add(DateTime.Now - baseTime).ToString("yyyy年MM月dd日 HH:mm:ss");
         }
     }
 }

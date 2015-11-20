@@ -169,7 +169,26 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// </summary>
         [DataMember]
         public string LXFS { get; set; }
-
+        /// <summary>
+        /// 最后一个审核人
+        /// </summary>
+        public string LastSHRId
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(this.SHRId5))
+                    return this.SHRId5;
+                if (!string.IsNullOrWhiteSpace(this.SHRId4))
+                    return this.SHRId4;
+                if (!string.IsNullOrWhiteSpace(this.SHRId3))
+                    return this.SHRId3;
+                if (!string.IsNullOrWhiteSpace(this.SHRId2))
+                    return this.SHRId2;
+                if (!string.IsNullOrWhiteSpace(this.SHRId1))
+                    return this.SHRId1;
+                return string.Empty;
+            }
+        }
     }
     /// <summary>
     /// 单据索引表

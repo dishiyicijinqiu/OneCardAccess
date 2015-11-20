@@ -35,6 +35,13 @@
             this.btnEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseGridView();
+            this.colStockNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStockName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCreateName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLastModifyName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLastModifyDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnCopyAdd = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             this.btnAdd = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
             this.btnDelete = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
@@ -51,13 +58,6 @@
             this.gridView_MouseMulSelect1 = new FengSharp.WinForm.Dev.Components.GridView_MouseMulSelect(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider(this.components);
-            this.colStockNo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStockName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCreateName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLastModifyName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLastModifyDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.baseLayoutControl1)).BeginInit();
             this.baseLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -160,6 +160,69 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView_ShowLine1.SetShowLineNo(this.gridView1, true);
             this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
+            // 
+            // colStockNo
+            // 
+            this.colStockNo.Caption = "仓库编号";
+            this.colStockNo.FieldName = "StockNo";
+            this.colStockNo.Name = "colStockNo";
+            this.colStockNo.Visible = true;
+            this.colStockNo.VisibleIndex = 0;
+            this.colStockNo.Width = 100;
+            // 
+            // colStockName
+            // 
+            this.colStockName.Caption = "仓库名称";
+            this.colStockName.FieldName = "StockName";
+            this.colStockName.Name = "colStockName";
+            this.colStockName.Visible = true;
+            this.colStockName.VisibleIndex = 1;
+            this.colStockName.Width = 100;
+            // 
+            // colCreateName
+            // 
+            this.colCreateName.Caption = "创建人";
+            this.colCreateName.FieldName = "CreateName";
+            this.colCreateName.Name = "colCreateName";
+            this.colCreateName.Visible = true;
+            this.colCreateName.VisibleIndex = 2;
+            this.colCreateName.Width = 100;
+            // 
+            // colCreateDate
+            // 
+            this.colCreateDate.Caption = "创建日期";
+            this.colCreateDate.FieldName = "CreateDate";
+            this.colCreateDate.Name = "colCreateDate";
+            this.colCreateDate.Visible = true;
+            this.colCreateDate.VisibleIndex = 3;
+            this.colCreateDate.Width = 100;
+            // 
+            // colLastModifyName
+            // 
+            this.colLastModifyName.Caption = "最后更改人";
+            this.colLastModifyName.FieldName = "LastModifyName";
+            this.colLastModifyName.Name = "colLastModifyName";
+            this.colLastModifyName.Visible = true;
+            this.colLastModifyName.VisibleIndex = 4;
+            this.colLastModifyName.Width = 100;
+            // 
+            // colLastModifyDate
+            // 
+            this.colLastModifyDate.Caption = "最后修改日期";
+            this.colLastModifyDate.FieldName = "LastModifyDate";
+            this.colLastModifyDate.Name = "colLastModifyDate";
+            this.colLastModifyDate.Visible = true;
+            this.colLastModifyDate.VisibleIndex = 5;
+            this.colLastModifyDate.Width = 100;
+            // 
+            // colRemark
+            // 
+            this.colRemark.Caption = "备注";
+            this.colRemark.FieldName = "Remark";
+            this.colRemark.Name = "colRemark";
+            this.colRemark.Visible = true;
+            this.colRemark.VisibleIndex = 6;
+            this.colRemark.Width = 100;
             // 
             // btnCopyAdd
             // 
@@ -291,69 +354,6 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // colStockNo
-            // 
-            this.colStockNo.Caption = "仓库编号";
-            this.colStockNo.FieldName = "StockNo";
-            this.colStockNo.Name = "colStockNo";
-            this.colStockNo.Visible = true;
-            this.colStockNo.VisibleIndex = 0;
-            this.colStockNo.Width = 100;
-            // 
-            // colStockName
-            // 
-            this.colStockName.Caption = "仓库名称";
-            this.colStockName.FieldName = "StockName";
-            this.colStockName.Name = "colStockName";
-            this.colStockName.Visible = true;
-            this.colStockName.VisibleIndex = 1;
-            this.colStockName.Width = 100;
-            // 
-            // colCreateName
-            // 
-            this.colCreateName.Caption = "创建人";
-            this.colCreateName.FieldName = "CreateName";
-            this.colCreateName.Name = "colCreateName";
-            this.colCreateName.Visible = true;
-            this.colCreateName.VisibleIndex = 2;
-            this.colCreateName.Width = 100;
-            // 
-            // colCreateDate
-            // 
-            this.colCreateDate.Caption = "创建日期";
-            this.colCreateDate.FieldName = "CreateDate";
-            this.colCreateDate.Name = "colCreateDate";
-            this.colCreateDate.Visible = true;
-            this.colCreateDate.VisibleIndex = 3;
-            this.colCreateDate.Width = 100;
-            // 
-            // colLastModifyName
-            // 
-            this.colLastModifyName.Caption = "最后更改人";
-            this.colLastModifyName.FieldName = "LastModifyName";
-            this.colLastModifyName.Name = "colLastModifyName";
-            this.colLastModifyName.Visible = true;
-            this.colLastModifyName.VisibleIndex = 4;
-            this.colLastModifyName.Width = 100;
-            // 
-            // colLastModifyDate
-            // 
-            this.colLastModifyDate.Caption = "最后修改日期";
-            this.colLastModifyDate.FieldName = "LastModifyDate";
-            this.colLastModifyDate.Name = "colLastModifyDate";
-            this.colLastModifyDate.Visible = true;
-            this.colLastModifyDate.VisibleIndex = 5;
-            this.colLastModifyDate.Width = 100;
-            // 
-            // colRemark
-            // 
-            this.colRemark.Caption = "备注";
-            this.colRemark.FieldName = "Remark";
-            this.colRemark.Name = "colRemark";
-            this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 6;
-            this.colRemark.Width = 100;
-            // 
             // StockManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,6 +364,7 @@
             this.mainFormMdiProvider1.SetEnableMainFormMdi(this, true);
             this.Name = "StockManageForm";
             this.Text = "仓库信息";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StockManageForm_FormClosing);
             this.Load += new System.EventHandler(this.StockManageForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.baseLayoutControl1)).EndInit();
             this.baseLayoutControl1.ResumeLayout(false);

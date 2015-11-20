@@ -117,13 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DlyNotExists" xml:space="preserve">
-    <value>单据不存在</value>
-  </data>
-  <data name="JSRIdCanNotEmpty" xml:space="preserve">
-    <value>经手人不可为空</value>
-  </data>
-  <data name="SHStockCanNotEmpty" xml:space="preserve">
-    <value>收获仓库不可为空</value>
+  <data name="NotCurrentSHR" xml:space="preserve">
+    <value>您不是当前审核人</value>
   </data>
 </root>

@@ -89,6 +89,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                 Database.AddInParameter(cmd, "DlyNdxId", DbType.String, string.Empty);
                 Database.AddOutParameter(cmd, "HasRight", DbType.Boolean, 1);
                 Database.ExecuteNonQuery(cmd, tran);
+                result = (bool)Database.GetParameterValue(cmd, "HasRight");
             });
             return result;
         }

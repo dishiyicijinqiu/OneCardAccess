@@ -3,6 +3,7 @@ using DevExpress.XtraTabbedMdi;
 using FengSharp.OneCardAccess.Infrastructure.WinForm;
 using FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct.Interface;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 {
@@ -84,38 +85,73 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
         }
         #endregion
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        const int WM_SYSCOMMAND = 0x0112;
+        const int SC_CLOSE = 0xF060;
+        protected override void WndProc(ref Message m)
         {
-            switch (e.CloseReason)
+            try
             {
-                case CloseReason.ApplicationExitCall:
-                case CloseReason.WindowsShutDown:
-                case CloseReason.TaskManagerClosing:
-                    break;
-                case CloseReason.FormOwnerClosing:
-                case CloseReason.MdiFormClosing:
-                case CloseReason.None:
-                case CloseReason.UserClosing:
-                    FengSharp.WinForm.Dev.Forms.Form_Exit form = new WinForm.Dev.Forms.Form_Exit();
-                    var diaResult = form.ShowDialog();
+                if (m.Msg == WM_SYSCOMMAND && (int)m.WParam == SC_CLOSE)
+                {
+                    var diaResult = FengSharp.WinForm.Dev.Forms.ExitMessageBox.Show();
                     if (diaResult == System.Windows.Forms.DialogResult.Retry)
                     {
-                        Application.Restart();
+                        SafeRestart();
                     }
                     else if (diaResult == System.Windows.Forms.DialogResult.Yes)
                     {
-
+                        SafeExit();
                     }
-                    else
-                    {
-                        e.Cancel = true;
-                    }
-                    break;
+                    return;
+                }
+                base.WndProc(ref m);
             }
+            catch (Exception ex)
+            {
+                FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.MessageBoxEx.Error(ex);
+            }
+        }
+
+        void SafeRestart()
+        {
+            if (!CloseAllMdiChild())
+                return;
+            Program.RunMutex.Close();
+            Application.Restart();
+        }
+        bool CloseAllMdiChild()
+        {
+            for (int i = xtraTabbedMdiManager.Pages.Count - 1; i >= 0; i--)
+            {
+                var page = xtraTabbedMdiManager.Pages[i];
+                if (!CloseMdiChild(page.MdiChild))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        bool CloseMdiChild(Form mdiChild)
+        {
+            mdiChild.Close();
+            return !mdiChild.Visible;
+        }
+        void SafeExit()
+        {
+            if (!CloseAllMdiChild())
+                return;
+            Program.RunMutex.Close();
+            Application.Exit();
         }
 
         public void ReLoad()
         {
+        }
+
+
+        public T[] FindForms<T>() where T : class
+        {
+            return xtraTabbedMdiManager.Pages.Where(t => t.MdiChild is T).Select(m => m.MdiChild as T).ToArray();
         }
     }
 }

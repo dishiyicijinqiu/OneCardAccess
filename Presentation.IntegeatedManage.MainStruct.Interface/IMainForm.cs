@@ -8,5 +8,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct.Inter
     public interface IMainForm
     {
         void ReLoad();
+        T[] FindForms<T>() where T : class;
     }
 }

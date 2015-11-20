@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DlyNdxCGManageForm));
             this.baseLayoutControl1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseLayoutControl();
             this.btnClose = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
@@ -53,9 +54,11 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider();
-            this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource();
+            this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider(this.components);
+            this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnRefresh = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.baseLayoutControl1)).BeginInit();
             this.baseLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -66,10 +69,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // baseLayoutControl1
             // 
+            this.baseLayoutControl1.Controls.Add(this.btnRefresh);
             this.baseLayoutControl1.Controls.Add(this.btnClose);
             this.baseLayoutControl1.Controls.Add(this.btnDelete);
             this.baseLayoutControl1.Controls.Add(this.gridControl1);
@@ -292,7 +297,8 @@
             this.layoutControlItem1,
             this.layoutControlItem2,
             this.layoutControlItem3,
-            this.emptySpaceItem1});
+            this.emptySpaceItem1,
+            this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
@@ -335,10 +341,34 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(104, 484);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(208, 484);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(563, 30);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(459, 30);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnRefresh.Location = new System.Drawing.Point(110, 490);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(100, 26);
+            this.btnRefresh.StyleController = this.baseLayoutControl1;
+            this.btnRefresh.TabIndex = 62;
+            this.btnRefresh.Text = "刷新(&R)";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.btnRefresh;
+            this.layoutControlItem4.Location = new System.Drawing.Point(104, 484);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(104, 30);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(104, 30);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(104, 30);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
             // 
             // DlyNdxCGManageForm
             // 
@@ -361,6 +391,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -394,5 +425,7 @@
         private Infrastructure.WinForm.Components.MainFormMdiProvider mainFormMdiProvider1;
         private Infrastructure.WinForm.Components.FormLoadErrorExit formLoadErrorExit1;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private Infrastructure.WinForm.Base.BaseSimpleButton btnRefresh;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }

@@ -11,12 +11,16 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 {
     static class Program
     {
+        public static System.Threading.Mutex RunMutex;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            bool isNotRun = false;
+            RunMutex = new System.Threading.Mutex(true, "OneCardAccessIntegeatedManageMainStruct", out isNotRun);
+            if (!isNotRun) return;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             #region 语言设置

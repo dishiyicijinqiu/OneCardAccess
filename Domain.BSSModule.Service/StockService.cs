@@ -1,5 +1,7 @@
 ﻿using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface;
+using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
+using FengSharp.OneCardAccess.Infrastructure;
 using FengSharp.OneCardAccess.Infrastructure.Services;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System;
@@ -31,7 +33,8 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
 
         public StockCMEntity[] GetStockCMList()
         {
-            var dt = base.GetList(modestring + "cm");
+            string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
+            var dt = base.GetList(modestring + "cm", userid);
             return StockService.DataTableToCMEntitys(dt);
         }
 

@@ -20,5 +20,8 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
         [OperationContract]
         [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         SPRKDlyCGNdxEntity GetSPRKDlyCGNdxEntity(string dlyNdxId);
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        string SaveSPRKDly(SPRKDlyCGNdxEntity entity);
     }
 }
