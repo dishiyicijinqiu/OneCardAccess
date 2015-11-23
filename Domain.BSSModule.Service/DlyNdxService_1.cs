@@ -13,23 +13,6 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
     {
         #region 实体转DbCommand
 
-        public static DbCommand GetCreatePreferBakCommand(Database database, DlyNdxEntity entity, decimal prefer)
-        {
-            DbCommand cmd = database.GetStoredProcCommand("P_CreatePDlyABak");
-            database.AddOutParameter(cmd, "PDlyABakId", DbType.String, 36);
-            #region 参数赋值
-            database.AddInParameter(cmd, "DlyNdxId", DbType.String, entity.DlyNdxId);
-            database.AddInParameter(cmd, "ATypeId", DbType.Int32, FengSharp.OneCardAccess.Application.Config.DlyConfig.SPYHATypeId);
-            database.AddInParameter(cmd, "CompanyId", DbType.Int32, entity.CompanyId);
-            database.AddInParameter(cmd, "JSRId", DbType.String, entity.JSRId);
-            database.AddInParameter(cmd, "StockId", DbType.Int32, entity.StockId1);
-            database.AddInParameter(cmd, "Total", DbType.Decimal, prefer);
-            database.AddInParameter(cmd, "DlyDate", DbType.String, entity.DlyDate);
-            database.AddInParameter(cmd, "DlyTypeId", DbType.Int32, entity.DlyTypeId);
-            database.AddInParameter(cmd, "Remark", DbType.String, string.Empty);
-            #endregion
-            return cmd;
-        }
         public static DbCommand GetCreatePSNBakCommand(Database database, PSNBakEntity entity)
         {
             DbCommand cmd = database.GetStoredProcCommand("P_CreatePSNBak");
@@ -155,6 +138,19 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             #endregion
             return cmd;
         }
+
+        public static DbCommand GetZCreatePDlyCommand(Database database, string dlyNdxId, string userId)
+        {
+            DbCommand cmd = database.GetStoredProcCommand("P_ZCreatePDly");
+            database.AddInParameter(cmd, "DlyNdxId", DbType.String, dlyNdxId);
+            database.AddInParameter(cmd, "UserId", DbType.String, userId);
+            database.AddOutParameter(cmd, "ProductIdError", DbType.Int32, 4);
+            database.AddOutParameter(cmd, "CompanyIdError", DbType.Int32, 4);
+            database.AddOutParameter(cmd, "StockId1Error", DbType.Int32, 4);
+            database.AddOutParameter(cmd, "StockId2Error", DbType.Int32, 4);
+            database.AddOutParameter(cmd, "BNError", DbType.String, 10);
+            return cmd;
+        }
         #endregion
 
         #region 实体转换
@@ -232,39 +228,6 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                 C_ProductOrderId = (string)(row["C_ProductOrderId"]),
                 DlyTypeId = (int)(row["DlyTypeId"]),
                 SortNo = (int)(row["SortNo"]),
-
-            };
-            return result;
-        }
-        #endregion
-        #region PDlyABakEntity
-        public static PDlyABakEntity[] DataTableToPDlyABakEntitys(DataTable dt)
-        {
-            if (dt == null)
-                return null;
-            var results = new PDlyABakEntity[dt.Rows.Count];
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                results[i] = DlyNdxService.DataRowToPDlyABakEntity(dt.Rows[i]);
-            }
-            return results;
-        }
-        public static PDlyABakEntity DataRowToPDlyABakEntity(DataRow row)
-        {
-            if (row == null)
-                return null;
-            var result = new PDlyABakEntity()
-            {
-                PDlyABakId = (string)(row["PDlyABakId"]),
-                DlyNdxId = (string)(row["DlyNdxId"]),
-                ATypeId = (int)(row["ATypeId"]),
-                CompanyId = (int)(row["CompanyId"]),
-                JSRId = (string)(row["JSRId"]),
-                StockId = (int)(row["StockId"]),
-                Total = (decimal)(row["Total"]),
-                DlyDate = (string)(row["DlyDate"]),
-                DlyTypeId = (int)(row["DlyTypeId"]),
-                Remark = (string)(row["Remark"]),
 
             };
             return result;
@@ -458,6 +421,27 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
         #endregion
         #endregion
 
+        #region 公共方法
+        public static void CheckZCreatePDlyError(Database database, DbCommand cmd)
+        {
+            int ProductIdError = (int)database.GetParameterValue(cmd, "ProductIdError");
+            if (ProductIdError > 0)
+                throw new BusinessException(ProductIdError.ToString());
+            int CompanyIdError = (int)database.GetParameterValue(cmd, "CompanyIdError");
+            if (CompanyIdError > 0)
+                throw new BusinessException(CompanyIdError.ToString());
+            int AtypeIdError = (int)database.GetParameterValue(cmd, "AtypeIdError");
+            if (AtypeIdError > 0)
+                throw new BusinessException(AtypeIdError.ToString());
+            int StockIdError = (int)database.GetParameterValue(cmd, "StockIdError");
+            if (StockIdError > 0)
+                throw new BusinessException(StockIdError.ToString());
+            string BNError = (string)database.GetParameterValue(cmd, "BNError");
+            if (string.IsNullOrWhiteSpace(BNError))
+                throw new BusinessException(BNError);
+        }
+        #endregion
+
         /// <summary>
         /// 商品入库单过账
         /// </summary>
@@ -465,6 +449,15 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
         /// <returns></returns>
         public string SaveSPRKDly(SPRKDlyCGNdxEntity entity)
         {
+            base.UseTran((tran) =>
+            {
+                DbCommand cmd = this.Database.GetStoredProcCommand("P_GetTest");
+                Database.ExecuteNonQuery(cmd, tran);
+                //cmd = this.Database.GetSqlStringCommand("INSERT INTO dbo.T_UserLog ( Id, UserId, Operation, LogDate ) VALUES  ( NEWID(),NEWID(),'C#',GETDATE())");
+                //Database.ExecuteNonQuery(cmd, tran);
+            });
+            return string.Empty;
+
             string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
             if (string.IsNullOrWhiteSpace(entity.LastSHRId))
             {
@@ -483,7 +476,6 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                 DbCommand cmdDlyNdxCreate = GetCreateDlyNdxCommand(Database, entity);
                 Database.ExecuteNonQuery(cmdDlyNdxCreate, tran);
                 dlyNdxId = (string)base.Database.GetParameterValue(cmdDlyNdxCreate, "DlyNdxId");
-                #endregion
                 for (int i = 0; i < entity.PDlyBaks.Count; i++)
                 {
                     //创建单据备份
@@ -500,8 +492,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                     DbCommand cmdCreateDlyBak = GetCreatePDlyBakCommand(Database, dlyBak);
                     Database.ExecuteNonQuery(cmdCreateDlyBak, tran);
                     dlyNdxBakId = (string)base.Database.GetParameterValue(cmdCreateDlyBak, "PDlyBakId");
-
-                    //创建批号备份
+                    #region 创建批号备份
                     for (int j = 0; j < dlyBak.PFBNBaks.Count; j++)
                     {
                         var FBNBak = dlyBak.PFBNBaks[j];
@@ -520,8 +511,8 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                         Database.ExecuteNonQuery(cmdCreatePFBNBak, tran);
                         fbnbakId = (string)base.Database.GetParameterValue(cmdCreatePFBNBak, "PFBNBakId");
                     }
-
-                    //创建序列号备份
+                    #endregion
+                    #region 创建序列号备份
                     for (int j = 0; j < dlyBak.PSNBaks.Count; j++)
                     {
                         var SNBak = dlyBak.PSNBaks[j];
@@ -541,13 +532,32 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                         Database.ExecuteNonQuery(cmdCreateSNBak, tran);
                         snbakId = (string)base.Database.GetParameterValue(cmdCreateSNBak, "PSNBakId");
                     }
-                    //创建优惠备份
+                    #endregion
+                    #region 创建优惠备份
                     if (entity.Prefer != 0)
                     {
-                        DbCommand cmdCreatePreferBak = GetCreatePreferBakCommand(Database, entity, entity.Prefer);
+                        var preferbak = new PDlyBakEntity();
+                        string preferbakBakId = string.Empty;
+                        preferbak.DlyNdxId = dlyNdxId;
+                        preferbak.ATypeId = FengSharp.OneCardAccess.Application.Config.DlyConfig.KCSPATypeId;
+                        preferbak.CompanyId = entity.CompanyId;
+                        preferbak.DlyTypeId = entity.DlyTypeId;
+                        preferbak.DlyDate = entity.DlyDate;
+                        preferbak.JSRId = entity.JSRId;
+                        preferbak.StockId1 = entity.StockId1;
+                        preferbak.Total = entity.Prefer;
+                        DbCommand cmdCreatePreferBak = GetCreatePDlyBakCommand(Database, preferbak);
                         Database.ExecuteNonQuery(cmdCreatePreferBak, tran);
+                        preferbakBakId = (string)base.Database.GetParameterValue(cmdCreatePreferBak, "PDlyBakId");
                     }
+                    #endregion
                 }
+                #endregion
+                #region 过账
+                DbCommand cmd = GetZCreatePDlyCommand(Database, dlyNdxId, userid);
+                Database.ExecuteNonQuery(cmd, tran);
+                //CheckZCreatePDlyError(Database, cmd);
+                #endregion
             });
             return dlyNdxId;
         }

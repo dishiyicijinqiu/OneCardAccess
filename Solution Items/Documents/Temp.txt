@@ -10,3 +10,8 @@ FengSharp.OneCardAccess.Server.IntegeatedManageServer
 
 listenerDataType="Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.RollingFlatFileTraceListenerData, Microsoft.Practices.EnterpriseLibrary.Logging"
 listenerDataType="FengSharp.OneCardAccess.Infrastructure.MyRollingFlatFileTraceListenerData, FengSharp.OneCardAccess.Infrastructure"
+
+测试C#事务跟sqlserver事务同时使用
+测试方法：
+数据库事务
+C#事务异常，sql事务提交，生效

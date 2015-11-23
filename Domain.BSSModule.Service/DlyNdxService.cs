@@ -100,7 +100,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                     Database.ExecuteNonQuery(cmdCreateDlyBak, tran);
                     dlyNdxBakId = (string)base.Database.GetParameterValue(cmdCreateDlyBak, "PDlyBakId");
 
-                    //创建批号备份
+                    #region 创建批号备份
                     for (int j = 0; j < dlyBak.PFBNBaks.Count; j++)
                     {
                         var FBNBak = dlyBak.PFBNBaks[j];
@@ -119,8 +119,9 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                         Database.ExecuteNonQuery(cmdCreatePFBNBak, tran);
                         fbnbakId = (string)base.Database.GetParameterValue(cmdCreatePFBNBak, "PFBNBakId");
                     }
+                    #endregion
 
-                    //创建序列号备份
+                    #region 创建序列号备份
                     for (int j = 0; j < dlyBak.PSNBaks.Count; j++)
                     {
                         var SNBak = dlyBak.PSNBaks[j];
@@ -140,14 +141,27 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                         Database.ExecuteNonQuery(cmdCreateSNBak, tran);
                         snbakId = (string)base.Database.GetParameterValue(cmdCreateSNBak, "PSNBakId");
                     }
+                    #endregion
                 }
 
-                //创建优惠备份
+                #region 创建优惠备份
                 if (entity.Prefer != 0)
                 {
-                    DbCommand cmdCreatePreferBak = GetCreatePreferBakCommand(Database, entity, entity.Prefer);
+                    var preferbak = new PDlyBakEntity();
+                    string preferbakBakId = string.Empty;
+                    preferbak.DlyNdxId = dlyNdxId;
+                    preferbak.ATypeId = FengSharp.OneCardAccess.Application.Config.DlyConfig.KCSPATypeId;
+                    preferbak.CompanyId = entity.CompanyId;
+                    preferbak.DlyTypeId = entity.DlyTypeId;
+                    preferbak.DlyDate = entity.DlyDate;
+                    preferbak.JSRId = entity.JSRId;
+                    preferbak.StockId1 = entity.StockId1;
+                    preferbak.Total = entity.Prefer;
+                    DbCommand cmdCreatePreferBak = GetCreatePDlyBakCommand(Database, preferbak);
                     Database.ExecuteNonQuery(cmdCreatePreferBak, tran);
+                    preferbakBakId = (string)base.Database.GetParameterValue(cmdCreatePreferBak, "PDlyBakId");
                 }
+                #endregion
             });
             return dlyNdxId;
         }
@@ -168,18 +182,12 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             var result = new SPRKDlyCGNdxEntity();
             FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, dlyndxfullnameentity);
 
+            var dtPDlyBakFullNameEntitys = base.GetRelationData("pdlybakfullname", dlyNdxId, userid);
+            var listdlybaks = DataTableToPDlyBakFullNameEntitys(dtPDlyBakFullNameEntitys);
             //PDlyBakFullNameEntity
             #region PDlyBakFullNameEntitys
-            var dtPDlyBakFullNameEntitys = base.GetRelationData("pdlybakfullname", dlyNdxId, userid);
-            result.PDlyBaks.AddRange(DataTableToPDlyBakFullNameEntitys(dtPDlyBakFullNameEntitys));
+            result.PDlyBaks.AddRange(listdlybaks.Where(t => t.ATypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.KCSPATypeId));
             #endregion
-            //PDlyABaks
-            #region PDlyABaks
-            //PDlyABakEntity
-            var dtPDlyABaks = base.GetRelationData("pdlyabak", dlyNdxId, userid);
-            result.PDlyABaks.AddRange(DataTableToPDlyABakEntitys(dtPDlyABaks));
-            #endregion
-
             #region PFBNBaks,PSNBaks
             var dtPFBNBaks = base.GetRelationData("pfbnbak", dlyNdxId, userid);
             var listPFBNBaks = DataTableToPFBNBakEntitys(dtPFBNBaks);
@@ -193,11 +201,9 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             #endregion
             result.Qty = result.PDlyBaks.Sum(t => t.Qty);
             result.Total = result.PDlyBaks.Sum(t => t.Total);
-            result.Prefer = result.PDlyABaks.Where(t => t.ATypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.SPYHATypeId).Sum(t => t.Total);
+            result.Prefer = listdlybaks.Where(t => t.ATypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.SPYHATypeId).Sum(t => t.Total);
             result.AfterPreferTotal = result.Total - result.Prefer;
             return result;
         }
     }
-
-
 }

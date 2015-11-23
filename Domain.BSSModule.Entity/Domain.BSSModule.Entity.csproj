@@ -44,9 +44,6 @@
     <Compile Include="DlyInputLevelEntity.cs" />
     <Compile Include="DlyNdxEntity.cs" />
     <Compile Include="DlyTypeEntity.cs" />
-    <Compile Include="ProductDly\PDlyABakEntity.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="ProductDly\PDlyAEntity.cs" />
     <Compile Include="ProductDly\PFBNBakEntity.cs" />
     <Compile Include="ProductDly\PDlyBakEntity.cs" />

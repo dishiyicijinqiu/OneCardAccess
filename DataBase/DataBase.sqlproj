@@ -193,4 +193,12 @@
   <ItemGroup>
     <RefactorLog Include="DataBase.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="单据备份查询分析.sql" />
+    <None Include="管家婆库存变更.sql" />
+    <None Include="管家婆过账.sql" />
+    <None Include="管家婆红冲单据.sql" />
+    <None Include="过账单据查询分析.sql" />
+    <None Include="ZCreateDly.sql" />
+  </ItemGroup>
 </Project>

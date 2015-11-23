@@ -48,24 +48,6 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
                 _PDlyBaks = value;
             }
         }
-        List<PDlyABakEntity> _PDlyABaks;
-        /// <summary>
-        /// 单据资产明细备份
-        /// </summary>
-        [DataMember]
-        public List<PDlyABakEntity> PDlyABaks
-        {
-            get
-            {
-                if (_PDlyABaks == null)
-                    _PDlyABaks = new List<PDlyABakEntity>();
-                return _PDlyABaks;
-            }
-            set
-            {
-                _PDlyABaks = value;
-            }
-        }
         /// <summary>
         /// 合计数量
         /// </summary>

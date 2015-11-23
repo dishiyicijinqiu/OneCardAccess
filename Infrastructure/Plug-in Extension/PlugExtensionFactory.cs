@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Xml;
 
 namespace FengSharp.OneCardAccess.Infrastructure.Plug_in_Extension
@@ -77,8 +78,15 @@ namespace FengSharp.OneCardAccess.Infrastructure.Plug_in_Extension
             var dirs = System.IO.Directory.GetDirectories(fullpath);
             foreach (var dir in dirs)
             {
-                AppDomain.CurrentDomain.AppendPrivatePath(dir);
+                //AppDomain.CurrentDomain.AppendPrivatePath(dir);
+                NoObsoleteAppendPrivatePath(dir);
             }
+        }
+        private static void NoObsoleteAppendPrivatePath(string dir)
+        {
+            var type = typeof(AppDomain);
+            var method = type.GetMethod("AppendPrivatePath", new Type[] { typeof(string) });
+            method.Invoke(AppDomain.CurrentDomain, new object[] { dir });
         }
     }
 }
