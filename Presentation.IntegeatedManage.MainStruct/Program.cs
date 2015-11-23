@@ -19,7 +19,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
         static void Main()
         {
             bool isNotRun = false;
-            RunMutex = new System.Threading.Mutex(true, "OneCardAccessIntegeatedManageMainStruct", out isNotRun);
+            RunMutex = new System.Threading.Mutex(true, "一卡通管理系统", out isNotRun);
             if (!isNotRun) return;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -34,6 +34,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
             //处理非UI线程异常  
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            System.Diagnostics.Process.Start(@"D:\Work\Project\MyProject\OneCardAccess\Application.IntegeatedManageServer.Console\bin\Debug\一卡通管理系统服务端.exe");
+            Application.ApplicationExit += Application_ApplicationExit;
             #endregion
             #region 加载插件路径
             PlugExtensionFactory.AppendPrivatePath();
@@ -47,6 +49,13 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
             MainForm mainform = ServiceLoader.LoadService<IMainForm>() as MainForm;
             DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
             Application.Run(mainform);
+        }
+
+        static void Application_ApplicationExit(object sender, EventArgs e)
+        {
+            var process = System.Diagnostics.Process.GetProcessesByName("一卡通管理系统服务端");
+            if (process.Length > 0)
+                process[0].Kill();
         }
 
         #region 处理未捕获异常的挂钩函数

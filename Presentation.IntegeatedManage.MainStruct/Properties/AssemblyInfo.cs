@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("一卡通管理系统")]
+[assembly: AssemblyDescription("OneCardAccess")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct")]
+[assembly: AssemblyCompany("苏州康力骨科器械有限公司")]
+[assembly: AssemblyProduct("OneCardAccess")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("OneCardAccess")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

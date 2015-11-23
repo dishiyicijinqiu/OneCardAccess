@@ -22,12 +22,14 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
                 var login = FengSharp.OneCardAccess.Infrastructure.ServiceLoader.LoadService<ILogin>();
                 if (login.Login())
                 {
-                    this.Visible = true;
+                    DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(StartSplashScreen));
                     FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.BarTimeItem.ServerTime =
                     (DateTime)FengSharp.OneCardAccess.Infrastructure.ApplicationContext.Current["ServerTime"];
                     MenuHelper.LoadMenu(this.ribbon);
                     MenuHelper.SetUserMenu(this.ribbon);
                     this.barItemUser.Caption = FengSharp.OneCardAccess.Infrastructure.AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserName;
+                    this.Visible = true;
+                    DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
                 }
                 else
                 {
@@ -36,6 +38,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
             }
             catch (Exception ex)
             {
+                DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
                 ex.ToString();
                 Application.Exit();
             }

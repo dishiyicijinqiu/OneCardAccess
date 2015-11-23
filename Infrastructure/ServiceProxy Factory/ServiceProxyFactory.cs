@@ -11,6 +11,7 @@ namespace FengSharp.OneCardAccess.Infrastructure
             }
             return (T)(new ServiceRealProxy<T>(endpointName).GetTransparentProxy());
         }
+        static string Prefix = string.Empty;
         public static T Create<T>()
         {
             string endpointName = typeof(T).Name.Remove(0, 1);
@@ -18,6 +19,7 @@ namespace FengSharp.OneCardAccess.Infrastructure
             {
                 throw new ArgumentNullException("endpointName");
             }
+            endpointName = Prefix + endpointName;
             return (T)(new ServiceRealProxy<T>(endpointName).GetTransparentProxy());
         }
     }
