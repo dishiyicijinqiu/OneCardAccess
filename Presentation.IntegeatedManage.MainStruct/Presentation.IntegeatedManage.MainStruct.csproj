@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct</RootNamespace>
-    <AssemblyName>一卡通管理系统</AssemblyName>
+    <AssemblyName>OneCardAccessIntegeatedManageClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>发布\</PublishUrl>

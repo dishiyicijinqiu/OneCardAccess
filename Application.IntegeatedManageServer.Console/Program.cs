@@ -38,6 +38,12 @@ namespace FengSharp.OneCardAccess.Application.IntegeatedManageServer
             RunMutex = new System.Threading.Mutex(true, "一卡通管理系统服务端", out isNotRun);
             if (!isNotRun) return;
             System.Windows.Forms.Application.ApplicationExit += Application_ApplicationExit;
+            //处理未捕获的异常
+            System.Windows.Forms.Application.SetUnhandledExceptionMode(System.Windows.Forms.UnhandledExceptionMode.CatchException);
+            //处理UI线程异常  
+            System.Windows.Forms.Application.ThreadException += Application_ThreadException;
+            //处理非UI线程异常  
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             for (int i = 0; i < ServiceHosts.Length; i++)
             {
                 try
@@ -55,6 +61,14 @@ namespace FengSharp.OneCardAccess.Application.IntegeatedManageServer
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
             System.Windows.Forms.Application.Run(new Form1());
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
         }
 
         static void Application_ApplicationExit(object sender, EventArgs e)

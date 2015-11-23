@@ -148,6 +148,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             database.AddOutParameter(cmd, "CompanyIdError", DbType.Int32, 4);
             database.AddOutParameter(cmd, "StockId1Error", DbType.Int32, 4);
             database.AddOutParameter(cmd, "StockId2Error", DbType.Int32, 4);
+            database.AddOutParameter(cmd, "ATypeIdError", DbType.Int32, 4);
             database.AddOutParameter(cmd, "BNError", DbType.String, 10);
             return cmd;
         }
@@ -547,7 +548,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                 #region 过账
                 DbCommand cmd = GetZCreatePDlyCommand(Database, dlyNdxId, userid);
                 Database.ExecuteNonQuery(cmd, tran);
-                //CheckZCreatePDlyError(Database, cmd);
+                CheckZCreatePDlyError(Database, cmd);
                 #endregion
             });
             return dlyNdxId;

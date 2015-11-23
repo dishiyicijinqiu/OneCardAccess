@@ -63,26 +63,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ActionService.svc" />
-    <Content Include="AccessService.svc" />
-    <Content Include="AuthService.svc" />
-    <Content Include="CompanyService.svc" />
-    <Content Include="DicDataService.svc" />
-    <Content Include="DeptService.svc" />
-    <Content Include="DlyNdxService.svc" />
-    <Content Include="DlyTypeService.svc" />
-    <Content Include="EmployeeService.svc" />
     <Content Include="Global.asax" />
-    <Content Include="InputLevelService.svc" />
     <Content Include="logo.ico" />
-    <Content Include="MenuService.svc" />
-    <Content Include="PFBNSNRuleService.svc" />
-    <Content Include="ProductService.svc" />
-    <Content Include="RawMateService.svc" />
-    <Content Include="RegisterService.svc" />
-    <Content Include="RoleService.svc" />
-    <Content Include="StockService.svc" />
-    <Content Include="UserService.svc" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultServiceHostFactory.cs" />
@@ -100,7 +82,13 @@
   <ItemGroup>
     <Content Include="UpLoadHandler.ashx" />
     <None Include="Properties\PublishProfiles\IntegeatedManageServer.pubxml" />
-    <Content Include="Server.config" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain.BSSModule.Entity\Domain.BSSModule.Entity.csproj">
@@ -190,7 +178,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>copy $(ProjectDir)\Server.config $(TargetDir)\$(TargetFileName).config</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

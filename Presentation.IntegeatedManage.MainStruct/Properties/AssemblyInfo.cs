@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("一卡通管理系统")]
 [assembly: AssemblyDescription("OneCardAccess")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyConfiguration("aaaa")]
 [assembly: AssemblyCompany("苏州康力骨科器械有限公司")]
 [assembly: AssemblyProduct("OneCardAccess")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
