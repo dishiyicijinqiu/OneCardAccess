@@ -10,38 +10,45 @@ namespace FengSharp.OneCardAccess.Infrastructure
 {
     public static class LogHelper
     {
-        /// <summary>
-        /// 获取数据库对象
-        /// </summary>
-        /// <param name="name">数据库实例名(默认name为空,调用默认数据库实例)</param>
-        /// <returns>数据库对象</returns>
-        public static LogWriter CreateLogWriter(string name = null)
-        {
-            return EnterpriseLibraryContainer.Current.GetInstance<LogWriter>(name);
-        }
-        private static void LogWriteMethod(Action<LogWriter> action, string name = null)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                using (var logwrite = CreateLogWriter())
-                {
-                    action(logwrite);
-                }
-            }
-            else
-            {
-                using (var logwrite = CreateLogWriter(name))
-                {
-                    action(logwrite);
-                }
-            }
-        }
+        ///// <summary>
+        ///// 获取数据库对象
+        ///// </summary>
+        ///// <param name="name">数据库实例名(默认name为空,调用默认数据库实例)</param>
+        ///// <returns>数据库对象</returns>
+        //public static LogWriter CreateLogWriter(string name = null)
+        //{
+        //    return EnterpriseLibraryContainer.Current.GetInstance<LogWriter>(name);
+        //}
+        //private static void LogWriteMethod(Action<LogWriter> action, string name = null)
+        //{
+        //    if (string.IsNullOrWhiteSpace(name))
+        //    {
+        //        using (var logwrite = CreateLogWriter())
+        //        {
+        //            action(logwrite);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        using (var logwrite = CreateLogWriter(name))
+        //        {
+        //            action(logwrite);
+        //        }
+        //    }
+        //}
+        //public static void WriteBak(object message, string category = "General", string title = null, TraceEventType severity = TraceEventType.Information, int priority = -1, string name = null)
+        //{
+        //    Logger.Write(message, category, priority, 1, severity, title);
+        //    LogWriteMethod((logwrite) =>
+        //    {
+        //        logwrite.Write(message, category, priority, 1, severity, title);
+        //        Logger.Write(message, category, priority, 1, severity, title);
+        //    }, name);
+        //}
+
         public static void Write(object message, string category = "General", string title = null, TraceEventType severity = TraceEventType.Information, int priority = -1, string name = null)
         {
-            LogWriteMethod((logwrite) =>
-            {
-                logwrite.Write(message, category, priority, 1, severity, title);
-            }, name);
+            Logger.Write(message, category, priority, 1, severity, title);
         }
 
         //public static void Write(object message, IEnumerable<string> categories, IDictionary<string, object> properties, string name = null)
