@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 namespace FengSharp.OneCardAccess.Infrastructure
 {
-    [ConfigurationElementType(typeof(RollingFlatFileTraceListenerData))]
+    [ConfigurationElementType(typeof(RollingFlatFileTraceListenerData))] 
     public class MyRollingFlatFileTraceListener : CustomTraceListener
     {
 
