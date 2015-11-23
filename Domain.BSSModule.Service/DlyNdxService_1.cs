@@ -449,15 +449,6 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
         /// <returns></returns>
         public string SaveSPRKDly(SPRKDlyCGNdxEntity entity)
         {
-            base.UseTran((tran) =>
-            {
-                DbCommand cmd = this.Database.GetStoredProcCommand("P_GetTest");
-                Database.ExecuteNonQuery(cmd, tran);
-                //cmd = this.Database.GetSqlStringCommand("INSERT INTO dbo.T_UserLog ( Id, UserId, Operation, LogDate ) VALUES  ( NEWID(),NEWID(),'C#',GETDATE())");
-                //Database.ExecuteNonQuery(cmd, tran);
-            });
-            return string.Empty;
-
             string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
             if (string.IsNullOrWhiteSpace(entity.LastSHRId))
             {

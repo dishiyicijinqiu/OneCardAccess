@@ -15,3 +15,4 @@ listenerDataType="FengSharp.OneCardAccess.Infrastructure.MyRollingFlatFileTraceL
 测试方法：
 数据库事务
 C#事务异常，sql事务提交，生效
+测试结果不可同时生效

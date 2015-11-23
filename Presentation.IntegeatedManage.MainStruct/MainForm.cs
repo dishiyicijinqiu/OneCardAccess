@@ -22,12 +22,12 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
                 var login = FengSharp.OneCardAccess.Infrastructure.ServiceLoader.LoadService<ILogin>();
                 if (login.Login())
                 {
+                    this.Visible = true;
                     FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.BarTimeItem.ServerTime =
                     (DateTime)FengSharp.OneCardAccess.Infrastructure.ApplicationContext.Current["ServerTime"];
                     MenuHelper.LoadMenu(this.ribbon);
                     MenuHelper.SetUserMenu(this.ribbon);
                     this.barItemUser.Caption = FengSharp.OneCardAccess.Infrastructure.AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserName;
-                    this.Visible = true;
                 }
                 else
                 {
