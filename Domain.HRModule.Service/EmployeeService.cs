@@ -1,13 +1,11 @@
 ﻿using FengSharp.OneCardAccess.Domain.HRModule.Entity;
 using FengSharp.OneCardAccess.Domain.HRModule.Service.Interface;
-using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using FengSharp.OneCardAccess.Infrastructure.Services;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using System;
 using System.Data;
 using System.Data.Common;
-using System.ServiceModel;
 using System.Linq;
-using Microsoft.Practices.EnterpriseLibrary.Data;
 namespace FengSharp.OneCardAccess.Domain.HRModule.Service
 {
     public class EmployeeService : ServiceBase, IEmployeeService
