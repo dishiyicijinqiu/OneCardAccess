@@ -115,6 +115,10 @@
       <Project>{912a12e4-45e2-47c2-b953-b0e6a4cc9d93}</Project>
       <Name>Presentation.IntegeatedManage.CRM.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Presentation.IntegeatedManage.SystemSet.Interface\Presentation.IntegeatedManage.SystemSet.Interface.csproj">
+      <Project>{34e26fba-5759-4256-9d34-eeb152fce0dc}</Project>
+      <Name>Presentation.IntegeatedManage.SystemSet.Interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

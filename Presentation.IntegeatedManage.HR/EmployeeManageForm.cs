@@ -227,8 +227,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
             if (entity == null) return null;
             var result = new EmployeeCMDeptEntity();
             FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, entity);
-            result.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(result.CreateId).UserName;
-            result.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(result.LastModifyId).UserName;
+            result.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(result.CreateId).UserName;
+            result.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(result.LastModifyId).UserName;
             var deptEntity = ServiceProxyFactory.Create<IDeptService>().GetDeptById(result.DeptId);
             if (deptEntity != null)
             {

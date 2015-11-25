@@ -236,8 +236,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             }
             var cmcateentity = new Product_Register_Draw_CMCateEntity();
             FengSharp.Tool.Reflect.ClassValueCopier.Copy(cmcateentity, entity);
-            cmcateentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(cmcateentity.CreateId).UserName;
-            cmcateentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(cmcateentity.LastModifyId).UserName;
+            cmcateentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(cmcateentity.CreateId).UserName;
+            cmcateentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(cmcateentity.LastModifyId).UserName;
             //注册证信息赋值
             //cmcateentity.RegisterNo
             //图纸信息赋值
@@ -278,8 +278,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                         entity.PId = this.Actual.PId;
                         Product_Register_Draw_CMCateEntity bindentity = new Product_Register_Draw_CMCateEntity();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         this.Actual.SetData(bindentity);
                         #endregion
                     }
@@ -295,8 +295,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                         entity.PId = this.Actual.PId;
                         Product_Register_Draw_CMCateEntity bindentity = new Product_Register_Draw_CMCateEntity();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         bindentity.Remark1 = string.Empty;
                         bindentity.Remark2 = string.Empty;
                         bindentity.Remark3 = string.Empty;
@@ -319,8 +319,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                             throw new BusinessException(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.ObjectCannotFind);
                         Product_Register_Draw_CMCateEntity bindentity = new Product_Register_Draw_CMCateEntity();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         var registerEntity = ServiceProxyFactory.Create<IRegisterService>().GetRegisterById(bindentity.RegisterId);
                         if (registerEntity != null)
                         {

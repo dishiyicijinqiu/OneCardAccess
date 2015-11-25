@@ -183,6 +183,10 @@
       <Project>{b2a6c55d-f693-4713-b6b6-312b31281af2}</Project>
       <Name>Presentation.IntegeatedManage.HR.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Presentation.IntegeatedManage.SystemSet.Interface\Presentation.IntegeatedManage.SystemSet.Interface.csproj">
+      <Project>{34e26fba-5759-4256-9d34-eeb152fce0dc}</Project>
+      <Name>Presentation.IntegeatedManage.SystemSet.Interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

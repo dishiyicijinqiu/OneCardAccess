@@ -291,8 +291,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                         Infrastructure.EntityTool.CopyCreateAndModify(entity);
                         RegisterCMEntity bindentity = new RegisterCMEntity();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         this.Actual.SetData(bindentity);
                         #endregion
                     }
@@ -307,8 +307,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                         Infrastructure.EntityTool.CopyCreateAndModify(entity);
                         RegisterCMEntity bindentity = new RegisterCMEntity();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         bindentity.RegisterFile = string.Empty;
                         bindentity.Remark = string.Empty;
                         bindentity.StartDate = string.Empty;
@@ -328,8 +328,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
                         RegisterCMEntity bindentity = new RegisterCMEntity();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         this.Actual.SetData(bindentity);
 
                         RegisterAttachmentEntity[] registerAttachmentEntitys = this._RegisterService.GetRegisterAttachmentEntitys(bindentity.RegisterId);

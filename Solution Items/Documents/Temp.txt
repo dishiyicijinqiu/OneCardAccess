@@ -16,3 +16,6 @@ listenerDataType="FengSharp.OneCardAccess.Infrastructure.MyRollingFlatFileTraceL
 数据库事务
 C#事务异常，sql事务提交，生效
 测试结果不可同时生效
+
+IntegeatedManageServer
+http://dishiyicijinqiu.eicp.net:2015/AuthService.svc

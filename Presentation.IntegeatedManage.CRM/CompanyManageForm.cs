@@ -265,8 +265,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.CRM
                 return null;
             var cmcateentity = new CompanyCMCateEntity();
             FengSharp.Tool.Reflect.ClassValueCopier.Copy(cmcateentity, entity);
-            cmcateentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(cmcateentity.CreateId).UserName;
-            cmcateentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(cmcateentity.LastModifyId).UserName;
+            cmcateentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(cmcateentity.CreateId).UserName;
+            cmcateentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(cmcateentity.LastModifyId).UserName;
             cmcateentity.HasCate = cmcateentity.Level_Num > 0;
             return cmcateentity;
         }

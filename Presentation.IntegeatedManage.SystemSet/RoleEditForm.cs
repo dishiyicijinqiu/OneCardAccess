@@ -136,8 +136,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
                         Infrastructure.EntityTool.CopyCreateAndModify(entity);
                         RoleWithCreateAndModify bindentity = new RoleWithCreateAndModify();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         this.Actual.SetData(bindentity);
                         #endregion
                     }
@@ -151,8 +151,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
                         Infrastructure.EntityTool.CopyCreateAndModify(entity);
                         RoleWithCreateAndModify bindentity = new RoleWithCreateAndModify();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         this.Actual.SetData(bindentity);
                         #endregion
                     }
@@ -163,11 +163,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
                         #region Edit,ReadOnly
                         RoleEntity entity = this._Service.FindRoleById(this.Actual.EntityId);
                         if (entity == null)
-                            throw new BusinessException(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.ObjectCannotFind);
+                            throw new BusinessException(Infrastructure.ResourceMessages.ObjectCannotFind);
                         RoleWithCreateAndModify bindentity = new RoleWithCreateAndModify();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         this.Actual.SetData(bindentity);
                         #endregion
                     }
@@ -175,7 +175,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.SystemSet
                 case ViewType.Kind:
                 case ViewType.AddChild:
                 default:
-                    throw new BusinessException(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.ErrorType);
+                    throw new BusinessException(Infrastructure.ResourceMessages.ErrorType);
             }
 
         }

@@ -17,7 +17,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 
         private void Login_Load(object sender, EventArgs e)
         {
-            //ServiceProxyFactory.Create<IMenuService>().GetAllEntity();
             this.Facade = new LoginFormFacade(this);
         }
 

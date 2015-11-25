@@ -400,8 +400,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
                         Infrastructure.EntityTool.CopyCreateAndModify(entity);
                         EmployeeCMDeptEntity bindentity = new EmployeeCMDeptEntity();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
 
                         this.Actual.SetData(bindentity);
                         #endregion
@@ -417,8 +417,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
 
                         EmployeeCMDeptEntity bindentity = new EmployeeCMDeptEntity();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         bindentity.Photo = string.Empty;
                         bindentity.EmpName = string.Empty;
                         bindentity.GenCardNo = string.Empty;
@@ -439,8 +439,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.HR
 
                         EmployeeCMDeptEntity bindentity = new EmployeeCMDeptEntity();
                         FengSharp.Tool.Reflect.ClassValueCopier.Copy(bindentity, entity);
-                        bindentity.CreateName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.CreateId).UserName;
-                        bindentity.LastModifyName = ServiceProxyFactory.Create<IUserService>().FindUserById(bindentity.LastModifyId).UserName;
+                        bindentity.CreateName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.CreateId).UserName;
+                        bindentity.LastModifyName = ServiceLoader.LoadService<SystemSet.Interface.IClientUserSerice>().FindUserByIdFromCache(bindentity.LastModifyId).UserName;
                         var deptEntity = ServiceProxyFactory.Create<IDeptService>().GetDeptById(bindentity.DeptId);
                         if (deptEntity != null)
                         {

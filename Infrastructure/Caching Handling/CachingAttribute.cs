@@ -97,9 +97,9 @@ namespace FengSharp.OneCardAccess.Infrastructure.Caching_Handling
         public CachingCallHandler(NameValueCollection attributes)
         {
             //从配置文件中获取key，如不存在则指定默认key
-            this.Hours = String.IsNullOrEmpty(attributes["Hours"]) ? 0 : Convert.ToInt32(attributes["Hours"]);
-            this.Minutes = String.IsNullOrEmpty(attributes["Minutes"]) ? 0 : Convert.ToInt32(attributes["Minutes"]);
-            this.Seconds = String.IsNullOrEmpty(attributes["Seconds"]) ? 0 : Convert.ToInt32(attributes["Seconds"]);
+            this.Hours = string.IsNullOrEmpty(attributes["Hours"]) ? 0 : Convert.ToInt32(attributes["Hours"]);
+            this.Minutes = string.IsNullOrEmpty(attributes["Minutes"]) ? 0 : Convert.ToInt32(attributes["Minutes"]);
+            this.Seconds = string.IsNullOrEmpty(attributes["Seconds"]) ? 0 : Convert.ToInt32(attributes["Seconds"]);
         }
         public IMethodReturn Invoke(IMethodInvocation input, GetNextHandlerDelegate getNext)
         {
