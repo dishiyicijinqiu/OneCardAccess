@@ -200,5 +200,7 @@
     <None Include="管家婆红冲单据.sql" />
     <None Include="过账单据查询分析.sql" />
     <None Include="ZCreateDly.sql" />
+    <None Include="DataBase.publish.xml" />
+    <None Include="Clear.sql" />
   </ItemGroup>
 </Project>

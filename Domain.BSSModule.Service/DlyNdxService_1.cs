@@ -5,7 +5,7 @@ using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using System.Data.Common;
-
+using System;
 
 namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
 {
@@ -142,6 +142,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
         public static DbCommand GetZCreatePDlyCommand(Database database, string dlyNdxId, string userId)
         {
             DbCommand cmd = database.GetStoredProcCommand("P_ZCreatePDly");
+            cmd.CommandTimeout = 3000;
             database.AddInParameter(cmd, "DlyNdxId", DbType.String, dlyNdxId);
             database.AddInParameter(cmd, "UserId", DbType.String, userId);
             database.AddOutParameter(cmd, "ProductIdError", DbType.Int32, 4);
@@ -295,6 +296,34 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             return result;
         }
         #endregion
+        #region PDlyFullNameEntity
+        public static PDlyFullNameEntity[] DataTableToPDlyFullNameEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PDlyFullNameEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPDlyFullNameEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+        public static PDlyFullNameEntity DataRowToPDlyFullNameEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PDlyFullNameEntity();
+            var entity = DataRowToPDlyEntity(row);
+            FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, entity);
+            result.ProductNo = row["ProductNo"].ToString();
+            result.ProductName = row["ProductName"].ToString();
+            result.Spec = row["Spec"].ToString();
+            result.GoodCode = row["GoodCode"].ToString();
+            result.Unit = row["Unit"].ToString();
+            result.QtyMode = (short)row["QtyMode"];
+            return result;
+        }
+        #endregion
         #region PDlyBakEntity
         public static PDlyBakEntity DataRowToPDlyBakEntity(DataRow row)
         {
@@ -332,6 +361,46 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                 C_ProductOrderId = (string)(row["C_ProductOrderId"]),
                 SortNo = (int)(row["SortNo"]),
 
+            };
+            return result;
+        }
+        #endregion
+        #region PDlyEntity
+        public static PDlyEntity DataRowToPDlyEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PDlyEntity()
+            {
+                PDlyId = (string)(row["PDlyId"]),
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                ATypeId = (int)(row["ATypeId"]),
+                CompanyId = (int)(row["CompanyId"]),
+                DlyTypeId = (int)(row["DlyTypeId"]),
+                DlyDate = (string)(row["DlyDate"]),
+                JSRId = (string)(row["JSRId"]),
+                StockId1 = (int)(row["StockId1"]),
+                StockId2 = (int)(row["StockId2"]),
+                ProductId = (int)(row["ProductId"]),
+                BN = (string)(row["BN"]),
+                Qty = (decimal)(row["Qty"]),
+                CostPrice = (double)(row["CostPrice"]),
+                CostTotal = (decimal)(row["CostTotal"]),
+                Price = (double)(row["Price"]),
+                Total = (decimal)(row["Total"]),
+                DisCount = (decimal)(row["DisCount"]),
+                DisPrice = (double)(row["DisPrice"]),
+                DisTotal = (decimal)(row["DisTotal"]),
+                TaxRate = (decimal)(row["TaxRate"]),
+                Tax = (decimal)(row["Tax"]),
+                TaxPrice = (double)(row["TaxPrice"]),
+                TaxTotal = (decimal)(row["TaxTotal"]),
+                RetailPrice = (double)(row["RetailPrice"]),
+                InvoceTotal = (decimal)(row["InvoceTotal"]),
+                Remark = (string)(row["Remark"]),
+                C_OrderNdxId = (string)(row["C_OrderNdxId"]),
+                C_ProductOrderId = (string)(row["C_ProductOrderId"]),
+                SortNo = (int)(row["SortNo"]),
             };
             return result;
         }
@@ -420,26 +489,148 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             return result;
         }
         #endregion
-        #endregion
+        #region PFBNInOutDetailsEntity
+        public static PFBNInOutDetailsEntity[] DataTableToPFBNInOutDetailsEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PFBNInOutDetailsEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPFBNInOutDetailsEntity(dt.Rows[i]);
+            }
+            return results;
+        }
 
+        private static PFBNInOutDetailsEntity DataRowToPFBNInOutDetailsEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PFBNInOutDetailsEntity()
+            {
+                PDlyId = (string)(row["PDlyId"]),
+                InOutDate = (string)(row["InOutDate"]),
+                PFBNInOutDetailId = (string)(row["PFBNInOutDetailId"]),
+                PInOutDetailId = (string)(row["PFBNInOutDetailId"]),
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                ProductId = (int)(row["ProductId"]),
+                StockId = (int)(row["StockId"]),
+                BN = (string)(row["BN"]),
+                FullBN = (string)(row["FullBN"]),
+                Remark = (string)(row["Remark"]),
+                Qty = (decimal)(row["Qty"]),
+                SortNo = (int)(row["SortNo"]),
+            };
+            return result;
+        }
+        #endregion
+        #region PSNInOutDetailsEntity
+        public static PSNInOutDetailsEntity[] DataTableToPSNInOutDetailsEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PSNInOutDetailsEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPSNInOutDetailsEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+
+        private static PSNInOutDetailsEntity DataRowToPSNInOutDetailsEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PSNInOutDetailsEntity()
+            {
+                PDlyId = (string)(row["PDlyId"]),
+                PSNInOutDetailId = (string)(row["PSNInOutDetailId"]),
+                SN = (string)(row["SN"]),
+                InOutDate = (string)(row["InOutDate"]),
+                PInOutDetailId = (string)(row["PInOutDetailId"]),
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                ProductId = (int)(row["ProductId"]),
+                StockId = (int)(row["StockId"]),
+                BN = (string)(row["BN"]),
+                Remark = (string)(row["Remark"]),
+                SortNo = (int)(row["SortNo"]),
+            };
+            return result;
+        }
+        #endregion
+        #region PDlyAEntity
+        public static PDlyAEntity[] DataTableToDlyAEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PDlyAEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToDlyAEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+
+        private static PDlyAEntity DataRowToDlyAEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PDlyAEntity()
+            {
+                ATypeId = (int)(row["ATypeId"]),
+                CompanyId = (int)(row["CompanyId"]),
+                DlyDate = (string)(row["DlyDate"]),
+                DlyTypeId = (int)(row["DlyTypeId"]),
+                JSRId = (string)(row["JSRId"]),
+                PDlyAId = (string)(row["PDlyAId"]),
+                Total = (decimal)(row["Total"]),
+                DlyNdxId = (string)(row["DlyNdxId"]),
+                StockId = (int)(row["StockId"]),
+                Remark = (string)(row["Remark"]),
+            };
+            return result;
+        }
+        #endregion
+        #endregion
         #region 公共方法
         public static void CheckZCreatePDlyError(Database database, DbCommand cmd)
         {
-            int ProductIdError = (int)database.GetParameterValue(cmd, "ProductIdError");
-            if (ProductIdError > 0)
-                throw new BusinessException(ProductIdError.ToString());
-            int CompanyIdError = (int)database.GetParameterValue(cmd, "CompanyIdError");
-            if (CompanyIdError > 0)
-                throw new BusinessException(CompanyIdError.ToString());
-            int AtypeIdError = (int)database.GetParameterValue(cmd, "AtypeIdError");
-            if (AtypeIdError > 0)
-                throw new BusinessException(AtypeIdError.ToString());
-            int StockIdError = (int)database.GetParameterValue(cmd, "StockIdError");
-            if (StockIdError > 0)
-                throw new BusinessException(StockIdError.ToString());
-            string BNError = (string)database.GetParameterValue(cmd, "BNError");
-            if (string.IsNullOrWhiteSpace(BNError))
-                throw new BusinessException(BNError);
+            if (database.GetParameterValue(cmd, "ProductIdError") != System.DBNull.Value)
+            {
+                int ProductIdError = (int)database.GetParameterValue(cmd, "ProductIdError");
+                if (ProductIdError > 0)
+                    throw new BusinessException(ProductIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "CompanyIdError") != System.DBNull.Value)
+            {
+                int CompanyIdError = (int)database.GetParameterValue(cmd, "CompanyIdError");
+                if (CompanyIdError > 0)
+                    throw new BusinessException(CompanyIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "StockId1Error") != System.DBNull.Value)
+            {
+                int StockIdError = (int)database.GetParameterValue(cmd, "StockId1Error");
+                if (StockIdError > 0)
+                    throw new BusinessException(StockIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "StockId2Error") != System.DBNull.Value)
+            {
+                int StockIdError = (int)database.GetParameterValue(cmd, "StockId2Error");
+                if (StockIdError > 0)
+                    throw new BusinessException(StockIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "AtypeIdError") != System.DBNull.Value)
+            {
+                int AtypeIdError = (int)database.GetParameterValue(cmd, "AtypeIdError");
+                if (AtypeIdError > 0)
+                    throw new BusinessException(AtypeIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "BNError") != System.DBNull.Value)
+            {
+                string BNError = (string)database.GetParameterValue(cmd, "BNError");
+                if (!string.IsNullOrWhiteSpace(BNError))
+                    throw new BusinessException(BNError);
+            }
         }
         #endregion
 
@@ -525,25 +716,25 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                         snbakId = (string)base.Database.GetParameterValue(cmdCreateSNBak, "PSNBakId");
                     }
                     #endregion
-                    #region 创建优惠备份
-                    if (entity.Prefer != 0)
-                    {
-                        var preferbak = new PDlyBakEntity();
-                        string preferbakBakId = string.Empty;
-                        preferbak.DlyNdxId = dlyNdxId;
-                        preferbak.ATypeId = FengSharp.OneCardAccess.Application.Config.DlyConfig.KCSPATypeId;
-                        preferbak.CompanyId = entity.CompanyId;
-                        preferbak.DlyTypeId = entity.DlyTypeId;
-                        preferbak.DlyDate = entity.DlyDate;
-                        preferbak.JSRId = entity.JSRId;
-                        preferbak.StockId1 = entity.StockId1;
-                        preferbak.Total = entity.Prefer;
-                        DbCommand cmdCreatePreferBak = GetCreatePDlyBakCommand(Database, preferbak);
-                        Database.ExecuteNonQuery(cmdCreatePreferBak, tran);
-                        preferbakBakId = (string)base.Database.GetParameterValue(cmdCreatePreferBak, "PDlyBakId");
-                    }
-                    #endregion
                 }
+                #region 创建优惠备份
+                if (entity.Prefer != 0)
+                {
+                    var preferbak = new PDlyBakEntity();
+                    string preferbakBakId = string.Empty;
+                    preferbak.DlyNdxId = dlyNdxId;
+                    preferbak.ATypeId = FengSharp.OneCardAccess.Application.Config.DlyConfig.SPYHATypeId;
+                    preferbak.CompanyId = entity.CompanyId;
+                    preferbak.DlyTypeId = entity.DlyTypeId;
+                    preferbak.DlyDate = entity.DlyDate;
+                    preferbak.JSRId = entity.JSRId;
+                    preferbak.StockId1 = entity.StockId1;
+                    preferbak.Total = entity.Prefer;
+                    DbCommand cmdCreatePreferBak = GetCreatePDlyBakCommand(Database, preferbak);
+                    Database.ExecuteNonQuery(cmdCreatePreferBak, tran);
+                    preferbakBakId = (string)base.Database.GetParameterValue(cmdCreatePreferBak, "PDlyBakId");
+                }
+                #endregion
                 #endregion
                 #region 过账
                 DbCommand cmd = GetZCreatePDlyCommand(Database, dlyNdxId, userid);

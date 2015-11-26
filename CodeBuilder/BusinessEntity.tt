@@ -41,7 +41,7 @@ namespace <#=NameSpace#>
 }
 <#}#>
 <#+
-public static readonly string TableName="T_PDlyABak";
+public static readonly string TableName="T_PSNInOutDetails";
 public static readonly bool IsBuilder= false;
 public static readonly string NameSpace="FengSharp.OneCardAccess.Domain.BSSModule.Entity";
 #>

@@ -44,10 +44,14 @@
     <Compile Include="DlyInputLevelEntity.cs" />
     <Compile Include="DlyNdxEntity.cs" />
     <Compile Include="DlyTypeEntity.cs" />
+    <Compile Include="ProductDly\PDlyEntity.cs" />
     <Compile Include="ProductDly\PDlyAEntity.cs" />
     <Compile Include="ProductDly\PFBNBakEntity.cs" />
     <Compile Include="ProductDly\PDlyBakEntity.cs" />
+    <Compile Include="ProductDly\PFBNInOutDetailsEntity.cs" />
     <Compile Include="ProductDly\PFBNSNRuleEntity.cs" />
+    <Compile Include="ProductDly\PInOutDetailsEntity.cs" />
+    <Compile Include="ProductDly\PSNInOutDetailsEntity.cs" />
     <Compile Include="ProductEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProductDly\PSNBakEntity.cs" />

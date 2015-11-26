@@ -19,9 +19,15 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
         DlyNdxFullNameEntity[] GetCGList();
         [OperationContract]
         [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        DlyNdxFullNameEntity[] GetJYLCList();
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         SPRKDlyCGNdxEntity GetSPRKDlyCGNdxEntity(string dlyNdxId);
         [OperationContract]
         [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         string SaveSPRKDly(SPRKDlyCGNdxEntity entity);
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        SPRKDlyYGZNdxEntity GetSPRKDlyYGZNdxEntity(string ndxId);
     }
 }

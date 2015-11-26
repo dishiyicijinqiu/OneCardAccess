@@ -40,7 +40,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         [DataMember]
         public string DlyNdxId { get; set; }
         /// <summary>
-        /// DlyNo
+        /// 单据编号
         /// </summary>
         [DataMember]
         public string DlyNo { get; set; }

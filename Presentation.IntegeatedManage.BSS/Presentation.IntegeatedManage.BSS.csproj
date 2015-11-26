@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DlyFormat.cs" />
+    <Compile Include="单据\DlyNdxJYLCManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="单据\DlyNdxJYLCManageForm.Designer.cs">
+      <DependentUpon>DlyNdxJYLCManageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="单据\DJMessageBox.cs" />
     <Compile Include="单据\DJSHChecker.cs" />
     <Compile Include="单据\DlyNdxCGManageForm.cs">
@@ -116,6 +122,12 @@
     </Compile>
     <Compile Include="Basic\ProductSelectUserControl.Designer.cs">
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="单据\DlySPRKYGZForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="单据\DlySPRKYGZForm.Designer.cs">
+      <DependentUpon>DlySPRKYGZForm.cs</DependentUpon>
     </Compile>
     <Compile Include="单据\ProductSNInputPopupContainerControl.cs">
       <SubType>Component</SubType>
@@ -281,6 +293,7 @@
     <EmbeddedResource Include="Basic\ProductSelectUserControl.resx">
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="单据\DlyNdxCGManageForm.resx">
       <DependentUpon>DlyNdxCGManageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +320,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Basic\StockSelectUserControl.resx">
       <DependentUpon>StockSelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="单据\DlyNdxJYLCManageForm.resx">
+      <DependentUpon>DlyNdxJYLCManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="单据\DlySPRKYGZForm.resx">
+      <DependentUpon>DlySPRKYGZForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="单据\ProductSNInputUserControl.resx">
       <DependentUpon>ProductSNInputUserControl.cs</DependentUpon>

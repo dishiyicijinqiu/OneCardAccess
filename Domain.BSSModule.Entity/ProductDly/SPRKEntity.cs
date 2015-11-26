@@ -53,39 +53,67 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// </summary>
         [DataMember]
         public decimal Qty { get; set; }
-        //{
-        //    get
-        //    {
-        //        return PDlyBaks.Sum(t => t.Qty);
-        //    }
-        //}
         /// <summary>
         /// 合计金额
         /// </summary>
         [DataMember]
         public override decimal Total { get; set; }
-        //{
-        //    get
-        //    {
-        //        return PDlyBaks.Sum(t => t.Total);
-        //    }
-        //}
         /// <summary>
         /// 优惠
         /// </summary>
         [DataMember]
         public decimal Prefer { get; set; }
-        //private decimal _AfterPreferTotal;
         /// <summary>
         /// 优惠后金额
         /// </summary>
         [DataMember]
         public decimal AfterPreferTotal { get; set; }
-        //{
-        //    get
-        //    {
-        //        return this.Total - this.Prefer;
-        //    }
-        //}
+    }
+    /// <summary>
+    /// 商品入库单已过帐
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class SPRKDlyYGZNdxEntity : DlyNdxFullNameEntity
+    {
+        /// <summary>
+        /// 合计数量
+        /// </summary>
+        [DataMember]
+        public decimal Qty { get; set; }
+        /// <summary>
+        /// 合计金额
+        /// </summary>
+        [DataMember]
+        public override decimal Total { get; set; }
+        /// <summary>
+        /// 优惠
+        /// </summary>
+        [DataMember]
+        public decimal Prefer { get; set; }
+        /// <summary>
+        /// 优惠后金额
+        /// </summary>
+        [DataMember]
+        public decimal AfterPreferTotal { get; set; }
+
+
+        List<PDlyFullNameEntity> _PDlys;
+        /// <summary>
+        /// 单据明细备份
+        /// </summary>  
+        [DataMember]
+        public List<PDlyFullNameEntity> PDlys
+        {
+            get
+            {
+                if (_PDlys == null)
+                    _PDlys = new List<PDlyFullNameEntity>();
+                return _PDlys;
+            }
+            set
+            {
+                _PDlys = value;
+            }
+        }
     }
 }

@@ -1,33 +1,35 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
 {
     /// <summary>
-    /// 商品单据草稿
+    /// 商品单据表
     /// </summary>
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-    public class PDlyBakEntity
+    public class PDlyEntity
     {
         /// <summary>
         /// 构造函数
         /// </summary>
-        public PDlyBakEntity()
+        public PDlyEntity()
         {
-            PDlyBakId = string.Empty;
+            PDlyId = string.Empty;
             DlyNdxId = string.Empty;
             DlyDate = string.Empty;
+            JSRId = string.Empty;
             BN = string.Empty;
             Remark = string.Empty;
             C_OrderNdxId = string.Empty;
             C_ProductOrderId = string.Empty;
-            JSRId = string.Empty;
+
         }
         /// <summary>
         /// 主键Id
         /// </summary>
         [DataMember]
-        public string PDlyBakId { get; set; }
+        public string PDlyId { get; set; }
         /// <summary>
         /// 单据索引表Id
         /// </summary>
@@ -169,59 +171,61 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         [DataMember]
         public int SortNo { get; set; }
 
-        List<PFBNBakEntity> _PFBNBaks;
+
+
+        List<PFBNInOutDetailsEntity> _PFBNInOutDetails;
         /// <summary>
         /// 商品单据草稿批号备份
         /// </summary>
         [DataMember]
-        public List<PFBNBakEntity> PFBNBaks
+        public List<PFBNInOutDetailsEntity> PFBNInOutDetails
         {
             get
             {
-                if (_PFBNBaks == null)
+                if (_PFBNInOutDetails == null)
                 {
-                    _PFBNBaks = new List<PFBNBakEntity>();
+                    _PFBNInOutDetails = new List<PFBNInOutDetailsEntity>();
                 }
-                return _PFBNBaks;
+                return _PFBNInOutDetails;
             }
             set
             {
-                _PFBNBaks = value;
+                _PFBNInOutDetails = value;
             }
         }
 
-        List<PSNBakEntity> _PSNBaks;
+        List<PSNInOutDetailsEntity> _PSNInOutDetails;
         /// <summary>
         /// 商品单据草稿序列号备份
         /// </summary>
         [DataMember]
-        public List<PSNBakEntity> PSNBaks
+        public List<PSNInOutDetailsEntity> PSNInOutDetails
         {
             get
             {
-                if (_PSNBaks == null)
+                if (_PSNInOutDetails == null)
                 {
-                    _PSNBaks = new List<PSNBakEntity>();
+                    _PSNInOutDetails = new List<PSNInOutDetailsEntity>();
                 }
-                return _PSNBaks;
+                return _PSNInOutDetails;
             }
             set
             {
-                _PSNBaks = value;
+                _PSNInOutDetails = value;
             }
         }
     }
 
     /// <summary>
-    /// 商品单据草稿
+    /// 商品单据表
     /// </summary>
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-    public class PDlyBakFullNameEntity : PDlyBakEntity
+    public class PDlyFullNameEntity : PDlyEntity
     {
         /// <summary>
         /// 构造函数
         /// </summary>
-        public PDlyBakFullNameEntity()
+        public PDlyFullNameEntity()
             : base()
         {
         }

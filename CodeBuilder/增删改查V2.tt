@@ -555,6 +555,6 @@ private string GetTableFirstChar(DBHost dbhost)
 {
 	return dbhost.DbTable.TableName.Replace("T_",string.Empty).Substring(0,1).ToLower();
 }
-public static readonly string TableName="T_PSNBak";
+public static readonly string TableName="T_PDly";
 public static readonly bool IsBuilder= false;
 #>

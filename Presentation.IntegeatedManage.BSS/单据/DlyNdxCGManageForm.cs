@@ -3,15 +3,12 @@ using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface;
 using FengSharp.OneCardAccess.Infrastructure;
 using FengSharp.OneCardAccess.Infrastructure.Base;
+using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Controls;
 using FengSharp.OneCardAccess.Infrastructure.WinForm.Forms;
-using System;
-using System.Linq;
-using FengSharp.OneCardAccess.Infrastructure.WinForm;
-using System.Collections.Generic;
-using FengSharp.OneCardAccess.Domain.RBACModule.Service.Interface;
-using FengSharp.OneCardAccess.Infrastructure.Exceptions;
 using FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct.Interface;
+using System;
+using System.Collections.Generic;
 
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {

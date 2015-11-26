@@ -348,6 +348,6 @@
 		}
     }
 
-	public const string ConnectionString="Data Source=127.0.0.1;Initial Catalog=OneCardAccessDB;User Id = sa;Password=111111;";
+	public const string ConnectionString=@"Data Source=(localdb)\.\MyIISDB;Initial Catalog=OneCardAccessDB;Integrated Security=True";
 	public const string Database="OneCardAccessDB";
 #>
