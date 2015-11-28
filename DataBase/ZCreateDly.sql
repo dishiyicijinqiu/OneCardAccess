@@ -1,8 +1,9 @@
-﻿IF EXISTS ( SELECT  1
-            FROM    sys.sysobjects
-            WHERE   id = OBJECT_ID('P_ZCreatePDly')
-                    AND type IN ( 'P', 'PC' ) ) 
-    DROP PROCEDURE dbo.P_ZCreatePDly
+﻿USE OneCardAccessDB
+if exists (select 1
+          from sysobjects
+          where  id = object_id('P_ZCreatePDly')
+          and type in ('P','PC'))
+   drop procedure P_ZCreatePDly
 go
 CREATE PROCEDURE P_ZCreatePDly
     (
@@ -54,11 +55,11 @@ AS
             @SHRId5 = T_DlyNdx.SHRId5
     FROM    dbo.T_DlyNdx
     WHERE   T_DlyNdx.DlyNdxId = @DlyNdxId
-    BEGIN
-        SELECT  @errmsg = dbo.F_GetError('单据不存在', 0)
-        RAISERROR(@errmsg,11,1)
-        RETURN
-    END
+--    BEGIN
+--        SELECT  @errmsg = dbo.F_GetError('单据不存在', 0)
+--        RAISERROR(@errmsg,11,1)
+--        RETURN
+--    END
 ------------------------------------------------单据索引------------------------------------------------
 
 ------------------------------------------------审核检查------------------------------------------------
@@ -189,24 +190,24 @@ AS
     IF EXISTS ( SELECT  1
                 FROM    dbo.T_Employee
                 WHERE   T_Employee.EmpId = @JSRId
-                        AND T_Employee.deleted = 1 ) 
+                        AND T_Employee.Deleted = 1 ) 
         GOTO error
     IF EXISTS ( SELECT  1
                 FROM    dbo.T_Company
                 WHERE   T_Company.CompanyId = @CompanyId
-                        AND ( T_Company.deleted = 1
+                        AND ( T_Company.Deleted = 1
                               OR T_Company.Level_Num > 0
                             ) ) 
         GOTO error
     IF EXISTS ( SELECT  1
                 FROM    dbo.T_Stock
                 WHERE   T_Stock.StockId = @StockId1
-                        AND T_Stock.deleted = 1 ) 
+                        AND T_Stock.Deleted = 1 ) 
         GOTO error 
     IF EXISTS ( SELECT  1
                 FROM    dbo.T_Stock
                 WHERE   T_Stock.StockId = @StockId2
-                        AND T_Stock.deleted = 1 ) 
+                        AND T_Stock.Deleted = 1 ) 
         GOTO error1
 ------------------------------------------------删除检查------------------------------------------------
 ------------------------------------------------单据详细------------------------------------------------
@@ -237,8 +238,8 @@ AS
 ------------------------------------------------商品入库单------------------------------------------------
     IF @DlyTypeId = 2 
         BEGIN
-            SELECT  @execsql = 'declare CreateDly_cursor cursor for'
-                    + 'select ATypeId,ProductId,BN,Qty,Price,Total,Remark,SortNo from T_PDlyBak where DlyNdxId='''
+            SELECT  @execsql = 'declare CreateDly_cursor cursor for '
+                    + 'select ATypeId,ProductId,BN,Qty,Price,Total,Remark,SortNo,PDlyBakId from T_PDlyBak where DlyNdxId='''
                     + @DlyNdxId + ''''
             EXEC(@execsql)
             SELECT  @HJMoney = 0 ,
@@ -260,7 +261,7 @@ AS
                                 OR @Level_Num > 0 
                                 GOTO error2
                             --------------------------更新库存--------------------------
-                            Exec @nRet = dbo.P_AtypeModify @DlyTypeId = 0, -- int
+                            EXEC @nRet = dbo.P_AtypeModify @DlyTypeId = 0, -- int
                                 @DlyNdxId = @DlyNdxId, -- varchar(36)
                                 @DlyDate = @DlyDate, -- varchar(10)
                                 @ATypeId = @KCSPAtypeId, -- int
@@ -274,7 +275,7 @@ AS
                                 @CostTotal = @dTemp OUTPUT, -- numeric
                                 @QtyMode = @QtyMode, -- smallint
                                 @OldPDlyId = @PDlyBakId -- varchar(36)
-                            if @nRet<0 goto error
+                            
                             --------------------------更新库存--------------------------
                             SELECT  @HJQty = @HJQty + @Qty,
                                     @HJKCMoney=@HJKCMoney+@Total,
@@ -342,15 +343,15 @@ AS
                                       '' , -- C_ProductOrderId - varchar(36)
                                       @SortNo  -- SortNo - char(10)
                                     )
-							UPDATE dbo.T_PInOutDetails SET PDlyId=@PDlyId WHERE DlyNdxId=@DlyNdxId
-							UPDATE dbo.T_PFBNInOutDetails SET PDlyId=@PDlyId WHERE DlyNdxId=@DlyNdxId
-							UPDATE dbo.T_PSNInOutDetails SET PDlyId=@PDlyId WHERE DlyNdxId=@DlyNdxId 
+							UPDATE dbo.T_PInOutDetails SET PDlyId=@PDlyId WHERE DlyNdxId=@DlyNdxId and PDlyId=@PDlyBakId
+							UPDATE dbo.T_PFBNInOutDetails SET PDlyId=@PDlyId WHERE DlyNdxId=@DlyNdxId and PDlyId=@PDlyBakId
+							UPDATE dbo.T_PSNInOutDetails SET PDlyId=@PDlyId WHERE DlyNdxId=@DlyNdxId and PDlyId=@PDlyBakId
                         END
                         ELSE IF @ATypeId=@SPYHAtypeId
                         BEGIN
                         	SELECT @HJPrefer=@Total
-                        	INSERT INTO dbo.T_DlyADetails
-                        	        ( DlyADetailId ,
+                        	INSERT INTO dbo.T_PDlyA
+                        	        ( PDlyAId ,
                         	          DlyNdxId ,
                         	          ATypeId ,
                         	          CompanyId ,
@@ -363,7 +364,7 @@ AS
                         	        )
                         	VALUES  ( NEWID() , -- DlyADetailId - varchar(36)
                         	          @DlyNdxId , -- DlyNdxId - varchar(36)
-                        	          @ATypeId , -- ATypeId - int
+                        	          @SPYHAtypeId , -- ATypeId - int
                         	          @CompanyId , -- CompanyId - int
                         	          @JSRId , -- JSRId - int
                         	          @StockId1 , -- StockId - int
@@ -377,8 +378,8 @@ AS
                         BEGIN
                         	IF NOT EXISTS (SELECT 1 FROM dbo.T_AType WHERE ATypeId=@ATypeId AND Level_Num=0)
                         		GOTO error1
-                        	INSERT INTO dbo.T_DlyADetails
-                        	        ( DlyADetailId ,
+                         	INSERT INTO dbo.T_PDlyA
+                        	        ( PDlyAId ,
                         	          DlyNdxId ,
                         	          ATypeId ,
                         	          CompanyId ,
@@ -408,9 +409,8 @@ AS
                         @BN, @Qty, @Price, @Total, @Remark, @SortNo,@PDlyBakId
 					IF @HJKCMoney<>0--库存商品增加
 					BEGIN
-						
-                        	INSERT INTO dbo.T_DlyADetails
-                        	        ( DlyADetailId ,
+                 		INSERT INTO dbo.T_PDlyA
+                        	        ( PDlyAId ,
                         	          DlyNdxId ,
                         	          ATypeId ,
                         	          CompanyId ,
@@ -434,65 +434,69 @@ AS
                         	        )
 					END
                 END
-			update T_DlyNdx set Total=ABS(@HJKCMoney) where DlyNdxId=@DlyNdxId
-			if @@rowcount <=0 goto error1
             CLOSE CreateDly_cursor
             DEALLOCATE CreateDly_cursor
-			goto finish
         END
 ------------------------------------------------商品入库单------------------------------------------------
 
 -----对科目类型进行过帐
 finish:
-	select @nRet=0
-	select @execsql='declare AccountDly_Cursor cursor for'
-				+'select * from T_PDlyA where DlyNdxId='''+@DlyNdxId+''''
-	exec @execsql
-	open AccountDly_Cursor
-	fetch next from AccountDly_Cursor into @ATypeId,@CompanyId,@Total
-	while @@FETCH_STATUS=0
-	begin
-		if @ATypeId<>0
-		begin
-            Exec @nRet = dbo.P_AtypeModify @DlyTypeId = @DlyTypeId, -- int
-                @DlyNdxId = @DlyNdxId, -- varchar(36)
-                @DlyDate = @DlyDate, -- varchar(10)
-                @ATypeId = @ATypeId, -- int
-                @ProductId = 0, -- int
-                @CompanyId = @CompanyId, -- int
-                @JSRId = @JSRId, -- varchar(36)
-                @StockId = 0, -- int
-                @Qty = @Qty, -- numeric
-                @Total = @Total, -- numeric
-                @BN = '', -- varchar(10)
-                @CostTotal = @dTemp OUTPUT, -- numeric
-                @QtyMode = -1, -- smallint
-                @OldPDlyId = '' -- varchar(36)
-            if @nRet<0 goto error
-		end
-		fetch next from AccountDly_Cursor into @ATypeId,@CompanyId,@Total
-	end
-	update T_DlyNdx set Draft=1 where DlyNdxId=@DlyNdxId
-	
+        set @nRet =0
+        select @execsql='declare AccountDly_cursor cursor for '
+                                --+' select ATypeID, BTypeID,Total from dlya  where  Vchcode= '+CAST(@nVchcode AS varchar(10))
+								+ ' select ATypeId,CompanyId,Total  from T_PDlyA where DlyNdxId='''+@DlyNdxId+''''
+        exec (@execsql)
+        OPEN AccountDly_cursor
+        fetch next from AccountDly_cursor into @ATypeId,@CompanyId,@Total
+        while @@FETCH_STATUS=0
+        begin
+            if @ATypeId<>0
+            begin
+                EXEC @nRet = dbo.P_AtypeModify @DlyTypeId = @DlyTypeId, -- int
+                    @DlyNdxId = @DlyNdxId, -- varchar(36)
+                    @DlyDate = @DlyDate, -- varchar(10)
+                    @ATypeId = @ATypeId, -- int
+                    @ProductId = 0, -- int
+                    @CompanyId = @CompanyId, -- int
+                    @JSRId = @JSRId, -- varchar(36)
+                    @StockId = @StockId1, -- int
+                    @Qty = @Total, -- numeric
+                    @Total = @Total, -- numeric
+                    @BN = '', -- varchar(10)
+                    @CostTotal = @dTemp OUTPUT, -- numeric
+                    @QtyMode = 0, -- smallint
+                    @OldPDlyId = '' -- varchar(36)
+                    if @nRet<0 goto error
+            end
+            fetch next from AccountDly_cursor into @ATypeId,@CompanyId,@Total
+        end
+        CLOSE AccountDly_cursor
+        DEALLOCATE AccountDly_cursor
+		update T_DlyNdx set Draft=1 where DlyNdxId=@DlyNdxId
         if @@rowcount <=0 goto error1
-        delete from bakdly where vchcode=@nVchcode
-error:--产品批号,序列号出入库出现错误
-	SELECT  @CompanyIdError = @CompanyId ,
-			@StockId1Error = @StockId1 ,
-			@StockId2Error = @StockId2
-	SELECT  @ProductIdError = @ProductId ,
-			@BNError = @BN
-	CLOSE CreateDly_cursor
-	DEALLOCATE CreateDly_cursor
-error1:--往来单位，仓库Id不存在或不是末级节点
-SELECT  @CompanyIdError = @CompanyId ,
-        @StockId1Error = @StockId1 ,
-        @StockId2Error = @StockId2 ,
-        @ATypeIdError = @ATypeId
-error2:--产品Id不存在或不是末级节点
-	SELECT  @CompanyIdError = @CompanyId ,
-			@StockId1Error = @StockId1 ,
-			@StockId2Error = @StockId2
-	SELECT  @ProductIdError = @ProductId 
-	CLOSE CreateDly_cursor
-	DEALLOCATE CreateDly_cursor
+        delete from T_PDlyBak where DlyNdxId=@DlyNdxId
+        if @@rowcount <=0 goto error1
+        return 0
+    error:--产品批号出入库出现错误
+    SELECT  @CompanyIdError = @CompanyId ,
+            @StockId1Error = @StockId1 ,
+            @StockId2Error = @StockId2
+    SELECT  @ProductIdError = @ProductId ,
+            @BNError = @BN
+    CLOSE CreateDly_cursor
+    DEALLOCATE CreateDly_cursor
+	return -1
+    error1:--往来单位，仓库Id不存在或不是末级节点
+    SELECT  @CompanyIdError = @CompanyId ,
+            @StockId1Error = @StockId1 ,
+            @StockId2Error = @StockId2 ,
+            @ATypeIdError = @ATypeId
+	return -1
+    error2:--产品Id不存在或不是末级节点
+    SELECT  @CompanyIdError = @CompanyId ,
+            @StockId1Error = @StockId1 ,
+            @StockId2Error = @StockId2
+    SELECT  @ProductIdError = @ProductId 
+    CLOSE CreateDly_cursor
+    DEALLOCATE CreateDly_cursor
+	return -1

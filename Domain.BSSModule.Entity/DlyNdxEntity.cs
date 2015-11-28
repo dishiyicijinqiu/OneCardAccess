@@ -282,6 +282,4 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         [DataMember]
         public string SHRName5 { get; set; }
     }
-
-
 }

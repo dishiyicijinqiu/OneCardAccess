@@ -13,7 +13,6 @@ select *  from [dbo].[T_PInvent]
 select *  from [dbo].[T_PFBNInvent]	
 select *  from [dbo].[T_PSNInvent]	
 select * from T_AType	
-select * from T_DlyADetails
 
 delete from [dbo].[T_DlyNdx] where DlyNdxId=@DlyNdxId
 delete from [dbo].[T_PDly] where DlyNdxId=@DlyNdxId
@@ -27,4 +26,3 @@ delete from [dbo].[T_PFBNInvent]	where DlyNdxId=@DlyNdxId
 delete from [dbo].[T_PSNInvent]		where DlyNdxId=@DlyNdxId
 
 update T_AType set Total=0 where ATypeId=1101
-delete from T_DlyADetails

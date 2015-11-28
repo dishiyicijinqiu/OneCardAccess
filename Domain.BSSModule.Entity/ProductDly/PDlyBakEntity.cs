@@ -102,7 +102,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// 金额
         /// </summary>
         [DataMember]
-        public virtual decimal Total { get; set; }
+        public decimal Total { get; set; }
         /// <summary>
         /// 折扣(--)
         /// </summary>
@@ -255,21 +255,21 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         /// </summary>
         [DataMember]
         public short QtyMode { get; set; }
-        /// <summary>
-        /// 金额
-        /// </summary>
-        [DataMember]
-        //public virtual decimal Total { get; set; }
-        public override decimal Total
-        {
-            get
-            {
-                return this.Qty * (decimal)this.Price;
-            }
-            set
-            {
-                base.Total = value;
-            }
-        }
+        ///// <summary>
+        ///// 金额
+        ///// </summary>
+        //[DataMember]
+        ////public virtual decimal Total { get; set; }
+        //public override decimal Total
+        //{
+        //    get
+        //    {
+        //        return this.Qty * (decimal)this.Price;
+        //    }
+        //    set
+        //    {
+        //        base.Total = value;
+        //    }
+        //}
     }
 }

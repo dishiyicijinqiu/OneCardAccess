@@ -4,32 +4,11 @@ using System.Linq;
 namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
 {
     /// <summary>
-    /// 商品入库单
+    /// 商品单据草稿
     /// </summary>
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-    public class SPRKDlyNdxEntity : DlyNdxFullNameEntity
+    public class PDlyNdxCGEntity : DlyNdxFullNameEntity
     {
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public SPRKDlyNdxEntity()
-            : base()
-        {
-        }
-    }
-    /// <summary>
-    /// 商品入库草稿单
-    /// </summary>
-    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-    public class SPRKDlyCGNdxEntity : DlyNdxFullNameEntity
-    {
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public SPRKDlyCGNdxEntity()
-            : base()
-        {
-        }
         List<PDlyBakFullNameEntity> _PDlyBaks;
         /// <summary>
         /// 单据明细备份
@@ -70,10 +49,10 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         public decimal AfterPreferTotal { get; set; }
     }
     /// <summary>
-    /// 商品入库单已过帐
+    /// 商品已过帐单据
     /// </summary>
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-    public class SPRKDlyYGZNdxEntity : DlyNdxFullNameEntity
+    public class PDlyNdxYGZEntity : DlyNdxFullNameEntity
     {
         /// <summary>
         /// 合计数量
@@ -115,5 +94,35 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
                 _PDlys = value;
             }
         }
+    }
+    /// <summary>
+    /// 商品入库草稿单
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class SPRKDlyCGNdxEntity : PDlyNdxCGEntity
+    {
+    }
+    /// <summary>
+    /// 商品入库单已过帐
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class SPRKDlyYGZNdxEntity : PDlyNdxYGZEntity
+    {
+    }
+
+    /// <summary>
+    /// 商品返工草稿单
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class SPFGDlyCGNdxEntity : PDlyNdxCGEntity
+    {
+    }
+
+    /// <summary>
+    /// 商品返工单已过帐
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class SPFGDlyYGZNdxEntity : PDlyNdxYGZEntity
+    {
     }
 }

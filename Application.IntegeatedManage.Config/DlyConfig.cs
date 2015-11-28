@@ -7,6 +7,10 @@
         /// 商品入库单DlyTypeId
         /// </summary>
         public const int SPRKDlyTypeId = 2;
+        /// <summary>
+        /// 商品返工单DlyTypeId
+        /// </summary>
+        public const int SPFGDlyTypeId = 3;
         #endregion
         #region 资产类型Id
         /// <summary>

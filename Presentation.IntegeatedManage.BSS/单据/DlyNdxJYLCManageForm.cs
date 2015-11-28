@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Base;
+﻿using DevExpress.Utils.Menu;
+using DevExpress.XtraGrid.Views.Base;
 using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface;
 using FengSharp.OneCardAccess.Infrastructure;
@@ -88,6 +89,50 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 MessageBoxEx.Error(ex);
             }
         }
+
+        private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            try
+            {
+                if (e.MenuType == DevExpress.XtraGrid.Views.Grid.GridMenuType.Row)
+                {
+                    if (this.gridView1.SelectedRowsCount != 1)
+                        return;
+                    var row = this.gridView1.GetRow(e.HitInfo.RowHandle) as DlyNdxEntity;
+                    if (row == null)
+                        return;
+                    if (row.DlyTypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId)
+                    {
+                        var menuItem = new DXSubMenuItem("复制为");
+                        menuItem.Items.Add(new DXMenuItem("商品入库单", CopyDlyClick) { Tag = Application.Config.DlyConfig.SPRKDlyTypeId });
+                        menuItem.Items.Add(new DXMenuItem("商品返工单", CopyDlyClick) { Tag = Application.Config.DlyConfig.SPFGDlyTypeId });
+                        e.Menu.Items.Add(menuItem);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
+        }
+        private void CopyDlyClick(object sender, EventArgs e)
+        {
+            try
+            {
+                DXMenuItem menuItem = sender as DXMenuItem;
+                if (menuItem == null) return;
+                var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as DlyNdxEntity;
+                if (row == null)
+                    return;
+                int DlyTypeId = Convert.ToInt32(menuItem.Tag);
+                string copydlyndx = this.Facade.CopyDlyAs(row.DlyNdxId, DlyTypeId);
+                MessageBoxEx.Info(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.OPSuccess);
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
+        }
     }
     public class DlyNdxJYLCManageForm_Design : TreeLevelForm<DlyNdxJYLCManageFormFacade>
     {
@@ -104,6 +149,14 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
             var entitys = _DlyNdxService.GetJYLCList();
             this.Actual.Bind(entitys);
+        }
+        internal string CopyDlyAs(string dlyNdxId, int dlyTypeId)
+        {
+            if (string.IsNullOrWhiteSpace(dlyNdxId))
+                throw new BusinessException("单据不可为空");
+            if (dlyTypeId == 0)
+                throw new BusinessException("错误的单据类型");
+            return _DlyNdxService.CopyDlyAs(dlyNdxId, dlyTypeId);
         }
     }
 }

@@ -123,6 +123,12 @@
     <Compile Include="Basic\ProductSelectUserControl.Designer.cs">
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="单据\DlySPFGForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="单据\DlySPFGForm.Designer.cs">
+      <DependentUpon>DlySPFGForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="单据\DlySPRKYGZForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -323,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="单据\DlyNdxJYLCManageForm.resx">
       <DependentUpon>DlyNdxJYLCManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="单据\DlySPFGForm.resx">
+      <DependentUpon>DlySPFGForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="单据\DlySPRKYGZForm.resx">
       <DependentUpon>DlySPRKYGZForm.cs</DependentUpon>

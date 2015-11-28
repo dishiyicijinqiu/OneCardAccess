@@ -58,6 +58,8 @@
             this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider(this.components);
             this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView_MouseMulSelect1 = new FengSharp.WinForm.Dev.Components.GridView_MouseMulSelect(this.components);
+            this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.baseLayoutControl1)).BeginInit();
             this.baseLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -141,6 +143,7 @@
             this.colSHRName3,
             this.colSummary,
             this.colComment});
+            this.gridView_MouseMulSelect1.SetEnableMouseMulSelect(this.gridView1, true);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.IndicatorWidth = 40;
             this.gridView1.Name = "gridView1";
@@ -159,7 +162,9 @@
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView_ShowLine1.SetShowLineNo(this.gridView1, true);
             this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
+            this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView1_PopupMenuShowing);
             this.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridView1_CustomColumnDisplayText);
             // 
             // colDlyNo
@@ -407,5 +412,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private WinForm.Dev.Components.GridView_ShowLine gridView_ShowLine1;
+        private WinForm.Dev.Components.GridView_MouseMulSelect gridView_MouseMulSelect1;
     }
 }
