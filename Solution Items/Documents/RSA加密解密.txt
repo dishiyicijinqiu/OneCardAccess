@@ -3,8 +3,11 @@ RsaProtectedConfigurationProvider--可以移植
 
 --使用RsaProtectedConfigurationProvider方式解密配置文件connectionStrings节点
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pef "connectionStrings" "D:\my" -prov "RsaProtectedConfigurationProvider"
+
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pe "cachingConfiguration" -app "/" -prov "RSAProtectedConfigurationProvider"
 --解密配置节
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe -pdf "connectionStrings" "D:\my"
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe -pd "appSettings" -app "/"
 
 --创建RSA密钥容器
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pc "SZKL" -exp
