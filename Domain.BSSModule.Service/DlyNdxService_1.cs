@@ -405,7 +405,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
         }
         #endregion
         #region DlyNdxFullNameEntity
-        public static DlyNdxFullNameEntity[] DataTableToDlyNdxFullNameEntity(DataTable dt)
+        public static DlyNdxFullNameEntity[] DataTableToDlyNdxFullNameEntitys(DataTable dt)
         {
             if (dt == null)
                 return null;
@@ -586,6 +586,36 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                 DlyNdxId = (string)(row["DlyNdxId"]),
                 StockId = (int)(row["StockId"]),
                 Remark = (string)(row["Remark"]),
+            };
+            return result;
+        }
+        #endregion
+        #region PFBNInventEntity
+        public static PFBNInventEntity[] DataTableToPFBNInventEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PFBNInventEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPFBNInventEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+        private static PFBNInventEntity DataRowToPFBNInventEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PFBNInventEntity()
+            {
+                BN = (string)(row["DlyDate"]),
+                FullBN = (string)(row["DlyDate"]),
+                PBNInventId = (string)(row["DlyDate"]),
+                PFBNInventId = (string)(row["DlyDate"]),
+                PInventId = (string)(row["DlyDate"]),
+                ProductId = (int)(row["DlyDate"]),
+                Qty = (decimal)(row["DlyDate"]),
+                StockId = (int)(row["DlyDate"]),
             };
             return result;
         }

@@ -52,18 +52,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DlyFormat.cs" />
-    <Compile Include="单据\DlyNdxJYLCManageForm.cs">
+    <Compile Include="Dlys\Controls\ProductFBNSelectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductFBNSelectUserControl.Designer.cs">
+      <DependentUpon>ProductFBNSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlys\DlyNdxJYLCManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="单据\DlyNdxJYLCManageForm.Designer.cs">
+    <Compile Include="Dlys\DlyNdxJYLCManageForm.Designer.cs">
       <DependentUpon>DlyNdxJYLCManageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="单据\DJMessageBox.cs" />
-    <Compile Include="单据\DJSHChecker.cs" />
-    <Compile Include="单据\DlyNdxCGManageForm.cs">
+    <Compile Include="Dlys\DJMessageBox.cs" />
+    <Compile Include="Dlys\DJSHChecker.cs" />
+    <Compile Include="Dlys\DlyNdxCGManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="单据\DlyNdxCGManageForm.Designer.cs">
+    <Compile Include="Dlys\DlyNdxCGManageForm.Designer.cs">
       <DependentUpon>DlyNdxCGManageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DlySet\DlyInputLevelForm.cs">
@@ -123,50 +129,53 @@
     <Compile Include="Basic\ProductSelectUserControl.Designer.cs">
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="单据\DlySPFGForm.cs">
+    <Compile Include="Dlys\DlySPFGForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="单据\DlySPFGForm.Designer.cs">
+    <Compile Include="Dlys\DlySPFGForm.Designer.cs">
       <DependentUpon>DlySPFGForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="单据\DlySPRKYGZForm.cs">
+    <Compile Include="Dlys\DlySPRKYGZForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="单据\DlySPRKYGZForm.Designer.cs">
+    <Compile Include="Dlys\DlySPRKYGZForm.Designer.cs">
       <DependentUpon>DlySPRKYGZForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="单据\ProductSNInputPopupContainerControl.cs">
+    <Compile Include="Dlys\Controls\ProductFBNSelectPopupContainerControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="单据\ProductSNInputUserControl.cs">
+    <Compile Include="Dlys\Controls\ProductSNInputPopupContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductSNInputUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="单据\ProductSNInputUserControl.Designer.cs">
+    <Compile Include="Dlys\Controls\ProductSNInputUserControl.Designer.cs">
       <DependentUpon>ProductSNInputUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="单据\ProductPriceSelectUserControl.cs">
+    <Compile Include="Dlys\Controls\ProductPriceSelectUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="单据\ProductPriceSelectUserControl.Designer.cs">
+    <Compile Include="Dlys\Controls\ProductPriceSelectUserControl.Designer.cs">
       <DependentUpon>ProductPriceSelectUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="单据\ProductPriceSelectPopupContainerControl.cs">
+    <Compile Include="Dlys\Controls\ProductPriceSelectPopupContainerControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DlySet\PFBNSNRule.cs" />
-    <Compile Include="单据\ProductFBNInputPopupContainerControl.cs">
+    <Compile Include="Dlys\Controls\ProductFBNInputPopupContainerControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="单据\ProductFBNInputUserControl.cs">
+    <Compile Include="Dlys\Controls\ProductFBNInputUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="单据\ProductFBNInputUserControl.Designer.cs">
+    <Compile Include="Dlys\Controls\ProductFBNInputUserControl.Designer.cs">
       <DependentUpon>ProductFBNInputUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="单据\DlySPRKForm.cs">
+    <Compile Include="Dlys\DlySPRKForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="单据\DlySPRKForm.Designer.cs">
+    <Compile Include="Dlys\DlySPRKForm.Designer.cs">
       <DependentUpon>DlySPRKForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -300,7 +309,10 @@
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="单据\DlyNdxCGManageForm.resx">
+    <EmbeddedResource Include="Dlys\Controls\ProductFBNSelectUserControl.resx">
+      <DependentUpon>ProductFBNSelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlys\DlyNdxCGManageForm.resx">
       <DependentUpon>DlyNdxCGManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DlySet\DlyInputLevelForm.resx">
@@ -327,25 +339,25 @@
     <EmbeddedResource Include="Basic\StockSelectUserControl.resx">
       <DependentUpon>StockSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="单据\DlyNdxJYLCManageForm.resx">
+    <EmbeddedResource Include="Dlys\DlyNdxJYLCManageForm.resx">
       <DependentUpon>DlyNdxJYLCManageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="单据\DlySPFGForm.resx">
+    <EmbeddedResource Include="Dlys\DlySPFGForm.resx">
       <DependentUpon>DlySPFGForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="单据\DlySPRKYGZForm.resx">
+    <EmbeddedResource Include="Dlys\DlySPRKYGZForm.resx">
       <DependentUpon>DlySPRKYGZForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="单据\ProductSNInputUserControl.resx">
+    <EmbeddedResource Include="Dlys\Controls\ProductSNInputUserControl.resx">
       <DependentUpon>ProductSNInputUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="单据\ProductPriceSelectUserControl.resx">
+    <EmbeddedResource Include="Dlys\Controls\ProductPriceSelectUserControl.resx">
       <DependentUpon>ProductPriceSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="单据\ProductFBNInputUserControl.resx">
+    <EmbeddedResource Include="Dlys\Controls\ProductFBNInputUserControl.resx">
       <DependentUpon>ProductFBNInputUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="单据\DlySPRKForm.resx">
+    <EmbeddedResource Include="Dlys\DlySPRKForm.resx">
       <DependentUpon>DlySPRKForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -22,11 +22,18 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         private void ProductFBNInputUserControl_Load(object sender, EventArgs e)
         {
-            if (this.DesignMode)
-                return;
-            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
-                return;
-            CreateFacade();
+            try
+            {
+                if (this.DesignMode)
+                    return;
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
+                    return;
+                CreateFacade();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)

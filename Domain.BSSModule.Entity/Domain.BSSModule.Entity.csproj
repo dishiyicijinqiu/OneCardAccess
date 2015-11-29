@@ -49,9 +49,11 @@
     <Compile Include="ProductDly\PFBNBakEntity.cs" />
     <Compile Include="ProductDly\PDlyBakEntity.cs" />
     <Compile Include="ProductDly\PFBNInOutDetailsEntity.cs" />
+    <Compile Include="ProductDly\PFBNInventEntity.cs" />
     <Compile Include="ProductDly\PFBNSNRuleEntity.cs" />
     <Compile Include="ProductDly\PInOutDetailsEntity.cs" />
     <Compile Include="ProductDly\PSNInOutDetailsEntity.cs" />
+    <Compile Include="ProductDly\PSNInventEntity.cs" />
     <Compile Include="ProductEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProductDly\PSNBakEntity.cs" />

@@ -1,0 +1,27 @@
+DataProtectionConfigurationProvider--仅针对计算机
+RsaProtectedConfigurationProvider--可以移植
+
+--使用RsaProtectedConfigurationProvider方式解密配置文件connectionStrings节点
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pef "connectionStrings" "D:\my" -prov "RsaProtectedConfigurationProvider"
+--解密配置节
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe -pdf "connectionStrings" "D:\my"
+
+--创建RSA密钥容器
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pc "SZKL" -exp
+--删除RSA密钥容器
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pz "SZKL"
+--导出RSA密钥
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -px "SZKL" "D:\My\keys.xml" -pri
+--导入RSA密钥创建密钥容器
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pi "SZKL" "D:\My\keys.xml"
+--给密钥添加权限
+aspnet_regiis -pa "SZKL" "NT AUTHORITY\NETWORK SERVICE"
+
+--自定义配置加密
+<configProtectedData>
+<providers>
+    <add keyContainerName="SZKL" useMachineContainer="true" description="SZKL Keys" name="SZKLRsaProtectedConfigurationProvider"
+    type="System.Configuration.RsaProtectedConfigurationProvider,System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+</providers>
+</configProtectedData>
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pef "connectionStrings" "D:\my" -prov "SZKLRsaProtectedConfigurationProvider"

@@ -18,6 +18,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-RBACModule(权限管理模块)", "1-RBACModule(权限管理模块)", "{FD1C02A5-9B49-4C3D-B8D2-074A8A741691}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-6-Solution Items", "1-6-Solution Items", "{723E4154-5D5D-4318-BD65-DA2305F413F8}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\ConfigKey.xml = Solution Items\ConfigKey.xml
+		Solution Items\PCManageBuildAll.bat = Solution Items\PCManageBuildAll.bat
+		Solution Items\publishbuild.bat = Solution Items\publishbuild.bat
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-7-ReferenceLib(引用程序集)", "1-7-ReferenceLib(引用程序集)", "{96558603-9D21-4CBD-945D-83831C96E53C}"
 EndProject
@@ -134,6 +139,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.IntegeatedMana
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{EF972531-414F-44D8-8C3C-7101D8B8B189}"
 	ProjectSection(SolutionItems) = preProject
+		Solution Items\Documents\RSA加密解密.txt = Solution Items\Documents\RSA加密解密.txt
 		Solution Items\Documents\Temp.txt = Solution Items\Documents\Temp.txt
 		Solution Items\Documents\名词解释.txt = Solution Items\Documents\名词解释.txt
 		Solution Items\Documents\项目命名.txt = Solution Items\Documents\项目命名.txt

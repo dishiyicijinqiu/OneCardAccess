@@ -1,12 +1,10 @@
-FengSharp.OneCardAccess.Presentation
-FengSharp.OneCardAccess.Domain.RBACModule.Entity
+aspnet_regiis -pef "appSettings" "D:\my"  -prov "DataProtectionConfigurationProvider"
 
+aspnet_regiis -pef "connectionStrings" "D:\my" -prov "DataProtectionConfigurationProvider"
 
-FengSharp.OneCardAccess.DataBase
+aspnet_regiis.exe -pdf "appSettings" "D:\my"
 
-
-FengSharp.OneCardAccess.Server.IntegeatedManageServer
-
+aspnet_regiis.exe -pdf "connectionStrings" "D:\my"
 
 listenerDataType="Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.RollingFlatFileTraceListenerData, Microsoft.Practices.EnterpriseLibrary.Logging"
 listenerDataType="FengSharp.OneCardAccess.Infrastructure.MyRollingFlatFileTraceListenerData, FengSharp.OneCardAccess.Infrastructure"
@@ -19,3 +17,10 @@ C#事务异常，sql事务提交，生效
 
 IntegeatedManageServer
 http://dishiyicijinqiu.eicp.net:2015/AuthService.svc
+
+%SystemDrive%\inetpub\wwwroot
+
+
+
+dishiyicijinqiu.vicp.net
+www.kangli.com

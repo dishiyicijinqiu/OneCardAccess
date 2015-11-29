@@ -52,7 +52,6 @@
             this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gridView_MouseMulSelect1 = new FengSharp.WinForm.Dev.Components.GridView_MouseMulSelect(this.components);
-            this.columnViewGeneColumn1 = new FengSharp.WinForm.Dev.Components.ColumnViewGeneColumn(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.baseLayoutControl1)).BeginInit();
             this.baseLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQty.Properties)).BeginInit();
@@ -83,7 +82,7 @@
             this.baseLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(126, 239, 531, 479);
             this.baseLayoutControl1.OptionsItemText.TextAlignMode = DevExpress.XtraLayout.TextAlignMode.AlignInGroups;
             this.baseLayoutControl1.Root = this.layoutControlGroup1;
-            this.baseLayoutControl1.Size = new System.Drawing.Size(560, 502);
+            this.baseLayoutControl1.Size = new System.Drawing.Size(653, 541);
             this.baseLayoutControl1.TabIndex = 0;
             this.baseLayoutControl1.Text = "baseLayoutControl1";
             // 
@@ -118,7 +117,7 @@
             // 
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnDelete.Location = new System.Drawing.Point(454, 470);
+            this.btnDelete.Location = new System.Drawing.Point(547, 509);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 26);
             this.btnDelete.StyleController = this.baseLayoutControl1;
@@ -130,7 +129,7 @@
             // 
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnClear.Location = new System.Drawing.Point(350, 470);
+            this.btnClear.Location = new System.Drawing.Point(443, 509);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 26);
             this.btnClear.StyleController = this.baseLayoutControl1;
@@ -143,7 +142,7 @@
             this.gridControl1.Location = new System.Drawing.Point(6, 30);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(548, 436);
+            this.gridControl1.Size = new System.Drawing.Size(641, 475);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -230,7 +229,7 @@
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(560, 502);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(653, 541);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -238,14 +237,14 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(552, 440);
+            this.layoutControlItem1.Size = new System.Drawing.Size(645, 479);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnClear;
-            this.layoutControlItem2.Location = new System.Drawing.Point(344, 464);
+            this.layoutControlItem2.Location = new System.Drawing.Point(437, 503);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem2.Name = "layoutControlItem2";
@@ -257,7 +256,7 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnDelete;
-            this.layoutControlItem3.Location = new System.Drawing.Point(448, 464);
+            this.layoutControlItem3.Location = new System.Drawing.Point(541, 503);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -269,9 +268,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 464);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 503);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(344, 30);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(437, 30);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // ItemForFBN
@@ -284,7 +283,7 @@
             this.ItemForFBN.Size = new System.Drawing.Size(275, 24);
             this.ItemForFBN.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForFBN.Text = "完整批号";
-            this.ItemForFBN.TextSize = new System.Drawing.Size(48, 13);
+            this.ItemForFBN.TextSize = new System.Drawing.Size(48, 14);
             // 
             // ItemForQty
             // 
@@ -296,27 +295,23 @@
             this.ItemForQty.Size = new System.Drawing.Size(115, 24);
             this.ItemForQty.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForQty.Text = "数量";
-            this.ItemForQty.TextSize = new System.Drawing.Size(48, 13);
+            this.ItemForQty.TextSize = new System.Drawing.Size(48, 14);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(390, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(162, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(255, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // columnViewGeneColumn1
-            // 
-            this.columnViewGeneColumn1.ColumnView = this.gridView1;
             // 
             // ProductFBNInputUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.baseLayoutControl1);
             this.Name = "ProductFBNInputUserControl";
-            this.Size = new System.Drawing.Size(560, 502);
+            this.Size = new System.Drawing.Size(653, 541);
             this.Load += new System.EventHandler(this.ProductFBNInputUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.baseLayoutControl1)).EndInit();
             this.baseLayoutControl1.ResumeLayout(false);
@@ -352,7 +347,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private WinForm.Dev.Components.GridView_MouseMulSelect gridView_MouseMulSelect1;
-        private WinForm.Dev.Components.ColumnViewGeneColumn columnViewGeneColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn colBN;
         private DevExpress.XtraGrid.Columns.GridColumn colFullBN;
         private DevExpress.XtraGrid.Columns.GridColumn colQty;

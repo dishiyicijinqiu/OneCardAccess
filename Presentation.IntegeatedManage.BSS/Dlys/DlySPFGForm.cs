@@ -44,7 +44,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 productPricePopupContainerControl.Height = 200;
                 priceRepItemPopupContainerEdit.PopupControl = productPricePopupContainerControl;
 
-                var qtyFBNPopupContainerControl = ServiceLoader.LoadService<IProductFBNInput>("ProductFBNInput") as PopupContainerControl;
+                var qtyFBNPopupContainerControl = ServiceLoader.LoadService<IProductFBNSelect>("ProductFBNSelect") as PopupContainerControl;
                 qtyFBNPopupContainerControl.Width = 500;
                 qtyFBNPopupContainerControl.Height = 600;
                 qtyFBNRepItemPopupContainerEdit.PopupControl = qtyFBNPopupContainerControl;

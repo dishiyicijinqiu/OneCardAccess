@@ -52,14 +52,14 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
         {
             string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
             var dt = base.GetList("dlycg", userid);
-            return DlyNdxService.DataTableToDlyNdxFullNameEntity(dt);
+            return DlyNdxService.DataTableToDlyNdxFullNameEntitys(dt);
         }
 
         public DlyNdxFullNameEntity[] GetJYLCList()
         {
             string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
             var dt = base.GetList("dlyjylc", userid);
-            return DlyNdxService.DataTableToDlyNdxFullNameEntity(dt);
+            return DlyNdxService.DataTableToDlyNdxFullNameEntitys(dt);
         }
 
         public string CopyDlyAs(string dlyNdxId, int dlyTypeId)
@@ -94,6 +94,17 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                     base.DeleteEntity("dlyndxcg", dlyndxId, tran);
                 });
             });
+        }
+
+        public PFBNInventEntity[] GetPFBNInventEntity(int stockId, int productId, string bn)
+        {
+            DbCommand cmd = Database.GetStoredProcCommand("P_GetInvent");
+            Database.AddInParameter(cmd, "cMode", DbType.String, "pfbn");
+            Database.AddInParameter(cmd, "StockId", DbType.Int32, stockId);
+            Database.AddInParameter(cmd, "EntityId", DbType.Int32, productId);
+            Database.AddInParameter(cmd, "BN", DbType.String, bn);
+            var dt = Database.ExecuteDataTable(cmd);
+            return DlyNdxService.DataTableToPFBNInventEntitys(dt);
         }
 
         /// <summary>

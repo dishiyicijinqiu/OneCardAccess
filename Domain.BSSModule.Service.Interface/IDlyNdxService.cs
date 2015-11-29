@@ -48,6 +48,9 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
         [OperationContract]
         [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         SPFGDlyYGZNdxEntity GetSPFGDlyYGZNdxEntity(string ndxId);
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        PFBNInventEntity[] GetPFBNInventEntity(int stockId, int productId, string bn);
         #endregion
     }
 }
