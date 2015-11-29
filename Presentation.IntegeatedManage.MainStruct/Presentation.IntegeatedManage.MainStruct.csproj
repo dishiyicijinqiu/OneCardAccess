@@ -79,6 +79,9 @@
       <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NAppUpdate.Framework">
+      <HintPath>..\ReferenceLib\DLL\NAppUpdate.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ReferenceLib\DLL\Newtonsoft.Json.dll</HintPath>
@@ -97,6 +100,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckUpdateTool.cs" />
+    <Compile Include="frmInputBoxDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

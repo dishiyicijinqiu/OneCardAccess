@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Update\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="UpLoadHandler.ashx" />

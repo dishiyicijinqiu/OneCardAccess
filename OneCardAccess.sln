@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-6-Solution Items", "1-6-S
 	ProjectSection(SolutionItems) = preProject
 		Solution Items\ConfigKey.xml = Solution Items\ConfigKey.xml
 		Solution Items\PCManageBuildAll.bat = Solution Items\PCManageBuildAll.bat
+		Solution Items\Presentation.IntegeatedManage.MainStruct.config = Solution Items\Presentation.IntegeatedManage.MainStruct.config
 		Solution Items\publishbuild.bat = Solution Items\publishbuild.bat
 		Solution Items\ServerConfigEncrypt.bat = Solution Items\ServerConfigEncrypt.bat
 	EndProjectSection
