@@ -32,19 +32,28 @@ ren ..\Publish\IntegratedManageClient\OneCardAccessIntegeatedManageClient.exe.co
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pef "system.serviceModel/bindings" "%pulishpath%" -prov "SZKLRsaProtectedConfigurationProvider"
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pef "system.serviceModel/client" "%pulishpath%" -prov "SZKLRsaProtectedConfigurationProvider"
 ren ..\Publish\IntegratedManageClient\web.config OneCardAccessIntegeatedManageClient.exe.config
+@rem ------------------------------------------------------删除Dev无用文件夹------------------------------------------------------
+rd ..\Publish\IntegratedManageClient\de\ /s/q
+rd ..\Publish\IntegratedManageClient\es\ /s/q
+rd ..\Publish\IntegratedManageClient\ja\ /s/q
+rd ..\Publish\IntegratedManageClient\ru\ /s/q
 @rem ------------------------------------------------------将公用的DLL移动到临时目录------------------------------------------------------
 @call publishbuild.bat movecommondlltotemp Microsoft.Practices*.dll
 @call publishbuild.bat movecommondlltotemp GZipEncoder.dll
 @call publishbuild.bat movecommondlltotemp FengSharp.Tool.dll
 @call publishbuild.bat movecommondlltotemp FengSharp.WinForm.Dev.dll
 @call publishbuild.bat movecommondlltotemp Newtonsoft.Json.dll
+@call publishbuild.bat movecommondlltotemp DevExpress.*.dll
 @rem ------------------------------------------------------删除无用的文件------------------------------------------------------
 @call publishbuild.bat delunusefile GZipEncoder.dll
 @call publishbuild.bat delunusefile FengSharp.Tool.dll
 @call publishbuild.bat delunusefile FengSharp.WinForm.Dev.dll
 @call publishbuild.bat delunusefile Newtonsoft.Json.dll
 @call publishbuild.bat delunusefile Microsoft.Practices*.dll
-@call publishbuild.bat delunusefile *.xml
+@call publishbuild.bat delunusefile Microsoft.Practices*.xml
+@call publishbuild.bat delunusefile DevExpress*.dll
+@call publishbuild.bat delunusefile DevExpress*.xml
+@rem @call publishbuild.bat delunusefile *.xml
 @call publishbuild.bat delunusefile *.pdb
 @call publishbuild.bat delunusefile *.Designer.dll
 @rem ------------------------------------------------------将公用的DLL移动到Lib目录------------------------------------------------------
@@ -53,3 +62,37 @@ ren ..\Publish\IntegratedManageClient\web.config OneCardAccessIntegeatedManageCl
 @rem ------------------------------------------------------延时关闭------------------------------------------------------
 @ping localhost -n 3 >nul
 @rem pause暂停
+
+
+
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 
+@rem 

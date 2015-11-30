@@ -214,6 +214,15 @@ namespace FengSharp.OneCardAccess.Infrastructure {
         }
         
         /// <summary>
+        ///   查找类似 正在加载数据，请稍后... 的本地化字符串。
+        /// </summary>
+        public static string LoadingDataPleaseWait {
+            get {
+                return ResourceManager.GetString("LoadingDataPleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 正在下载,请稍等...... 的本地化字符串。
         /// </summary>
         public static string LoadingPleaseWait {

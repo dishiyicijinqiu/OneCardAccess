@@ -22,25 +22,18 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
                 var login = FengSharp.OneCardAccess.Infrastructure.ServiceLoader.LoadService<ILogin>();
                 if (login.Login())
                 {
-                    DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(StartSplashScreen));
-                    FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.BarTimeItem.ServerTime =
-                    (DateTime)FengSharp.OneCardAccess.Infrastructure.ApplicationContext.Current["ServerTime"];
-                    MenuHelper.LoadMenu(this.ribbon);
-                    MenuHelper.SetUserMenu(this.ribbon);
-                    this.barItemUser.Caption = FengSharp.OneCardAccess.Infrastructure.AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserName;
                     this.Visible = true;
-                    DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
+                    this.barItemUser.Caption = Infrastructure.AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserName;
                 }
                 else
                 {
-                    Application.Exit();
+                    System.Windows.Forms.Application.Exit();
                 }
             }
             catch (Exception ex)
             {
-                DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
                 ex.ToString();
-                Application.Exit();
+                System.Windows.Forms.Application.Exit();
             }
         }
 
@@ -120,7 +113,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
             if (!CloseAllMdiChild())
                 return;
             Program.RunMutex.Close();
-            Application.Restart();
+            System.Windows.Forms.Application.Restart();
         }
         bool CloseAllMdiChild()
         {
@@ -144,7 +137,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
             if (!CloseAllMdiChild())
                 return;
             Program.RunMutex.Close();
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         public void ReLoad()
@@ -155,6 +148,31 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
         public T[] FindForms<T>() where T : class
         {
             return xtraTabbedMdiManager.Pages.Where(t => t.MdiChild is T).Select(m => m.MdiChild as T).ToArray();
+        }
+
+        private void btnCheckUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CheckUpdateTool.CheckUpdates();
+        }
+
+        private void btnExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var diaResult = FengSharp.WinForm.Dev.Forms.ExitMessageBox.Show();
+                if (diaResult == System.Windows.Forms.DialogResult.Retry)
+                {
+                    SafeRestart();
+                }
+                else if (diaResult == System.Windows.Forms.DialogResult.Yes)
+                {
+                    SafeExit();
+                }
+            }
+            catch (Exception ex)
+            {
+                FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.MessageBoxEx.Error(ex);
+            }
         }
     }
 }

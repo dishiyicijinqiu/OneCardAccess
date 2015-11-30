@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.btnCheckUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnCloseCurrent = new DevExpress.XtraBars.BarButtonItem();
             this.btnCloseOther = new DevExpress.XtraBars.BarButtonItem();
             this.btnCloseAll = new DevExpress.XtraBars.BarButtonItem();
@@ -41,15 +43,16 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager = new FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.ExXtraTabbedMdiManager(this.components);
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.btnExit = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
             // 
+            this.ribbon.ApplicationButtonDropDownControl = this.applicationMenu;
             this.ribbon.ApplicationIcon = ((System.Drawing.Bitmap)(resources.GetObject("ribbon.ApplicationIcon")));
             this.ribbon.ButtonGroupsLayout = DevExpress.XtraBars.ButtonGroupsLayout.ThreeRows;
             this.ribbon.ExpandCollapseItem.Id = 0;
@@ -61,15 +64,33 @@
             this.barItemUser,
             this.barItemEmpty,
             this.barTimeItem,
-            this.barTimeInfo});
+            this.barTimeInfo,
+            this.btnCheckUpdate,
+            this.btnExit});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 13;
+            this.ribbon.MaxItemId = 15;
             this.ribbon.Name = "ribbon";
             this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.True;
             this.ribbon.ShowToolbarCustomizeItem = false;
-            this.ribbon.Size = new System.Drawing.Size(1148, 49);
+            this.ribbon.Size = new System.Drawing.Size(1339, 50);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             this.ribbon.Toolbar.ShowCustomizeItem = false;
+            // 
+            // applicationMenu
+            // 
+            this.applicationMenu.ItemLinks.Add(this.btnCheckUpdate);
+            this.applicationMenu.ItemLinks.Add(this.btnExit);
+            this.applicationMenu.Name = "applicationMenu";
+            this.applicationMenu.Ribbon = this.ribbon;
+            // 
+            // btnCheckUpdate
+            // 
+            this.btnCheckUpdate.Caption = "检查更新";
+            this.btnCheckUpdate.Glyph = ((System.Drawing.Image)(resources.GetObject("btnCheckUpdate.Glyph")));
+            this.btnCheckUpdate.Id = 13;
+            this.btnCheckUpdate.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnCheckUpdate.LargeGlyph")));
+            this.btnCheckUpdate.Name = "btnCheckUpdate";
+            this.btnCheckUpdate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCheckUpdate_ItemClick);
             // 
             // btnCloseCurrent
             // 
@@ -132,10 +153,10 @@
             this.ribbonStatusBar.ItemLinks.Add(this.barItemUser);
             this.ribbonStatusBar.ItemLinks.Add(this.barTimeInfo);
             this.ribbonStatusBar.ItemLinks.Add(this.barTimeItem);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 631);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 682);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1148, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1339, 31);
             // 
             // xtraTabbedMdiManager
             // 
@@ -158,17 +179,21 @@
             this.popupMenu.Name = "popupMenu";
             this.popupMenu.Ribbon = this.ribbon;
             // 
-            // applicationMenu
+            // btnExit
             // 
-            this.applicationMenu.Name = "applicationMenu";
-            this.applicationMenu.Ribbon = this.ribbon;
+            this.btnExit.Caption = "退出";
+            this.btnExit.Glyph = ((System.Drawing.Image)(resources.GetObject("btnExit.Glyph")));
+            this.btnExit.Id = 14;
+            this.btnExit.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnExit.LargeGlyph")));
+            this.btnExit.Name = "btnExit";
+            this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
             // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 662);
+            this.ClientSize = new System.Drawing.Size(1339, 713);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -180,9 +205,9 @@
             this.Text = "一卡通系统";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,7 +215,7 @@
 
         #endregion
 
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
+        internal DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.ExXtraTabbedMdiManager xtraTabbedMdiManager;
         private DevExpress.XtraBars.PopupMenu popupMenu;
@@ -202,5 +227,7 @@
         private DevExpress.XtraBars.BarStaticItem barItemEmpty;
         private FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.BarTimeItem barTimeItem;
         private DevExpress.XtraBars.BarStaticItem barTimeInfo;
+        private DevExpress.XtraBars.BarButtonItem btnCheckUpdate;
+        private DevExpress.XtraBars.BarButtonItem btnExit;
     }
 }

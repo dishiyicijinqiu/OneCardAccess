@@ -26,22 +26,39 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
             {
                 if (!this.dxValidationProvider.Validate())
                     return;
+                if (!splashScreenManager1.IsSplashFormVisible)
+                    splashScreenManager1.ShowWaitForm();
+                splashScreenManager1.SetWaitFormCaption(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.Infomation_Title);
+                splashScreenManager1.SetWaitFormDescription(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.LoadingDataPleaseWait);
                 Login(this.txtUserNo.Text, this.txtPassword.Text);
                 this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
-                FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.MessageBoxEx.Error(ex);
+                if (splashScreenManager1.IsSplashFormVisible)
+                    splashScreenManager1.CloseWaitForm();
+                Infrastructure.WinForm.Controls.MessageBoxEx.Error(ex);
+            }
+            finally
+            {
+                if (splashScreenManager1.IsSplashFormVisible)
+                    splashScreenManager1.CloseWaitForm();
             }
         }
 
         public bool Login()
         {
             this.Text = "欢迎使用苏州康力一卡通系统--系统登录";
-            return InterLogin();
+            bool result = InterLogin();
+            FengSharp.OneCardAccess.Infrastructure.WinForm.Controls.BarTimeItem.ServerTime =
+            (DateTime)FengSharp.OneCardAccess.Infrastructure.ApplicationContext.Current["ServerTime"];
+            MenuHelper.LoadMenu((ServiceLoader.LoadService<IMainForm>() as MainForm).ribbon);
+            MenuHelper.SetUserMenu((ServiceLoader.LoadService<IMainForm>() as MainForm).ribbon);
+            return result;
         }
         private bool InterLogin()
         {
+            this.txtUserNo.EditValue = Application.IntegeatedManage.Config.Properties.Settings.Default.UserNo;
             var result = this.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
@@ -67,6 +84,15 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
         {
             this.Text = "登录超时，请重新登录";
             return InterLogin();
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+
+            Application.IntegeatedManage.Config.Properties.Settings.Default.UserNo =
+                this.txtUserNo.EditValue == null ? string.Empty : this.txtUserNo.EditValue.ToString();
+            Application.IntegeatedManage.Config.Properties.Settings.Default.Save();
         }
     }
 

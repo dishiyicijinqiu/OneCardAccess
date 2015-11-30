@@ -219,4 +219,7 @@
   <data name="PleaseSelect" xml:space="preserve">
     <value>请选择</value>
   </data>
+  <data name="LoadingDataPleaseWait" xml:space="preserve">
+    <value>正在加载数据，请稍后...</value>
+  </data>
 </root>

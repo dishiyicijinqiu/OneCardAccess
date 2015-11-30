@@ -11,6 +11,7 @@ RsaProtectedConfigurationProvider--可以移植
 
 --创建RSA密钥容器
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pc "SZKL" -exp
+
 --删除RSA密钥容器
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pz "SZKL"
 --导出RSA密钥

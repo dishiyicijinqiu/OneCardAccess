@@ -40,6 +40,7 @@
             this.lblUserNo = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FengSharp.OneCardAccess.Infrastructure.WinForm.Forms.BaseWaitForm), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Plate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
@@ -160,5 +161,6 @@
         private DevExpress.XtraEditors.LabelControl lblUserNo;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

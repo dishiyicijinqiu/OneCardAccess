@@ -12,7 +12,8 @@ if "%1"=="movecommondllfromtemp" goto MOVECOMMONDLLFROMTEMP
 :BUILD
 set dllpath=%2%
 @rem echo %2%
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild.exe %dllpath% /p:Configuration=Release /p:DebugSymbols=false /p:DebugType=None /p:Outdir=%3%
+@rem %WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild.exe %dllpath% /p:Configuration=Release /p:DebugSymbols=false /p:DebugType=None /p:Outdir=%3%
+"C:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe" %dllpath% /p:Configuration=Release /p:DebugSymbols=false /p:DebugType=None /p:Outdir=%3%
 @goto :exit
 
 :MOVECOMMONDLLTOTEMP
@@ -26,6 +27,7 @@ xcopy ..\Publish\IntegratedManageClient\%2% ..\Publish\IntegratedManageClientLib
 :DELUNUSEFILE
 del /a /f /q /s ..\Publish\IntegratedManageClient\%2% /s
 @goto :exit
+
 :MOVECOMMONDLLFROMTEMP
 xcopy ..\Publish\IntegratedManageClientLibDLL\*.* ..\Publish\IntegratedManageClient\Lib\ /e/y
 @goto :exit

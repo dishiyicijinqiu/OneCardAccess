@@ -19,7 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-RBACModule(权限管理�
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-6-Solution Items", "1-6-Solution Items", "{723E4154-5D5D-4318-BD65-DA2305F413F8}"
 	ProjectSection(SolutionItems) = preProject
-		Solution Items\ConfigKey.xml = Solution Items\ConfigKey.xml
+		Solution Items\ImportKey.bat = Solution Items\ImportKey.bat
+		Solution Items\keys.xml = Solution Items\keys.xml
 		Solution Items\PCManageBuildAll.bat = Solution Items\PCManageBuildAll.bat
 		Solution Items\Presentation.IntegeatedManage.MainStruct.config = Solution Items\Presentation.IntegeatedManage.MainStruct.config
 		Solution Items\publishbuild.bat = Solution Items\publishbuild.bat

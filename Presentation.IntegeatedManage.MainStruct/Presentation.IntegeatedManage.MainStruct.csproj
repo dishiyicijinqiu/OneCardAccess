@@ -100,7 +100,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckUpdateTool.cs" />
+    <Compile Include="UpdateTool.cs" />
+    <Content Include="ImportKey.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="frmInputBoxDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +128,7 @@
     <Compile Include="StartSplashScreen.Designer.cs">
       <DependentUpon>StartSplashScreen.cs</DependentUpon>
     </Compile>
+    <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="StartSplashScreen.resx">
       <DependentUpon>StartSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,20 +152,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\FengSharp\FengSharp.WinForm.Dev\FengSharp.WinForm.Dev.csproj">
       <Project>{8e8a8f0c-3bb5-46d9-abab-d50c34f80599}</Project>
       <Name>FengSharp.WinForm.Dev</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application.IntegeatedManage.Config\Application.IntegeatedManage.Config.csproj">
+      <Project>{74d35004-066b-4848-bcd3-b30a9e99c00f}</Project>
+      <Name>Application.IntegeatedManage.Config</Name>
     </ProjectReference>
     <ProjectReference Include="..\Domain.RBACModule.Entity\Domain.RBACModule.Entity.csproj">
       <Project>{9cbb2a11-65a9-4b7e-8f44-0ebaba673a8f}</Project>
@@ -185,6 +184,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="keys.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
