@@ -25,13 +25,13 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             this.gridControl1.DataSource = this.bindingSource1;
             if (!DesignMode)
             {
-                var qtyFBNPopupContainerControl = ServiceLoader.LoadService<IProductFBNInput>("ProductFBNInput") as PopupContainerControl;
+                var qtyFBNPopupContainerControl = ServiceLoader.LoadService<IProductFBNLook>("ProductFBNLook") as PopupContainerControl;
                 qtyFBNPopupContainerControl.Width = 500;
                 qtyFBNPopupContainerControl.Height = 600;
                 qtyFBNRepItemPopupContainerEdit.PopupControl = qtyFBNPopupContainerControl;
 
 
-                var qtySNPopupContainerControl = ServiceLoader.LoadService<IProductSNInput>("ProductSNInput") as PopupContainerControl;
+                var qtySNPopupContainerControl = ServiceLoader.LoadService<IProductSNLook>("ProductSNLook") as PopupContainerControl;
                 qtySNPopupContainerControl.Width = 500;
                 qtySNPopupContainerControl.Height = 600;
                 qtySNRepItemPopupContainerEdit.PopupControl = qtySNPopupContainerControl;
@@ -160,22 +160,14 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             try
             {
                 var basePopupContainerEdit = sender as PopupContainerEdit;
-                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductSNInput;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductSNLook;
                 var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyFullNameEntity;
                 if (row == null)
                 {
                     e.Cancel = true;
                     return;
                 }
-                int sortno = 0;
-                var sns = row.PSNInOutDetails.Select(t => new SNInputEntity()
-                {
-                    BN = t.BN,
-                    SN = t.SN,
-                    SortNo = sortno++,
-                    Remark = t.Remark
-                }).ToArray();
-                singleSelect.BindData(sns);
+                singleSelect.BindData(row.PSNInOutDetails.ToArray());
             }
             catch (Exception ex)
             {
@@ -192,23 +184,14 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             try
             {
                 var basePopupContainerEdit = sender as PopupContainerEdit;
-                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductFBNInput;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductFBNLook;
                 var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyFullNameEntity;
                 if (row == null)
                 {
                     e.Cancel = true;
                     return;
                 }
-                int sortno = 0;
-                var fbns = row.PFBNInOutDetails.Select(t => new FBNInputEntity()
-                {
-                    BN = t.BN,
-                    FullBN = t.FullBN,
-                    Qty = (int)t.Qty,
-                    SortNo = sortno++,
-                    Remark = t.Remark
-                }).ToArray();
-                singleSelect.BindData(fbns);
+                singleSelect.BindData(row.PFBNInOutDetails.ToArray());
             }
             catch (Exception ex)
             {

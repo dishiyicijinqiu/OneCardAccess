@@ -103,8 +103,44 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             Database.AddInParameter(cmd, "StockId", DbType.Int32, stockId);
             Database.AddInParameter(cmd, "EntityId", DbType.Int32, productId);
             Database.AddInParameter(cmd, "BN", DbType.String, bn);
+            Database.AddInParameter(cmd, "PInOutDetailId", DbType.String, string.Empty);
             var dt = Database.ExecuteDataTable(cmd);
             return DlyNdxService.DataTableToPFBNInventEntitys(dt);
+        }
+
+        public PSNInventEntity[] GetPSNInventEntity(int stockId, int productId, string bn)
+        {
+            DbCommand cmd = Database.GetStoredProcCommand("P_GetInvent");
+            Database.AddInParameter(cmd, "cMode", DbType.String, "psn");
+            Database.AddInParameter(cmd, "StockId", DbType.Int32, stockId);
+            Database.AddInParameter(cmd, "EntityId", DbType.Int32, productId);
+            Database.AddInParameter(cmd, "BN", DbType.String, bn);
+            Database.AddInParameter(cmd, "PInOutDetailId", DbType.String, string.Empty);
+            var dt = Database.ExecuteDataTable(cmd);
+            return DlyNdxService.DataTableToPSNInventEntitys(dt);
+        }
+
+        public PFBNInOutDetailsEntity[] GetPFBNInOutDetailsEntity(string pinoutdetailid)
+        {
+            DbCommand cmd = Database.GetStoredProcCommand("P_GetInvent");
+            Database.AddInParameter(cmd, "cMode", DbType.String, "pfbndetails");
+            Database.AddInParameter(cmd, "StockId", DbType.Int32, 0);
+            Database.AddInParameter(cmd, "EntityId", DbType.Int32, 0);
+            Database.AddInParameter(cmd, "BN", DbType.String, string.Empty);
+            Database.AddInParameter(cmd, "PInOutDetailId", DbType.String, pinoutdetailid);
+            var dt = Database.ExecuteDataTable(cmd);
+            return DlyNdxService.DataTableToPFBNInOutDetailsEntitys(dt);
+        }
+        public PSNInOutDetailsEntity[] GetPSNInOutDetailsEntity(string pinoutdetailid)
+        {
+            DbCommand cmd = Database.GetStoredProcCommand("P_GetInvent");
+            Database.AddInParameter(cmd, "cMode", DbType.String, "psndetails");
+            Database.AddInParameter(cmd, "StockId", DbType.Int32, 0);
+            Database.AddInParameter(cmd, "EntityId", DbType.Int32, 0);
+            Database.AddInParameter(cmd, "BN", DbType.String, string.Empty);
+            Database.AddInParameter(cmd, "PInOutDetailId", DbType.String, pinoutdetailid);
+            var dt = Database.ExecuteDataTable(cmd);
+            return DlyNdxService.DataTableToPSNInOutDetailsEntitys(dt);
         }
 
         /// <summary>

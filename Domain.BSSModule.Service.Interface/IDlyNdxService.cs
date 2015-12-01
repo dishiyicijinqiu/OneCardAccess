@@ -26,7 +26,18 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
         [OperationContract]
         [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         DlyNdxFullNameEntity FindEntity(string dlyndx);
-
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        PSNInventEntity[] GetPSNInventEntity(int stockId, int productId, string bn);
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        PFBNInventEntity[] GetPFBNInventEntity(int stockId, int productId, string bn);
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        PFBNInOutDetailsEntity[] GetPFBNInOutDetailsEntity(string pinoutdetailid);
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        PSNInOutDetailsEntity[] GetPSNInOutDetailsEntity(string pinoutdetailid);
         [OperationContract]
         [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         string SavPBak(PDlyNdxCGEntity entity);
@@ -48,9 +59,6 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
         [OperationContract]
         [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         SPFGDlyYGZNdxEntity GetSPFGDlyYGZNdxEntity(string ndxId);
-        [OperationContract]
-        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
-        PFBNInventEntity[] GetPFBNInventEntity(int stockId, int productId, string bn);
         #endregion
     }
 }

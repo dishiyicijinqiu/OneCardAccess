@@ -51,12 +51,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DlyFormat.cs" />
+    <Compile Include="DlySet\DlyFormat.cs" />
+    <Compile Include="Dlys\Controls\ProductFBNLookPopupContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductFBNLookUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductFBNLookUserControl.designer.cs">
+      <DependentUpon>ProductFBNLookUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dlys\Controls\ProductFBNSelectUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Dlys\Controls\ProductFBNSelectUserControl.Designer.cs">
       <DependentUpon>ProductFBNSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductSNSelectPopupContainerControl.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Dlys\DlyNdxJYLCManageForm.cs">
       <SubType>Form</SubType>
@@ -177,6 +189,21 @@
     </Compile>
     <Compile Include="Dlys\DlySPRKForm.Designer.cs">
       <DependentUpon>DlySPRKForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductSNSelectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductSNSelectUserControl.Designer.cs">
+      <DependentUpon>ProductSNSelectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductSNLookPopupContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductSNLookUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dlys\Controls\ProductSNLookUserControl.Designer.cs">
+      <DependentUpon>ProductSNLookUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -309,8 +336,14 @@
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Dlys\Controls\ProductFBNLookUserControl.resx">
+      <DependentUpon>ProductFBNLookUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dlys\Controls\ProductFBNSelectUserControl.resx">
       <DependentUpon>ProductFBNSelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlys\Controls\ProductSNSelectUserControl.resx">
+      <DependentUpon>ProductSNSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dlys\DlyNdxCGManageForm.resx">
       <DependentUpon>DlyNdxCGManageForm.cs</DependentUpon>
@@ -359,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dlys\DlySPRKForm.resx">
       <DependentUpon>DlySPRKForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlys\Controls\ProductSNLookUserControl.resx">
+      <DependentUpon>ProductSNLookUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

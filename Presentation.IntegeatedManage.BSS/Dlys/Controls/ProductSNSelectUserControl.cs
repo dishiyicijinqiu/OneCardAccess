@@ -12,14 +12,14 @@ using System.Linq;
 
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
-    public partial class ProductFBNSelectUserControl : ProductFBNSelectUserControl_Design
+    public partial class ProductSNSelectUserControl : ProductSNSelectUserControl_Design
     {
-        public ProductFBNSelectUserControl()
+        public ProductSNSelectUserControl()
         {
             InitializeComponent();
         }
 
-        private void ProductFBNSelectUserControl_Load(object sender, EventArgs e)
+        private void ProductSNSelectUserControl_Load(object sender, EventArgs e)
         {
             try
             {
@@ -34,76 +34,73 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 MessageBoxEx.Error(ex);
             }
         }
-
         private void CreateFacade()
         {
             if (this.Facade == null)
-                this.Facade = new ProductFBNSelectUserControlFacade(this);
+                this.Facade = new ProductSNSelectUserControlFacade(this);
         }
-
-        public PFBNBakEntity[] EntityResults
+        public PSNBakEntity[] EntityResults
         {
             get
             {
-                return (bindingSource1.DataSource as List<FBNSelectEntity>).Where(t => t.Qty > 0).
+                return (bindingSource1.DataSource as List<SNSelectEntity>).Where(t => t.IsSelect).
                     Select(t =>
-                    new PFBNBakEntity()
+                    new PSNBakEntity()
                     {
                         BN = t.BN,
-                        FullBN = t.FullBN,
-                        Qty = t.SelectQty,
+                        SN = t.SN,
                         SortNo = t.SortNo,
                         Remark = t.Remark
                     }
                     ).ToArray();
             }
         }
-        internal void BindData(PFBNBakEntity[] entitys, int StockId, int ProductId, string BN)
+        internal void BindData(PSNBakEntity[] entitys, int StockId, int ProductId, string BN)
         {
             CreateFacade();
-            var data = new List<FBNSelectEntity>();
-            PFBNInventEntity[] inventEntitys = this.Facade.GetBindEntitys(StockId, ProductId, BN);
-
+            var data = new List<SNSelectEntity>();
+            PSNInventEntity[] inventEntitys = this.Facade.GetBindEntitys(StockId, ProductId, BN);
             data.AddRange(
                 inventEntitys.Select(
-                    t => new FBNSelectEntity()
+                    t => new SNSelectEntity()
                     {
                         BN = t.BN,
-                        FullBN = t.FullBN,
-                        Qty = (int)t.Qty,
+                        IsSelect = false,
+                        SN = t.SN,
+                        IsStock = true,
                         Remark = string.Empty,
-                        SelectQty = 0,
                         SortNo = int.MaxValue
                     }
                 )
                 );
+
             foreach (var item in entitys)
             {
-                var dataitem = data.FirstOrDefault(t => t.FullBN == item.FullBN);
+                var dataitem = data.FirstOrDefault(t => t.SN == item.SN);
                 if (dataitem == null)
                 {
-                    dataitem = new FBNSelectEntity()
+                    dataitem = new SNSelectEntity()
                     {
                         BN = item.BN,
-                        FullBN = item.FullBN,
-                        Qty = 0,
+                        IsSelect = true,
+                        SN = item.SN,
+                        IsStock = false,
                         Remark = string.Empty,
-                        SelectQty = 0,
                         SortNo = 0
                     };
                     data.Add(dataitem);
                 }
-                dataitem.SelectQty = (int)item.Qty;
+                dataitem.IsSelect = true;
                 dataitem.Remark = item.Remark;
                 dataitem.SortNo = item.SortNo;
             }
-            data.Sort(new FBNSelectComparer());
+            data.Sort(new SNSelectComparer());
             this.bindingSource1.DataSource = data;
             this.gridControl1.DataSource = bindingSource1;
         }
-        class FBNSelectComparer : IComparer<FBNSelectEntity>
+        class SNSelectComparer : IComparer<SNSelectEntity>
         {
-            public int Compare(FBNSelectEntity x, FBNSelectEntity y)
+            public int Compare(SNSelectEntity x, SNSelectEntity y)
             {
                 if (x.SortNo == y.SortNo)
                     return 0;
@@ -114,38 +111,34 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         }
 
         DevExpress.Utils.AppearanceDefault appRed = new DevExpress.Utils.AppearanceDefault
-           (Color.Black, Color.Red, Color.Empty, Color.SeaShell, System.Drawing.Drawing2D.LinearGradientMode.Horizontal);
-        //DevExpress.Utils.AppearanceDefault appYellow = new DevExpress.Utils.AppearanceDefault
-        //    (Color.Black, Color.Yellow, Color.Empty, Color.SeaShell, System.Drawing.Drawing2D.LinearGradientMode.Horizontal);
-        //DevExpress.Utils.AppearanceDefault appGreen = new DevExpress.Utils.AppearanceDefault
-        //    (Color.Black, Color.Green, Color.Empty, Color.SeaShell, System.Drawing.Drawing2D.LinearGradientMode.Horizontal);
+         (Color.Black, Color.Red, Color.Empty, Color.SeaShell, System.Drawing.Drawing2D.LinearGradientMode.Horizontal);
+
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (e.Column == colSelectQty)
+            if (e.Column == colSN)
             {
-                int qty = (int)this.gridView1.GetRowCellValue(e.RowHandle, colQty);
-                int selectqty = (int)this.gridView1.GetRowCellValue(e.RowHandle, colSelectQty);
-                if (selectqty > qty)
+                bool isstock = (bool)this.gridView1.GetRowCellValue(e.RowHandle, "IsStock");
+                if (!isstock)
                 {
                     DevExpress.Utils.AppearanceHelper.Apply(e.Appearance, appRed);
                 }
             }
         }
     }
-    public class ProductFBNSelectUserControl_Design : Base_UserControl<ProductFBNSelectUserControlFacade>
+    public class ProductSNSelectUserControl_Design : Base_UserControl<ProductSNSelectUserControlFacade>
     {
 
     }
-    public class ProductFBNSelectUserControlFacade : ActualBase<ProductFBNSelectUserControl>
+    public class ProductSNSelectUserControlFacade : ActualBase<ProductSNSelectUserControl>
     {
         private IDlyNdxService _DlyNdxService = ServiceProxyFactory.Create<IDlyNdxService>();
-        public ProductFBNSelectUserControlFacade(ProductFBNSelectUserControl actual)
+        public ProductSNSelectUserControlFacade(ProductSNSelectUserControl actual)
             : base(actual)
         { }
 
-        internal PFBNInventEntity[] GetBindEntitys(int stockId, int productId, string bn)
+        internal PSNInventEntity[] GetBindEntitys(int stockId, int productId, string bn)
         {
-            return _DlyNdxService.GetPFBNInventEntity(stockId, productId, bn);
+            return _DlyNdxService.GetPSNInventEntity(stockId, productId, bn);
         }
     }
 }

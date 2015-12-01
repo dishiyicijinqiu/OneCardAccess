@@ -1,6 +1,6 @@
 ﻿namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
-    partial class ProductFBNSelectUserControl
+    partial class ProductSNSelectUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -33,9 +33,8 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colBN = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFullBN = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colQty = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSelectQty = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsSelect = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -58,7 +57,7 @@
             this.baseLayoutControl1.Name = "baseLayoutControl1";
             this.baseLayoutControl1.OptionsItemText.TextAlignMode = DevExpress.XtraLayout.TextAlignMode.AlignInGroups;
             this.baseLayoutControl1.Root = this.layoutControlGroup1;
-            this.baseLayoutControl1.Size = new System.Drawing.Size(544, 538);
+            this.baseLayoutControl1.Size = new System.Drawing.Size(610, 594);
             this.baseLayoutControl1.TabIndex = 0;
             this.baseLayoutControl1.Text = "baseLayoutControl1";
             // 
@@ -67,7 +66,7 @@
             this.gridControl1.Location = new System.Drawing.Point(6, 6);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(532, 526);
+            this.gridControl1.Size = new System.Drawing.Size(598, 582);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -80,9 +79,8 @@
             this.gridView1.Appearance.OddRow.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colBN,
-            this.colFullBN,
-            this.colQty,
-            this.colSelectQty,
+            this.colSN,
+            this.colIsSelect,
             this.colRemark});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.IndicatorWidth = 40;
@@ -112,36 +110,26 @@
             this.colBN.OptionsColumn.AllowEdit = false;
             this.colBN.Visible = true;
             this.colBN.VisibleIndex = 0;
-            this.colBN.Width = 90;
+            this.colBN.Width = 84;
             // 
-            // colFullBN
+            // colSN
             // 
-            this.colFullBN.Caption = "完整批号";
-            this.colFullBN.FieldName = "FullBN";
-            this.colFullBN.Name = "colFullBN";
-            this.colFullBN.OptionsColumn.AllowEdit = false;
-            this.colFullBN.Visible = true;
-            this.colFullBN.VisibleIndex = 1;
-            this.colFullBN.Width = 150;
+            this.colSN.Caption = "序列号";
+            this.colSN.FieldName = "SN";
+            this.colSN.Name = "colSN";
+            this.colSN.OptionsColumn.AllowEdit = false;
+            this.colSN.Visible = true;
+            this.colSN.VisibleIndex = 1;
+            this.colSN.Width = 253;
             // 
-            // colQty
+            // colIsSelect
             // 
-            this.colQty.Caption = "库存数量";
-            this.colQty.FieldName = "Qty";
-            this.colQty.Name = "colQty";
-            this.colQty.OptionsColumn.AllowEdit = false;
-            this.colQty.Visible = true;
-            this.colQty.VisibleIndex = 2;
-            this.colQty.Width = 60;
-            // 
-            // colSelectQty
-            // 
-            this.colSelectQty.Caption = "选择数量";
-            this.colSelectQty.FieldName = "SelectQty";
-            this.colSelectQty.Name = "colSelectQty";
-            this.colSelectQty.Visible = true;
-            this.colSelectQty.VisibleIndex = 3;
-            this.colSelectQty.Width = 60;
+            this.colIsSelect.Caption = "是否选择";
+            this.colIsSelect.FieldName = "IsSelect";
+            this.colIsSelect.Name = "colIsSelect";
+            this.colIsSelect.Visible = true;
+            this.colIsSelect.VisibleIndex = 2;
+            this.colIsSelect.Width = 71;
             // 
             // colRemark
             // 
@@ -149,8 +137,8 @@
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 4;
-            this.colRemark.Width = 100;
+            this.colRemark.VisibleIndex = 3;
+            this.colRemark.Width = 115;
             // 
             // layoutControlGroup1
             // 
@@ -160,7 +148,7 @@
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(544, 538);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(610, 594);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -168,18 +156,18 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(536, 530);
+            this.layoutControlItem1.Size = new System.Drawing.Size(602, 586);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // ProductFBNSelectUserControl
+            // ProductSNSelectUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.baseLayoutControl1);
-            this.Name = "ProductFBNSelectUserControl";
-            this.Size = new System.Drawing.Size(544, 538);
-            this.Load += new System.EventHandler(this.ProductFBNSelectUserControl_Load);
+            this.Name = "ProductSNSelectUserControl";
+            this.Size = new System.Drawing.Size(610, 594);
+            this.Load += new System.EventHandler(this.ProductSNSelectUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.baseLayoutControl1)).EndInit();
             this.baseLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -200,9 +188,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private WinForm.Dev.Components.GridView_ShowLine gridView_ShowLine1;
         private DevExpress.XtraGrid.Columns.GridColumn colBN;
-        private DevExpress.XtraGrid.Columns.GridColumn colFullBN;
-        private DevExpress.XtraGrid.Columns.GridColumn colQty;
-        private DevExpress.XtraGrid.Columns.GridColumn colSelectQty;
+        private DevExpress.XtraGrid.Columns.GridColumn colSN;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsSelect;
         private DevExpress.XtraGrid.Columns.GridColumn colRemark;
         private System.Windows.Forms.BindingSource bindingSource1;
     }

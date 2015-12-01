@@ -45,13 +45,13 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 priceRepItemPopupContainerEdit.PopupControl = productPricePopupContainerControl;
 
                 var qtyFBNPopupContainerControl = ServiceLoader.LoadService<IProductFBNSelect>("ProductFBNSelect") as PopupContainerControl;
-                qtyFBNPopupContainerControl.Width = 500;
+                qtyFBNPopupContainerControl.Width = 600;
                 qtyFBNPopupContainerControl.Height = 600;
                 qtyFBNRepItemPopupContainerEdit.PopupControl = qtyFBNPopupContainerControl;
 
 
-                var qtySNPopupContainerControl = ServiceLoader.LoadService<IProductSNInput>("ProductSNInput") as PopupContainerControl;
-                qtySNPopupContainerControl.Width = 500;
+                var qtySNPopupContainerControl = ServiceLoader.LoadService<IProductSNSelect>("ProductSNSelect") as PopupContainerControl;
+                qtySNPopupContainerControl.Width = 600;
                 qtySNPopupContainerControl.Height = 600;
                 qtySNRepItemPopupContainerEdit.PopupControl = qtySNPopupContainerControl;
             }
@@ -317,7 +317,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             try
             {
                 var basePopupContainerEdit = sender as PopupContainerEdit;
-                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductFBNInput;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductFBNSelect;
                 var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
                 if (row == null)
                 {
@@ -325,15 +325,12 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                     return;
                 }
                 int sortno = 0;
-                var fbns = row.PFBNBaks.Select(t => new FBNInputEntity()
+                row.PFBNBaks.ForEach((entity) =>
                 {
-                    BN = t.BN,
-                    FullBN = t.FullBN,
-                    Qty = (int)t.Qty,
-                    SortNo = sortno++,
-                    Remark = t.Remark
-                }).ToArray();
-                singleSelect.BindData(fbns);
+                    entity.SortNo = sortno++;
+                });
+                var dlyentity = this.bindbaseDataLayoutControl1.DataSource as SPFGDlyCGNdxEntity;
+                singleSelect.BindData(row.PFBNBaks.ToArray(), dlyentity.StockId1, row.ProductId, row.BN);
             }
             catch (Exception ex)
             {
@@ -345,20 +342,12 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
             try
             {
-
                 var basePopupContainerEdit = sender as PopupContainerEdit;
-                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductFBNInput;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductFBNSelect;
                 e.Value = singleSelect.Qty;
                 var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
                 row.PFBNBaks.Clear();
-                row.PFBNBaks.AddRange(singleSelect.EntityResults.Select(t => new PFBNBakEntity()
-                {
-                    BN = t.BN,
-                    FullBN = t.FullBN,
-                    Qty = t.Qty,
-                    SortNo = t.SortNo,
-                    Remark = t.Remark
-                }));
+                row.PFBNBaks.AddRange(singleSelect.EntityResults);
                 row.BN = singleSelect.BN;
             }
             catch (Exception ex)
@@ -372,7 +361,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             try
             {
                 var basePopupContainerEdit = sender as PopupContainerEdit;
-                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductSNInput;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductSNSelect;
                 var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
                 if (row == null)
                 {
@@ -380,14 +369,12 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                     return;
                 }
                 int sortno = 0;
-                var sns = row.PSNBaks.Select(t => new SNInputEntity()
+                row.PSNBaks.ForEach((entity) =>
                 {
-                    BN = t.BN,
-                    SN = t.SN,
-                    SortNo = sortno++,
-                    Remark = t.Remark
-                }).ToArray();
-                singleSelect.BindData(sns);
+                    entity.SortNo = sortno++;
+                });
+                var dlyentity = this.bindbaseDataLayoutControl1.DataSource as SPFGDlyCGNdxEntity;
+                singleSelect.BindData(row.PSNBaks.ToArray(), dlyentity.StockId1, row.ProductId, row.BN);
             }
             catch (Exception ex)
             {
@@ -401,17 +388,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             {
 
                 var basePopupContainerEdit = sender as PopupContainerEdit;
-                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductSNInput;
+                var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductSNSelect;
                 e.Value = singleSelect.Qty;
                 var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
                 row.PSNBaks.Clear();
-                row.PSNBaks.AddRange(singleSelect.EntityResults.Select(t => new PSNBakEntity()
-                {
-                    BN = t.BN,
-                    SN = t.SN,
-                    SortNo = t.SortNo,
-                    Remark = t.Remark
-                }));
+                row.PSNBaks.AddRange(singleSelect.EntityResults);
                 row.BN = singleSelect.BN;
             }
             catch (Exception ex)

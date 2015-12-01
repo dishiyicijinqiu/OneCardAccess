@@ -82,6 +82,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 
         const int WM_SYSCOMMAND = 0x0112;
         const int SC_CLOSE = 0xF060;
+        [System.Diagnostics.DebuggerStepThrough]
         protected override void WndProc(ref Message m)
         {
             try

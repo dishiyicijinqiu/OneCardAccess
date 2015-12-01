@@ -608,14 +608,45 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                 return null;
             var result = new PFBNInventEntity()
             {
-                BN = (string)(row["DlyDate"]),
-                FullBN = (string)(row["DlyDate"]),
-                PBNInventId = (string)(row["DlyDate"]),
-                PFBNInventId = (string)(row["DlyDate"]),
-                PInventId = (string)(row["DlyDate"]),
-                ProductId = (int)(row["DlyDate"]),
-                Qty = (decimal)(row["DlyDate"]),
-                StockId = (int)(row["DlyDate"]),
+                BN = (string)(row["BN"]),
+                FullBN = (string)(row["FullBN"]),
+                PBNInventId = (string)(row["PBNInventId"]),
+                PFBNInventId = (string)(row["PFBNInventId"]),
+                PInventId = (string)(row["PInventId"]),
+                ProductId = (int)(row["ProductId"]),
+                Qty = (decimal)(row["Qty"]),
+                StockId = (int)(row["StockId"]),
+            };
+            return result;
+        }
+        #endregion
+
+        #region PSNInventEntity
+        private static PSNInventEntity[] DataTableToPSNInventEntitys(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            var results = new PSNInventEntity[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                results[i] = DlyNdxService.DataRowToPSNInventEntity(dt.Rows[i]);
+            }
+            return results;
+        }
+
+        private static PSNInventEntity DataRowToPSNInventEntity(DataRow row)
+        {
+            if (row == null)
+                return null;
+            var result = new PSNInventEntity()
+            {
+                BN = (string)(row["BN"]),
+                PBNInventId = (string)(row["PBNInventId"]),
+                PInventId = (string)(row["PInventId"]),
+                ProductId = (int)(row["ProductId"]),
+                PSNInventId = (string)(row["PInventId"]),
+                SN = (string)(row["SN"]),
+                StockId = (int)(row["StockId"]),
             };
             return result;
         }

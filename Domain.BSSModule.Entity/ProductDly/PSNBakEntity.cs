@@ -139,4 +139,49 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
         [DataMember]
         public string Remark { get; set; }
     }
+
+    /// <summary>
+    /// 序列号选择
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class SNSelectEntity
+    {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public SNSelectEntity()
+        {
+            SN = string.Empty;
+            BN = string.Empty;
+        }
+        /// <summary>
+        /// 批号
+        /// </summary>
+        public string BN { get; set; }
+        /// <summary>
+        /// 序列号
+        /// </summary>
+        [DataMember]
+        public string SN { get; set; }
+        /// <summary>
+        /// 库存是否存在
+        /// </summary>
+        [DataMember]
+        public bool IsStock { get; set; }
+        /// <summary>
+        /// 是否选择
+        /// </summary>
+        [DataMember]
+        public bool IsSelect { get; set; }
+        /// <summary>
+        /// 顺序
+        /// </summary>
+        [DataMember]
+        public int SortNo { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [DataMember]
+        public string Remark { get; set; }
+    }
 }
