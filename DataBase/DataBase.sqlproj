@@ -96,6 +96,9 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Functions\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="DataBak" />
+    <Folder Include="DbPowerDesigner" />
+    <Folder Include="DbPowerDesigner\bak" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\T_Action.sql" />
@@ -189,6 +192,7 @@
     <Build Include="dbo\Tables\T_ProductBNInvent.sql" />
     <Build Include="dbo\Tables\T_ProductFBNInvent.sql" />
     <Build Include="dbo\Tables\T_ProductSNInvent.sql" />
+    <Build Include="DbPowerDesigner\crebas.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DataBase.refactorlog" />
@@ -202,5 +206,16 @@
     <None Include="ZCreateDly.sql" />
     <None Include="DataBase.publish.xml" />
     <None Include="Clear.sql" />
+    <None Include="DataBak\OneCardAccessDB.bak" />
+    <None Include="DataBak\PhysicalDataModel_1.pdb" />
+    <None Include="DataBak\PhysicalDataModel_1.pdm" />
+    <None Include="DataBak\PhysicalDataModel_2.pdb" />
+    <None Include="DataBak\PhysicalDataModel_2.pdm" />
+    <None Include="DbPowerDesigner\bak\OneCardAccessDBPhysicalDataModel.pdb" />
+    <None Include="DbPowerDesigner\bak\OneCardAccessDBPhysicalDataModel.pdm" />
+    <None Include="DbPowerDesigner\DbPowerDesigner.dsn" />
+    <None Include="DbPowerDesigner\OneCardAccessDBPhysicalDataModel.pdb" />
+    <None Include="DbPowerDesigner\OneCardAccessDBPhysicalDataModel.pdm" />
+    <None Include="DbPowerDesigner\工作空间.sws" />
   </ItemGroup>
 </Project>
