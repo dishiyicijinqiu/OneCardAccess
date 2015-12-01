@@ -18,7 +18,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
         {
             try
             {
-                this.Visible = false;
                 var login = FengSharp.OneCardAccess.Infrastructure.ServiceLoader.LoadService<ILogin>();
                 if (login.Login())
                 {

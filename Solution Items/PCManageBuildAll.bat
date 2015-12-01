@@ -13,13 +13,14 @@ rd ..\Publish\IntegratedManageClient /s/q
 
 @rem ------------------------------------------------------给配置文件配置节加密------------------------------------------------------
 @rem ---------------------------将加密配置节所需的DLL拷贝到Framework目录---------------------------
-xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.Unity.Configuration.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y
-xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.EnterpriseLibrary.Common.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y
-xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.Unity.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y
-xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.Unity.Interception.Configuration.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y
-xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.Unity.Interception.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y
-xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.EnterpriseLibrary.Caching.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y
-xcopy ..\Publish\IntegratedManageClient\FengSharp.OneCardAccess.Infrastructure.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y
+echo '将加密配置节所需的DLL拷贝到Framework目录'
+xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.Unity.Configuration.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y/q
+xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.EnterpriseLibrary.Common.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y/q
+xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.Unity.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y/q
+xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.Unity.Interception.Configuration.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y/q
+xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.Unity.Interception.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y/q
+xcopy ..\Publish\IntegratedManageClient\Microsoft.Practices.EnterpriseLibrary.Caching.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y/q
+xcopy ..\Publish\IntegratedManageClient\FengSharp.OneCardAccess.Infrastructure.dll %WINDIR%\Microsoft.NET\Framework\v4.0.30319 /r/y/q
 cd ..\
 set pulishpath=%cd%\Publish\IntegratedManageClient
 cd "Solution Items"
@@ -33,11 +34,13 @@ ren ..\Publish\IntegratedManageClient\OneCardAccessIntegeatedManageClient.exe.co
 %WINDIR%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis -pef "system.serviceModel/client" "%pulishpath%" -prov "SZKLRsaProtectedConfigurationProvider"
 ren ..\Publish\IntegratedManageClient\web.config OneCardAccessIntegeatedManageClient.exe.config
 @rem ------------------------------------------------------删除Dev无用文件夹------------------------------------------------------
+echo '删除Dev无用文件夹'
 rd ..\Publish\IntegratedManageClient\de\ /s/q
 rd ..\Publish\IntegratedManageClient\es\ /s/q
 rd ..\Publish\IntegratedManageClient\ja\ /s/q
 rd ..\Publish\IntegratedManageClient\ru\ /s/q
 @rem ------------------------------------------------------将公用的DLL移动到临时目录------------------------------------------------------
+echo '将公用的DLL移动到临时目录'
 @call publishbuild.bat movecommondlltotemp Microsoft.Practices*.dll
 @call publishbuild.bat movecommondlltotemp GZipEncoder.dll
 @call publishbuild.bat movecommondlltotemp FengSharp.Tool.dll
@@ -45,6 +48,7 @@ rd ..\Publish\IntegratedManageClient\ru\ /s/q
 @call publishbuild.bat movecommondlltotemp Newtonsoft.Json.dll
 @call publishbuild.bat movecommondlltotemp DevExpress.*.dll
 @rem ------------------------------------------------------删除无用的文件------------------------------------------------------
+echo '删除无用的文件'
 @call publishbuild.bat delunusefile GZipEncoder.dll
 @call publishbuild.bat delunusefile FengSharp.Tool.dll
 @call publishbuild.bat delunusefile FengSharp.WinForm.Dev.dll
@@ -57,10 +61,10 @@ rd ..\Publish\IntegratedManageClient\ru\ /s/q
 @call publishbuild.bat delunusefile *.pdb
 @call publishbuild.bat delunusefile *.Designer.dll
 @rem ------------------------------------------------------将公用的DLL移动到Lib目录------------------------------------------------------
+echo '将公用的DLL移动到Lib目录'
 @call publishbuild.bat movecommondllfromtemp
-
 @rem ------------------------------------------------------延时关闭------------------------------------------------------
-@ping localhost -n 3 >nul
+@ping localhost -n 2 >nul
 @rem pause暂停
 
 

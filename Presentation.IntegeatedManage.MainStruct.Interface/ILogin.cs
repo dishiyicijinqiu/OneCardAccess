@@ -8,5 +8,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct.Inter
     public interface ILogin
     {
         bool Login();
+        bool IsLoading { get; }
     }
 }

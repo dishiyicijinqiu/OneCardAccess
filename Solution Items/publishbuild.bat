@@ -17,19 +17,19 @@ set dllpath=%2%
 @goto :exit
 
 :MOVECOMMONDLLTOTEMP
-xcopy ..\Publish\IntegratedManageClient\Plugins\BSS\%2% ..\Publish\IntegratedManageClientLibDLL /y
-xcopy ..\Publish\IntegratedManageClient\Plugins\CRM\%2% ..\Publish\IntegratedManageClientLibDLL /y
-xcopy ..\Publish\IntegratedManageClient\Plugins\HR\%2% ..\Publish\IntegratedManageClientLibDLL /y
-xcopy ..\Publish\IntegratedManageClient\Plugins\SystemSet\%2% ..\Publish\IntegratedManageClientLibDLL /y
-xcopy ..\Publish\IntegratedManageClient\%2% ..\Publish\IntegratedManageClientLibDLL /y
+xcopy ..\Publish\IntegratedManageClient\Plugins\BSS\%2% ..\Publish\IntegratedManageClientLibDLL /r/y/q
+xcopy ..\Publish\IntegratedManageClient\Plugins\CRM\%2% ..\Publish\IntegratedManageClientLibDLL /r/y/q
+xcopy ..\Publish\IntegratedManageClient\Plugins\HR\%2% ..\Publish\IntegratedManageClientLibDLL /r/y/q
+xcopy ..\Publish\IntegratedManageClient\Plugins\SystemSet\%2% ..\Publish\IntegratedManageClientLibDLL /r/y/q
+xcopy ..\Publish\IntegratedManageClient\%2% ..\Publish\IntegratedManageClientLibDLL /r/y/q
 @goto :exit
 
 :DELUNUSEFILE
-del /a /f /q /s ..\Publish\IntegratedManageClient\%2% /s
+del /a /f /q /s ..\Publish\IntegratedManageClient\%2%
 @goto :exit
 
 :MOVECOMMONDLLFROMTEMP
-xcopy ..\Publish\IntegratedManageClientLibDLL\*.* ..\Publish\IntegratedManageClient\Lib\ /e/y
+xcopy ..\Publish\IntegratedManageClientLibDLL\*.* ..\Publish\IntegratedManageClient\Lib\ /e/y/q
 @goto :exit
 
 :exit

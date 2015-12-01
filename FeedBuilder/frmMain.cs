@@ -134,6 +134,7 @@ namespace FeedBuilder
 		private void cmdBuild_Click(Object sender, EventArgs e)
 		{
 			Build();
+            MessageBox.Show("done");
 		}
 
 		private void btnOpenOutputs_Click(object sender, EventArgs e)
@@ -178,7 +179,8 @@ namespace FeedBuilder
 		private void btnRefresh_Click(Object sender, EventArgs e)
 		{
 			ReadFiles();
-		}
+            MessageBox.Show("done");
+        }
 
 		#endregion
 
@@ -338,7 +340,7 @@ namespace FeedBuilder
 
 			// open the outputs folder if we're running from the GUI or 
 			// we have an explicit command line option to do so
-			if (!_argParser.HasArgs || _argParser.OpenOutputsFolder) OpenOutputsFolder();
+			//if (!_argParser.HasArgs || _argParser.OpenOutputsFolder) OpenOutputsFolder();
 			Console.WriteLine("Done building feed.");
 			if (itemsCopied > 0) Console.WriteLine("{0,5} items copied", itemsCopied);
 			if (itemsCleaned > 0) Console.WriteLine("{0,5} items cleaned", itemsCleaned);

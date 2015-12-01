@@ -10,6 +10,15 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
 {
     public partial class LoginForm : LoginForm_Design, ILogin, ITimeOutLogin
     {
+        private bool _IsLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+        }
+
         public LoginForm()
         {
             InitializeComponent();
@@ -24,6 +33,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
         {
             try
             {
+                this._IsLoading = true;
                 if (!this.dxValidationProvider.Validate())
                     return;
                 if (!splashScreenManager1.IsSplashFormVisible)
@@ -41,6 +51,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
             }
             finally
             {
+                this._IsLoading = false;
                 if (splashScreenManager1.IsSplashFormVisible)
                     splashScreenManager1.CloseWaitForm();
             }

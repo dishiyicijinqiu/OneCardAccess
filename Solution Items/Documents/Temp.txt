@@ -20,7 +20,7 @@ http://dishiyicijinqiu.eicp.net:2015/AuthService.svc
 
 %SystemDrive%\inetpub\wwwroot
 
-
-
+www.dishiyicijinqiu.com
+www.fengsharp.com
 dishiyicijinqiu.vicp.net
 www.kangli.com

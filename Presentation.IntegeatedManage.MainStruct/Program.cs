@@ -49,13 +49,15 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2010 Blue");
             #endregion
 
-            CheckUpdateTool.Init();
-            CheckUpdateTool.StartCheck();
-
             DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(StartSplashScreen));
             MainForm mainform = ServiceLoader.LoadService<IMainForm>() as MainForm;
-
             DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
+
+#if !DEBUG
+            CheckUpdateTool.Init();
+            CheckUpdateTool.StartCheck();
+#endif
+
             System.Windows.Forms.Application.Run(mainform);
         }
 
