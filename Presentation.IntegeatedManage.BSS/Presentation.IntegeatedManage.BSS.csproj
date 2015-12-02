@@ -76,8 +76,8 @@
     <Compile Include="Dlys\DlyNdxJYLCManageForm.Designer.cs">
       <DependentUpon>DlyNdxJYLCManageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dlys\DJMessageBox.cs" />
-    <Compile Include="Dlys\DJSHChecker.cs" />
+    <Compile Include="DlySet\DJMessageBox.cs" />
+    <Compile Include="DlySet\DJSHChecker.cs" />
     <Compile Include="Dlys\DlyNdxCGManageForm.cs">
       <SubType>Form</SubType>
     </Compile>

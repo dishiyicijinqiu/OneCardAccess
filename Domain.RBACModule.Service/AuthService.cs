@@ -36,6 +36,7 @@ namespace FengSharp.OneCardAccess.Domain.RBACModule.Service
             ApplicationContext.Current["ServerTime"] = DateTime.Now;
             CacheProvider.Add(encryptedTicket, ticket, TimeSpan.FromMinutes(ApplicationConfig.SessionTimeOutMinutes), cacheManagerName: ApplicationConfig.SessionCacheName);
             return new AuthPrincipal(new AuthIdentity(userid, UserNo, username));
+            
         }
         public string GetUserIdByTicket(string ticketstring = null)
         {

@@ -14,7 +14,10 @@ listenerDataType="FengSharp.OneCardAccess.Infrastructure.MyRollingFlatFileTraceL
 数据库事务
 C#事务异常，sql事务提交，生效
 测试结果不可同时生效
-
+--创建登录名
+create login [IIS APPPOOL\DefaultAppPool] from windows;
+exec sp_addsrvrolemember N'IIS APPPOOL\DefaultAppPool', sysadmin
+--创建登录名
 IntegeatedManageServer
 http://dishiyicijinqiu.eicp.net:2015/AuthService.svc
 

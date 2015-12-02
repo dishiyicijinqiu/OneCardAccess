@@ -32,14 +32,14 @@
             this.baseLayoutControl1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseLayoutControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colBN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.columnViewGeneColumn1 = new FengSharp.WinForm.Dev.Components.ColumnViewGeneColumn(this.components);
-            this.colBN = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSN = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.baseLayoutControl1)).BeginInit();
             this.baseLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -101,6 +101,33 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView_ShowLine1.SetShowLineNo(this.gridView1, true);
             // 
+            // colBN
+            // 
+            this.colBN.Caption = "批号";
+            this.colBN.FieldName = "BN";
+            this.colBN.Name = "colBN";
+            this.colBN.Visible = true;
+            this.colBN.VisibleIndex = 0;
+            this.colBN.Width = 100;
+            // 
+            // colSN
+            // 
+            this.colSN.Caption = "序列号";
+            this.colSN.FieldName = "SN";
+            this.colSN.Name = "colSN";
+            this.colSN.Visible = true;
+            this.colSN.VisibleIndex = 1;
+            this.colSN.Width = 193;
+            // 
+            // colRemark
+            // 
+            this.colRemark.Caption = "备注";
+            this.colRemark.FieldName = "Remark";
+            this.colRemark.Name = "colRemark";
+            this.colRemark.Visible = true;
+            this.colRemark.VisibleIndex = 2;
+            this.colRemark.Width = 100;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -124,33 +151,6 @@
             // columnViewGeneColumn1
             // 
             this.columnViewGeneColumn1.ColumnView = this.gridView1;
-            // 
-            // colBN
-            // 
-            this.colBN.Caption = "批号";
-            this.colBN.FieldName = "BN";
-            this.colBN.Name = "colBN";
-            this.colBN.Visible = true;
-            this.colBN.VisibleIndex = 0;
-            this.colBN.Width = 100;
-            // 
-            // colSN
-            // 
-            this.colSN.Caption = "序列号";
-            this.colSN.FieldName = "SN";
-            this.colSN.Name = "colSN";
-            this.colSN.Visible = true;
-            this.colSN.VisibleIndex = 1;
-            this.colSN.Width = 100;
-            // 
-            // colRemark
-            // 
-            this.colRemark.Caption = "备注";
-            this.colRemark.FieldName = "Remark";
-            this.colRemark.Name = "colRemark";
-            this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 2;
-            this.colRemark.Width = 100;
             // 
             // ProductSNLookUserControl
             // 

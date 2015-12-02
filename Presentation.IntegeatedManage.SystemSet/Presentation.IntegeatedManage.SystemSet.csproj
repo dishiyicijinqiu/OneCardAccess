@@ -141,9 +141,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="publishbuild.bat" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\FengSharp\FengSharp.Tool\FengSharp.Tool.csproj">
       <Project>{f9a88bfb-c15b-43a0-bd3f-64399ecd6d98}</Project>
       <Name>FengSharp.Tool</Name>

@@ -1,4 +1,6 @@
-﻿namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
+﻿using System;
+
+namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
     partial class ProductSNSelectUserControl
     {
@@ -178,7 +180,6 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
 
         private Infrastructure.WinForm.Base.BaseLayoutControl baseLayoutControl1;

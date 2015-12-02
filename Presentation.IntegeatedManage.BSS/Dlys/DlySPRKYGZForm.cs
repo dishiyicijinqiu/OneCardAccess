@@ -30,7 +30,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 qtyFBNPopupContainerControl.Height = 600;
                 qtyFBNRepItemPopupContainerEdit.PopupControl = qtyFBNPopupContainerControl;
 
-
                 var qtySNPopupContainerControl = ServiceLoader.LoadService<IProductSNLook>("ProductSNLook") as PopupContainerControl;
                 qtySNPopupContainerControl.Width = 500;
                 qtySNPopupContainerControl.Height = 600;
@@ -201,6 +200,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         private void qtyFBNRepItemPopupContainerEdit_QueryResultValue(object sender, DevExpress.XtraEditors.Controls.QueryResultValueEventArgs e)
         {
+        }
+
+        private void gridView1_CellValueChanging(object sender, CellValueChangedEventArgs e)
+        {
+            this.gridView1.CancelUpdateCurrentRow();
         }
     }
     public class DlySPRKYGZForm_Design : Base_Form<DlySPRKYGZFormFacade>

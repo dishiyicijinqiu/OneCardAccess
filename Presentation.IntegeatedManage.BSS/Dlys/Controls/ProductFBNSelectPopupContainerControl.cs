@@ -36,8 +36,10 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
             get
             {
-                if (this.selectUserControl1.EntityResults.Length <= 0) return string.Empty;
-                return this.selectUserControl1.EntityResults[0].BN;
+                var firstselectedrow = this.selectUserControl1.EntityResults.FirstOrDefault(t => t.Qty > 0);
+                if (firstselectedrow == null)
+                    return string.Empty;
+                return firstselectedrow.BN;
             }
         }
         public void BindData(PFBNBakEntity[] entitys, int StockId, int ProductId, string BN)

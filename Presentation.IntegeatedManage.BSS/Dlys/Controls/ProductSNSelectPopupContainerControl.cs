@@ -3,6 +3,7 @@ using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS.Interface;
 using System.Linq;
 using System;
+using DevExpress.XtraEditors.Repository;
 
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {

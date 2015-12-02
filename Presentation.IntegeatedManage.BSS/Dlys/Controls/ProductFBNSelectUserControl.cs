@@ -45,7 +45,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
             get
             {
-                return (bindingSource1.DataSource as List<FBNSelectEntity>).Where(t => t.Qty > 0).
+                this.bindingSource1.EndEdit();
+                return (bindingSource1.DataSource as List<FBNSelectEntity>).Where(t => t.SelectQty > 0).
                     Select(t =>
                     new PFBNBakEntity()
                     {

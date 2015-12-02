@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DlySPRKForm));
             this.baseDataLayoutControl1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseDataLayoutControl();
             this.AfterPreferTotalTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
-            this.bindbaseDataLayoutControl1 = new System.Windows.Forms.BindingSource();
+            this.bindbaseDataLayoutControl1 = new System.Windows.Forms.BindingSource(this.components);
             this.PreferTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
             this.QtyTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
             this.btnPrint = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseSimpleButton();
@@ -90,10 +91,10 @@
             this.ItemForPrefer = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForAfterPreferTotal = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider();
-            this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource();
-            this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine();
+            this.mainFormMdiProvider1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.MainFormMdiProvider(this.components);
+            this.formLoadErrorExit1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Components.FormLoadErrorExit(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView_ShowLine1 = new FengSharp.WinForm.Dev.Components.GridView_ShowLine(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).BeginInit();
             this.baseDataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AfterPreferTotalTextEdit.Properties)).BeginInit();
@@ -175,14 +176,14 @@
             this.baseDataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1056, 145, 807, 776);
             this.baseDataLayoutControl1.OptionsItemText.TextAlignMode = DevExpress.XtraLayout.TextAlignMode.AlignInGroups;
             this.baseDataLayoutControl1.Root = this.layoutControlGroup1;
-            this.baseDataLayoutControl1.Size = new System.Drawing.Size(1070, 650);
+            this.baseDataLayoutControl1.Size = new System.Drawing.Size(1248, 700);
             this.baseDataLayoutControl1.TabIndex = 0;
             this.baseDataLayoutControl1.Text = "baseDataLayoutControl1";
             // 
             // AfterPreferTotalTextEdit
             // 
             this.AfterPreferTotalTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "AfterPreferTotal", true));
-            this.AfterPreferTotalTextEdit.Location = new System.Drawing.Point(964, 588);
+            this.AfterPreferTotalTextEdit.Location = new System.Drawing.Point(1142, 638);
             this.AfterPreferTotalTextEdit.Name = "AfterPreferTotalTextEdit";
             this.AfterPreferTotalTextEdit.Properties.DisplayFormat.FormatString = "c2";
             this.AfterPreferTotalTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -203,7 +204,7 @@
             // PreferTextEdit
             // 
             this.PreferTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "Prefer", true));
-            this.PreferTextEdit.Location = new System.Drawing.Point(797, 588);
+            this.PreferTextEdit.Location = new System.Drawing.Point(975, 638);
             this.PreferTextEdit.Name = "PreferTextEdit";
             this.PreferTextEdit.Properties.DisplayFormat.FormatString = "c2";
             this.PreferTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -220,7 +221,7 @@
             // QtyTextEdit
             // 
             this.QtyTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "Qty", true));
-            this.QtyTextEdit.Location = new System.Drawing.Point(463, 588);
+            this.QtyTextEdit.Location = new System.Drawing.Point(641, 638);
             this.QtyTextEdit.Name = "QtyTextEdit";
             this.QtyTextEdit.Properties.DisplayFormat.FormatString = "d";
             this.QtyTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -238,7 +239,7 @@
             // 
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
             this.btnPrint.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnPrint.Location = new System.Drawing.Point(857, 615);
+            this.btnPrint.Location = new System.Drawing.Point(1035, 665);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(100, 26);
             this.btnPrint.StyleController = this.baseDataLayoutControl1;
@@ -248,7 +249,7 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(6, 72);
+            this.gridControl1.Location = new System.Drawing.Point(6, 73);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -256,7 +257,7 @@
             this.priceRepItemPopupContainerEdit,
             this.qtyFBNRepItemPopupContainerEdit,
             this.qtySNRepItemPopupContainerEdit});
-            this.gridControl1.Size = new System.Drawing.Size(1058, 512);
+            this.gridControl1.Size = new System.Drawing.Size(1236, 561);
             this.gridControl1.TabIndex = 17;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -299,6 +300,7 @@
             this.gridView_ShowLine1.SetShowLineNo(this.gridView1, true);
             this.gridView1.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gridView1_CustomRowCellEdit);
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
+            this.gridView1.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanging);
             // 
             // colProductNo
             // 
@@ -454,7 +456,7 @@
             // 
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnClose.Location = new System.Drawing.Point(961, 615);
+            this.btnClose.Location = new System.Drawing.Point(1139, 665);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 26);
             this.btnClose.StyleController = this.baseDataLayoutControl1;
@@ -465,7 +467,7 @@
             // JSRNamePopupContainerEdit
             // 
             this.JSRNamePopupContainerEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "JSRName", true));
-            this.JSRNamePopupContainerEdit.Location = new System.Drawing.Point(69, 24);
+            this.JSRNamePopupContainerEdit.Location = new System.Drawing.Point(69, 25);
             this.JSRNamePopupContainerEdit.Name = "JSRNamePopupContainerEdit";
             this.JSRNamePopupContainerEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -477,7 +479,7 @@
             // StockName1PopupContainerEdit
             // 
             this.StockName1PopupContainerEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "StockName1", true));
-            this.StockName1PopupContainerEdit.Location = new System.Drawing.Point(244, 24);
+            this.StockName1PopupContainerEdit.Location = new System.Drawing.Point(244, 25);
             this.StockName1PopupContainerEdit.Name = "StockName1PopupContainerEdit";
             this.StockName1PopupContainerEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -489,7 +491,7 @@
             // DlyDateTextEdit
             // 
             this.DlyDateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "DlyDate", true));
-            this.DlyDateTextEdit.Location = new System.Drawing.Point(761, 24);
+            this.DlyDateTextEdit.Location = new System.Drawing.Point(939, 25);
             this.DlyDateTextEdit.Name = "DlyDateTextEdit";
             this.DlyDateTextEdit.Properties.DisplayFormat.FormatString = "d";
             this.DlyDateTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -506,7 +508,7 @@
             // DlyNoTextEdit
             // 
             this.DlyNoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "DlyNo", true));
-            this.DlyNoTextEdit.Location = new System.Drawing.Point(916, 24);
+            this.DlyNoTextEdit.Location = new System.Drawing.Point(1094, 25);
             this.DlyNoTextEdit.Name = "DlyNoTextEdit";
             this.DlyNoTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.DlyNoTextEdit.Properties.ReadOnly = true;
@@ -517,7 +519,7 @@
             // CommentTextEdit
             // 
             this.CommentTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "Comment", true));
-            this.CommentTextEdit.Location = new System.Drawing.Point(69, 48);
+            this.CommentTextEdit.Location = new System.Drawing.Point(69, 49);
             this.CommentTextEdit.Name = "CommentTextEdit";
             this.CommentTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.CommentTextEdit.Size = new System.Drawing.Size(200, 20);
@@ -527,7 +529,7 @@
             // SummaryTextEdit
             // 
             this.SummaryTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "Summary", true));
-            this.SummaryTextEdit.Location = new System.Drawing.Point(336, 48);
+            this.SummaryTextEdit.Location = new System.Drawing.Point(336, 49);
             this.SummaryTextEdit.Name = "SummaryTextEdit";
             this.SummaryTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.SummaryTextEdit.Size = new System.Drawing.Size(200, 20);
@@ -537,7 +539,7 @@
             // ZDRNameTextEdit
             // 
             this.ZDRNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "ZDRName", true));
-            this.ZDRNameTextEdit.Location = new System.Drawing.Point(69, 588);
+            this.ZDRNameTextEdit.Location = new System.Drawing.Point(69, 638);
             this.ZDRNameTextEdit.Name = "ZDRNameTextEdit";
             this.ZDRNameTextEdit.Properties.ReadOnly = true;
             this.ZDRNameTextEdit.Size = new System.Drawing.Size(100, 20);
@@ -547,7 +549,7 @@
             // TotalTextEdit
             // 
             this.TotalTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "Total", true));
-            this.TotalTextEdit.Location = new System.Drawing.Point(630, 588);
+            this.TotalTextEdit.Location = new System.Drawing.Point(808, 638);
             this.TotalTextEdit.Name = "TotalTextEdit";
             this.TotalTextEdit.Properties.DisplayFormat.FormatString = "c2";
             this.TotalTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -564,7 +566,7 @@
             // SHRName1ButtonEdit
             // 
             this.SHRName1ButtonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "SHRName1", true));
-            this.SHRName1ButtonEdit.Location = new System.Drawing.Point(60, 618);
+            this.SHRName1ButtonEdit.Location = new System.Drawing.Point(60, 668);
             this.SHRName1ButtonEdit.Name = "SHRName1ButtonEdit";
             this.SHRName1ButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK),
@@ -580,7 +582,7 @@
             // SHRName2ButtonEdit
             // 
             this.SHRName2ButtonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "SHRName2", true));
-            this.SHRName2ButtonEdit.Location = new System.Drawing.Point(215, 618);
+            this.SHRName2ButtonEdit.Location = new System.Drawing.Point(215, 668);
             this.SHRName2ButtonEdit.Name = "SHRName2ButtonEdit";
             this.SHRName2ButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK),
@@ -596,7 +598,7 @@
             // SHRName3ButtonEdit
             // 
             this.SHRName3ButtonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "SHRName3", true));
-            this.SHRName3ButtonEdit.Location = new System.Drawing.Point(370, 618);
+            this.SHRName3ButtonEdit.Location = new System.Drawing.Point(370, 668);
             this.SHRName3ButtonEdit.Name = "SHRName3ButtonEdit";
             this.SHRName3ButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK),
@@ -612,7 +614,7 @@
             // SHRName4ButtonEdit
             // 
             this.SHRName4ButtonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "SHRName4", true));
-            this.SHRName4ButtonEdit.Location = new System.Drawing.Point(525, 618);
+            this.SHRName4ButtonEdit.Location = new System.Drawing.Point(525, 668);
             this.SHRName4ButtonEdit.Name = "SHRName4ButtonEdit";
             this.SHRName4ButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK),
@@ -628,7 +630,7 @@
             // SHRName5ButtonEdit
             // 
             this.SHRName5ButtonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindbaseDataLayoutControl1, "SHRName5", true));
-            this.SHRName5ButtonEdit.Location = new System.Drawing.Point(680, 618);
+            this.SHRName5ButtonEdit.Location = new System.Drawing.Point(680, 668);
             this.SHRName5ButtonEdit.Name = "SHRName5ButtonEdit";
             this.SHRName5ButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK),
@@ -664,7 +666,7 @@
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1070, 650);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1248, 700);
             this.layoutControlGroup1.Text = "商品入库单";
             // 
             // ItemForJSRName
@@ -677,7 +679,7 @@
             this.ItemForJSRName.Size = new System.Drawing.Size(175, 24);
             this.ItemForJSRName.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForJSRName.Text = "经手人";
-            this.ItemForJSRName.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForJSRName.TextSize = new System.Drawing.Size(60, 14);
             // 
             // ItemForComment
             // 
@@ -689,7 +691,7 @@
             this.ItemForComment.Size = new System.Drawing.Size(267, 24);
             this.ItemForComment.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForComment.Text = "附加说明";
-            this.ItemForComment.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForComment.TextSize = new System.Drawing.Size(60, 14);
             // 
             // ItemForStockName1
             // 
@@ -701,31 +703,31 @@
             this.ItemForStockName1.Size = new System.Drawing.Size(185, 24);
             this.ItemForStockName1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForStockName1.Text = "收货仓库";
-            this.ItemForStockName1.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForStockName1.TextSize = new System.Drawing.Size(60, 14);
             // 
             // ItemForDlyDate
             // 
             this.ItemForDlyDate.Control = this.DlyDateTextEdit;
-            this.ItemForDlyDate.Location = new System.Drawing.Point(692, 0);
+            this.ItemForDlyDate.Location = new System.Drawing.Point(870, 0);
             this.ItemForDlyDate.MaxSize = new System.Drawing.Size(155, 24);
             this.ItemForDlyDate.MinSize = new System.Drawing.Size(155, 24);
             this.ItemForDlyDate.Name = "ItemForDlyDate";
             this.ItemForDlyDate.Size = new System.Drawing.Size(155, 24);
             this.ItemForDlyDate.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForDlyDate.Text = "录单日期";
-            this.ItemForDlyDate.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForDlyDate.TextSize = new System.Drawing.Size(60, 14);
             // 
             // ItemForDlyNo
             // 
             this.ItemForDlyNo.Control = this.DlyNoTextEdit;
-            this.ItemForDlyNo.Location = new System.Drawing.Point(847, 0);
+            this.ItemForDlyNo.Location = new System.Drawing.Point(1025, 0);
             this.ItemForDlyNo.MaxSize = new System.Drawing.Size(215, 24);
             this.ItemForDlyNo.MinSize = new System.Drawing.Size(215, 24);
             this.ItemForDlyNo.Name = "ItemForDlyNo";
             this.ItemForDlyNo.Size = new System.Drawing.Size(215, 24);
             this.ItemForDlyNo.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForDlyNo.Text = "单据编号";
-            this.ItemForDlyNo.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForDlyNo.TextSize = new System.Drawing.Size(60, 14);
             // 
             // ItemForSummary
             // 
@@ -737,14 +739,14 @@
             this.ItemForSummary.Size = new System.Drawing.Size(267, 24);
             this.ItemForSummary.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForSummary.Text = "摘要";
-            this.ItemForSummary.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForSummary.TextSize = new System.Drawing.Size(60, 14);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1062, 516);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1240, 565);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -753,7 +755,7 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(360, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(332, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(510, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup2
@@ -767,10 +769,10 @@
             this.emptySpaceItem1,
             this.layoutControlItem3,
             this.layoutControlItem2});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 588);
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 637);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1062, 36);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1240, 36);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // ItemForSHRName1
@@ -785,7 +787,7 @@
             this.ItemForSHRName1.Size = new System.Drawing.Size(155, 30);
             this.ItemForSHRName1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForSHRName1.Text = "审核人一";
-            this.ItemForSHRName1.TextSize = new System.Drawing.Size(48, 13);
+            this.ItemForSHRName1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // ItemForSHRName2
             // 
@@ -799,7 +801,7 @@
             this.ItemForSHRName2.Size = new System.Drawing.Size(155, 30);
             this.ItemForSHRName2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForSHRName2.Text = "审核人二";
-            this.ItemForSHRName2.TextSize = new System.Drawing.Size(48, 13);
+            this.ItemForSHRName2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // ItemForSHRName3
             // 
@@ -813,7 +815,7 @@
             this.ItemForSHRName3.Size = new System.Drawing.Size(155, 30);
             this.ItemForSHRName3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForSHRName3.Text = "审核人三";
-            this.ItemForSHRName3.TextSize = new System.Drawing.Size(48, 13);
+            this.ItemForSHRName3.TextSize = new System.Drawing.Size(48, 14);
             // 
             // ItemForSHRName4
             // 
@@ -827,7 +829,7 @@
             this.ItemForSHRName4.Size = new System.Drawing.Size(155, 30);
             this.ItemForSHRName4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForSHRName4.Text = "审核人四";
-            this.ItemForSHRName4.TextSize = new System.Drawing.Size(48, 13);
+            this.ItemForSHRName4.TextSize = new System.Drawing.Size(48, 14);
             // 
             // ItemForSHRName5
             // 
@@ -841,20 +843,20 @@
             this.ItemForSHRName5.Size = new System.Drawing.Size(155, 30);
             this.ItemForSHRName5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForSHRName5.Text = "审核人五";
-            this.ItemForSHRName5.TextSize = new System.Drawing.Size(48, 13);
+            this.ItemForSHRName5.TextSize = new System.Drawing.Size(48, 14);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(775, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(73, 30);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(251, 30);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnPrint;
-            this.layoutControlItem3.Location = new System.Drawing.Point(848, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(1026, 0);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -866,7 +868,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnClose;
-            this.layoutControlItem2.Location = new System.Drawing.Point(952, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(1130, 0);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(104, 30);
             this.layoutControlItem2.Name = "layoutControlItem2";
@@ -878,84 +880,84 @@
             // ItemForZDRName
             // 
             this.ItemForZDRName.Control = this.ZDRNameTextEdit;
-            this.ItemForZDRName.Location = new System.Drawing.Point(0, 564);
+            this.ItemForZDRName.Location = new System.Drawing.Point(0, 613);
             this.ItemForZDRName.MaxSize = new System.Drawing.Size(167, 24);
             this.ItemForZDRName.MinSize = new System.Drawing.Size(167, 24);
             this.ItemForZDRName.Name = "ItemForZDRName";
             this.ItemForZDRName.Size = new System.Drawing.Size(167, 24);
             this.ItemForZDRName.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForZDRName.Text = "制单人";
-            this.ItemForZDRName.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForZDRName.TextSize = new System.Drawing.Size(60, 14);
             // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(167, 564);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(167, 613);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(227, 24);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(405, 24);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // ItemForQty
             // 
             this.ItemForQty.Control = this.QtyTextEdit;
-            this.ItemForQty.Location = new System.Drawing.Point(394, 564);
+            this.ItemForQty.Location = new System.Drawing.Point(572, 613);
             this.ItemForQty.MaxSize = new System.Drawing.Size(167, 24);
             this.ItemForQty.MinSize = new System.Drawing.Size(167, 24);
             this.ItemForQty.Name = "ItemForQty";
             this.ItemForQty.Size = new System.Drawing.Size(167, 24);
             this.ItemForQty.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForQty.Text = "合计数量";
-            this.ItemForQty.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForQty.TextSize = new System.Drawing.Size(60, 14);
             // 
             // ItemForTotal
             // 
             this.ItemForTotal.Control = this.TotalTextEdit;
-            this.ItemForTotal.Location = new System.Drawing.Point(561, 564);
+            this.ItemForTotal.Location = new System.Drawing.Point(739, 613);
             this.ItemForTotal.MaxSize = new System.Drawing.Size(167, 24);
             this.ItemForTotal.MinSize = new System.Drawing.Size(167, 24);
             this.ItemForTotal.Name = "ItemForTotal";
             this.ItemForTotal.Size = new System.Drawing.Size(167, 24);
             this.ItemForTotal.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForTotal.Text = "合计金额";
-            this.ItemForTotal.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForTotal.TextSize = new System.Drawing.Size(60, 14);
             // 
             // ItemForPrefer
             // 
             this.ItemForPrefer.Control = this.PreferTextEdit;
-            this.ItemForPrefer.Location = new System.Drawing.Point(728, 564);
+            this.ItemForPrefer.Location = new System.Drawing.Point(906, 613);
             this.ItemForPrefer.MaxSize = new System.Drawing.Size(167, 24);
             this.ItemForPrefer.MinSize = new System.Drawing.Size(167, 24);
             this.ItemForPrefer.Name = "ItemForPrefer";
             this.ItemForPrefer.Size = new System.Drawing.Size(167, 24);
             this.ItemForPrefer.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForPrefer.Text = "优惠";
-            this.ItemForPrefer.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForPrefer.TextSize = new System.Drawing.Size(60, 14);
             // 
             // ItemForAfterPreferTotal
             // 
             this.ItemForAfterPreferTotal.Control = this.AfterPreferTotalTextEdit;
-            this.ItemForAfterPreferTotal.Location = new System.Drawing.Point(895, 564);
+            this.ItemForAfterPreferTotal.Location = new System.Drawing.Point(1073, 613);
             this.ItemForAfterPreferTotal.MaxSize = new System.Drawing.Size(167, 24);
             this.ItemForAfterPreferTotal.MinSize = new System.Drawing.Size(167, 24);
             this.ItemForAfterPreferTotal.Name = "ItemForAfterPreferTotal";
             this.ItemForAfterPreferTotal.Size = new System.Drawing.Size(167, 24);
             this.ItemForAfterPreferTotal.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForAfterPreferTotal.Text = "优惠后金额";
-            this.ItemForAfterPreferTotal.TextSize = new System.Drawing.Size(60, 13);
+            this.ItemForAfterPreferTotal.TextSize = new System.Drawing.Size(60, 14);
             // 
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
             this.emptySpaceItem4.Location = new System.Drawing.Point(534, 24);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(528, 24);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(706, 24);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // DlySPRKForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 650);
+            this.ClientSize = new System.Drawing.Size(1248, 700);
             this.Controls.Add(this.baseDataLayoutControl1);
             this.formLoadErrorExit1.SetEnableLoadError(this, true);
             this.mainFormMdiProvider1.SetEnableMainFormMdi(this, true);

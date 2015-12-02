@@ -207,18 +207,14 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             var data = this.bindingSource1.DataSource as System.Collections.Generic.List<PDlyBakFullNameEntity>;
             if (data == null) return;
 
-            //this.PreferTextEdit.DataBindings[0].WriteValue();
-            //var entity = this.bindbaseDataLayoutControl1.DataSource as SPRKDlyCGNdxEntity;
-            //entity.Qty = data.Sum(t => t.Qty);
-            //entity.Total = data.Sum(t => t.Total);
-            //entity.AfterPreferTotal = entity.Total - entity.Prefer;
-            //this.QtyTextEdit.DataBindings[0].ReadValue();
-            //this.TotalTextEdit.DataBindings[0].ReadValue();
-            //this.AfterPreferTotalTextEdit.DataBindings[0].ReadValue();
-
-            this.QtyTextEdit.EditValue = data.Sum(t => t.Qty);
-            this.TotalTextEdit.EditValue = data.Sum(t => t.Total);
-            this.AfterPreferTotalTextEdit.EditValue = Convert.ToDecimal(this.TotalTextEdit.EditValue) - Convert.ToDecimal(this.PreferTextEdit.EditValue);
+            this.PreferTextEdit.DataBindings[0].WriteValue();
+            var entity = this.bindbaseDataLayoutControl1.DataSource as SPRKDlyCGNdxEntity;
+            entity.Qty = data.Sum(t => t.Qty);
+            entity.Total = data.Sum(t => t.Total);
+            entity.AfterPreferTotal = entity.Total - entity.Prefer;
+            this.QtyTextEdit.DataBindings[0].ReadValue();
+            this.TotalTextEdit.DataBindings[0].ReadValue();
+            this.AfterPreferTotalTextEdit.DataBindings[0].ReadValue();
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -540,6 +536,13 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             this.ItemForSHRName5.Visibility = totalInputLevel >= 5 ?
                 DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+        }
+
+        private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var row = this.gridView1.GetRow(e.RowHandle);
+            if (row == null && e.Column != colProductNo)
+                this.gridView1.CancelUpdateCurrentRow();
         }
     }
     public class DlySPRKForm_Design : Base_Form<DlySPRKFormFacade>
