@@ -54,7 +54,7 @@ namespace FengSharp.OneCardAccess.Infrastructure
             }
             else
             {
-                Logger.Write(error.Message, "MethodException");
+                LogHelper.Write(error.Message, "MethodException", "服务调用出错", System.Diagnostics.TraceEventType.Error, 3);
             }
             if (error.GetType().GetConstructor(new Type[] { typeof(string), typeof(Exception) }) == null)
             {

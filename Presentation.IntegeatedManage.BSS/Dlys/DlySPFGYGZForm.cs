@@ -15,10 +15,10 @@ using DevExpress.XtraEditors;
 
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
-    public partial class DlySPRKYGZForm : DlySPRKYGZForm_Design
+    public partial class DlySPFGYGZForm : DlySPFGYGZForm_Design
     {
         public string NdxId { get; set; }
-        public DlySPRKYGZForm(string ndxId)
+        public DlySPFGYGZForm(string ndxId)
         {
             InitializeComponent();
             NdxId = ndxId;
@@ -33,6 +33,13 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 qtySNPopupContainerControl.Width = 500;
                 qtySNPopupContainerControl.Height = 600;
                 qtySNRepItemPopupContainerEdit.PopupControl = qtySNPopupContainerControl;
+            }
+            for (int i = 0; i < this.gridView1.Columns.Count; i++)
+            {
+                var col = this.gridView1.Columns[i];
+                if (col == colProductNo)
+                    continue;
+                col.RealColumnEdit.EditValueChanging += RealColumnEdit_EditValueChanging;
             }
             this.gridControl1.DataSource = this.bindingSource1;
         }
@@ -55,11 +62,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             }
         }
 
-        private void DlySPRKYGZForm_Load(object sender, EventArgs e)
+        private void DlySPFGYGZForm_Load(object sender, EventArgs e)
         {
             try
             {
-                this.Facade = new DlySPRKYGZFormFacade(this);
+                this.Facade = new DlySPFGYGZFormFacade(this);
                 this.Facade.SetData();
             }
             catch (Exception ex)
@@ -68,7 +75,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 this.formLoadErrorExit1.LoadError();
             }
         }
-        internal void SetData(SPRKDlyYGZNdxEntity entity)
+        internal void SetData(SPFGDlyYGZNdxEntity entity)
         {
             this.bindbaseDataLayoutControl1.DataSource = entity;
             if (entity == null)
@@ -116,7 +123,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         private void btnPrint_Click(object sender, EventArgs e)
         {
         }
-
         private void gridView1_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
         {
             try
@@ -141,7 +147,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 MessageBoxEx.Error(ex);
             }
         }
-
         private void productNoRepItemPopupContainerEdit_EditValueChanged(object sender, EventArgs e)
         {
         }
@@ -171,7 +176,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
         }
 
-
         private void qtySNRepItemPopupContainerEdit_QueryPopUp(object sender, System.ComponentModel.CancelEventArgs e)
         {
             try
@@ -191,7 +195,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 MessageBoxEx.Error(ex);
             }
         }
-
         private void qtySNRepItemPopupContainerEdit_QueryResultValue(object sender, DevExpress.XtraEditors.Controls.QueryResultValueEventArgs e)
         {
         }
@@ -218,22 +221,22 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         private void qtyFBNRepItemPopupContainerEdit_QueryResultValue(object sender, DevExpress.XtraEditors.Controls.QueryResultValueEventArgs e)
         {
-        }
+        }        
     }
-    public class DlySPRKYGZForm_Design : Base_Form<DlySPRKYGZFormFacade>
+
+    public class DlySPFGYGZForm_Design : Base_Form<DlySPFGYGZFormFacade>
     {
     }
-    public class DlySPRKYGZFormFacade : ActualBase<DlySPRKYGZForm>
+    public class DlySPFGYGZFormFacade : ActualBase<DlySPFGYGZForm>
     {
         private IDlyNdxService _DlyNdxService = ServiceProxyFactory.Create<IDlyNdxService>();
         private IInputLevelService _InputLevelService = ServiceProxyFactory.Create<IInputLevelService>();
-
-        public DlySPRKYGZFormFacade(DlySPRKYGZForm actual)
+        public DlySPFGYGZFormFacade(DlySPFGYGZForm actual)
             : base(actual)
         { }
         internal void SetData()
         {
-            var entity = _DlyNdxService.GetSPRKDlyYGZNdxEntity(this.Actual.NdxId);
+            var entity = _DlyNdxService.GetSPFGDlyYGZNdxEntity(this.Actual.NdxId);
             if (entity == null) throw new BusinessException("单据不存在");
             this.Actual.SetData(entity);
         }

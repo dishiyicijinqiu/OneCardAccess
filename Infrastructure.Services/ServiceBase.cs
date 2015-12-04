@@ -1,10 +1,15 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data.Instrumentation;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel;
+using System.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 
 namespace FengSharp.OneCardAccess.Infrastructure.Services
 {
@@ -175,6 +180,56 @@ namespace FengSharp.OneCardAccess.Infrastructure.Services
         public static void AddReturnParameter(this Database database, DbCommand cmd, string name, DbType dbType)
         {
             database.AddParameter(cmd, name, dbType, ParameterDirection.ReturnValue, null, DataRowVersion.Default, null);
+        }
+    }
+
+    [ConfigurationElementType(typeof(FengSharpDatabaseData))]
+    public class FengSharpDataBase : Database
+    {
+        public FengSharpDataBase(string connectionString, DbProviderFactory dbProviderFactory
+        )
+            : base(connectionString, dbProviderFactory)
+        {
+        }
+        public FengSharpDataBase(string connectionString, DbProviderFactory dbProviderFactory, IDataInstrumentationProvider instrumentationProvider)
+            : base(connectionString, dbProviderFactory, instrumentationProvider)
+        {
+            //AddInParameter
+        }
+        public override void AddParameter(DbCommand command, string name, DbType dbType, int size, ParameterDirection direction, bool nullable, byte precision, byte scale, string sourceColumn, DataRowVersion sourceVersion, object value)
+        {
+            command.CommandTimeout = 0;
+            base.AddParameter(command, name, dbType, size, direction, nullable, precision, scale, sourceColumn, sourceVersion, value);
+        }
+        protected override void DeriveParameters(DbCommand discoveryCommand)
+        {
+            throw new NotSupportedException("不支持");
+        }
+    }
+    public class FengSharpDatabaseData : DatabaseData
+    {
+        public FengSharpDatabaseData(ConnectionStringSettings connectionStringSettings, IConfigurationSource configurationSource)
+            : base(connectionStringSettings, configurationSource)
+        {
+        }
+
+        /// <summary>
+        /// Gets the name of the ADO.NET provider for the represented database.
+        /// </summary>
+        public string ProviderName
+        {
+            get { return ConnectionStringSettings.ProviderName; }
+        }
+        public override IEnumerable<TypeRegistration> GetRegistrations()
+        {
+            yield return new TypeRegistration<Database>(
+                () => new FengSharpDataBase(ConnectionString,
+                    System.Data.SqlClient.SqlClientFactory.Instance,
+                    Container.Resolved<IDataInstrumentationProvider>(Name)))
+            {
+                Name = Name,
+                Lifetime = TypeRegistrationLifetime.Transient
+            };
         }
     }
 }

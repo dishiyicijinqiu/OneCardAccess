@@ -81,8 +81,23 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 var entity = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as DlyNdxEntity;
                 if (entity == null)
                     throw new BusinessException(Properties.Resources.DlyNotExists);
-                DlySPRKYGZForm form = new DlySPRKYGZForm(entity.DlyNdxId);
-                form.Show();
+                switch (entity.DlyTypeId)
+                {
+                    case FengSharp.OneCardAccess.Application.Config.DlyConfig.SPRKDlyTypeId:
+                        {
+                            DlySPRKYGZForm form = new DlySPRKYGZForm(entity.DlyNdxId);
+                            form.Show();
+                        }
+                        break;
+                    case FengSharp.OneCardAccess.Application.Config.DlyConfig.SPFGDlyTypeId:
+                        {
+                            DlySPFGYGZForm form = new DlySPFGYGZForm(entity.DlyNdxId);
+                            form.Show();
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
             catch (Exception ex)
             {

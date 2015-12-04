@@ -52,6 +52,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DlySet\DlyFormat.cs" />
+    <Compile Include="Dlys\DlySPXSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlys\DlySPXSForm.Designer.cs">
+      <DependentUpon>DlySPXSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlys\DlySPFGYGZForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlys\DlySPFGYGZForm.Designer.cs">
+      <DependentUpon>DlySPFGYGZForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dlys\Controls\ProductFBNLookPopupContainerControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -336,6 +348,12 @@
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Dlys\DlySPXSForm.resx">
+      <DependentUpon>DlySPXSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlys\DlySPFGYGZForm.resx">
+      <DependentUpon>DlySPFGYGZForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dlys\Controls\ProductFBNLookUserControl.resx">
       <DependentUpon>ProductFBNLookUserControl.cs</DependentUpon>
     </EmbeddedResource>

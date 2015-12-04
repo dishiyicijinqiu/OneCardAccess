@@ -514,6 +514,9 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             var listPSNInOutDetails = DataTableToPSNInOutDetailsEntitys(dtPSNInOutDetails);
             foreach (var dly in result.PDlys)
             {
+                dly.Qty = -dly.Qty;
+                dly.Total = -dly.Total;
+                dly.CostTotal = -dly.CostTotal;
                 dly.PFBNInOutDetails.AddRange(listPFBNInOutDetails.Where(t => t.PDlyId == dly.PDlyId));
                 dly.PSNInOutDetails.AddRange(listPSNInOutDetails.Where(t => t.PDlyId == dly.PDlyId));
             }
@@ -522,7 +525,7 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             result.Total = result.PDlys.Sum(t => t.Total);
             var dtdlyas = base.GetRelationData("pdlya", dlyNdxId, userid);
             var listdlyas = DataTableToDlyAEntitys(dtdlyas);
-            result.Prefer = -listdlyas.Where(t => t.ATypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.SPYHATypeId).Sum(t => t.Total);
+            result.Prefer = listdlyas.Where(t => t.ATypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.SPYHATypeId).Sum(t => t.Total);
             result.AfterPreferTotal = result.Total - result.Prefer;
             return result;
         }

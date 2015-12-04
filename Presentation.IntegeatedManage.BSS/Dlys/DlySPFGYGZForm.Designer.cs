@@ -1,6 +1,6 @@
 ﻿namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
-    partial class DlySPFGForm
+    partial class DlySPFGYGZForm
     {
         /// <summary>
         /// Required designer variable.
@@ -949,7 +949,7 @@
             this.emptySpaceItem4.Size = new System.Drawing.Size(706, 24);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // DlySPFGForm
+            // DlySPFGYGZForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -957,9 +957,9 @@
             this.Controls.Add(this.baseDataLayoutControl1);
             this.formLoadErrorExit1.SetEnableLoadError(this, true);
             this.mainFormMdiProvider1.SetEnableMainFormMdi(this, true);
-            this.Name = "DlySPFGForm";
-            this.Text = "商品返工单";
-            this.Load += new System.EventHandler(this.DlySPFGForm_Load);
+            this.Name = "DlySPFGYGZForm";
+            this.Text = "商品返工单已过帐";
+            this.Load += new System.EventHandler(this.DlySPFGYGZForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.baseDataLayoutControl1)).EndInit();
             this.baseDataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AfterPreferTotalTextEdit.Properties)).EndInit();
@@ -1012,10 +1012,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion
+
         private Infrastructure.WinForm.Base.BaseDataLayoutControl baseDataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private Infrastructure.WinForm.Base.BasePopupContainerEdit JSRNamePopupContainerEdit;

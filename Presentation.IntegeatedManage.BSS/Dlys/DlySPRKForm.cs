@@ -54,7 +54,32 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 qtySNPopupContainerControl.Height = 600;
                 qtySNRepItemPopupContainerEdit.PopupControl = qtySNPopupContainerControl;
             }
+            for (int i = 0; i < this.gridView1.Columns.Count; i++)
+            {
+                var col = this.gridView1.Columns[i];
+                if (col == colProductNo)
+                    continue;
+                col.RealColumnEdit.EditValueChanging += RealColumnEdit_EditValueChanging;
+            }
             this.gridControl1.DataSource = this.bindingSource1;
+        }
+
+        private void RealColumnEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            try
+            {
+                if (this.gridView1.FocusedColumn == colProductNo) return;
+                var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
+                if (row == null || row.ProductId <= 0)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Error(ex);
+            }
         }
 
         public DlySPRKForm(string ndxId)
@@ -536,13 +561,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             this.ItemForSHRName5.Visibility = totalInputLevel >= 5 ?
                 DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
-        }
-
-        private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            var row = this.gridView1.GetRow(e.RowHandle);
-            if (row == null && e.Column != colProductNo)
-                this.gridView1.CancelUpdateCurrentRow();
         }
     }
     public class DlySPRKForm_Design : Base_Form<DlySPRKFormFacade>
