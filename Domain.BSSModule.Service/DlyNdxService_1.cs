@@ -652,46 +652,5 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
         }
         #endregion
         #endregion
-        #region 公共方法
-        public static void CheckZCreatePDlyError(Database database, DbCommand cmd)
-        {
-            if (database.GetParameterValue(cmd, "ProductIdError") != System.DBNull.Value)
-            {
-                int ProductIdError = (int)database.GetParameterValue(cmd, "ProductIdError");
-                if (ProductIdError > 0)
-                    throw new BusinessException(ProductIdError.ToString());
-            }
-            if (database.GetParameterValue(cmd, "CompanyIdError") != System.DBNull.Value)
-            {
-                int CompanyIdError = (int)database.GetParameterValue(cmd, "CompanyIdError");
-                if (CompanyIdError > 0)
-                    throw new BusinessException(CompanyIdError.ToString());
-            }
-            if (database.GetParameterValue(cmd, "StockId1Error") != System.DBNull.Value)
-            {
-                int StockIdError = (int)database.GetParameterValue(cmd, "StockId1Error");
-                if (StockIdError > 0)
-                    throw new BusinessException(StockIdError.ToString());
-            }
-            if (database.GetParameterValue(cmd, "StockId2Error") != System.DBNull.Value)
-            {
-                int StockIdError = (int)database.GetParameterValue(cmd, "StockId2Error");
-                if (StockIdError > 0)
-                    throw new BusinessException(StockIdError.ToString());
-            }
-            if (database.GetParameterValue(cmd, "AtypeIdError") != System.DBNull.Value)
-            {
-                int AtypeIdError = (int)database.GetParameterValue(cmd, "AtypeIdError");
-                if (AtypeIdError > 0)
-                    throw new BusinessException(AtypeIdError.ToString());
-            }
-            if (database.GetParameterValue(cmd, "BNError") != System.DBNull.Value)
-            {
-                string BNError = (string)database.GetParameterValue(cmd, "BNError");
-                if (!string.IsNullOrWhiteSpace(BNError))
-                    throw new BusinessException(BNError);
-            }
-        }
-        #endregion
     }
 }

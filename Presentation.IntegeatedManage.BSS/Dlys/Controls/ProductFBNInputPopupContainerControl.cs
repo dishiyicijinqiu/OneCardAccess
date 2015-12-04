@@ -3,6 +3,7 @@ using DevExpress.XtraEditors.Repository;
 using FengSharp.OneCardAccess.Domain.BSSModule.Entity;
 using FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS.Interface;
 using System.Linq;
+using System;
 
 namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
@@ -55,11 +56,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             }
         }
 
+
         void PopupContainerProperties_Popup(object sender, System.EventArgs e)
         {
             this.selectUserControl1.ResetValue();
         }
-
 
         public FBNInputEntity[] EntityResults
         {

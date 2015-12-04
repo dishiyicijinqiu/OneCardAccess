@@ -698,7 +698,7 @@
             this.ItemForStockName1.Name = "ItemForStockName1";
             this.ItemForStockName1.Size = new System.Drawing.Size(185, 24);
             this.ItemForStockName1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.ItemForStockName1.Text = "收货仓库";
+            this.ItemForStockName1.Text = "发货仓库";
             this.ItemForStockName1.TextSize = new System.Drawing.Size(60, 14);
             // 
             // ItemForDlyDate
@@ -1012,6 +1012,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion

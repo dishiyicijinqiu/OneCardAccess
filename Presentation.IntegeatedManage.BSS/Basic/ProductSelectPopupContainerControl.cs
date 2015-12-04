@@ -57,11 +57,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // deptSelectUserControl1
+            // selectUserControl1
             // 
             this.selectUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.selectUserControl1.Name = "deptSelectUserControl1";
+            this.selectUserControl1.Name = "selectUserControl1";
             this.selectUserControl1.Size = new System.Drawing.Size(200, 100);
             this.selectUserControl1.TabIndex = 0;
             this.selectUserControl1.OKClick += selectUserControl1_OKClick;

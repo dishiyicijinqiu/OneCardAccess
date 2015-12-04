@@ -16,6 +16,9 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 case DlyConfig.SPFGDlyTypeId:
                     e.DisplayText = "商品返工单";
                     break;
+                case DlyConfig.SPXSDlyTypeId:
+                    e.DisplayText = "商品销售单";
+                    break;
                 default:
                     break;
             }

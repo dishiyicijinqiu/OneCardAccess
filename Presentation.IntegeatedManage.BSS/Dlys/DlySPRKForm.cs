@@ -297,6 +297,9 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 var singleSelect = basePopupContainerEdit.Properties.PopupControl as ISingleProductPriceSelect;
                 if (!singleSelect.IsSelect) return;
                 e.Value = singleSelect.GetResult();
+                var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
+                if (row != null)
+                    row.Total = decimal.Parse(e.Value.ToString()) * (decimal)row.Qty;
             }
             catch (Exception ex)
             {
@@ -367,7 +370,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         {
             try
             {
-
                 var basePopupContainerEdit = sender as PopupContainerEdit;
                 var singleSelect = basePopupContainerEdit.Properties.PopupControl as IProductFBNInput;
                 e.Value = singleSelect.Qty;
@@ -381,6 +383,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                     SortNo = t.SortNo,
                     Remark = t.Remark
                 }));
+                row.Total = decimal.Parse(e.Value.ToString()) * (decimal)row.Price;
                 row.BN = singleSelect.BN;
             }
             catch (Exception ex)
@@ -434,6 +437,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                     SortNo = t.SortNo,
                     Remark = t.Remark
                 }));
+                row.Total = decimal.Parse(e.Value.ToString()) * (decimal)row.Price;
                 row.BN = singleSelect.BN;
             }
             catch (Exception ex)

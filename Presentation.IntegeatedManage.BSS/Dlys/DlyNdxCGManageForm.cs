@@ -76,6 +76,12 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                             form.Show();
                         }
                         break;
+                    case FengSharp.OneCardAccess.Application.Config.DlyConfig.SPXSDlyTypeId:
+                        {
+                            DlySPXSForm form = new DlySPXSForm(entity.DlyNdxId);
+                            form.Show();
+                        }
+                        break;
                 }
             }
             catch (Exception ex)
@@ -142,6 +148,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 var row = this.gridView1.GetRow(rowhandle) as DlyNdxFullNameEntity;
                 row.DlyNdxId = newid;
                 this.gridView1.RefreshRow(rowhandle);
+                this.gridView1.RefreshData();
             }
         }
         static internal void RefreshRowId(string oldid, string newid)

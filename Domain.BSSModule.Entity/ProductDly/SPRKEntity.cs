@@ -125,4 +125,20 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Entity
     public class SPFGDlyYGZNdxEntity : PDlyNdxYGZEntity
     {
     }
+
+    /// <summary>
+    /// 商品销售草稿单
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class SPXSDlyCGNdxEntity : PDlyNdxCGEntity
+    {
+    }
+
+    /// <summary>
+    /// 商品销售单已过帐
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public class SPXSDlyYGZNdxEntity : PDlyNdxYGZEntity
+    {
+    }
 }

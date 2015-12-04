@@ -1,4 +1,6 @@
-﻿namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
+﻿using System;
+
+namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 {
     partial class ProductFBNInputUserControl
     {

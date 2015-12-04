@@ -50,7 +50,10 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
 
         public PSNBakEntity[] EntityResults
         {
-            get { return this.selectUserControl1.EntityResults; }
+            get
+            {
+                return this.selectUserControl1.EntityResults;
+            }
         }
 
         public int Qty

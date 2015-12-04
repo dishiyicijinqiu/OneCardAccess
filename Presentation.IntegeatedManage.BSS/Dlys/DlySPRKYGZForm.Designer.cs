@@ -35,7 +35,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DlySPRKYGZForm));
             this.baseDataLayoutControl1 = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseDataLayoutControl();
             this.AfterPreferTotalTextEdit = new FengSharp.OneCardAccess.Infrastructure.WinForm.Base.BaseTextEdit();
             this.bindbaseDataLayoutControl1 = new System.Windows.Forms.BindingSource(this.components);
@@ -243,7 +242,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             // 
             // btnPrint
             // 
-            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
             this.btnPrint.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnPrint.Location = new System.Drawing.Point(1035, 665);
             this.btnPrint.Name = "btnPrint";
@@ -313,7 +311,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             this.colProductNo.ColumnEdit = this.productNoRepItemPopupContainerEdit;
             this.colProductNo.FieldName = "ProductNo";
             this.colProductNo.Name = "colProductNo";
-            this.colProductNo.OptionsColumn.AllowEdit = false;
             this.colProductNo.Visible = true;
             this.colProductNo.VisibleIndex = 0;
             this.colProductNo.Width = 100;
@@ -394,7 +391,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             this.colPrice.ColumnEdit = this.priceRepItemPopupContainerEdit;
             this.colPrice.FieldName = "Price";
             this.colPrice.Name = "colPrice";
-            this.colPrice.OptionsColumn.AllowEdit = false;
             this.colPrice.Visible = true;
             this.colPrice.VisibleIndex = 7;
             this.colPrice.Width = 100;
@@ -423,7 +419,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             this.colRemark.Caption = "备注";
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
-            this.colRemark.OptionsColumn.AllowEdit = false;
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 9;
             this.colRemark.Width = 100;
@@ -462,7 +457,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             // 
             // btnClose
             // 
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnClose.Location = new System.Drawing.Point(1139, 665);
             this.btnClose.Name = "btnClose";
@@ -675,7 +669,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
             this.layoutControlGroup1.Size = new System.Drawing.Size(1248, 700);
-            this.layoutControlGroup1.Text = "商品入库单";
+            this.layoutControlGroup1.Text = "商品返工单";
             // 
             // ItemForJSRName
             // 

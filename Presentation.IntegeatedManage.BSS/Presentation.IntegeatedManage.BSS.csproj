@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DlySet\DlyFormat.cs" />
+    <Compile Include="Dlys\DlySPXSYGZForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlys\DlySPXSYGZForm.Designer.cs">
+      <DependentUpon>DlySPXSYGZForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dlys\DlySPXSForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +308,10 @@
       <Project>{76d6a2b7-c84b-42c4-88cc-64f64902bb27}</Project>
       <Name>Domain.BSSModule.Service.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain.CRMModule.Entity\Domain.CRMModule.Entity.csproj">
+      <Project>{513f7972-6fbb-4975-8c9a-7f514e04e157}</Project>
+      <Name>Domain.CRMModule.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.HRModule.Entity\Domain.HRModule.Entity.csproj">
       <Project>{2bd3d2c9-195e-4157-8618-ba189fc3e530}</Project>
       <Name>Domain.HRModule.Entity</Name>
@@ -330,6 +340,10 @@
       <Project>{ebf559ae-0661-4e35-b303-95993abdbf74}</Project>
       <Name>Presentation.IntegeatedManage.BSS.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Presentation.IntegeatedManage.CRM.Interface\Presentation.IntegeatedManage.CRM.Interface.csproj">
+      <Project>{912a12e4-45e2-47c2-b953-b0e6a4cc9d93}</Project>
+      <Name>Presentation.IntegeatedManage.CRM.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Presentation.IntegeatedManage.HR.Interface\Presentation.IntegeatedManage.HR.Interface.csproj">
       <Project>{b2a6c55d-f693-4713-b6b6-312b31281af2}</Project>
       <Name>Presentation.IntegeatedManage.HR.Interface</Name>
@@ -348,6 +362,9 @@
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Dlys\DlySPXSYGZForm.resx">
+      <DependentUpon>DlySPXSYGZForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dlys\DlySPXSForm.resx">
       <DependentUpon>DlySPXSForm.cs</DependentUpon>
     </EmbeddedResource>

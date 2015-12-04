@@ -11,6 +11,14 @@
         /// 商品返工单DlyTypeId
         /// </summary>
         public const int SPFGDlyTypeId = 3;
+        /// <summary>
+        /// 商品销售单DlyTypeId
+        /// </summary>
+        public const int SPXSDlyTypeId = 4;
+        /// <summary>
+        /// 商品销售退货单DlyTypeId
+        /// </summary>
+        public const int SPXSTHDlyTypeId = 5;
         #endregion
         #region 资产类型Id
         /// <summary>

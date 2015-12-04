@@ -60,6 +60,15 @@
     <Compile Include="CompanyManageForm.Designer.cs">
       <DependentUpon>CompanyManageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompanySelectPopupContainerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompanySelectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CompanySelectUserControl.Designer.cs">
+      <DependentUpon>CompanySelectUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +78,10 @@
     <EmbeddedResource Include="CompanyManageForm.resx">
       <DependentUpon>CompanyManageForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CompanySelectUserControl.resx">
+      <DependentUpon>CompanySelectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\FengSharp\FengSharp.Tool\FengSharp.Tool.csproj">

@@ -64,7 +64,11 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             }
             this.gridControl1.DataSource = this.bindingSource1;
         }
-
+        public DlySPFGForm(string ndxId)
+            : this()
+        {
+            NdxId = ndxId;
+        }
         private void RealColumnEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
             try
@@ -81,11 +85,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             {
                 MessageBoxEx.Error(ex);
             }
-        }
-        public DlySPFGForm(string ndxId)
-            : this()
-        {
-            NdxId = ndxId;
         }
 
         private void DlySPFGForm_Load(object sender, EventArgs e)
@@ -300,6 +299,9 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 var singleSelect = basePopupContainerEdit.Properties.PopupControl as ISingleProductPriceSelect;
                 if (!singleSelect.IsSelect) return;
                 e.Value = singleSelect.GetResult();
+                var row = this.gridView1.GetRow(this.gridView1.FocusedRowHandle) as PDlyBakFullNameEntity;
+                if (row != null)
+                    row.Total = decimal.Parse(e.Value.ToString()) * (decimal)row.Qty;
             }
             catch (Exception ex)
             {
@@ -374,6 +376,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 row.PFBNBaks.Clear();
                 row.PFBNBaks.AddRange(singleSelect.EntityResults);
                 row.BN = singleSelect.BN;
+                row.Total = decimal.Parse(e.Value.ToString()) * (decimal)row.Price;
             }
             catch (Exception ex)
             {
@@ -419,6 +422,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 row.PSNBaks.Clear();
                 row.PSNBaks.AddRange(singleSelect.EntityResults);
                 row.BN = singleSelect.BN;
+                row.Total = decimal.Parse(e.Value.ToString()) * (decimal)row.Price;
             }
             catch (Exception ex)
             {
@@ -482,17 +486,17 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                     MessageBoxEx.Info("未启用该审核级别");
                     return;
                 }
-                var SPFGDlyCGNdxEntity = this.bindbaseDataLayoutControl1.DataSource as SPFGDlyCGNdxEntity;
-                var property = SPFGDlyCGNdxEntity.GetType().GetProperty(string.Format("SHRId{0}", inputlevel));
-                var shrid = property.GetValue(SPFGDlyCGNdxEntity, null).ToString();
+                var spfgDlyCGNdxEntity = this.bindbaseDataLayoutControl1.DataSource as SPFGDlyCGNdxEntity;
+                var property = spfgDlyCGNdxEntity.GetType().GetProperty(string.Format("SHRId{0}", inputlevel));
+                var shrid = property.GetValue(spfgDlyCGNdxEntity, null).ToString();
                 if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.OK)
                 {
-                    if (!DJSHChecker.CheckPreInputLevel(SPFGDlyCGNdxEntity, inputlevel))
+                    if (!DJSHChecker.CheckPreInputLevel(spfgDlyCGNdxEntity, inputlevel))
                     {
                         MessageBoxEx.Info("前面的审核流程未完成");
                         return;
                     }
-                    if (DJSHChecker.CheckAfterInputLevel(SPFGDlyCGNdxEntity, this.TotalInputLevel, inputlevel))
+                    if (DJSHChecker.CheckAfterInputLevel(spfgDlyCGNdxEntity, this.TotalInputLevel, inputlevel))
                     {
                         MessageBoxEx.Info("后面的审核流程已完成");
                         return;
@@ -503,17 +507,17 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                         return;
                     }
                     this.Facade.SHDJ(inputlevel);
-                    property.SetValue(SPFGDlyCGNdxEntity, AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserId, null);
+                    property.SetValue(spfgDlyCGNdxEntity, AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserId, null);
                     btn.EditValue = AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserName;
                 }
                 else
                 {
-                    if (!DJSHChecker.CheckPreInputLevel(SPFGDlyCGNdxEntity, inputlevel))
+                    if (!DJSHChecker.CheckPreInputLevel(spfgDlyCGNdxEntity, inputlevel))
                     {
                         MessageBoxEx.Info("前面的审核流程未完成");
                         return;
                     }
-                    if (DJSHChecker.CheckAfterInputLevel(SPFGDlyCGNdxEntity, this.TotalInputLevel, inputlevel))
+                    if (DJSHChecker.CheckAfterInputLevel(spfgDlyCGNdxEntity, this.TotalInputLevel, inputlevel))
                     {
                         MessageBoxEx.Info("后面的审核流程已完成");
                         return;
@@ -524,7 +528,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                         return;
                     }
                     this.Facade.FSDJ(inputlevel);
-                    property.SetValue(SPFGDlyCGNdxEntity, string.Empty, null);
+                    property.SetValue(spfgDlyCGNdxEntity, string.Empty, null);
                     btn.EditValue = string.Empty;
                 }
             }

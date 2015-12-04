@@ -255,6 +255,45 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
             return dlyNdxId;
         }
 
+        public static void CheckZCreatePDlyError(Database database, DbCommand cmd)
+        {
+            if (database.GetParameterValue(cmd, "ProductIdError") != System.DBNull.Value)
+            {
+                int ProductIdError = (int)database.GetParameterValue(cmd, "ProductIdError");
+                if (ProductIdError > 0)
+                    throw new BusinessException(ProductIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "CompanyIdError") != System.DBNull.Value)
+            {
+                int CompanyIdError = (int)database.GetParameterValue(cmd, "CompanyIdError");
+                if (CompanyIdError > 0)
+                    throw new BusinessException(CompanyIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "StockId1Error") != System.DBNull.Value)
+            {
+                int StockIdError = (int)database.GetParameterValue(cmd, "StockId1Error");
+                if (StockIdError > 0)
+                    throw new BusinessException(StockIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "StockId2Error") != System.DBNull.Value)
+            {
+                int StockIdError = (int)database.GetParameterValue(cmd, "StockId2Error");
+                if (StockIdError > 0)
+                    throw new BusinessException(StockIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "AtypeIdError") != System.DBNull.Value)
+            {
+                int AtypeIdError = (int)database.GetParameterValue(cmd, "AtypeIdError");
+                if (AtypeIdError > 0)
+                    throw new BusinessException(AtypeIdError.ToString());
+            }
+            if (database.GetParameterValue(cmd, "BNError") != System.DBNull.Value)
+            {
+                string BNError = (string)database.GetParameterValue(cmd, "BNError");
+                if (!string.IsNullOrWhiteSpace(BNError))
+                    throw new BusinessException(BNError);
+            }
+        }
         /// <summary>
         /// 商品过账
         /// </summary>
@@ -500,6 +539,89 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service
                 return null;
             #endregion
             var result = new SPFGDlyYGZNdxEntity();
+            FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, dlyndxfullnameentity);
+
+            var dtPDlyFullNameEntitys = base.GetRelationData("pdlyfullname", dlyNdxId, userid);
+            var listdlys = DataTableToPDlyFullNameEntitys(dtPDlyFullNameEntitys);
+            #region PDlyFullNameEntitys
+            result.PDlys.AddRange(listdlys);
+            #endregion
+            #region PFBNInOutDetails,PSNInOutDetails
+            var dtPFBNInOutDetails = base.GetRelationData("pfbninoutdetails", dlyNdxId, userid);
+            var listPFBNInOutDetails = DataTableToPFBNInOutDetailsEntitys(dtPFBNInOutDetails);
+            var dtPSNInOutDetails = base.GetRelationData("psninoutdetails", dlyNdxId, userid);
+            var listPSNInOutDetails = DataTableToPSNInOutDetailsEntitys(dtPSNInOutDetails);
+            foreach (var dly in result.PDlys)
+            {
+                dly.Qty = -dly.Qty;
+                dly.Total = -dly.Total;
+                dly.CostTotal = -dly.CostTotal;
+                dly.PFBNInOutDetails.AddRange(listPFBNInOutDetails.Where(t => t.PDlyId == dly.PDlyId));
+                dly.PSNInOutDetails.AddRange(listPSNInOutDetails.Where(t => t.PDlyId == dly.PDlyId));
+            }
+            #endregion
+            result.Qty = result.PDlys.Sum(t => t.Qty);
+            result.Total = result.PDlys.Sum(t => t.Total);
+            var dtdlyas = base.GetRelationData("pdlya", dlyNdxId, userid);
+            var listdlyas = DataTableToDlyAEntitys(dtdlyas);
+            result.Prefer = listdlyas.Where(t => t.ATypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.SPYHATypeId).Sum(t => t.Total);
+            result.AfterPreferTotal = result.Total - result.Prefer;
+            return result;
+        }
+
+        #endregion
+
+        #region 商品销售单
+        public SPXSDlyCGNdxEntity GetSPXSDlyCGNdxEntity(string dlyNdxId)
+        {
+            string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
+            #region DlyNdxFullNameEntity
+            var row = base.FindById("dlyndxfull", dlyNdxId, userid);
+            DlyNdxFullNameEntity dlyndxfullnameentity = DlyNdxService.DataRowToDlyNdxFullNameEntity(row);
+            if (dlyndxfullnameentity == null)
+                return null;
+            if (dlyndxfullnameentity.Draft != 0)
+                return null;
+            #endregion
+            var result = new SPXSDlyCGNdxEntity();
+            FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, dlyndxfullnameentity);
+
+            var dtPDlyBakFullNameEntitys = base.GetRelationData("pdlybakfullname", dlyNdxId, userid);
+            var listdlybaks = DataTableToPDlyBakFullNameEntitys(dtPDlyBakFullNameEntitys);
+            //PDlyBakFullNameEntity
+            #region PDlyBakFullNameEntitys
+            result.PDlyBaks.AddRange(listdlybaks.Where(t => t.ATypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.KCSPATypeId).ToArray());
+            #endregion
+            #region PFBNBaks,PSNBaks
+            var dtPFBNBaks = base.GetRelationData("pfbnbak", dlyNdxId, userid);
+            var listPFBNBaks = DataTableToPFBNBakEntitys(dtPFBNBaks);
+            var dtPSNBaks = base.GetRelationData("psnbak", dlyNdxId, userid);
+            var listPSNBaks = DataTableToPSNBakEntitys(dtPSNBaks);
+            foreach (var dlybak in result.PDlyBaks)
+            {
+                dlybak.PFBNBaks.AddRange(listPFBNBaks.Where(t => t.PDlyBakId == dlybak.PDlyBakId));
+                dlybak.PSNBaks.AddRange(listPSNBaks.Where(t => t.PDlyBakId == dlybak.PDlyBakId));
+            }
+            #endregion
+            result.Qty = result.PDlyBaks.Sum(t => t.Qty);
+            result.Total = result.PDlyBaks.Sum(t => t.Total);
+            result.Prefer = listdlybaks.Where(t => t.ATypeId == FengSharp.OneCardAccess.Application.Config.DlyConfig.SPYHATypeId).ToList().Sum(t => t.Total);
+            result.AfterPreferTotal = result.Total - result.Prefer;
+            return result;
+        }
+
+        public SPXSDlyYGZNdxEntity GetSPXSDlyYGZNdxEntity(string dlyNdxId)
+        {
+            string userid = ServiceLoader.LoadService<IAuthService>().GetUserIdByTicket();
+            #region DlyNdxFullNameEntity
+            var row = base.FindById("dlyndxfull", dlyNdxId, userid);
+            DlyNdxFullNameEntity dlyndxfullnameentity = DlyNdxService.DataRowToDlyNdxFullNameEntity(row);
+            if (dlyndxfullnameentity == null)
+                return null;
+            if (dlyndxfullnameentity.Draft != 1)
+                return null;
+            #endregion
+            var result = new SPXSDlyYGZNdxEntity();
             FengSharp.Tool.Reflect.ClassValueCopier.Copy(result, dlyndxfullnameentity);
 
             var dtPDlyFullNameEntitys = base.GetRelationData("pdlyfullname", dlyNdxId, userid);

@@ -77,7 +77,6 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             if (this.Facade == null)
                 this.Facade = new ProductFBNInputUserControlFacade(this);
         }
-
         public void BindData(FBNInputEntity[] entitys)
         {
             this.bindingSource1.DataSource = new List<FBNInputEntity>(entitys);
