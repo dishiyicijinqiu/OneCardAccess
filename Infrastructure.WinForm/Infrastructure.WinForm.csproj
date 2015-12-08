@@ -192,6 +192,12 @@
     <Compile Include="Components\GridViewCommonStyle.Designer.cs">
       <DependentUpon>GridViewCommonStyle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\GridView_KeyDeletedRow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\GridView_KeyDeletedRow.Designer.cs">
+      <DependentUpon>GridView_KeyDeletedRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\GridView_ShowCate.cs">
       <SubType>Component</SubType>
     </Compile>

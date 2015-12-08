@@ -36,10 +36,14 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
                 this._IsLoading = true;
                 if (!this.dxValidationProvider.Validate())
                     return;
-                if (!splashScreenManager1.IsSplashFormVisible)
-                    splashScreenManager1.ShowWaitForm();
+                if (splashScreenManager1.IsSplashFormVisible)
+                {
+                    splashScreenManager1.CloseWaitForm();
+                }
+                splashScreenManager1.ShowWaitForm();
                 splashScreenManager1.SetWaitFormCaption(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.Infomation_Title);
                 splashScreenManager1.SetWaitFormDescription(FengSharp.OneCardAccess.Infrastructure.ResourceMessages.LoadingDataPleaseWait);
+
                 Login(this.txtUserNo.Text, this.txtPassword.Text);
                 this.DialogResult = DialogResult.OK;
             }
@@ -94,6 +98,8 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.MainStruct
         public bool TimeOutLogin()
         {
             this.Text = "登录超时，请重新登录";
+            this.txtUserNo.Enabled = false;
+            this.txtUserNo.EditValue = Infrastructure.AuthPrincipal.CurrentAuthPrincipal.AuthIdentity.UserNo;
             return InterLogin();
         }
 

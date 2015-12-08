@@ -101,6 +101,12 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                             form.Show();
                         }
                         break;
+                    case FengSharp.OneCardAccess.Application.Config.DlyConfig.SPXSTHDlyTypeId:
+                        {
+                            DlySPXSTHYGZForm form = new DlySPXSTHYGZForm(entity.DlyNdxId);
+                            form.Show();
+                        }
+                        break;
                     default:
                         throw new BusinessException("错误的单据类型");
                 }

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vs="http://schemas.microsoft.com/Visual-Studio-Intellisense"
+           vs:helpNamespace="http://schemas.microsoft.com/.NetConfiguration/v2.0"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+          <xs:attribute name="keyContainerName" type="xs:string" use="optional" />
+          <xs:attribute name="cspProviderName" type="xs:string" use="optional" />
+          <xs:attribute name="useMachineContainer" type="xs:string" use="optional" />
+          <xs:attribute name="useOAEP" type="xs:string" use="optional" />
+          <xs:attribute name="description" type="xs:string" use="optional" />
+</xs:schema>

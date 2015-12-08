@@ -25,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-6-Solution Items", "1-6-S
 		Solution Items\Presentation.IntegeatedManage.MainStruct.config = Solution Items\Presentation.IntegeatedManage.MainStruct.config
 		Solution Items\publishbuild.bat = Solution Items\publishbuild.bat
 		Solution Items\ServerConfigEncrypt.bat = Solution Items\ServerConfigEncrypt.bat
+		Solution Items\UnityConfiguration20.xsd = Solution Items\UnityConfiguration20.xsd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-7-ReferenceLib(引用程序集)", "1-7-ReferenceLib(引用程序集)", "{96558603-9D21-4CBD-945D-83831C96E53C}"
@@ -156,6 +157,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedBuilder", "FeedBuilder\FeedBuilder.csproj", "{734FA44E-39AC-478E-A5AA-0F3D1F1974AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.IntegeatedManageServer", "Application.IntegeatedManageServer\Application.IntegeatedManageServer.csproj", "{E145E1D5-4649-4C0C-9E4D-86B7947BE594}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML架构", "XML架构", "{A344BD8D-4794-420B-82E0-51885C1002EE}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\XML架构\configProtectedDataExtendSchema.xsd = Solution Items\XML架构\configProtectedDataExtendSchema.xsd
+		Solution Items\XML架构\UnityConfiguration20.xsd = Solution Items\XML架构\UnityConfiguration20.xsd
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -543,6 +550,7 @@ Global
 		{82F815F5-3FCB-4F59-A7D3-9119C6630DFA} = {BCECBB7B-BEA9-4883-B405-B3B6C19A114B}
 		{734FA44E-39AC-478E-A5AA-0F3D1F1974AA} = {3B0F3440-1312-43CD-9AD3-09393272DD9C}
 		{E145E1D5-4649-4C0C-9E4D-86B7947BE594} = {BCECBB7B-BEA9-4883-B405-B3B6C19A114B}
+		{A344BD8D-4794-420B-82E0-51885C1002EE} = {723E4154-5D5D-4318-BD65-DA2305F413F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35;packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.Cryptography.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Caching.Cryptography.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.PolicyInjection.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35

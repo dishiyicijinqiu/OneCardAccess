@@ -82,6 +82,12 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                             form.Show();
                         }
                         break;
+                    case FengSharp.OneCardAccess.Application.Config.DlyConfig.SPXSTHDlyTypeId:
+                        {
+                            DlySPXSTHForm form = new DlySPXSTHForm(entity.DlyNdxId);
+                            form.Show();
+                        }
+                        break;
                 }
             }
             catch (Exception ex)

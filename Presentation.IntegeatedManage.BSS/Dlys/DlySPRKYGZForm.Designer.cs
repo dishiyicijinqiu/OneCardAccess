@@ -669,7 +669,7 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
             this.layoutControlGroup1.Size = new System.Drawing.Size(1248, 700);
-            this.layoutControlGroup1.Text = "商品返工单";
+            this.layoutControlGroup1.Text = "商品入库单";
             // 
             // ItemForJSRName
             // 

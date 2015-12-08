@@ -34,6 +34,13 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 qtySNPopupContainerControl.Height = 600;
                 qtySNRepItemPopupContainerEdit.PopupControl = qtySNPopupContainerControl;
             }
+            for (int i = 0; i < this.gridView1.Columns.Count; i++)
+            {
+                var col = this.gridView1.Columns[i];
+                if (col == colProductNo)
+                    continue;
+                col.RealColumnEdit.EditValueChanging += RealColumnEdit_EditValueChanging;
+            }
             this.gridControl1.DataSource = this.bindingSource1;
         }
 

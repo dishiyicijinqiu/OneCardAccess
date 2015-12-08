@@ -61,13 +61,21 @@ namespace FengSharp.OneCardAccess.Domain.BSSModule.Service.Interface
         SPFGDlyYGZNdxEntity GetSPFGDlyYGZNdxEntity(string ndxId);
         #endregion
 
-        #region 商销售单
+        #region 商品销售单
         [OperationContract]
         [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         SPXSDlyCGNdxEntity GetSPXSDlyCGNdxEntity(string ndxId);
         [OperationContract]
         [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
         SPXSDlyYGZNdxEntity GetSPXSDlyYGZNdxEntity(string ndxId);
+        #endregion
+        #region 商品销售退货单
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        SPXSTHDlyCGNdxEntity GetSPXSTHDlyCGNdxEntity(string ndxId);
+        [OperationContract]
+        [FaultContract(typeof(FengSharp.OneCardAccess.Infrastructure.ServiceExceptionDetail))]
+        SPXSTHDlyYGZNdxEntity GetSPXSTHDlyYGZNdxEntity(string ndxId);
         #endregion
     }
 }

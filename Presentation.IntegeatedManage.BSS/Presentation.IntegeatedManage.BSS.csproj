@@ -52,6 +52,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DlySet\DlyFormat.cs" />
+    <Compile Include="Dlys\DlySPXSTHForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlys\DlySPXSTHForm.Designer.cs">
+      <DependentUpon>DlySPXSTHForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dlys\DlySPXSTHYGZForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dlys\DlySPXSTHYGZForm.Designer.cs">
+      <DependentUpon>DlySPXSTHYGZForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dlys\DlySPXSYGZForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -362,6 +374,12 @@
       <DependentUpon>ProductSelectUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Dlys\DlySPXSTHForm.resx">
+      <DependentUpon>DlySPXSTHForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dlys\DlySPXSTHYGZForm.resx">
+      <DependentUpon>DlySPXSTHYGZForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dlys\DlySPXSYGZForm.resx">
       <DependentUpon>DlySPXSYGZForm.cs</DependentUpon>
     </EmbeddedResource>
