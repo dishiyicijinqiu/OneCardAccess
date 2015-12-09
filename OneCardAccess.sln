@@ -160,7 +160,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.IntegeatedManag
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XML架构", "XML架构", "{A344BD8D-4794-420B-82E0-51885C1002EE}"
 	ProjectSection(SolutionItems) = preProject
-		Solution Items\XML架构\configProtectedDataExtendSchema.xsd = Solution Items\XML架构\configProtectedDataExtendSchema.xsd
+		Solution Items\XML架构\DotNetConfig40.xsd = Solution Items\XML架构\DotNetConfig40.xsd
 		Solution Items\XML架构\UnityConfiguration20.xsd = Solution Items\XML架构\UnityConfiguration20.xsd
 	EndProjectSection
 EndProject
