@@ -5966,7 +5966,7 @@
                           <xs:element name="ApplicationContext" vs:help="configuration/system.serviceModel/behaviors/endpointBehaviors/behavior/ApplicationContext">
                             <xs:complexType>
                               <xs:attribute name="isBidirectional" type="boolean_Type" use="optional" />
-                              <xs:attribute name="SessionCheck" type="boolean_Type" use="optional" />
+                              <xs:attribute name="sessionCheck" type="boolean_Type" use="optional" />
                               <xs:anyAttribute namespace="http://schemas.microsoft.com/XML-Document-Transform" processContents="strict" />
                             </xs:complexType>
                           </xs:element>

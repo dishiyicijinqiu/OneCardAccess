@@ -20,9 +20,10 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
         public DlyNdxCGManageForm()
         {
             InitializeComponent();
+            this.Shown += DlyNdxCGManageForm_Shown;
         }
 
-        private void DlyNdxCGManageForm_Load(object sender, EventArgs e)
+        private void DlyNdxCGManageForm_Shown(object sender, EventArgs e)
         {
             try
             {
@@ -34,6 +35,10 @@ namespace FengSharp.OneCardAccess.Presentation.IntegeatedManage.BSS
                 this.formLoadErrorExit1.LoadError();
                 MessageBoxEx.Error(ex);
             }
+        }
+
+        private void DlyNdxCGManageForm_Load(object sender, EventArgs e)
+        {
         }
 
         private void gridView1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
